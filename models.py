@@ -59,6 +59,31 @@ class Scenario(models.Model):
 
 	countries = property(_get_countries)
 
+class SpecialUnit(models.Model):
+	""" A SpecialUnit describes the attributes of a unit that costs more ducats
+	than usual and can be more powerful or more loyal """
+	__metaclass__ = TransMeta
+	static_title = models.CharField(_("static title"), max_length=50)
+	title = CharField(_("title"), max_length=50)
+	cost = models.PositiveIntegerField(_("cost"))
+	power = models.PositiveIntegerField(_("power"))
+	loyalty = models.PositiveIntegerField(_("loyalty"))
+
+	class Meta:
+		verbose_name = _("special unit")
+		verbose_name_plural = _("special units")
+		translate = ("title",)
+
+	def __unicode__(self):
+		return _("%(title)s (%(cost)sd)") % {'title': self.title,
+											'cost': self.cost}
+
+	def describe(self):
+		return _("Costs %(cost)s; Strength %(power)s; Loyalty %(loyalty)s") % {
+			'cost': self.cost,
+			'power': self.power,
+			'loyalty': self.loyalty}
+
 class Country(models.Model):
 	__metaclass__ = TransMeta
 	name = models.CharField(_("name"), max_length=20, unique=True)
