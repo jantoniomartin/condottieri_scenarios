@@ -222,3 +222,62 @@ class DisabledArea(models.Model):
 		verbose_name_plural = _("disabled areas")
 		unique_together = (('scenario', 'area'),) 
 
+class CityIncome(models.Model):
+	"""
+	This class represents a City that generates an income in a given Scenario
+	"""	
+	city = models.ForeignKey(Area, verbose_name=_("city"))
+	scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
+
+	def __unicode__(self):
+		return "%s" % self.city.name
+
+	class Meta:
+		verbose_name = _("city income")
+		verbose_name_plural = _("city incomes")
+		unique_together = (("city", "scenario"),)
+
+class Home(models.Model):
+	""" This class defines which Country controls each Area in a given Scenario,
+	at the beginning of a game.
+	
+	Note that, in some special cases, a province controlled by a country does
+	not belong to the **home country** of this country. The ``is_home``
+	attribute controls that.
+	"""
+
+	scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
+	country = models.ForeignKey(Country, verbose_name=_("country"))
+	area = models.ForeignKey(Area, verbose_name=_("area"))
+	is_home = models.BooleanField(_("is home"), default=True)
+
+	def __unicode__(self):
+		return "%s" % self.area.name
+
+	class Meta:
+		verbose_name = _("home area")
+		verbose_name_plural = _("home areas")
+		unique_together = (("scenario", "country", "area"),)
+
+class Setup(models.Model):
+	"""
+	This class defines the initial setup of a unit in a given Scenario.
+	"""
+
+	scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
+	country = models.ForeignKey(Country, blank=True, null=True,
+		verbose_name=_("country"))
+	area = models.ForeignKey(Area, verbose_name=_("area"))
+	unit_type = models.CharField(_("unit type"), max_length=1,
+		choices=UNIT_TYPES)
+    
+	def __unicode__(self):
+		return _("%(unit)s in %(area)s") % {
+			'unit': self.get_unit_type_display(),
+			'area': self.area.name }
+
+	class Meta:
+		verbose_name = _("initial setup")
+		verbose_name_plural = _("initial setups")
+		unique_together = (("scenario", "area", "unit_type"),)
+
