@@ -137,3 +137,88 @@ class Treasury(models.Model):
 		verbose_name_plural = _("treasuries")
 		unique_together = (("scenario", "country"),)
 
+class Area(models.Model):
+	""" This class describes **only** the area features in the board. The game is
+	actually played in GameArea objects.
+	"""
+	__metaclass__ = TransMeta
+
+	name = CharField(max_length=25, unique=True, verbose_name=_("name"))
+	code = models.CharField(_("code"), max_length=5 ,unique=True)
+	is_sea = models.BooleanField(_("is sea"), default=False)
+	is_coast = models.BooleanField(_("is coast"), default=False)
+	has_city = models.BooleanField(_("has city"), default=False)
+	is_fortified = models.BooleanField(_("is fortified"), default=False)
+	has_port = models.BooleanField(_("has port"), default=False)
+	borders = models.ManyToManyField("self", editable=False, verbose_name=_("borders"))
+	## control_income is the number of ducats that the area gives to the player
+	## that controls it, including the city (seas give 0)
+	control_income = models.PositiveIntegerField(_("control income"),
+		null=False, default=0)
+	## garrison_income is the number of ducats given by an unbesieged
+	## garrison in the area's city, if any (no fortified city, 0)
+	garrison_income = models.PositiveIntegerField(_("garrison income"),
+		null=False, default=0)
+
+	def is_adjacent(self, area, fleet=False):
+		""" Two areas can be adjacent through land, but not through a coast. 
+		
+		The list ``only_armies`` shows the areas that are adjacent but their
+		coasts are not, so a Fleet can move between them.
+		"""
+		##TODO: Move this to a table in the database
+		only_armies = [
+			('AVI', 'PRO'),
+			('PISA', 'SIE'),
+			('CAP', 'AQU'),
+			('NAP', 'AQU'),
+			('SAL', 'AQU'),
+			('SAL', 'BARI'),
+			('HER', 'ALB'),
+			('BOL', 'MOD'),
+			('BOL', 'LUC'),
+			('CAR', 'CRO'),
+		]
+		if fleet:
+			if (self.code, area.code) in only_armies or (area.code, self.code) in only_armies:
+				return False
+		return area in self.borders.all()
+
+	def accepts_type(self, type):
+		""" Returns True if an given type of Unit can be in the Area. """
+
+		assert type in ('A', 'F', 'G'), 'Wrong unit type'
+		if type=='A':
+			if self.is_sea or self.code=='VEN':
+				return False
+		elif type=='F':
+			if not self.has_port:
+				return False
+		else:
+			if not self.is_fortified:
+				return False
+		return True
+
+	def __unicode__(self):
+		return "%(code)s - %(name)s" % {'name': self.name, 'code': self.code}
+	
+	class Meta:
+		verbose_name = _("area")
+		verbose_name_plural = _("areas")
+		ordering = ('code',)
+		translate = ('name', )
+
+class DisabledArea(models.Model):
+	""" A DisabledArea is an Area that is not used in a given Scenario. """
+	scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
+	area = models.ForeignKey(Area, verbose_name=_("area"))
+
+	def __unicode__(self):
+		return "%(area)s disabled in %(scenario)s" % {'area': self.area,
+													'scenario': self.scenario}
+	
+	class Meta:
+		verbose_name = _("disabled area")
+		verbose_name_plural = _("disabled areas")
+		unique_together = (('scenario', 'area'),) 
+
