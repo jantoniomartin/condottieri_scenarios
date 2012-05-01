@@ -281,3 +281,35 @@ class Setup(models.Model):
 		verbose_name_plural = _("initial setups")
 		unique_together = (("scenario", "area", "unit_type"),)
 
+class ControlToken(models.Model):
+	""" Defines the coordinates of the control token for a board area. """
+
+	area = models.OneToOneField(Area)
+	x = models.PositiveIntegerField()
+	y = models.PositiveIntegerField()
+
+	def __unicode__(self):
+		return "%s, %s" % (self.x, self.y)
+
+
+class GToken(models.Model):
+	""" Defines the coordinates of the Garrison token in a board area. """
+
+	area = models.OneToOneField(Area)
+	x = models.PositiveIntegerField()
+	y = models.PositiveIntegerField()
+
+	def __unicode__(self):
+		return "%s, %s" % (self.x, self.y)
+
+
+class AFToken(models.Model):
+	""" Defines the coordinates of the Army and Fleet tokens in a board area."""
+
+	area = models.OneToOneField(Area)
+	x = models.PositiveIntegerField()
+	y = models.PositiveIntegerField()
+
+	def __unicode__(self):
+		return "%s, %s" % (self.x, self.y)
+
