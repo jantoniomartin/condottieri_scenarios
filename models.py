@@ -17,6 +17,7 @@
 ## AUTHOR: Jose Antonio Martin <jantonio.martin AT gmail DOT com>
 
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from transmeta import TransMeta
 
@@ -37,7 +38,7 @@ class Scenario(models.Model):
 	class Meta:
 		verbose_name = _("scenario")
 		verbose_name_plural = _("scenarios")
-		ordering = ["title",]
+		ordering = ["name",]
 		translate = ('title', 'description',)
 
 	def get_max_players(self):
@@ -64,7 +65,7 @@ class SpecialUnit(models.Model):
 	than usual and can be more powerful or more loyal """
 	__metaclass__ = TransMeta
 	static_title = models.CharField(_("static title"), max_length=50)
-	title = CharField(_("title"), max_length=50)
+	title = models.CharField(_("title"), max_length=50)
 	cost = models.PositiveIntegerField(_("cost"))
 	power = models.PositiveIntegerField(_("power"))
 	loyalty = models.PositiveIntegerField(_("loyalty"))
@@ -96,7 +97,7 @@ class Country(models.Model):
 	class Meta:
 		verbose_name = _("country")
 		verbose_name_plural = _("countries")
-		ordering = ["name", ]
+		ordering = ["static_name", ]
 		translate = ("name",)
 
 	def __unicode__(self):
@@ -143,7 +144,7 @@ class Area(models.Model):
 	"""
 	__metaclass__ = TransMeta
 
-	name = CharField(max_length=25, unique=True, verbose_name=_("name"))
+	name = models.CharField(max_length=25, unique=True, verbose_name=_("name"))
 	code = models.CharField(_("code"), max_length=5 ,unique=True)
 	is_sea = models.BooleanField(_("is sea"), default=False)
 	is_coast = models.BooleanField(_("is coast"), default=False)
@@ -258,6 +259,11 @@ class Home(models.Model):
 		verbose_name = _("home area")
 		verbose_name_plural = _("home areas")
 		unique_together = (("scenario", "country", "area"),)
+
+UNIT_TYPES = (('A', _('Army')),
+              ('F', _('Fleet')),
+              ('G', _('Garrison'))
+			  )
 
 class Setup(models.Model):
 	"""
