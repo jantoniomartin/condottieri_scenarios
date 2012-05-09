@@ -52,14 +52,47 @@ class Scenario(models.Model):
 
 	def __unicode__(self):
 		return self.title
-
+	
+	@models.permalink
 	def get_absolute_url(self):
-		return "scenario/%s" % self.slug
+		return ('scenario_detail', [self.slug,])
 
 	def _get_countries(self):
 		return Country.objects.filter(home__scenario=self).distinct()
 
 	countries = property(_get_countries)
+
+	def _get_setup_dict(self):
+		""" Returns a dictionary with all the setup data for the scenario."""
+		_setup_dict = {}
+		for c in self.countries:
+			treasury = c.treasury_set.get(scenario=self)
+			c_dict = {
+				'name': c.name,
+				'homes': c.home_set.select_related().filter(scenario=self),
+				'setups': c.setup_set.select_related().filter(scenario=self),
+				'ducats': treasury.ducats,		
+				'double': treasury.double,}
+			_setup_dict.update({c.static_name: c_dict})
+		return _setup_dict
+
+	setup_dict = property(_get_setup_dict)
+
+	def _get_autonomous(self):
+		return self.setup_set.filter(country__isnull=True)
+
+	autonomous = property(_get_autonomous)
+
+	def _get_major_cities(self):
+		return self.cityincome_set.all()
+
+	major_cities = property(_get_major_cities)
+
+	def _get_disabled_list(self):
+		return Area.objects.filter(disabledarea__scenario=self).values_list('name', flat=True)
+
+	disabled_list = property(_get_disabled_list)
+
 
 class SpecialUnit(models.Model):
 	""" A SpecialUnit describes the attributes of a unit that costs more ducats
