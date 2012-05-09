@@ -1,0 +1,20 @@
+{% extends 'site_base.html' %}
+
+{% load i18n %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}condottieri_scenarios/css/condottieri_scenarios.css" />
+{% endblock %}
+
+{% block body_class %}scenarios{% endblock %}
+{% block rtab_id %}id="scenarios_tab"{% endblock %}
+
+{% block subnav %}
+<ul>
+<li><a href="{% url home %}">{% trans "Home" %}</a></li>
+<li><a href="{% url scenario-list %}">{% trans "Scenarios" %}</a></li>
+</ul>
+{% endblock %}
+
+{% block body %}{% endblock %}
+

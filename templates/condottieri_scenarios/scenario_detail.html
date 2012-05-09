@@ -1,0 +1,91 @@
+{% extends 'condottieri_scenarios/base.html' %}
+
+{% load i18n %}
+{% load cache %}
+
+{% block head_title %}{{ scenario.title }}{% endblock %}
+
+{% block body %}
+{# cache 1800 "scenario" scenario.id LANGUAGE_CODE #}
+
+<div class="section">
+<h2>{{ scenario.title }} ({{ scenario.number_of_players }} {% trans "players" %})</h2>
+<p>{{ scenario.description }}</p>
+<dl>
+<dt>{% trans "Designer" %}</dt><dd>{{ scenario.designer }}</dd>
+<dt>{% trans "Start year" %}</dt><dd>{{ scenario.start_year }}</dd>
+</dl>
+</div>
+
+<div class="section">
+<h2>{% trans "Setup" %}</h2>
+
+<table>
+<thead>
+<tr>
+<th>{% trans "Coat of arms" %}</th>
+<th>{% trans "Country" %}</th>
+<th>{% trans "Home provinces" %}</th>
+<th>{% trans "Initial setup" %}</th>
+<th>{% trans "Initial ducats" %}</th>
+<th>{% trans "Double income" %}</th>
+</tr>
+</thead>
+{% for c, v in scenario.setup_dict.items %}
+<tr>
+<td class="data_c">
+<img src="{{ STATIC_URL }}machiavelli/img/banner-{{ c }}.png" alt="{{ v.name }}"/>
+</td>
+<td>{{ v.name }}</td>
+<td>{{ v.homes|join:", " }}</td>
+<td>{{ v.setups|join:", " }}</td>
+<td class="data_c">{{ v.ducats }}</td>
+<td class="data_c">{{ v.double|yesno }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<table>
+<thead>
+<tr>
+<th>{% trans "Autonomous garrisons" %}</th>
+</tr>
+</thead>
+<tr>
+<td>{{ scenario.autonomous|join:", " }}</td>
+</tr>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>{% trans "Cities that give additional income" %}</th>
+</tr>
+</thead>
+<tr>
+<td>{{ scenario.major_cities|join:", " }}</td>
+</tr>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>{% trans "Disabled areas" %}</th>
+</tr>
+</thead>
+<tr>
+<td>{{ disabled_list|join:", " }}</td>
+</tr>
+</table>
+
+</div>
+
+<div class="section">
+<h2>{% trans "Initial map" %}</h2>
+<div id="scenario_map">
+<img src="{{ MEDIA_URL }}scenarios/625x890/scenario-{{ scenario.pk }}.jpg" />
+</div>
+</div>
+
+{# endcache #}
+{% endblock %}
