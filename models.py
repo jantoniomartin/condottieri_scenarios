@@ -18,6 +18,7 @@
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import User
 
 from transmeta import TransMeta
 
@@ -34,6 +35,7 @@ class Scenario(models.Model):
 	designer = models.CharField(_("designer"), max_length=30)
 	start_year = models.PositiveIntegerField(_("start year"))
 	number_of_players = models.PositiveIntegerField(_("number of players"), default=0)
+	editor = models.ForeignKey(User, verbose_name=_("editor"))
 	enabled = models.BooleanField(_("enabled"), default=False)
 
 	class Meta:
