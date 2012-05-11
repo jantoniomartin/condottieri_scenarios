@@ -26,7 +26,7 @@ import condottieri_scenarios.managers as managers
 
 class Scenario(models.Model):
 	""" This class defines a Condottieri scenario. """
-
+	
 	__metaclass__ = TransMeta
 	
 	name = models.SlugField(_("slug"), max_length=20, unique=True)
@@ -95,6 +95,15 @@ class Scenario(models.Model):
 
 	disabled_list = property(_get_disabled_list)
 
+	def _get_times_played(self):
+		return self.game_set.filter(finished__isnull=False).count()
+
+	times_played = property(_get_times_played)
+
+	def _get_country_stats(self):
+		return Country.objects.scenario_stats(self)
+	
+	country_stats = property(_get_country_stats)
 
 class SpecialUnit(models.Model):
 	""" A SpecialUnit describes the attributes of a unit that costs more ducats
