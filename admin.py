@@ -1,34 +1,34 @@
 from django.contrib import admin
 
-from condottieri_scenarios.models import *
+import condottieri_scenarios.models as scenarios
 
 class SetupInline(admin.TabularInline):
-	model = Setup
+	model = scenarios.Setup
 	extra = 5
 	ordering = ['country']
 
 class HomeInline(admin.TabularInline):
-	model = Home
+	model = scenarios.Home
 	extra = 5
 	ordering = ['country']
 
 class TreasuryInline(admin.TabularInline):
-	model = Treasury
+	model = scenarios.Treasury
 	extra = 1
 	ordering = ['country']
 
 class CityIncomeInline(admin.TabularInline):
-	model = CityIncome
+	model = scenarios.CityIncome
 	extra = 1
 	ordering = ['city']
 
 class DisabledAreaInline(admin.TabularInline):
-	model = DisabledArea
+	model = scenarios.DisabledArea
 	extra = 1
 	ordering = ['area', ]
 
 class NeutralInline(admin.TabularInline):
-	model = Neutral
+	model = scenarios.Neutral
 	extra = 1
 
 class ScenarioAdmin(admin.ModelAdmin):
@@ -46,15 +46,15 @@ class CountryAdmin(admin.ModelAdmin):
 	list_display = ('name', 'static_name')
 
 class ControlTokenInline(admin.TabularInline):
-	model = ControlToken
+	model = scenarios.ControlToken
 	extra = 1
 
 class GTokenInline(admin.TabularInline):
-	model = GToken
+	model = scenarios.GToken
 	extra = 1
 
 class AFTokenInline(admin.TabularInline):
-	model = AFToken
+	model = scenarios.AFToken
 	extra = 1
 
 class AreaAdmin(admin.ModelAdmin):
@@ -63,6 +63,6 @@ class AreaAdmin(admin.ModelAdmin):
 		GTokenInline,
 		AFTokenInline ]
 
-admin.site.register(Scenario, ScenarioAdmin) 
-admin.site.register(Country, CountryAdmin)
-admin.site.register(Area, AreaAdmin)
+admin.site.register(scenarios.Scenario, ScenarioAdmin) 
+admin.site.register(scenarios.Country, CountryAdmin)
+admin.site.register(scenarios.Area, AreaAdmin)

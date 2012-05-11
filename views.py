@@ -19,7 +19,7 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
-from condottieri_scenarios.models import *
+from condottieri_scenarios.models import Scenario
 
 class ScenarioListView(ListView):
 	model = Scenario
