@@ -15,6 +15,11 @@
 <dt>{% trans "Designer" %}</dt><dd>{{ scenario.designer }}</dd>
 <dt>{% trans "Start year" %}</dt><dd>{{ scenario.start_year }}</dd>
 </dl>
+
+{% if user_can_edit %}
+<p><a href="{% url scenario_descriptions_edit scenario.name %}">{% trans "Edit or translate descriptions" %}</a></p>
+{% endif %}
+
 </div>
 
 <div class="section">

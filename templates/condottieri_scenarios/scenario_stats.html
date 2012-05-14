@@ -1,0 +1,31 @@
+{% extends "condottieri_scenarios/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Stats for " %}{{ scenario.title }}{% endblock %}
+
+{% block body %}
+
+<h1>{% blocktrans with scenario.title as title %}Stats by country in "{{ title }}"{% endblocktrans %}</h1>
+
+<p>{% blocktrans with scenario.times_played as t %}This scenario has been played a total of {{ t }} times.{% endblocktrans %}</p>
+
+<table>
+<thead><tr>
+	<th>{% trans "Country" %}</th>
+	<th>{% trans "Average score" %}</th>
+	<th>{% trans "Average position" %}</th>
+</tr></thead>
+
+{% for c in scenario.country_stats %}
+	<tr>
+	<td class="data_c">{{ c.name }}</td>
+	<td class="data_c">{{ c.avg_points }}</td>
+	<td class="data_c">{{ c.avg_position }}</td>
+	</tr>
+{% endfor %}
+</table>
+
+<p><a href="{% url scenario_detail scenario.name %}">{% trans "Return to scenario details." %}</a></p>
+
+{% endblock %}

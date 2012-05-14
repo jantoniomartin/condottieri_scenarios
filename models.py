@@ -19,6 +19,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 from transmeta import TransMeta
 
@@ -30,9 +31,9 @@ class Scenario(models.Model):
 	__metaclass__ = TransMeta
 	
 	name = models.SlugField(_("slug"), max_length=20, unique=True)
-	title = models.CharField(max_length=128, verbose_name=_("title"))
+	title = models.CharField(max_length=128, verbose_name=_("title"), help_text=_("max. 128 characters"))
 	description = models.TextField(verbose_name=_("description"))
-	designer = models.CharField(_("designer"), max_length=30)
+	designer = models.CharField(_("designer"), max_length=30, help_text=_("leave it blank if you are the designer"))
 	start_year = models.PositiveIntegerField(_("start year"))
 	number_of_players = models.PositiveIntegerField(_("number of players"), default=0)
 	editor = models.ForeignKey(User, verbose_name=_("editor"))
@@ -43,6 +44,11 @@ class Scenario(models.Model):
 		verbose_name_plural = _("scenarios")
 		ordering = ["name",]
 		translate = ('title', 'description',)
+
+	def save(self, *args, **kwargs):
+		if not self.name:
+			self.name = slugify(self.title_en)
+		super(Scenario, self).save(*args, **kwargs)
 
 	def get_max_players(self):
 		return self.number_of_players
@@ -57,7 +63,12 @@ class Scenario(models.Model):
 	
 	@models.permalink
 	def get_absolute_url(self):
-		return ('scenario_detail', [self.slug,])
+		return ('scenario_detail', [self.name,])
+
+	def _get_in_use(self):
+		return self.game_set.count() > 0
+
+	in_use = property(_get_in_use)
 
 	def _get_countries(self):
 		return Country.objects.filter(home__scenario=self).distinct()
