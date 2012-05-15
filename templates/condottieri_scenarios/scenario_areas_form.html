@@ -1,0 +1,40 @@
+{% extends 'condottieri_scenarios/base.html' %}
+
+{% load i18n %}
+{% load uni_form_tags %}
+
+{% block head_title %}{% blocktrans %}Edit scenario{% endblocktrans %}{% endblock %}
+
+{% block body %}
+<div class="section">
+<h2>{% trans "Edit scenario" %}</h2>
+
+{% if user_can_edit %}
+
+<form action="." method="post" accept-charset="utf-8" class="uniForm">
+{% csrf_token %}
+
+<fieldset class="formset">
+<legend>{% trans "Disabled area" %}</legend>
+	{{ disabledarea_formset.management_form }}
+	{% for form in disabledarea_formset %}
+	{{ form.id }}
+	<div class="form-row inline {{ disabledarea_formset.prefix }}">
+		{{ form.area.label_tag }}
+		{{ form.area }}
+		{{ form.area.errors }}
+	</div>
+	{% endfor %}
+</fieldset>
+
+<p><input type="submit" value="{% trans "Save" %}" /></p>
+</form>
+
+{% else %}
+
+<p>{% blocktrans %}You don't have permission to edit this scenario. {% endblocktrans %}</p>
+
+{% endif %}
+
+</div>
+{% endblock %}
