@@ -17,10 +17,11 @@
 ## AUTHOR: Jose Antonio Martin <jantonio.martin AT gmail DOT com>
 
 import django.forms as forms
+from django.forms.models import inlineformset_factory
 
 import condottieri_scenarios.models as scenarios
 
-class ScenarioForm(forms.ModelForm):
+class CreateScenarioForm(forms.ModelForm):
 	designer = forms.CharField(max_length=30, required=False)
 
 	class Meta:
@@ -38,3 +39,10 @@ class ScenarioDescriptionsForm(forms.ModelForm):
 		model = scenarios.Scenario
 		exclude = ('name', 'designer', 'start_year', 'number_of_players',
 			'editor', 'enabled')
+
+class ScenarioForm(forms.ModelForm):
+	class Meta:
+		model = scenarios.Scenario
+		fields = ( )
+
+DisabledAreaFormSet = inlineformset_factory(scenarios.Scenario, scenarios.DisabledArea, extra=5)

@@ -9,6 +9,7 @@ urlpatterns = patterns('condottieri_scenarios.views',
 		views.ScenarioView.as_view(template_name='condottieri_scenarios/scenario_stats.html'),
 		name='scenario_stats'),
 	url(r'^(?P<slug>[-\w]+)/description/$', views.ScenarioDescriptionsEditView.as_view(), name='scenario_descriptions_edit'),
+	url(r'^(?P<slug>[-\w]+)/edit/$', views.ScenarioDisabledEditView.as_view(), name='scenario_edit'),
 	url(r'^create/$', views.ScenarioCreateView.as_view(), name='scenario_create'),
 )
 

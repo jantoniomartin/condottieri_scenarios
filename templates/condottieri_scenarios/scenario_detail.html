@@ -78,9 +78,9 @@
 <th>{% trans "Disabled areas" %}</th>
 </tr>
 </thead>
-<tr>
-<td>{{ disabled_list|join:", " }}</td>
-</tr>
+{% for area in scenario.disabledarea_set.all %}
+<tr><td>{{ area.pretty_name }}</td></tr>
+{% endfor %}
 </table>
 
 </div>

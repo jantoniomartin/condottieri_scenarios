@@ -274,6 +274,11 @@ class DisabledArea(models.Model):
 		return "%(area)s disabled in %(scenario)s" % {'area': self.area,
 													'scenario': self.scenario}
 	
+	def _get_pretty_name(self):
+		return "%(area)s" % {'area': self.area.name}
+
+	pretty_name = property(_get_pretty_name)
+	
 	class Meta:
 		verbose_name = _("disabled area")
 		verbose_name_plural = _("disabled areas")

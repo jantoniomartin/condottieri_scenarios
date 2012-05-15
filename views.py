@@ -19,6 +19,7 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
+from django.shortcuts import redirect
 
 from condottieri_scenarios.models import Scenario
 import condottieri_scenarios.forms as forms
@@ -42,7 +43,7 @@ class ScenarioView(DetailView):
 
 class ScenarioCreateView(CreateView):
 	model = Scenario
-	form_class = forms.ScenarioForm
+	form_class = forms.CreateScenarioForm
 	
 	def get_context_data(self, **kwargs):
 		context = super(ScenarioCreateView, self).get_context_data(**kwargs)
@@ -69,3 +70,24 @@ class ScenarioUpdateView(UpdateView):
 
 class ScenarioDescriptionsEditView(ScenarioUpdateView):
 	form_class = forms.ScenarioDescriptionsForm
+
+class ScenarioDisabledEditView(ScenarioUpdateView):
+	form_class = forms.ScenarioForm
+	template_name = 'condottieri_scenarios/scenario_areas_form.html'
+
+	def form_valid(self, form):
+		context = self.get_context_data()
+		disabledarea_formset = context['disabledarea_formset']
+		if disabledarea_formset.is_valid():
+			self.object = form.save()
+			disabledarea_formset.instance = self.object
+			disabledarea_formset.save()
+			return redirect(self.object)
+
+	def get_context_data(self, **kwargs):
+		context = super(ScenarioDisabledEditView, self).get_context_data(**kwargs)
+		if self.request.POST:
+			context['disabledarea_formset'] = forms.DisabledAreaFormSet(self.request.POST)
+		else:
+			context['disabledarea_formset'] = forms.DisabledAreaFormSet()
+		return context
