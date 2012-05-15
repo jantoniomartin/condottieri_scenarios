@@ -36,29 +36,30 @@
 <th>{% trans "Double income" %}</th>
 </tr>
 </thead>
-{% for c, v in scenario.setup_dict.items %}
+{% for c in scenario.contender_set.all %}
 <tr>
 <td class="data_c">
-<img src="{{ STATIC_URL }}machiavelli/img/banner-{{ c }}.png" alt="{{ v.name }}"/>
+{% if c.country %}
+<img src="{{ STATIC_URL }}machiavelli/img/banner-{{ c.country.static_name }}.png" alt="{{ c.country.name }}"/>
+{% endif %}
 </td>
-<td>{{ v.name }}</td>
-<td>{{ v.homes|join:", " }}</td>
-<td>{{ v.setups|join:", " }}</td>
-<td class="data_c">{{ v.ducats }}</td>
-<td class="data_c">{{ v.double|yesno }}</td>
+<td>
+{% if c.country %}
+	{{ v.name }}
+{% else %}
+	{% trans "Autonomous" %}
+{% endif %}
+</td>
+<td>
+{% if c.country %}
+	{{ c.home_set.all|join:", " }}
+{% endif %}
+</td>
+<td>{{ c.setup_set.all|join:", " }}</td>
+<td class="data_c">{% if c.country %}{{ c.treasury.ducats }}{% endif %}</td>
+<td class="data_c">{% if c.country %}{{ c.treasury.double|yesno }}{% endif %}</td>
 </tr>
 {% endfor %}
-</table>
-
-<table>
-<thead>
-<tr>
-<th>{% trans "Autonomous garrisons" %}</th>
-</tr>
-</thead>
-<tr>
-<td>{{ scenario.autonomous|join:", " }}</td>
-</tr>
 </table>
 
 <table>
@@ -88,7 +89,7 @@
 <div class="section">
 <h2>{% trans "Initial map" %}</h2>
 <div id="scenario_map">
-<img src="{{ MEDIA_URL }}scenarios/625x890/scenario-{{ scenario.pk }}.jpg" />
+<img src="{{ MEDIA_URL }}scenarios/625x890/{{ scenario.map_name }}" />
 </div>
 </div>
 

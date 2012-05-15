@@ -25,6 +25,15 @@ from transmeta import TransMeta
 
 import condottieri_scenarios.managers as managers
 
+class Error(Exception):
+	pass
+
+class HomeIsAutonomous(Error):
+	pass
+
+class AreaIsOccupied(Error):
+	pass
+
 class Scenario(models.Model):
 	""" This class defines a Condottieri scenario. """
 	
@@ -38,6 +47,7 @@ class Scenario(models.Model):
 	number_of_players = models.PositiveIntegerField(_("number of players"), default=0)
 	editor = models.ForeignKey(User, verbose_name=_("editor"))
 	enabled = models.BooleanField(_("enabled"), default=False)
+	countries = models.ManyToManyField('Country', through='Contender')
 
 	class Meta:
 		verbose_name = _("scenario")
@@ -65,15 +75,20 @@ class Scenario(models.Model):
 	def get_absolute_url(self):
 		return ('scenario_detail', [self.name,])
 
+	def _get_map_name(self):
+		return "scenario-%s.jpg" % self.name
+
+	map_name = property(_get_map_name)
+	
 	def _get_in_use(self):
 		return self.game_set.count() > 0
 
 	in_use = property(_get_in_use)
 
-	def _get_countries(self):
-		return Country.objects.filter(home__scenario=self).distinct()
-
-	countries = property(_get_countries)
+	#def _get_countries(self):
+	#	return Country.objects.filter(home__scenario=self).distinct()
+	#
+	#countries = property(_get_countries)
 
 	def _get_setup_dict(self):
 		""" Returns a dictionary with all the setup data for the scenario."""
@@ -159,6 +174,26 @@ class Country(models.Model):
 	def __unicode__(self):
 		return self.name
 
+class Contender(models.Model):
+	""" A Contender object defines a relationship between an Scenario and a
+	Country. """
+
+	country = models.ForeignKey(Country, blank=True, null=True, verbose_name=_("country"))
+	scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
+	priority = models.PositiveIntegerField(_("priority"), default=0)
+
+	class Meta:
+		verbose_name = _("contender")
+		verbose_name_plural = _("contenders")
+		unique_together = (("country", "scenario"),)
+		ordering = ["scenario", "country"]
+
+	def __unicode__(self):
+		if self.country:
+			return self.country.name
+		else:
+			return unicode(_("Autonomous"))
+
 class Neutral(models.Model):
 	""" Defines a country that will not be used when a game has less players
 	than the default. """
@@ -180,19 +215,19 @@ class Treasury(models.Model):
 	This class represents the initial amount of ducats that a Country starts
 	each Scenario with
 	"""
-	scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
-	country = models.ForeignKey(Country, verbose_name=_("country"))
+	#scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
+	#country = models.ForeignKey(Country, verbose_name=_("country"))
+	contender = models.OneToOneField(Contender, verbose_name=_("contender"))
 	ducats = models.PositiveIntegerField(_("ducats"), default=0)
 	double = models.BooleanField(_("double income"), default=False)
 
 	def __unicode__(self):
-		return "%s starts %s with %s ducats" % (self.country, self.scenario,
-			self.ducats)
+		return "%s starts with %s ducats" % (self.contender, self.ducats)
 
 	class Meta:
 		verbose_name = _("treasury")
 		verbose_name_plural = _("treasuries")
-		unique_together = (("scenario", "country"),)
+		#unique_together = (("scenario", "country"),)
 
 class Area(models.Model):
 	""" This class describes **only** the area features in the board. The game is
@@ -308,8 +343,9 @@ class Home(models.Model):
 	attribute controls that.
 	"""
 
-	scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
-	country = models.ForeignKey(Country, verbose_name=_("country"))
+	#scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
+	#country = models.ForeignKey(Country, verbose_name=_("country"))
+	contender = models.ForeignKey(Contender, verbose_name=_("contender"))
 	area = models.ForeignKey(Area, verbose_name=_("area"))
 	is_home = models.BooleanField(_("is home"), default=True)
 
@@ -319,7 +355,13 @@ class Home(models.Model):
 	class Meta:
 		verbose_name = _("home area")
 		verbose_name_plural = _("home areas")
-		unique_together = (("scenario", "country", "area"),)
+		#unique_together = (("scenario", "country", "area"),)
+		unique_together = (("contender", "area"),)
+
+	def save(self, *args, **kwargs):
+		if not self.id and not self.contender.country:
+			raise HomeIsAutonomous(_("You cannot define an autonomous home"))
+		super(Home, self).save(*args, **kwargs)
 
 UNIT_TYPES = (('A', _('Army')),
               ('F', _('Fleet')),
@@ -331,9 +373,10 @@ class Setup(models.Model):
 	This class defines the initial setup of a unit in a given Scenario.
 	"""
 
-	scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
-	country = models.ForeignKey(Country, blank=True, null=True,
-		verbose_name=_("country"))
+	#scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
+	#country = models.ForeignKey(Country, blank=True, null=True,
+	#	verbose_name=_("country"))
+	contender = models.ForeignKey(Contender, verbose_name=_("contender"))
 	area = models.ForeignKey(Area, verbose_name=_("area"))
 	unit_type = models.CharField(_("unit type"), max_length=1,
 		choices=UNIT_TYPES)
@@ -346,7 +389,17 @@ class Setup(models.Model):
 	class Meta:
 		verbose_name = _("initial setup")
 		verbose_name_plural = _("initial setups")
-		unique_together = (("scenario", "area", "unit_type"),)
+		#unique_together = (("scenario", "area", "unit_type"),)
+		unique_together = (("contender", "area", "unit_type"))
+
+	def save(self, *args, **kwargs):
+		if not self.id:
+			try:
+				Setup.objects.get(contender__scenario=self.contender.scenario, unit_type=self.unit_type)
+			except ObjectDoesNotExist:
+				super(Setup, self).save(*args, **kwargs)
+			else:
+				raise AreaIsOccupied(_("You cannot place two units of the same type on the same area")) 
 
 class ControlToken(models.Model):
 	""" Defines the coordinates of the control token for a board area. """

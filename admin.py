@@ -1,21 +1,27 @@
 from django.contrib import admin
 
 import condottieri_scenarios.models as scenarios
+from condottieri_scenarios.graphics import make_scenario_map
+
+class ContenderInline(admin.TabularInline):
+	model = scenarios.Contender
+	extra = 1
+	ordering = ['country']
 
 class SetupInline(admin.TabularInline):
 	model = scenarios.Setup
 	extra = 5
-	ordering = ['country']
+	ordering = ['contender']
 
 class HomeInline(admin.TabularInline):
 	model = scenarios.Home
 	extra = 5
-	ordering = ['country']
+	ordering = ['contender']
 
 class TreasuryInline(admin.TabularInline):
 	model = scenarios.Treasury
 	extra = 1
-	ordering = ['country']
+	ordering = ['contender']
 
 class CityIncomeInline(admin.TabularInline):
 	model = scenarios.CityIncome
@@ -33,8 +39,7 @@ class NeutralInline(admin.TabularInline):
 
 class ScenarioAdmin(admin.ModelAdmin):
 	list_display = ('name', 'start_year')
-	inlines = [HomeInline, SetupInline, TreasuryInline, CityIncomeInline,
-				DisabledAreaInline, NeutralInline, ]
+	inlines = [ContenderInline, CityIncomeInline, DisabledAreaInline, NeutralInline, ]
 	actions = ['make_map',]
 	
 	def make_map(self, request, queryset):
@@ -42,6 +47,9 @@ class ScenarioAdmin(admin.ModelAdmin):
 			make_scenario_map(obj)
 	make_map.short_description = "Make initial map"
 
+class ContenderAdmin(admin.ModelAdmin):
+	inlines = [HomeInline, SetupInline, TreasuryInline,]
+	
 class CountryAdmin(admin.ModelAdmin):
 	list_display = ('name', 'static_name')
 
@@ -64,5 +72,6 @@ class AreaAdmin(admin.ModelAdmin):
 		AFTokenInline ]
 
 admin.site.register(scenarios.Scenario, ScenarioAdmin) 
+admin.site.register(scenarios.Contender, ContenderAdmin) 
 admin.site.register(scenarios.Country, CountryAdmin)
 admin.site.register(scenarios.Area, AreaAdmin)
