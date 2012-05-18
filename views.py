@@ -21,6 +21,7 @@ from datetime import datetime
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.db.models import Q
 from django.shortcuts import redirect
 from django import http
 from django.utils.functional import lazy
@@ -63,6 +64,9 @@ class EditionAllowedMixin(CreationAllowedMixin):
 
 class ScenarioListView(ListView):
 	model = models.Scenario
+	
+	def get_queryset(self):
+		return models.Scenario.objects.filter(Q(enabled=True)|Q(editor=self.request.user))
 	
 class ScenarioView(DetailView):
 	model = models.Scenario
@@ -285,7 +289,12 @@ class ContenderTreasuryView(ContenderUpdateView):
 		return reverse_lazy('scenario_detail', self.object.scenario.name)
 	
 	def get_context_data(self, **kwargs):
-		return super(ContenderTreasuryView, self).get_context_data(formset=forms.TreasuryFormSet, **kwargs)
+		context = super(ContenderUpdateView, self).get_context_data(**kwargs)
+		if self.request.POST:
+			context['formset'] = forms.TreasuryFormSet(instance=self.object, data=self.request.POST)
+		else:
+			context['formset'] = forms.TreasuryFormSet(instance=self.object)
+		return context
 
 class ContenderItemDeleteView(EditionAllowedMixin, DeleteView):
 	def delete(self, request, *args, **kwargs):
