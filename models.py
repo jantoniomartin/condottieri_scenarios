@@ -29,6 +29,9 @@ import condottieri_scenarios.managers as managers
 class Error(Exception):
 	pass
 
+class AreaNotAllowed(Error):
+	pass
+
 class HomeIsAutonomous(Error):
 	pass
 
@@ -400,6 +403,8 @@ class Home(models.Model):
 	def save(self, *args, **kwargs):
 		if self.contender.country is None:
 			raise HomeIsAutonomous(_("You cannot define an autonomous home"))
+		if self.area.is_sea:
+			raise AreaNotAllowed(_("A sea area cannot be controlled"))
 		try:
 			Home.objects.get(contender__scenario=self.contender.scenario, area=self.area)
 		except ObjectDoesNotExist:
