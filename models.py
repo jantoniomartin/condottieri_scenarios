@@ -20,7 +20,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
 from transmeta import TransMeta
 
@@ -366,6 +366,27 @@ class DisabledArea(models.Model):
 		verbose_name_plural = _("disabled areas")
 		unique_together = (('scenario', 'area'),) 
 
+	def save(self, *args, **kwargs):
+		try:
+			Home.objects.get(contender__scenario=self.scenario, area=self.area)
+		except ObjectDoesNotExist:
+			pass
+		else:
+			raise AreaNotAllowed(_("Selected area is controlled by a country"))
+		try:
+			Setup.objects.get(contender__scenario=self.scenario, area=self.area)
+		except ObjectDoesNotExist, MultipleObjectsReturned:
+			pass
+		else:
+			raise AreaNotAllowed(_("Selected area is occupied by one or more units"))
+		try:
+			CityIncome.objects.get(scenario=self.scenario, city=self.area)
+		except ObjectDoesNotExist:
+			pass
+		else:
+			raise AreaNotAllowed(_("Selected area has special income"))
+		return super(DisabledArea, self).save(*args, **kwargs)
+			
 	def _get_editor(self):
 		return self.scenario.editor
 
@@ -385,6 +406,15 @@ class CityIncome(models.Model):
 		verbose_name = _("city income")
 		verbose_name_plural = _("city incomes")
 		unique_together = (("city", "scenario"),)
+
+	def save(self, *args, **kwargs):
+		try:
+			DisabledArea.objects.get(scenario=self.scenario, area=self.city)
+		except ObjectDoesNotExist:
+			pass
+		else:
+			raise AreaNotAllowed(_("This area is disabled"))
+		super(CityIncome, self).save(*args, **kwargs)
 
 	def _get_editor(self):
 		return self.scenario.editor
@@ -421,11 +451,16 @@ class Home(models.Model):
 		if self.area.is_sea:
 			raise AreaNotAllowed(_("A sea area cannot be controlled"))
 		try:
-			Home.objects.get(contender__scenario=self.contender.scenario, area=self.area)
+			DisabledArea.objects.get(scenario=self.contender.scenario, area=self.area)
 		except ObjectDoesNotExist:
-			super(Home, self).save(*args, **kwargs)
+			try:
+				Home.objects.get(contender__scenario=self.contender.scenario, area=self.area)
+			except ObjectDoesNotExist:
+				super(Home, self).save(*args, **kwargs)
+			else:
+				raise HomeIsTaken(_("This area is already controlled by another country"))
 		else:
-			raise HomeIsTaken(_("This area is already controlled by another country"))
+			raise AreaNotAllowed(_("This area is disabled"))
 
 	def unique_error_message(self, model_class, unique_check):
 		if model_class == type(self) and unique_check == ('contender', 'area'):
@@ -472,11 +507,16 @@ class Setup(models.Model):
 			if not self.area.accepts_type(self.unit_type):
 				raise WrongUnitType(_("This unit type is not allowed in this area"))
 			try:
-				Setup.objects.get(contender__scenario=self.contender.scenario, area=self.area, unit_type=self.unit_type)
+				DisabledArea.objects.get(scenario=self.contender.scenario, area=self.area)
 			except ObjectDoesNotExist:
-				super(Setup, self).save(*args, **kwargs)
+				try:
+					Setup.objects.get(contender__scenario=self.contender.scenario, area=self.area, unit_type=self.unit_type)
+				except ObjectDoesNotExist:
+					super(Setup, self).save(*args, **kwargs)
+				else:
+					raise AreaIsOccupied(_("You cannot place two units of the same type on the same area"))
 			else:
-				raise AreaIsOccupied(_("You cannot place two units of the same type on the same area")) 
+				raise AreaNotAllowed(_("This area is disabled"))
 
 	def _get_editor(self):
 		return self.contender.scenario.editor
