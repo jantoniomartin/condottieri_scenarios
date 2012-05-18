@@ -227,22 +227,6 @@ class Contender(models.Model):
 
 	editor = property(_get_editor)
 
-class Neutral(models.Model):
-	""" Defines a country that will not be used when a game has less players
-	than the default. """
-	scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
-	country = models.ForeignKey(Country, verbose_name=_("country"))
-	priority = models.PositiveIntegerField(_("priority"), default=0)
-
-	class Meta:
-		verbose_name = _("neutral country")
-		verbose_name_plural = _("neutral countries")
-		ordering = ['scenario', 'priority',]
-		unique_together = (('scenario', 'country'), ('scenario', 'priority'),)
-
-	def __unicode__(self):
-		return "(%s) %s" % (self.priority, self.country)
-
 class Treasury(models.Model):
 	"""
 	This class represents the initial amount of ducats that a Country starts
