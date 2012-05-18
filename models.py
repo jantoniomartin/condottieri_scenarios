@@ -128,7 +128,7 @@ class Scenario(models.Model):
 	setup_dict = property(_get_setup_dict)
 
 	def _get_autonomous(self):
-		return self.setup_set.filter(country__isnull=True)
+		return Setup.objects.filter(contender__scenario=self, contender__country__isnull=True)
 
 	autonomous = property(_get_autonomous)
 
@@ -151,6 +151,13 @@ class Scenario(models.Model):
 		return Country.objects.scenario_stats(self)
 	
 	country_stats = property(_get_country_stats)
+
+def create_autonomous(sender, instance, created, **kwargs):
+    if isinstance(instance, Scenario) and created:
+		autonomous = Contender(scenario=instance)
+		autonomous.save()
+
+models.signals.post_save.connect(create_autonomous, sender=Scenario)
 
 class SpecialUnit(models.Model):
 	""" A SpecialUnit describes the attributes of a unit that costs more ducats
