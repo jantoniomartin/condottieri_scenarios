@@ -1,4 +1,6 @@
 table {margin: 1em 1em auto;}
 
+.disabled td { font-style: italic; }
+
 .uniForm fieldset {margin-left: 1em;}
 
