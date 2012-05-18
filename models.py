@@ -58,6 +58,7 @@ class Scenario(models.Model):
 	editor = models.ForeignKey(User, verbose_name=_("editor"))
 	enabled = models.BooleanField(_("enabled"), default=False)
 	countries = models.ManyToManyField('Country', through='Contender')
+	published = models.DateField("publication date", null=True, blank=True)
 
 	class Meta:
 		verbose_name = _("scenario")
@@ -308,8 +309,8 @@ class Area(models.Model):
 				return False
 		return area in self.borders.all()
 
-	def accepts_type(self, type):
-		""" Returns True if an given type of Unit can be in the Area. """
+	def build_possible(self, type):
+		""" Returns True if the given type of Unit can be built in the Area. """
 
 		assert type in ('A', 'F', 'G'), 'Wrong unit type'
 		if type=='A':
@@ -317,6 +318,20 @@ class Area(models.Model):
 				return False
 		elif type=='F':
 			if not self.has_port:
+				return False
+		else:
+			if not self.is_fortified:
+				return False
+		return True
+	
+	def accepts_type(self, type):
+		""" Returns True if the given type of unit can stay in the Area. """
+		assert type in ('A','F','G'), 'Wrong unit type'
+		if type=='A':
+			if self.is_sea or self.code=='VEN':
+				return False
+		elif type=='F':
+			if not self.is_sea and not self.is_coast:
 				return False
 		else:
 			if not self.is_fortified:

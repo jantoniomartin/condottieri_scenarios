@@ -123,6 +123,12 @@
 </div>
 {% if user_can_edit %}
 	<p><a href="{% url scenario_make_map scenario.name %}">{% trans "Redraw map" %}</a></p>
+	<p><a href="{% url scenario_toggle scenario.name %}">
+	{% if scenario.enabled %}
+		{% trans "Disable scenario" %}
+	{% else %}
+		{% trans "Enable scenario" %}
+	{% endif %}</a></p>
 {% endif %}
 </div>
 

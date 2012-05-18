@@ -16,6 +16,8 @@
 ##
 ## AUTHOR: Jose Antonio Martin <jantonio.martin AT gmail DOT com>
 
+from datetime import datetime
+
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -75,6 +77,47 @@ class ScenarioView(DetailView):
 			context.update({'user_can_edit': user_can_edit})
 		return context
 
+class ScenarioToggleView(EditionAllowedMixin, UpdateView):
+	model = models.Scenario
+	slug_field = 'name'
+	context_object_name = 'scenario'
+	form_class = forms.ScenarioForm	
+	template_name = 'condottieri_scenarios/scenario_toggle.html'
+
+	def post(self, request, *args, **kwargs):
+		obj = self.get_object()
+		if not obj.enabled:
+			## check that all scenario parts have been edited
+			if obj.contender_set.count() < 2:
+				messages.error(request, _("First you must define at least two countries"))
+				return redirect(obj)
+			for c in obj.contender_set.filter(country__isnull=False):
+				if c.home_set.count() < 1:
+					messages.error(request, _("At least one country doesn't have home areas"))
+					return redirect(obj)
+				if c.setup_set.count() < 1:
+					messages.error(request, _("At least one country doesn't have initial units"))
+					return redirect(obj)
+				try:
+					c.treasury
+				except:
+					messages.error(request, _("At least one country doesn't have an initial treasury"))
+					return redirect(obj)
+		return super(ScenarioToggleView, self).post(request, *args, **kwargs)
+	
+	def form_valid(self, form):
+		if form.is_valid():
+			scenario = form.save(commit=False)
+			scenario.enabled = not scenario.enabled
+			if scenario.enabled:
+				messages.success(self.request, _("The scenario has been enabled"))
+				if scenario.published is None:
+					scenario.published = datetime.now()
+			else:
+				messages.success(self.request, _("The scenario has been disabled"))
+			scenario.save()
+		return super(ScenarioToggleView, self).form_valid(form=form)
+
 class ScenarioRedrawMapView(EditionAllowedMixin, ScenarioView):
 	def get(self, request, **kwargs):
 		obj = self.get_object()
@@ -107,6 +150,7 @@ class ScenarioUpdateView(EditionAllowedMixin, UpdateView):
 	model = models.Scenario
 	slug_field = 'name'
 	context_object_name = 'scenario'
+	form_class = forms.ScenarioForm
 	
 	def form_valid(self, form):
 		context = self.get_context_data()
@@ -115,7 +159,6 @@ class ScenarioUpdateView(EditionAllowedMixin, UpdateView):
 			try:
 				formset.save()
 			except Exception, v:
-				print "Exception %s" % v
 				messages.error(self.request, v)
 			else:
 				return http.HttpResponseRedirect(self.get_success_url())
@@ -132,21 +175,18 @@ class ScenarioUpdateView(EditionAllowedMixin, UpdateView):
 		return context
 
 class ContenderEditView(ScenarioUpdateView):
-	form_class = forms.ScenarioForm
 	template_name = 'condottieri_scenarios/contender_form.html'
 
 	def get_context_data(self, **kwargs):
 		return super(ContenderEditView, self).get_context_data(formset=forms.ContenderFormSet, **kwargs)
 
 class DisabledAreasEditView(ScenarioUpdateView):
-	form_class = forms.ScenarioForm
 	template_name = 'condottieri_scenarios/disabled_form.html'
 
 	def get_context_data(self, **kwargs):
 		return super(DisabledAreasEditView, self).get_context_data(formset=forms.DisabledAreaFormSet, **kwargs)
 
 class CityIncomeEditView(ScenarioUpdateView):
-	form_class = forms.ScenarioForm
 	template_name = 'condottieri_scenarios/cityincome_form.html'
 
 	def get_context_data(self, formset=None, **kwargs):
@@ -177,13 +217,6 @@ class DisabledAreaDeleteView(ScenarioItemDeleteView):
 	model = models.DisabledArea
 	context_object_name = "disabledarea"
 	
-def get_scenario(slug):
-	try:
-		scenario = models.Scenario.objects.get(name=slug)
-	except:
-		return models.Scenario.objects.none()
-	return scenario
-
 class ContenderDeleteView(EditionAllowedMixin, DeleteView):
 	model = models.Contender
 	context_object_name = "contender"
@@ -201,7 +234,34 @@ class ContenderDeleteView(EditionAllowedMixin, DeleteView):
 			messages.success(request, _("The country has been deleted"))
 			return super(ContenderDeleteView, self).delete(request, *args, **kwargs)
 
-class ContenderHomeView(ContenderEditView):
+class ContenderUpdateView(EditionAllowedMixin, UpdateView):
+	model = models.Contender
+	context_object_name = 'contender'
+	form_class =forms.ContenderEditForm
+	
+	def form_valid(self, form):
+		context = self.get_context_data()
+		formset = context['formset']
+		if formset.is_valid():
+			try:
+				formset.save()
+			except Exception, v:
+				messages.error(self.request, v)
+			else:
+				return http.HttpResponseRedirect(self.get_success_url())
+		return self.render_to_response(self.get_context_data(form=form))
+
+	def get_context_data(self, formset=None, **kwargs):
+		context = super(ContenderUpdateView, self).get_context_data(**kwargs)
+		if formset is None:
+			return context
+		if self.request.POST:
+			context['formset'] = formset(instance=self.object, data=self.request.POST)
+		else:
+			context['formset'] = formset()
+		return context
+
+class ContenderHomeView(ContenderUpdateView):
 	template_name = 'condottieri_scenarios/homes_form.html'
 	
 	def get_success_url(self, **kwargs):
@@ -210,7 +270,7 @@ class ContenderHomeView(ContenderEditView):
 	def get_context_data(self, **kwargs):
 		return super(ContenderHomeView, self).get_context_data(formset=forms.HomeAreaFormSet, **kwargs)
 
-class ContenderSetupView(ContenderEditView):
+class ContenderSetupView(ContenderUpdateView):
 	template_name = 'condottieri_scenarios/setup_form.html'
 	
 	def get_success_url(self, **kwargs):
@@ -219,20 +279,14 @@ class ContenderSetupView(ContenderEditView):
 	def get_context_data(self, **kwargs):
 		return super(ContenderSetupView, self).get_context_data(formset=forms.SetupFormSet, **kwargs)
 
-class ContenderTreasuryView(ContenderEditView):
+class ContenderTreasuryView(ContenderUpdateView):
 	template_name = 'condottieri_scenarios/treasury_form.html'
 	
 	def get_success_url(self, **kwargs):
 		return reverse_lazy('scenario_detail', self.object.scenario.name)
 	
 	def get_context_data(self, **kwargs):
-		context = super(ContenderEditView, self).get_context_data(**kwargs)
-		self.object = self.get_object()
-		if self.request.POST:
-			context['formset'] = forms.TreasuryFormSet(instance=self.object, data=self.request.POST)
-		else:
-			context['formset'] = forms.TreasuryFormSet(instance=self.object)
-		return context
+		return super(ContenderTreasuryView, self).get_context_data(formset=forms.TreasuryFormSet, **kwargs)
 
 class ContenderItemDeleteView(EditionAllowedMixin, DeleteView):
 	def delete(self, request, *args, **kwargs):

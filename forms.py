@@ -31,14 +31,13 @@ class CreateScenarioForm(forms.ModelForm):
 			'description_en',
 			'designer',
 			'start_year',)
-		exclude = ('editor',)
+		exclude = ('editor', 'published')
 
 class ScenarioDescriptionsForm(forms.ModelForm):
 
 	class Meta:
 		model = scenarios.Scenario
-		exclude = ('name', 'designer', 'start_year', 'editor', 'enabled',
-			'countries')
+		exclude = ('name', 'editor', 'enabled', 'countries', 'published')
 
 class ScenarioForm(forms.ModelForm):
 	class Meta:

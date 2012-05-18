@@ -1,0 +1,31 @@
+{% extends 'condottieri_scenarios/base.html' %}
+
+{% load i18n %}
+{% load uni_form_tags %}
+
+{% block head_title %}
+{% if scenario.enabled %}
+	{% trans "Disable scenario" %}
+{% else %}
+	{% trans "Enable scenario" %}
+{% endif %}
+{% endblock %}
+
+{% block body %}
+<div class="section">
+{% if scenario.enabled %}
+<h2>{% trans "Disable scenario" %}</h2>
+<p>{% blocktrans with scenario.title as title %}By pressing the button, you will disable the scenario '{{ title }}'. It won't be available for new games until you enable it again.{% endblocktrans %}
+{% else %}
+<h2>{% trans "Enable scenario" %}</h2>
+<p>{% blocktrans with scenario.title as title %}By pressing the button, you will enable the scenario '{{ title }}'. While it is enabled, it will be available for new games.{% endblocktrans %}
+{% endif %}
+
+<form action="." method="post" accept-charset="utf-8" class="uniForm">
+{% csrf_token %}
+{{ form|as_uni_form }}
+<p><input type="submit" value="{% trans "Save" %}" /></p>
+</form>
+
+</div>
+{% endblock %}

@@ -11,8 +11,6 @@
 
 <p>{% blocktrans with contender.country.name as country %}Select the areas that {{ country }} will control at the start of the game. Mark which of these areas that you want to be part of its "home country".{% endblocktrans %}</p>
 
-
-
 <form action="." method="post" accept-charset="utf-8" class="uniForm">
 {% csrf_token %}
 {{ formset.management_form }}
