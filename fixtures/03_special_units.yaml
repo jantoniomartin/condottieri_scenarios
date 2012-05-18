@@ -1,0 +1,38 @@
+##
+## Special Units
+##
+
+-   fields:
+        cost: 6
+        loyalty: 2
+        power: 1
+        static_title: Citizen militia
+        title_en: Citizen militia
+        title_es: Milicia ciudadana
+        title_de: Bürgerliche Miliz
+        title_ca: Milícia ciutadana 
+    model: condottieri_scenarios.specialunit
+    pk: 1
+-   fields: 
+        cost: 6
+        loyalty: 1
+        power: 2
+        static_title: Elite mercenaries
+        title_en: Elite mercenaries
+        title_es: Mercenarios de élite
+        title_de: Elitesöldner
+        title_ca: Mercenaris d'elit
+    model: condottieri_scenarios.specialunit
+    pk: 2
+-   fields: 
+        cost: 9
+        loyalty: 2
+        power: 2
+        static_title: Elite professionals
+        title_en: Elite professionals
+        title_es: Profesionales de élite
+        title_de: Eliteberufssoldaten
+        title_ca: Professionals d'elit
+    model: condottieri_scenarios.specialunit
+    pk: 3
+

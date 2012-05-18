@@ -1,0 +1,1168 @@
+- fields:
+    borders: [59, 56, 72, 57]
+    code: ALB
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 2 
+    garrison_income: 0
+    name_en: Albania
+    name_es: Albania
+    name_de: Albanien
+    name_ca: Albània
+  model: condottieri_scenarios.area
+  pk: 58
+- fields:
+    borders: [50, 72, 45, 73, 40]
+    code: ANC
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Ancona
+    name_es: Ancona
+    name_de: Ancona
+    name_ca: Ancona
+  model: condottieri_scenarios.area
+  pk: 46
+- fields:
+    borders: [46, 52, 48, 72, 49, 51, 45]
+    code: AQU
+    has_city: false
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Aquila
+    name_es: Áquila
+    name_de: Aquila
+    name_ca: Aquil·la
+  model: condottieri_scenarios.area
+  pk: 50
+- fields:
+    borders: [38, 44, 42, 40]
+    code: ARE
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Arezzo
+    name_es: Arezzo
+    name_de: Arezzo
+    name_ca: Aresso
+  model: condottieri_scenarios.area
+  pk: 39
+- fields:
+    borders: [16, 5, 17, 3]
+    code: AUS
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Austria
+    name_es: Austria
+    name_de: Österreich
+    name_ca: Austria
+  model: condottieri_scenarios.area
+  pk: 4
+- fields:
+    borders: [65, 6, 7, 2, 10]
+    code: AVI
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Avignon
+    name_es: Aviñón
+    name_de: Avignon
+    name_ca: Avinyó
+  model: condottieri_scenarios.area
+  pk: 1
+- fields:
+    borders: [50, 72, 53, 51]
+    code: BARI
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Bari
+    name_es: Bari
+    name_de: Bari
+    name_ca: Bari
+  model: condottieri_scenarios.area
+  pk: 52
+- fields:
+    borders: [21, 25, 14, 15, 23]
+    code: BER
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Bergamo
+    name_es: Bérgamo
+    name_de: Bergamo
+    name_ca: Bèrgam
+  model: condottieri_scenarios.area
+  pk: 22
+- fields:
+    borders: [26, 38, 34, 25, 24, 37, 73, 40]
+    code: BOL
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Bologna
+    name_es: Boloña
+    name_de: Bologna
+    name_ca: Bolonya
+  model: condottieri_scenarios.area
+  pk: 35
+- fields:
+    borders: [33, 54, 56]
+    code: BOS
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Bosnia
+    name_es: Bosnia
+    name_de: Bosnien
+    name_ca: Bòsnia
+  model: condottieri_scenarios.area
+  pk: 55
+- fields:
+    borders: [50, 49, 47, 45, 68]
+    code: CAP
+    has_city: false
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Capua
+    name_es: Capua
+    name_de: Capua
+    name_ca: Càpua
+  model: condottieri_scenarios.area
+  pk: 48
+- fields:
+    borders: [16, 33, 29, 32, 17, 73]
+    code: CAR
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 2
+    garrison_income: 0
+    name_en: Carniola
+    name_es: Carniola
+    name_de: Krain
+    name_ca: Carniola
+  model: condottieri_scenarios.area
+  pk: 30
+- fields:
+    borders: [4, 30, 29, 14, 17, 15, 3, 23]
+    code: CARIN
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Carinthia
+    name_es: Carintia
+    name_de: Kärnten
+    name_ca: Caríntia
+  model: condottieri_scenarios.area
+  pk: 16
+- fields:
+    borders: [71, 62, 68, 64, 67]
+    code: CM
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: true
+    control_income: 0
+    garrison_income: 0
+    name_en: Central Mediterranean
+    name_es: Mediterráneo Central
+    name_de: Zentrales Mittelmeer
+    name_ca: Mediterrani Central
+  model: condottieri_scenarios.area
+  pk: 69
+- fields:
+    borders: [14, 13, 10, 3]
+    code: COMO
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Como
+    name_es: Como
+    name_de: Como
+    name_ca: Como
+  model: condottieri_scenarios.area
+  pk: 11
+- fields:
+    borders: [65, 66, 61, 68]
+    code: COR
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 2
+    garrison_income: 0
+    name_en: Corsica
+    name_es: Córcega
+    name_de: Korsika
+    name_ca: Còrsega
+  model: condottieri_scenarios.area
+  pk: 60
+- fields:
+    borders: [22, 25, 14, 20]
+    code: CRE
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Cremona
+    name_es: Crémona
+    name_de: Cremona
+    name_ca: Cremona
+  model: condottieri_scenarios.area
+  pk: 21
+- fields:
+    borders: [55, 30, 54, 32, 17, 73]
+    code: CRO
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 2
+    garrison_income: 0
+    name_en: Croatia
+    name_es: Croacia
+    name_de: Kroatien
+    name_ca: Croàcia
+  model: condottieri_scenarios.area
+  pk: 33
+- fields:
+    borders: [55, 33, 56, 72, 73]
+    code: DAL
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 2
+    garrison_income: 0
+    name_en: Dalmatia
+    name_es: Dalmacia
+    name_de: Dalmatien
+    name_ca: Dalmàcia
+  model: condottieri_scenarios.area
+  pk: 54
+- fields:
+    borders: [58, 71, 72]
+    code: DUR
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Durazzo
+    name_es: Durazzo
+    name_de: Durazzo
+    name_ca: Durazzo
+  model: condottieri_scenarios.area
+  pk: 59
+- fields:
+    borders: [35, 25, 27, 73, 23]
+    code: FER
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Ferrara
+    name_es: Ferrara
+    name_de: Ferrara
+    name_ca: Ferrara
+  model: condottieri_scenarios.area
+  pk: 26
+- fields:
+    borders: [39, 35, 37, 36, 42, 40]
+    code: FLO
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: true
+    is_sea: false
+    control_income: 4
+    garrison_income: 3
+    name_en: Florence
+    name_es: Florencia
+    name_de: Florenz
+    name_ca: Florència
+  model: condottieri_scenarios.area
+  pk: 38
+- fields:
+    borders: [18, 24, 12, 20, 13]
+    code: FOR
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Fornovo
+    name_es: Fornovo
+    name_de: Fornovo
+    name_ca: Fornovo
+  model: condottieri_scenarios.area
+  pk: 19
+- fields:
+    borders: [30, 16, 28, 73, 31, 23]
+    code: FRI
+    has_city: false
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Friuli
+    name_es: Friuli
+    name_de: Friaul
+    name_ca: Friuli
+  model: condottieri_scenarios.area
+  pk: 29
+- fields:
+    borders: [19, 66, 24, 12, 8]
+    code: GEN
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 4
+    garrison_income: 3
+    name_en: Genoa
+    name_es: Génova
+    name_de: Genua
+    name_ca: Gènova
+  model: condottieri_scenarios.area
+  pk: 18
+- fields:
+    borders: [1, 60, 66, 6, 7, 61, 68, 67]
+    code: GOL
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: true
+    control_income: 0
+    garrison_income: 0
+    name_en: Gulf of Lions
+    name_es: Golfo de Lion
+    name_de: Golf von Lion
+    name_ca: Golf de Lleó
+  model: condottieri_scenarios.area
+  pk: 65
+- fields:
+    borders: [71, 63, 49, 53, 62, 51, 68]
+    code: GON
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: true
+    control_income: 0
+    garrison_income: 0
+    name_en: Gulf of Naples
+    name_es: Golfo de Nápoles
+    name_de: Golf von Neapel
+    name_ca: Golf de Nàpols
+  model: condottieri_scenarios.area
+  pk: 70
+- fields:
+    borders: [58, 55, 54, 72, 57]
+    code: HER
+    has_city: false
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Herzegovina
+    name_es: Herzegovina
+    name_de: Herzegowina
+    name_ca: Hercegovina
+  model: condottieri_scenarios.area
+  pk: 56
+- fields:
+    borders: [4, 17]
+    code: HUN
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: false
+    control_income: 2
+    garrison_income: 0
+    name_en: Hungary
+    name_es: Hungría
+    name_de: Ungarn
+    name_ca: Hongria
+  model: condottieri_scenarios.area
+  pk: 5
+- fields:
+    borders: [69, 59, 70, 72, 63, 53, 62]
+    code: IS
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: true
+    control_income: 0
+    garrison_income: 0
+    name_en: Ionian Sea
+    name_es: Mar Jónico
+    name_de: Ionisches Meer
+    name_ca: Mar Jònic
+  model: condottieri_scenarios.area
+  pk: 71
+- fields:
+    borders: [30, 33, 73]
+    code: IST
+    has_city: false
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Istria
+    name_es: Istria
+    name_de: Istrien
+    name_ca: Ístria
+  model: condottieri_scenarios.area
+  pk: 32
+- fields:
+    borders: [58, 46, 50, 52, 54, 59, 56, 71, 53, 57]
+    code: LA
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: true
+    control_income: 0
+    garrison_income: 0
+    name_en: Lower Adriatic
+    name_es: Adriático Inferior
+    name_de: Südliches Adriatisch
+    name_ca: Adriàtic Inferior
+  model: condottieri_scenarios.area
+  pk: 72
+- fields:
+    borders: [60, 18, 65, 34, 24, 41, 36, 7, 8, 68]
+    code: LS
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: true
+    control_income: 0
+    garrison_income: 0
+    name_en: Ligurian Sea
+    name_es: Mar de Liguria
+    name_de: Ligurisches Meer
+    name_ca: Mar de Ligúria
+  model: condottieri_scenarios.area
+  pk: 66
+- fields:
+    borders: [35, 66, 24, 37, 36]
+    code: LUC
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Lucca
+    name_es: Lucca
+    name_de: Lucca
+    name_ca: Lucca
+  model: condottieri_scenarios.area
+  pk: 34
+- fields:
+    borders: [22, 35, 21, 26, 24, 20, 23]
+    code: MAN
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Mantua
+    name_es: Mantua
+    name_de: Mantua
+    name_ca: Màntua
+  model: condottieri_scenarios.area
+  pk: 25
+- fields:
+    borders: [1, 65, 7]
+    code: MAR
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Marseille
+    name_es: Marsella
+    name_de: Marseille
+    name_ca: Marsella
+  model: condottieri_scenarios.area
+  pk: 6
+- fields:
+    borders: [70, 71, 53, 62]
+    code: MES
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Messina
+    name_es: Messina
+    name_de: Messina
+    name_ca: Messina
+  model: condottieri_scenarios.area
+  pk: 63
+- fields:
+    borders: [22, 16, 11, 21, 20, 13, 15, 3]
+    code: MIL
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: true
+    is_sea: false
+    control_income: 4
+    garrison_income: 3
+    name_en: Milan
+    name_es: Milán
+    name_de: Mailand
+    name_ca: Milà
+  model: condottieri_scenarios.area
+  pk: 14
+- fields:
+    borders: [35, 19, 18, 66, 34, 25, 20]
+    code: MOD
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Modena
+    name_es: Módena
+    name_de: Modena
+    name_ca: Mòdena
+  model: condottieri_scenarios.area
+  pk: 24
+- fields:
+    borders: [19, 18, 13, 8, 10]
+    code: MON
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Montferrat
+    name_es: Montferrat
+    name_de: Montferrat
+    name_ca: Montferrat
+  model: condottieri_scenarios.area
+  pk: 12
+- fields:
+    borders: [50, 48, 70, 51, 68]
+    code: NAP
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 3
+    garrison_income: 2
+    name_en: Naples
+    name_es: Nápoles
+    name_de: Neapel
+    name_ca: Nàpols
+  model: condottieri_scenarios.area
+  pk: 49
+- fields:
+    borders: [52, 70, 71, 72, 63, 51]
+    code: OTR
+    has_city: false
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Otranto
+    name_es: Otranto
+    name_de: Otranto
+    name_ca: Otranto
+  model: condottieri_scenarios.area
+  pk: 53
+- fields:
+    borders: [26, 28, 73, 31, 23]
+    code: PAD
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Padua
+    name_es: Padua
+    name_de: Padua
+    name_ca: Pàdua
+  model: condottieri_scenarios.area
+  pk: 27
+- fields:
+    borders: [69, 70, 71, 63, 68]
+    code: PAL
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Palermo
+    name_es: Palermo
+    name_de: Palermo
+    name_ca: Palerm
+  model: condottieri_scenarios.area
+  pk: 62
+- fields:
+    borders: [21, 19, 25, 14, 24, 13]
+    code: PAR
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Parma
+    name_es: Parma
+    name_de: Parma
+    name_ca: Parma
+  model: condottieri_scenarios.area
+  pk: 20
+- fields:
+    borders: [44, 47, 42, 68]
+    code: PAT
+    has_city: false
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Patrimony
+    name_es: Patrimonio
+    name_de: Patrimonium
+    name_ca: Patrimoni
+  model: condottieri_scenarios.area
+  pk: 43
+- fields:
+    borders: [11, 19, 14, 12, 20, 10]
+    code: PAV
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Pavia
+    name_es: Pavía
+    name_de: Pavia
+    name_ca: Pavia
+  model: condottieri_scenarios.area
+  pk: 13
+- fields:
+    borders: [39, 43, 47, 42, 45, 40]
+    code: PER
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Perugia
+    name_es: Perusa
+    name_de: Perugia
+    name_ca: Perusa
+  model: condottieri_scenarios.area
+  pk: 44
+- fields:
+    borders: [66, 36, 42, 68]
+    code: PIO
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Piombino
+    name_es: Piombino
+    name_de: Piombino
+    name_ca: Piombino
+  model: condottieri_scenarios.area
+  pk: 41
+- fields:
+    borders: [35, 38, 34, 36]
+    code: PIS
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Pistoia
+    name_es: Pistoia
+    name_de: Pistoia
+    name_ca: Pistoia
+  model: condottieri_scenarios.area
+  pk: 37
+- fields:
+    borders: [38, 66, 34, 41, 37, 42]
+    code: PISA
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Pisa
+    name_es: Pisa
+    name_de: Pisa
+    name_ca: Pisa
+  model: condottieri_scenarios.area
+  pk: 36
+- fields:
+    borders: [1, 65, 66, 6, 9, 8, 10]
+    code: PRO
+    has_city: false
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Provence
+    name_es: Provenza
+    name_de: Provence
+    name_ca: Provença
+  model: condottieri_scenarios.area
+  pk: 7
+- fields:
+    borders: [58, 56, 72]
+    code: RAG
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Ragusa
+    name_es: Ragusa
+    name_de: Ragusa
+    name_ca: Ragussa
+  model: condottieri_scenarios.area
+  pk: 57
+- fields:
+    borders: [48, 43, 44, 45, 68]
+    code: ROME
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 3
+    garrison_income: 2
+    name_en: Rome
+    name_es: Roma
+    name_de: Rom
+    name_ca: Roma
+  model: condottieri_scenarios.area
+  pk: 47
+- fields:
+    borders: [50, 52, 70, 49, 53]
+    code: SAL
+    has_city: false
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Salerno
+    name_es: Salerno
+    name_de: Salerno
+    name_ca: Salern
+  model: condottieri_scenarios.area
+  pk: 51
+- fields:
+    borders: [7, 8, 10]
+    code: SALZ
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Saluzzo
+    name_es: Saluzzo
+    name_de: Saluzzo
+    name_ca: Salusso
+  model: condottieri_scenarios.area
+  pk: 9
+- fields:
+    borders: [60, 65, 68, 67]
+    code: SAR
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 2
+    garrison_income: 0
+    name_en: Sardinia
+    name_es: Cerdeña
+    name_de: Sardinien
+    name_ca: Sardenya
+  model: condottieri_scenarios.area
+  pk: 61
+- fields:
+    borders: [18, 66, 12, 7, 9, 10]
+    code: SAV
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Savoy
+    name_es: Saboya
+    name_de: Savoyen
+    name_ca: Saboia
+  model: condottieri_scenarios.area
+  pk: 8
+- fields:
+    borders: [39, 38, 43, 44, 41, 36, 68]
+    code: SIE
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Siena
+    name_es: Siena
+    name_de: Siena
+    name_ca: Sièna
+  model: condottieri_scenarios.area
+  pk: 42
+- fields:
+    borders: [4, 30, 16, 33, 5]
+    code: SLA
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Slavonia
+    name_es: Eslavonia
+    name_de: Slawonien
+    name_ca: Eslavònia
+  model: condottieri_scenarios.area
+  pk: 17
+- fields:
+    borders: [46, 50, 48, 44, 47, 40]
+    code: SPO
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Spoleto
+    name_es: Espoleto
+    name_de: Spoleto
+    name_ca: Spoleto
+  model: condottieri_scenarios.area
+  pk: 45
+- fields:
+    borders: [1, 10, 3]
+    code: SWI
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: false
+    control_income: 2
+    garrison_income: 0
+    name_en: Swiss
+    name_es: Suiza
+    name_de: Die Schweiz
+    name_ca: Suïssa
+  model: condottieri_scenarios.area
+  pk: 2
+- fields:
+    borders: [29, 27, 31, 23]
+    code: TRE
+    has_city: true
+    has_port: false
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Treviso
+    name_es: Treviso
+    name_de: Treviso
+    name_ca: Treviso
+  model: condottieri_scenarios.area
+  pk: 28
+- fields:
+    borders: [22, 16, 14, 23]
+    code: TRENT
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Trent
+    name_es: Trento
+    name_de: Trent
+    name_ca: Trento
+  model: condottieri_scenarios.area
+  pk: 15
+- fields:
+    borders: [48, 69, 60, 65, 70, 66, 49, 62, 43, 41, 47, 61, 42, 67]
+    code: TS
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: true
+    control_income: 0
+    garrison_income: 0
+    name_en: Thyrrenian Sea
+    name_es: Mar Tirreno
+    name_de: Thyrrenisches Meer
+    name_ca: Mar Tirrè
+  model: condottieri_scenarios.area
+  pk: 68
+- fields:
+    borders: [69, 67]
+    code: TUN
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 3
+    garrison_income: 2
+    name_en: Tunis
+    name_es: Túnez
+    name_de: Tunis
+    name_ca: Tunísia
+  model: condottieri_scenarios.area
+  pk: 64
+- fields:
+    borders: [1, 11, 12, 13, 7, 9, 8, 2, 3]
+    code: TUR
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Turin
+    name_es: Turín
+    name_de: Turin
+    name_ca: Torí
+  model: condottieri_scenarios.area
+  pk: 10
+- fields:
+    borders: [4, 16, 11, 14, 2, 10]
+    code: TYR
+    has_city: true
+    has_port: false
+    is_coast: false
+    is_fortified: true
+    is_sea: false
+    control_income: 2
+    garrison_income: 1
+    name_en: Tyrol
+    name_es: Tirol
+    name_de: Tirol
+    name_ca: Tirol
+  model: condottieri_scenarios.area
+  pk: 3
+- fields:
+    borders: [46, 35, 30, 33, 54, 26, 29, 32, 27, 40, 31]
+    code: UA
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: true
+    control_income: 0
+    garrison_income: 0
+    name_en: Upper Adriatic
+    name_es: Adriático Superior
+    name_de: Nordliches Adriatisch
+    name_ca: Adriàtic Superior
+  model: condottieri_scenarios.area
+  pk: 73
+- fields:
+    borders: [46, 39, 35, 38, 44, 45, 73]
+    code: URB
+    has_city: false
+    has_port: false
+    is_coast: true
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Urbino
+    name_es: Urbino
+    name_de: Urbino
+    name_ca: Urbino
+  model: condottieri_scenarios.area
+  pk: 40
+- fields:
+    borders: [29, 27, 28, 73]
+    code: VEN
+    has_city: true
+    has_port: true
+    is_coast: true
+    is_fortified: true
+    is_sea: false
+    control_income: 4
+    garrison_income: 3
+    name_en: Venice
+    name_es: Venecia
+    name_de: Venedig
+    name_ca: Venècia
+  model: condottieri_scenarios.area
+  pk: 31
+- fields:
+    borders: [22, 16, 26, 29, 25, 27, 28, 15]
+    code: VER
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: false
+    control_income: 1
+    garrison_income: 0
+    name_en: Verona
+    name_es: Verona
+    name_de: Verona
+    name_ca: Verona
+  model: condottieri_scenarios.area
+  pk: 23
+- fields:
+    borders: [69, 65, 61, 68, 64]
+    code: WM
+    has_city: false
+    has_port: false
+    is_coast: false
+    is_fortified: false
+    is_sea: true
+    control_income: 0
+    garrison_income: 0
+    name_en: Western Mediterranean
+    name_es: Mediterráneo Occidental
+    name_de: Westliches Mittelmeer
+    name_ca: Mediterrani Occidental
+  model: condottieri_scenarios.area
+  pk: 67

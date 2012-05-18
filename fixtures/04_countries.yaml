@@ -1,0 +1,124 @@
+##
+## Countries
+##
+
+-   fields:
+        can_excommunicate: false
+        name_en: Naples
+        name_es: Nápoles
+        name_de: Neapel
+        name_ca: Nàpols
+        special_units: [2]
+        static_name: naples
+    model: condottieri_scenarios.country
+    pk: 1
+-   fields:
+        can_excommunicate: false
+        name_en: Turks
+        name_es: Turcos
+        name_de: Türken
+        name_ca: Turcs
+        special_units: [3]
+        static_name: turks
+    model: condottieri_scenarios.country
+    pk: 2
+-   fields:
+        can_excommunicate: false
+        name_en: Venice
+        name_es: Venecia
+        name_de: Venedig
+        name_ca: Venècia
+        special_units: [1, 2, 3]
+        static_name: venice
+    model: condottieri_scenarios.country
+    pk: 3
+-   fields:
+        can_excommunicate: true
+        name_en: Papacy
+        name_es: Papado
+        name_de: Papst
+        name_ca: Papat
+        special_units: [1, 2]
+        static_name: papacy
+    model: condottieri_scenarios.country
+    pk: 4
+-   fields:
+        can_excommunicate: false
+        name_en: Austria
+        name_es: Austria
+        name_de: Österreich
+        name_ca: Austria
+        special_units: [2, 3]
+        static_name: austria
+    model: condottieri_scenarios.country
+    pk: 5
+-   fields:
+        can_excommunicate: false
+        name_en: Florence
+        name_es: Florencia
+        name_de: Florenz
+        name_ca: Florència
+        special_units: [1, 2]
+        static_name: florence
+    model: condottieri_scenarios.country
+    pk: 6
+-   fields:
+        can_excommunicate: false
+        name_en: Milan
+        name_es: Milán
+        name_de: Mailand
+        name_ca: Milà
+        special_units: [1, 2]
+        static_name: milan
+    model: condottieri_scenarios.country
+    pk: 7
+-   fields:
+        can_excommunicate: false
+        name_en: France
+        name_es: Francia
+        name_de: Frankreich
+        name_ca: França
+        special_units: [2]
+        static_name: france
+    model: condottieri_scenarios.country
+    pk: 8
+-   fields:
+        can_excommunicate: false
+        name_en: H. Roman Empire
+        name_es: Sacro I. Romano
+        name_de: H. Römisches Reich
+        name_ca: Sacre Imperi Romà
+        special_units: [2, 3]
+        static_name: hre
+    model: condottieri_scenarios.country
+    pk: 12
+-   fields:
+        can_excommunicate: false
+        name_en: Savoy
+        name_es: Saboya
+        name_de: Savoyen
+        name_ca: Saboia
+        special_units: [2]
+        static_name: savoy
+    model: condottieri_scenarios.country
+    pk: 11
+-   fields:
+        can_excommunicate: false
+        name_en: Spanish Empire
+        name_es: Imperio Español
+        name_de: Spanisches Reich
+        name_ca: Imperi Espanyol
+        special_units: [2, 3]
+        static_name: spain
+    model: condottieri_scenarios.country
+    pk: 13
+-   fields:
+        can_excommunicate: false
+        name_en: Genoa
+        name_es: Génova
+        name_de: Genua
+        name_ca: Gènova
+        special_units: [2]
+        static_name: genoa
+    model: condottieri_scenarios.country
+    pk: 14

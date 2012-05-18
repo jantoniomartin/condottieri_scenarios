@@ -1,0 +1,334 @@
+-   fields:
+        name: suleiman
+        title_en: The Death of Suleiman
+        title_es: La Muerte de Suleiman
+        title_ca: La Mort de Suleiman
+        description_en: Suleiman I was the tenth and longest-reigning Emperor, Sultan of the Ottoman Empire, from 1520 to his death in 1566. He is known in the West as Suleiman the Magnificent and in the East, as "The Lawgiver". He was succeeded by his son, Solim II, just five years before the great Battle of Lepanto.
+        description_es: Suleimán I fue el décimo Sultán del Imperio Otomano y el de reinado más largo, desde 1520 hasta su muerte en 1566. Fue conocido en Occidente como Suleimán el Magnífico y en Oriente como "El Legislador". Fue sucedido por su hijo, Selim II, solo cinco años antes de la Batalla de Lepanto.
+        designer: corund
+        start_year: 1566
+        editor: 1
+    model: condottieri_scenarios.scenario
+    pk: 9
+
+- fields: {scenario: 9, country: 8}
+  model: condottieri_scenarios.contender
+  pk: 43
+- fields: {scenario: 9, country: 14}
+  model: condottieri_scenarios.contender
+  pk: 44
+- fields: {scenario: 9, country: 13}
+  model: condottieri_scenarios.contender
+  pk: 45
+- fields: {scenario: 9, country: 2}
+  model: condottieri_scenarios.contender
+  pk: 46
+- fields: {scenario: 9, country: 3}
+  model: condottieri_scenarios.contender
+  pk: 47
+- fields: {scenario: 9, country: 6}
+  model: condottieri_scenarios.contender
+  pk: 48
+- fields: {scenario: 9, country: 4}
+  model: condottieri_scenarios.contender
+  pk: 49
+- fields: {scenario: 9, country: null}
+  model: condottieri_scenarios.contender
+  pk: 50
+
+- fields: {area: 1, contender: 43, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 271
+- fields: {area: 6, contender: 43, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 272
+- fields: {area: 7, contender: 43, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 273
+- fields: {area: 9, contender: 43, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 274
+- fields: {area: 18, contender: 44, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 275
+- fields: {area: 60, contender: 44, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 276
+- fields: {area: 19, contender: 44, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 277
+- fields: {area: 14, contender: 45, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 278
+- fields: {area: 13, contender: 45, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 279
+- fields: {area: 21, contender: 45, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 280
+- fields: {area: 61, contender: 45, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 281
+- fields: {area: 49, contender: 45, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 282
+- fields: {area: 52, contender: 45, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 283
+- fields: {area: 62, contender: 45, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 284
+- fields: {area: 63, contender: 45, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 285
+- fields: {area: 11, contender: 45, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 286
+- fields: {area: 48, contender: 45, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 287
+- fields: {area: 50, contender: 45, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 288
+- fields: {area: 51, contender: 45, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 289
+- fields: {area: 53, contender: 45, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 290
+- fields: {area: 57, contender: 46, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 291
+- fields: {area: 59, contender: 46, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 292
+- fields: {area: 58, contender: 46, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 293
+- fields: {area: 5, contender: 46, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 294
+- fields: {area: 56, contender: 46, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 295
+- fields: {area: 55, contender: 46, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 296
+- fields: {area: 31, contender: 47, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 297
+- fields: {area: 27, contender: 47, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 298
+- fields: {area: 28, contender: 47, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 299
+- fields: {area: 54, contender: 47, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 300
+- fields: {area: 22, contender: 47, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 301
+- fields: {area: 23, contender: 47, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 302
+- fields: {area: 29, contender: 47, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 303
+- fields: {area: 32, contender: 47, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 304
+- fields: {area: 38, contender: 48, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 305
+- fields: {area: 39, contender: 48, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 306
+- fields: {area: 42, contender: 48, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 307
+- fields: {area: 36, contender: 48, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 308
+- fields: {area: 37, contender: 48, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 309
+- fields: {area: 47, contender: 49, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 310
+- fields: {area: 44, contender: 49, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 311
+- fields: {area: 46, contender: 49, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 312
+- fields: {area: 35, contender: 49, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 313
+- fields: {area: 45, contender: 49, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 314
+- fields: {area: 43, contender: 49, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 315
+- fields: {area: 40, contender: 49, is_home: true}
+  model: condottieri_scenarios.home
+  pk: 316
+
+
+- fields: {area: 1, contender: 43, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 324
+- fields: {area: 9, contender: 43, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 325
+- fields: {area: 6, contender: 43, unit_type: F}
+  model: condottieri_scenarios.setup
+  pk: 326
+- fields: {area: 18, contender: 44, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 327
+- fields: {area: 60, contender: 44, unit_type: F}
+  model: condottieri_scenarios.setup
+  pk: 328
+- fields: {area: 62, contender: 44, unit_type: F}
+  model: condottieri_scenarios.setup
+  pk: 329
+- fields: {area: 13, contender: 45, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 330
+- fields: {area: 21, contender: 45, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 331
+- fields: {area: 14, contender: 45, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 332
+- fields: {area: 49, contender: 45, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 333
+- fields: {area: 52, contender: 45, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 334
+- fields: {area: 63, contender: 45, unit_type: F}
+  model: condottieri_scenarios.setup
+  pk: 335
+- fields: {area: 64, contender: 45, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 336
+- fields: {area: 58, contender: 46, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 337
+- fields: {area: 5, contender: 46, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 338
+- fields: {area: 33, contender: 46, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 339
+- fields: {area: 59, contender: 46, unit_type: F}
+  model: condottieri_scenarios.setup
+  pk: 340
+- fields: {area: 57, contender: 46, unit_type: F}
+  model: condottieri_scenarios.setup
+  pk: 341
+- fields: {area: 64, contender: 46, unit_type: F}
+  model: condottieri_scenarios.setup
+  pk: 342
+- fields: {area: 27, contender: 47, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 343
+- fields: {area: 28, contender: 47, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 344
+- fields: {area: 31, contender: 47, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 345
+- fields: {area: 54, contender: 47, unit_type: F}
+  model: condottieri_scenarios.setup
+  pk: 346
+- fields: {area: 38, contender: 48, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 347
+- fields: {area: 42, contender: 48, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 348
+- fields: {area: 39, contender: 48, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 349
+- fields: {area: 36, contender: 48, unit_type: F}
+  model: condottieri_scenarios.setup
+  pk: 350
+- fields: {area: 47, contender: 49, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 351
+- fields: {area: 44, contender: 49, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 352
+- fields: {area: 35, contender: 49, unit_type: A}
+  model: condottieri_scenarios.setup
+  pk: 353
+- fields: {area: 46, contender: 49, unit_type: F}
+  model: condottieri_scenarios.setup
+  pk: 354
+- fields: {area: 4, contender: 50, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 355
+- fields: {area: 3, contender: 50, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 356
+- fields: {area: 10, contender: 50, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 357
+- fields: {area: 8, contender: 50, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 358
+- fields: {area: 12, contender: 50, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 359
+- fields: {area: 15, contender: 50, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 360
+- fields: {area: 34, contender: 50, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 361
+- fields: {area: 24, contender: 50, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 362
+- fields: {area: 25, contender: 50, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 363
+- fields: {area: 26, contender: 50, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 364
+- fields: {area: 41, contender: 50, unit_type: G}
+  model: condottieri_scenarios.setup
+  pk: 365
+
+
+- fields: {contender: 43, double: false, ducats: 2}
+  model: condottieri_scenarios.treasury
+  pk: 43
+- fields: {contender: 44, double: true, ducats: 8}
+  model: condottieri_scenarios.treasury
+  pk: 44
+- fields: {contender: 45, double: false, ducats: 3}
+  model: condottieri_scenarios.treasury
+  pk: 45
+- fields: {contender: 48, double: false, ducats: 6}
+  model: condottieri_scenarios.treasury
+  pk: 46
+- fields: {contender: 49, double: false, ducats: 4}
+  model: condottieri_scenarios.treasury
+  pk: 47
+- fields: {contender: 47, double: false, ducats: 3}
+  model: condottieri_scenarios.treasury
+  pk: 48
+- fields: {contender: 46, double: false, ducats: 4}
+  model: condottieri_scenarios.treasury
+  pk: 49
+
+
+- fields: {city: 49, scenario: 9}
+  model: condottieri_scenarios.cityincome
+  pk: 15
+
+
