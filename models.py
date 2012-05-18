@@ -20,6 +20,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+from django.core.exceptions import ObjectDoesNotExist
 
 from transmeta import TransMeta
 
@@ -31,7 +32,13 @@ class Error(Exception):
 class HomeIsAutonomous(Error):
 	pass
 
+class HomeIsTaken(Error):
+	pass
+
 class AreaIsOccupied(Error):
+	pass
+
+class WrongUnitType(Error):
 	pass
 
 class Scenario(models.Model):
@@ -39,12 +46,12 @@ class Scenario(models.Model):
 	
 	__metaclass__ = TransMeta
 	
-	name = models.SlugField(_("slug"), max_length=20, unique=True)
+	name = models.SlugField(_("slug"), max_length=128, unique=True)
 	title = models.CharField(max_length=128, verbose_name=_("title"), help_text=_("max. 128 characters"))
 	description = models.TextField(verbose_name=_("description"))
 	designer = models.CharField(_("designer"), max_length=30, help_text=_("leave it blank if you are the designer"))
 	start_year = models.PositiveIntegerField(_("start year"))
-	number_of_players = models.PositiveIntegerField(_("number of players"), default=0)
+	#number_of_players = models.PositiveIntegerField(_("number of players"), default=0)
 	editor = models.ForeignKey(User, verbose_name=_("editor"))
 	enabled = models.BooleanField(_("enabled"), default=False)
 	countries = models.ManyToManyField('Country', through='Contender')
@@ -59,6 +66,11 @@ class Scenario(models.Model):
 		if not self.name:
 			self.name = slugify(self.title_en)
 		super(Scenario, self).save(*args, **kwargs)
+
+	def _get_number_of_players(self):
+		return self.countries.count()
+
+	number_of_players = property(_get_number_of_players)
 
 	def get_max_players(self):
 		return self.number_of_players
@@ -84,6 +96,11 @@ class Scenario(models.Model):
 		return self.game_set.count() > 0
 
 	in_use = property(_get_in_use)
+
+	def _get_in_play(self):
+		return self.game_set.filter(finished__isnull=True).count() > 0
+
+	in_play = property(_get_in_play)
 
 	#def _get_countries(self):
 	#	return Country.objects.filter(home__scenario=self).distinct()
@@ -186,13 +203,18 @@ class Contender(models.Model):
 		verbose_name = _("contender")
 		verbose_name_plural = _("contenders")
 		unique_together = (("country", "scenario"),)
-		ordering = ["scenario", "country"]
+		ordering = ["scenario__id", "country"]
 
 	def __unicode__(self):
 		if self.country:
 			return self.country.name
 		else:
 			return unicode(_("Autonomous"))
+
+	def _get_editor(self):
+		return self.scenario.editor
+
+	editor = property(_get_editor)
 
 class Neutral(models.Model):
 	""" Defines a country that will not be used when a game has less players
@@ -229,6 +251,11 @@ class Treasury(models.Model):
 		verbose_name_plural = _("treasuries")
 		#unique_together = (("scenario", "country"),)
 
+	def _get_editor(self):
+		return self.contender.scenario.editor
+
+	editor = property(_get_editor)
+
 class Area(models.Model):
 	""" This class describes **only** the area features in the board. The game is
 	actually played in GameArea objects.
@@ -251,6 +278,8 @@ class Area(models.Model):
 	## garrison in the area's city, if any (no fortified city, 0)
 	garrison_income = models.PositiveIntegerField(_("garrison income"),
 		null=False, default=0)
+
+	objects = managers.AreaManager()
 
 	def is_adjacent(self, area, fleet=False):
 		""" Two areas can be adjacent through land, but not through a coast. 
@@ -319,6 +348,11 @@ class DisabledArea(models.Model):
 		verbose_name_plural = _("disabled areas")
 		unique_together = (('scenario', 'area'),) 
 
+	def _get_editor(self):
+		return self.scenario.editor
+
+	editor = property(_get_editor)
+
 class CityIncome(models.Model):
 	"""
 	This class represents a City that generates an income in a given Scenario
@@ -333,6 +367,11 @@ class CityIncome(models.Model):
 		verbose_name = _("city income")
 		verbose_name_plural = _("city incomes")
 		unique_together = (("city", "scenario"),)
+
+	def _get_editor(self):
+		return self.scenario.editor
+
+	editor = property(_get_editor)
 
 class Home(models.Model):
 	""" This class defines which Country controls each Area in a given Scenario,
@@ -359,9 +398,27 @@ class Home(models.Model):
 		unique_together = (("contender", "area"),)
 
 	def save(self, *args, **kwargs):
-		if not self.id and not self.contender.country:
+		if self.contender.country is None:
 			raise HomeIsAutonomous(_("You cannot define an autonomous home"))
-		super(Home, self).save(*args, **kwargs)
+		try:
+			Home.objects.get(contender__scenario=self.contender.scenario, area=self.area)
+		except ObjectDoesNotExist:
+			super(Home, self).save(*args, **kwargs)
+		else:
+			raise HomeIsTaken(_("This area is already controlled by another country"))
+
+	def unique_error_message(self, model_class, unique_check):
+		if model_class == type(self) and unique_check == ('contender', 'area'):
+			return _("This area is already controlled by a country")
+		else:
+			return super(Setup, self).unique_error_message(model_class, unique_check)
+
+	def _get_editor(self):
+		return self.contender.scenario.editor
+
+	editor = property(_get_editor)
+
+
 
 UNIT_TYPES = (('A', _('Army')),
               ('F', _('Fleet')),
@@ -389,17 +446,22 @@ class Setup(models.Model):
 	class Meta:
 		verbose_name = _("initial setup")
 		verbose_name_plural = _("initial setups")
-		#unique_together = (("scenario", "area", "unit_type"),)
-		unique_together = (("contender", "area", "unit_type"))
 
 	def save(self, *args, **kwargs):
 		if not self.id:
+			if not self.area.accepts_type(self.unit_type):
+				raise WrongUnitType(_("This unit type is not allowed in this area"))
 			try:
-				Setup.objects.get(contender__scenario=self.contender.scenario, unit_type=self.unit_type)
+				Setup.objects.get(contender__scenario=self.contender.scenario, area=self.area, unit_type=self.unit_type)
 			except ObjectDoesNotExist:
 				super(Setup, self).save(*args, **kwargs)
 			else:
 				raise AreaIsOccupied(_("You cannot place two units of the same type on the same area")) 
+
+	def _get_editor(self):
+		return self.contender.scenario.editor
+
+	editor = property(_get_editor)
 
 class ControlToken(models.Model):
 	""" Defines the coordinates of the control token for a board area. """

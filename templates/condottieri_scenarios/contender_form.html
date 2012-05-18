@@ -1,0 +1,55 @@
+{% extends 'condottieri_scenarios/base.html' %}
+
+{% load i18n %}
+{% load uni_form_tags %}
+
+{% block head_title %}{% blocktrans %}Edit contenders{% endblocktrans %}{% endblock %}
+
+{% block body %}
+<div class="section">
+<h2>{% trans "Edit scenario contenders" %}</h2>
+
+<form action="." method="post" accept-charset="utf-8" class="uniForm">
+{% csrf_token %}
+{{ formset.management_form }}
+
+<table>
+<thead><tr>
+<th>{% trans "Country" %}</th>
+<th>{% trans "Delete" %}</th>
+</tr></thead>
+	{% for c in scenario.contender_set.all %}
+	<tr>
+	<td>
+	{% if c.country %}
+		{{ c.country }}
+	{% else %}
+		{% trans "Autonomous" %}
+	{% endif %}
+	</td>
+	<td><a href="{% url scenario_contender_delete c.pk %}">{% trans "Delete" %}</a></td>
+	</tr>
+	{% endfor %}
+	{% for form in formset %}
+	<tr class="{{ formset.prefix }}">
+	{{ form.id }}
+	<td>
+		{% for e in form.errors.values %}
+			{{ e }}
+		{% endfor %}
+		{{ form.country }}
+		{{ form.country.errors }}
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+	{% endfor %}
+</table>
+
+<p><input type="submit" value="{% trans "Save" %}" />
+<a href="{% url scenario_detail scenario.name %}">{% trans "Cancel" %}</a>
+</p>
+</form>
+
+
+</div>
+{% endblock %}

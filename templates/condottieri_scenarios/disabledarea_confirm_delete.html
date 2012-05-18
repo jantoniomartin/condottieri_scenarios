@@ -1,0 +1,23 @@
+{% extends 'condottieri_scenarios/base.html' %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Delete disabled area" %}{% endblock %}
+
+{% block body %}
+
+<div class="section">
+<h2>{% trans "Confirm deletion" %}</h2>
+<p>{% blocktrans %}Please, confirm that you wish to delete this disabled area:{% endblocktrans %}</p>
+<p>{{ disabledarea }}</p>
+
+<form action="." method="post" accept-charset="utf-8">
+{% csrf_token %}
+<p><input type="submit" value="{% trans "Delete" %}">
+<a href="{% url scenario_detail disabledarea.scenario.name %}">{% trans "Cancel" %}</a>
+</p>
+</form>
+
+</div>
+
+{% endblock %}

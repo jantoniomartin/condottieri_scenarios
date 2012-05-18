@@ -1,0 +1,23 @@
+{% extends 'condottieri_scenarios/base.html' %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Delete initial unit" %}{% endblock %}
+
+{% block body %}
+
+<div class="section">
+<h2>{% trans "Confirm deletion" %}</h2>
+<p>{% blocktrans %}Please, confirm that you wish to delete this initial unit:{% endblocktrans %}</p>
+<p>{{ setup }}</p>
+
+<form action="." method="post" accept-charset="utf-8">
+{% csrf_token %}
+<p><input type="submit" value="{% trans "Delete" %}">
+<a href="{% url scenario_contender_setup setup.contender.pk %}">{% trans "Cancel" %}</a>
+</p>
+</form>
+
+</div>
+
+{% endblock %}

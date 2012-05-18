@@ -18,37 +18,78 @@
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import redirect
+from django import http
+from django.utils.functional import lazy
+from django.core.urlresolvers import reverse
+from django.forms import ValidationError
+from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
 
-from condottieri_scenarios.models import Scenario
+import condottieri_scenarios.models as models
 import condottieri_scenarios.forms as forms
+from condottieri_scenarios.graphics import make_scenario_map
 
+reverse_lazy = lambda name=None, *args : lazy(reverse, str)(name, args=args)
+
+class CreationAllowedMixin(object):
+	""" A mixin requiring a user to be authenticated and being editor or admin """
+	def dispatch(self, request, *args, **kwargs):
+		if not request.user.is_authenticated() or \
+		not request.user.get_profile().is_editor:
+			raise http.Http404
+		return super(CreationAllowedMixin, self).dispatch(request, *args, **kwargs)
+
+class EditionAllowedMixin(CreationAllowedMixin):
+	""" A mixin requiring a user to be the creator of the scenario """
+	def get(self, request, *args, **kwargs):
+		obj = self.get_object()
+		try:
+			editor = obj.editor
+		except AttributeError:
+			print "No editor"
+			editor = None
+		if not editor == self.request.user:
+			raise http.Http404
+		return super(EditionAllowedMixin, self).get(request, *args, **kwargs)
+
+	def get_context_data(self, **kwargs):
+		context = super(EditionAllowedMixin, self).get_context_data(**kwargs)
+		context.update({'user_can_edit': True,})
+		return context
 
 class ScenarioListView(ListView):
-	model = Scenario
+	model = models.Scenario
 	
 class ScenarioView(DetailView):
-	model = Scenario
+	model = models.Scenario
 	slug_field = 'name'
 	context_object_name = 'scenario'
 
 	def get_context_data(self, **kwargs):
 		context = super(ScenarioView, self).get_context_data(**kwargs)
-		user_can_edit = self.request.user.get_profile().is_editor or \
-			self.request.user.is_admin
-		context.update({'user_can_edit': user_can_edit})
+		if self.request.user.is_authenticated():
+			user_can_edit = self.request.user.get_profile().is_editor or \
+				self.request.user.is_admin
+			context.update({'user_can_edit': user_can_edit})
 		return context
-	
 
-class ScenarioCreateView(CreateView):
-	model = Scenario
+class ScenarioRedrawMapView(EditionAllowedMixin, ScenarioView):
+	def get(self, request, **kwargs):
+		obj = self.get_object()
+		make_scenario_map(obj)
+		return super(ScenarioRedrawMapView, self).get(request, **kwargs)
+
+class ScenarioCreateView(CreationAllowedMixin, CreateView):
+	model = models.Scenario
 	form_class = forms.CreateScenarioForm
 	
 	def get_context_data(self, **kwargs):
 		context = super(ScenarioCreateView, self).get_context_data(**kwargs)
 		user_is_editor = self.request.user.get_profile().is_editor
-		context.update({'user_can_create': user_is_editor})
+		context.update({'user_can_create': user_is_editor,
+						'mode': 'create',})
 		return context
 	
 	def form_valid(self, form):
@@ -57,37 +98,166 @@ class ScenarioCreateView(CreateView):
 		self.object.save()
 		return super(ScenarioCreateView, self).form_valid(form)
 
-class ScenarioUpdateView(UpdateView):
-	model = Scenario
+class ScenarioDescriptionsEditView(EditionAllowedMixin, UpdateView):
+	model = models.Scenario
 	slug_field = 'name'
-	
-	def get_context_data(self, **kwargs):
-		context = super(ScenarioUpdateView, self).get_context_data(**kwargs)
-		user_can_edit = self.request.user.get_profile().is_editor or \
-			self.request.user.is_admin
-		context.update({'user_can_edit': user_can_edit})
-		return context
-
-class ScenarioDescriptionsEditView(ScenarioUpdateView):
 	form_class = forms.ScenarioDescriptionsForm
 
-class ScenarioDisabledEditView(ScenarioUpdateView):
-	form_class = forms.ScenarioForm
-	template_name = 'condottieri_scenarios/scenario_areas_form.html'
-
+class ScenarioUpdateView(EditionAllowedMixin, UpdateView):
+	model = models.Scenario
+	slug_field = 'name'
+	context_object_name = 'scenario'
+	
 	def form_valid(self, form):
 		context = self.get_context_data()
-		disabledarea_formset = context['disabledarea_formset']
-		if disabledarea_formset.is_valid():
-			self.object = form.save()
-			disabledarea_formset.instance = self.object
-			disabledarea_formset.save()
-			return redirect(self.object)
+		formset = context['formset']
+		if formset.is_valid():
+			try:
+				formset.save()
+			except Exception, v:
+				print "Exception %s" % v
+				messages.error(self.request, v)
+			else:
+				return http.HttpResponseRedirect(self.get_success_url())
+		return self.render_to_response(self.get_context_data(form=form))
+
+	def get_context_data(self, formset=None, **kwargs):
+		context = super(ScenarioUpdateView, self).get_context_data(**kwargs)
+		if formset is None:
+			return context
+		if self.request.POST:
+			context['formset'] = formset(instance=self.object, data=self.request.POST)
+		else:
+			context['formset'] = formset()
+		return context
+
+class ContenderEditView(ScenarioUpdateView):
+	form_class = forms.ScenarioForm
+	template_name = 'condottieri_scenarios/contender_form.html'
 
 	def get_context_data(self, **kwargs):
-		context = super(ScenarioDisabledEditView, self).get_context_data(**kwargs)
-		if self.request.POST:
-			context['disabledarea_formset'] = forms.DisabledAreaFormSet(self.request.POST)
+		return super(ContenderEditView, self).get_context_data(formset=forms.ContenderFormSet, **kwargs)
+
+class DisabledAreasEditView(ScenarioUpdateView):
+	form_class = forms.ScenarioForm
+	template_name = 'condottieri_scenarios/disabled_form.html'
+
+	def get_context_data(self, **kwargs):
+		return super(DisabledAreasEditView, self).get_context_data(formset=forms.DisabledAreaFormSet, **kwargs)
+
+class CityIncomeEditView(ScenarioUpdateView):
+	form_class = forms.ScenarioForm
+	template_name = 'condottieri_scenarios/cityincome_form.html'
+
+	def get_context_data(self, formset=None, **kwargs):
+		return super(CityIncomeEditView, self).get_context_data(formset=forms.CityIncomeFormSet, **kwargs)
+
+class ScenarioItemDeleteView(EditionAllowedMixin, DeleteView):
+	def delete(self, request, *args, **kwargs):
+		scenario = self.get_object().scenario
+		self.scenario_name = scenario.name
+		if scenario.in_play:
+			messages.error(request, _("You cannot make this change in a scenario that is being played played"))
+			return redirect(self.get_success_url())
 		else:
-			context['disabledarea_formset'] = forms.DisabledAreaFormSet()
+			messages.success(request, _("The object has been deleted"))
+			return super(ScenarioItemDeleteView, self).delete(request, *args, **kwargs)
+
+class CityIncomeDeleteView(ScenarioItemDeleteView):
+	def get_success_url(self, **kwargs):
+		return reverse_lazy('scenario_detail', self.scenario_name)
+
+	model = models.CityIncome
+	context_object_name = "cityincome"
+
+class DisabledAreaDeleteView(ScenarioItemDeleteView):
+	def get_success_url(self, **kwargs):
+		return reverse_lazy('scenario_detail', self.scenario_name)
+
+	model = models.DisabledArea
+	context_object_name = "disabledarea"
+	
+def get_scenario(slug):
+	try:
+		scenario = models.Scenario.objects.get(name=slug)
+	except:
+		return models.Scenario.objects.none()
+	return scenario
+
+class ContenderDeleteView(EditionAllowedMixin, DeleteView):
+	model = models.Contender
+	context_object_name = "contender"
+	
+	def get_success_url(self, **kwargs):
+		return reverse_lazy('scenario_detail', self.scenario_name)
+
+	def delete(self, request, *args, **kwargs):
+		scenario = self.get_object().scenario
+		self.scenario_name = scenario.name
+		if scenario.in_use:
+			messages.error(request, _("You cannot change the countries in a scenario that has been already played."))
+			return redirect(self.get_success_url())
+		else:
+			messages.success(request, _("The country has been deleted"))
+			return super(ContenderDeleteView, self).delete(request, *args, **kwargs)
+
+class ContenderHomeView(ContenderEditView):
+	template_name = 'condottieri_scenarios/homes_form.html'
+	
+	def get_success_url(self, **kwargs):
+		return reverse_lazy('scenario_contender_homes', self.object.pk)
+	
+	def get_context_data(self, **kwargs):
+		return super(ContenderHomeView, self).get_context_data(formset=forms.HomeAreaFormSet, **kwargs)
+
+class ContenderSetupView(ContenderEditView):
+	template_name = 'condottieri_scenarios/setup_form.html'
+	
+	def get_success_url(self, **kwargs):
+		return reverse_lazy('scenario_contender_setup', self.object.pk)
+	
+	def get_context_data(self, **kwargs):
+		return super(ContenderSetupView, self).get_context_data(formset=forms.SetupFormSet, **kwargs)
+
+class ContenderTreasuryView(ContenderEditView):
+	template_name = 'condottieri_scenarios/treasury_form.html'
+	
+	def get_success_url(self, **kwargs):
+		return reverse_lazy('scenario_detail', self.object.scenario.name)
+	
+	def get_context_data(self, **kwargs):
+		context = super(ContenderEditView, self).get_context_data(**kwargs)
+		self.object = self.get_object()
+		if self.request.POST:
+			context['formset'] = forms.TreasuryFormSet(instance=self.object, data=self.request.POST)
+		else:
+			context['formset'] = forms.TreasuryFormSet(instance=self.object)
 		return context
+
+class ContenderItemDeleteView(EditionAllowedMixin, DeleteView):
+	def delete(self, request, *args, **kwargs):
+		contender = self.get_object().contender
+		self.contender_pk = contender.pk
+		if contender.scenario.in_play:
+			messages.error(request, _("You cannot change the initial setup in a scenario that is currently being played."))
+			return redirect(self.get_success_url())
+		else:
+			messages.success(request, self.success_msg)
+			return super(ContenderItemDeleteView, self).delete(request, *args, **kwargs)
+
+class HomeDeleteView(ContenderItemDeleteView):
+	model = models.Home
+	context_object_name = "home"
+	success_msg = _("The initial area has been deleted")
+
+	def get_success_url(self):
+		return reverse_lazy('scenario_contender_homes', self.contender_pk)
+
+class SetupDeleteView(ContenderItemDeleteView):
+	model = models.Setup
+	context_object_name = "setup"
+	success_msg = _("The initial unit has been deleted")
+
+	def get_success_url(self):
+		return reverse_lazy('scenario_contender_setup', self.contender_pk)
+

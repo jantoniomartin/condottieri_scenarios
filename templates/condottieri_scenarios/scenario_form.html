@@ -9,19 +9,11 @@
 <div class="section">
 <h2>{% trans "Edit scenario" %}</h2>
 
-{% if user_can_create or user_can_edit %}
-
 <form action="." method="post" accept-charset="utf-8" class="uniForm">
 {% csrf_token %}
 {{ form|as_uni_form }}
 <p><input type="submit" value="{% trans "Save" %}" /></p>
 </form>
-
-{% else %}
-
-<p>{% blocktrans %}You don't have permission to create new scenarios. If you wish to create a scenario, you may ask for this permission in the forum.{% endblocktrans %}</p>
-
-{% endif %}
 
 </div>
 {% endblock %}

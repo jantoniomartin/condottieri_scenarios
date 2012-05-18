@@ -18,31 +18,65 @@
 
 import django.forms as forms
 from django.forms.models import inlineformset_factory
+from django.utils.translation import ugettext_lazy as _
 
 import condottieri_scenarios.models as scenarios
 
 class CreateScenarioForm(forms.ModelForm):
-	designer = forms.CharField(max_length=30, required=False)
+	designer = forms.CharField(max_length=30, required=False, help_text=_("leave it blank if you are the designer"))
 
 	class Meta:
 		model = scenarios.Scenario
 		fields = ('title_en',
 			'description_en',
 			'designer',
-			'start_year',
-			'number_of_players',)
+			'start_year',)
 		exclude = ('editor',)
 
 class ScenarioDescriptionsForm(forms.ModelForm):
 
 	class Meta:
 		model = scenarios.Scenario
-		exclude = ('name', 'designer', 'start_year', 'number_of_players',
-			'editor', 'enabled')
+		exclude = ('name', 'designer', 'start_year', 'editor', 'enabled',
+			'countries')
 
 class ScenarioForm(forms.ModelForm):
 	class Meta:
 		model = scenarios.Scenario
 		fields = ( )
 
+class CreateContenderForm(forms.ModelForm):
+	country = forms.ModelChoiceField(queryset=scenarios.Country.objects.all(),
+		empty_label=_("Autonomous"),
+		required = False,
+		cache_choices=True,
+		label=_("Country"))
+
+	class Meta:
+		model = scenarios.Contender
+		fields = ('country',)
+
+class ContenderEditForm(forms.ModelForm):
+	class Meta:
+		model = scenarios.Contender
+		fields = ( )
+
+class CityIncomeForm(forms.ModelForm):
+	city = forms.ModelChoiceField(queryset=scenarios.Area.objects.major())
+
+	class Meta:
+		model = scenarios.CityIncome
+
+HomeAreaFormSet = inlineformset_factory(scenarios.Contender, scenarios.Home, extra=5)
+
+SetupFormSet = inlineformset_factory(scenarios.Contender, scenarios.Setup, extra=5)
+
+TreasuryFormSet = inlineformset_factory(scenarios.Contender, scenarios.Treasury, extra=1)
+
+CityIncomeFormSet = inlineformset_factory(scenarios.Scenario, scenarios.CityIncome,
+	form=CityIncomeForm, extra=3)
+
 DisabledAreaFormSet = inlineformset_factory(scenarios.Scenario, scenarios.DisabledArea, extra=5)
+
+ContenderFormSet = inlineformset_factory(scenarios.Scenario, scenarios.Contender,
+	form=CreateContenderForm, extra=1)

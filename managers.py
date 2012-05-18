@@ -7,3 +7,6 @@ class CountryManager(models.Manager):
 			avg_points=Avg('score__points'),
 			avg_position=Avg('score__position')).order_by('avg_position')
 
+class AreaManager(models.Manager):
+	def major(self):
+		return self.filter(garrison_income__gt=1)

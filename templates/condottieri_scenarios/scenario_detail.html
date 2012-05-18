@@ -25,6 +25,10 @@
 <div class="section">
 <h2>{% trans "Setup" %}</h2>
 
+{% if user_can_edit %}
+<p><a href="{% url scenario_contender_edit scenario.name %}">{% trans "Edit countries" %}</a></p>
+{% endif %}
+
 <table>
 <thead>
 <tr>
@@ -45,7 +49,7 @@
 </td>
 <td>
 {% if c.country %}
-	{{ v.name }}
+	{{ c.country.name }}
 {% else %}
 	{% trans "Autonomous" %}
 {% endif %}
@@ -53,10 +57,27 @@
 <td>
 {% if c.country %}
 	{{ c.home_set.all|join:", " }}
+	{% if user_can_edit %}
+	<br />
+	<a href="{% url scenario_contender_homes c.pk %}">{% trans "Edit" %}</a>
+	{% endif %}
 {% endif %}
 </td>
-<td>{{ c.setup_set.all|join:", " }}</td>
-<td class="data_c">{% if c.country %}{{ c.treasury.ducats }}{% endif %}</td>
+<td>{{ c.setup_set.all|join:", " }}
+	{% if user_can_edit %}
+	<br />
+	<a href="{% url scenario_contender_setup c.pk %}">{% trans "Edit" %}</a>
+	{% endif %}
+</td>
+<td class="data_c">
+{% if c.country %}
+{{ c.treasury.ducats }}
+	{% if user_can_edit %}
+	<br />
+	<a href="{% url scenario_contender_treasury c.pk %}">{% trans "Edit" %}</a>
+	{% endif %}
+{% endif %}
+</td>
 <td class="data_c">{% if c.country %}{{ c.treasury.double|yesno }}{% endif %}</td>
 </tr>
 {% endfor %}
@@ -69,7 +90,13 @@
 </tr>
 </thead>
 <tr>
-<td>{{ scenario.major_cities|join:", " }}</td>
+<td>
+{{ scenario.major_cities|join:", " }}
+	{% if user_can_edit %}
+	<br />
+	<a href="{% url scenario_cityincome_edit scenario.name %}">{% trans "Edit" %}</a>
+	{% endif %}
+</td>
 </tr>
 </table>
 
@@ -82,6 +109,9 @@
 {% for area in scenario.disabledarea_set.all %}
 <tr><td>{{ area.pretty_name }}</td></tr>
 {% endfor %}
+	{% if user_can_edit %}
+	<tr><td><a href="{% url scenario_disabled_edit scenario.name %}">{% trans "Edit" %}</a></td></tr>
+	{% endif %}
 </table>
 
 </div>
@@ -91,6 +121,9 @@
 <div id="scenario_map">
 <img src="{{ MEDIA_URL }}scenarios/625x890/{{ scenario.map_name }}" />
 </div>
+{% if user_can_edit %}
+	<p><a href="{% url scenario_make_map scenario.name %}">{% trans "Redraw map" %}</a></p>
+{% endif %}
 </div>
 
 {# endcache #}

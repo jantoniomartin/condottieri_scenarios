@@ -1,0 +1,64 @@
+{% extends 'condottieri_scenarios/base.html' %}
+
+{% load i18n %}
+{% load uni_form_tags %}
+
+{% block head_title %}{% blocktrans %}Edit country setup{% endblocktrans %}{% endblock %}
+
+{% block body %}
+<div class="section">
+{% if contender.country %}
+<h2>{% blocktrans with contender.country.name as country %}Initial setup for {{country}}{% endblocktrans %}</h2>
+
+<p>{% blocktrans with contender.country.name as country %}Select the units that {{ country }} will have at the start of the game.{% endblocktrans %}</p>
+
+{% else %}
+<h2>{% blocktrans %}Initial autonomous units{% endblocktrans %}</h2>
+
+<p>{% blocktrans %}Select the autonomous units that will be on the board at the start of the game.{% endblocktrans %}</p>
+
+{% endif %}
+
+<form action="." method="post" accept-charset="utf-8" class="uniForm">
+{% csrf_token %}
+{{ formset.management_form }}
+
+<table>
+<thead><tr>
+<th>{% trans "Area" %}</th>
+<th>{% trans "Unit type" %}</th>
+<th>{% trans "Delete" %}</th>
+</tr></thead>
+	{% for s in contender.setup_set.all %}
+	<tr>
+	<td>{{ s.area.name }}</td>
+	<td>{{ s.get_unit_type_display }}</td>
+	<td><a href="{% url scenario_setup_delete s.pk %}">{% trans "Delete" %}</a></td>
+	</tr>
+	{% endfor %}
+	{% for form in formset %}
+	<tr class="{{ formset.prefix }}">
+	{{ form.id }}
+	<td>
+		{% for e in form.errors.values %}
+			{{ e }}
+		{% endfor %}
+		{{ form.area }}
+		{{ form.area.errors }}
+	</td>
+	<td>
+		{{ form.unit_type }}
+		{{ form.unit_type.errors }}
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+	{% endfor %}
+</table>
+
+<p><input type="submit" value="{% trans "Save" %}" /></p>
+</form>
+
+<p><a href="{% url scenario_detail contender.scenario.name %}">{% trans "Return to scenario" %}</a></p>
+
+</div>
+{% endblock %}

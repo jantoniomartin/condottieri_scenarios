@@ -1,0 +1,51 @@
+{% extends 'condottieri_scenarios/base.html' %}
+
+{% load i18n %}
+{% load uni_form_tags %}
+
+{% block head_title %}{% blocktrans %}Edit city incomes{% endblocktrans %}{% endblock %}
+
+{% block body %}
+<div class="section">
+<h2>{% blocktrans %}Special city incomes{% endblocktrans %}</h2>
+
+<p>{% blocktrans %}Select the cities that give an additional income to the country that controls them.{% endblocktrans %}</p>
+
+<form action="." method="post" accept-charset="utf-8" class="uniForm">
+{% csrf_token %}
+{{ formset.management_form }}
+
+<table>
+<thead><tr>
+<th>{% trans "City" %}</th>
+<th>{% trans "Delete" %}</th>
+</tr></thead>
+	{% for c in scenario.cityincome_set.all %}
+	<tr>
+	<td>{{ c.city }}</td>
+	<td><a href="{% url scenario_cityincome_delete c.pk %}">{% trans "Delete" %}</a></td>
+	</tr>
+	{% endfor %}
+	{% for form in formset %}
+	<tr class="{{ formset.prefix }}">
+	{{ form.id }}
+	<td>
+		{% for e in form.errors.values %}
+			{{ e }}
+		{% endfor %}
+		{{ form.city }}
+		{{ form.city.errors }}
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+	{% endfor %}
+</table>
+
+<p><input type="submit" value="{% trans "Save" %}" />
+<a href="{% url scenario_detail scenario.name %}">{% trans "Cancel" %}</a>
+</p>
+</form>
+
+
+</div>
+{% endblock %}
