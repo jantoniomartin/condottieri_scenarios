@@ -46,8 +46,6 @@ class ScenarioForm(forms.ModelForm):
 
 class CreateContenderForm(forms.ModelForm):
 	country = forms.ModelChoiceField(queryset=scenarios.Country.objects.all(),
-		empty_label=_("Autonomous"),
-		required = False,
 		cache_choices=True,
 		label=_("Country"))
 
