@@ -35,7 +35,7 @@ class DisabledAreaInline(admin.TabularInline):
 
 class ScenarioAdmin(admin.ModelAdmin):
 	list_display = ('name', 'start_year')
-	inlines = [ContenderInline, CityIncomeInline, DisabledAreaInline, NeutralInline, ]
+	inlines = [ContenderInline, CityIncomeInline, DisabledAreaInline, ]
 	actions = ['make_map',]
 	
 	def make_map(self, request, queryset):
