@@ -33,10 +33,6 @@ class DisabledAreaInline(admin.TabularInline):
 	extra = 1
 	ordering = ['area', ]
 
-class NeutralInline(admin.TabularInline):
-	model = scenarios.Neutral
-	extra = 1
-
 class ScenarioAdmin(admin.ModelAdmin):
 	list_display = ('name', 'start_year')
 	inlines = [ContenderInline, CityIncomeInline, DisabledAreaInline, NeutralInline, ]
