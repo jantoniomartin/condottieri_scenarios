@@ -307,7 +307,3 @@
   model: condottieri_scenarios.cityincome
   pk: 10
 
-- fields: {country: 2, priority: 0, scenario: 4}
-  model: condottieri_scenarios.neutral
-  pk: 4
-
