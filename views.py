@@ -72,8 +72,7 @@ class ScenarioView(DetailView):
 	def get_context_data(self, **kwargs):
 		context = super(ScenarioView, self).get_context_data(**kwargs)
 		if self.request.user.is_authenticated():
-			user_can_edit = self.request.user.get_profile().is_editor or \
-				self.request.user.is_admin
+			user_can_edit = self.request.user.get_profile().is_editor
 			context.update({'user_can_edit': user_can_edit})
 		return context
 
