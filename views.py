@@ -53,7 +53,7 @@ class EditionAllowedMixin(CreationAllowedMixin):
 		except AttributeError:
 			print "No editor"
 			editor = None
-		if not editor == self.request.user:
+		if not editor == self.request.user and not self.request.user.is_staff:
 			raise http.Http404
 		return super(EditionAllowedMixin, self).get(request, *args, **kwargs)
 
@@ -66,7 +66,10 @@ class ScenarioListView(ListView):
 	model = models.Scenario
 	
 	def get_queryset(self):
-		return models.Scenario.objects.filter(Q(enabled=True)|Q(editor=self.request.user))
+		if self.request.user.is_staff:
+			return models.Scenario.objects.all()
+		else:
+			return models.Scenario.objects.filter(Q(enabled=True)|Q(editor=self.request.user))
 	
 class ScenarioView(DetailView):
 	model = models.Scenario
