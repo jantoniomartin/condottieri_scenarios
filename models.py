@@ -52,7 +52,7 @@ class Scenario(models.Model):
 	name = models.SlugField(_("slug"), max_length=128, unique=True)
 	title = models.CharField(max_length=128, verbose_name=_("title"), help_text=_("max. 128 characters"))
 	description = models.TextField(verbose_name=_("description"))
-	designer = models.CharField(_("designer"), max_length=30, help_text=_("leave it blank if you are the designer"))
+	designer = models.CharField(_("designer"), max_length=30, blank=True, null=True, help_text=_("leave it blank if you are the designer"))
 	start_year = models.PositiveIntegerField(_("start year"))
 	#number_of_players = models.PositiveIntegerField(_("number of players"), default=0)
 	editor = models.ForeignKey(User, verbose_name=_("editor"))
