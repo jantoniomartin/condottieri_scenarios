@@ -66,6 +66,8 @@ class ScenarioListView(ListView):
 	model = models.Scenario
 	
 	def get_queryset(self):
+		if not self.request.user.is_authenticated():
+			return models.Scenario.objects.filter(enabled=True)
 		if self.request.user.is_staff:
 			return models.Scenario.objects.all()
 		else:
