@@ -6,12 +6,13 @@
 
 {% block body %}
 
+<div itemscope itemtype="http://schema.org/CreativeWork">
 <div class="section">
-<h2>{{ scenario.title }} ({{ scenario.number_of_players }} {% trans "players" %})</h2>
-<p>{{ scenario.description }}</p>
+<h2 itemprop="name">{{ scenario.title }} ({{ scenario.number_of_players }} {% trans "players" %})</h2>
+<p itemprop="description">{{ scenario.description }}</p>
 <dl>
 <dt>{% trans "Designer" %}</dt>
-<dd>{% if scenario.designer %}
+<dd itemprop="author">{% if scenario.designer %}
 {{ scenario.designer }}
 {% else %}
 <a href="{% url profile_detail scenario.editor.username %}">{{ scenario.editor.username }}</a>
@@ -123,7 +124,7 @@
 <div class="section">
 <h2>{% trans "Initial map" %}</h2>
 <div id="scenario_map">
-<img src="{{ MEDIA_URL }}scenarios/625x890/{{ scenario.map_name }}" />
+<img src="{{ MEDIA_URL }}scenarios/625x890/{{ scenario.map_name }}" itemprop="image"/>
 </div>
 {% if user_can_edit %}
 	<p><a href="{% url scenario_make_map scenario.name %}">{% trans "Redraw map" %}</a></p>
@@ -134,6 +135,7 @@
 		{% trans "Enable scenario" %}
 	{% endif %}</a></p>
 {% endif %}
+</div>
 </div>
 
 {% endblock %}
