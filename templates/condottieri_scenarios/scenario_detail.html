@@ -10,7 +10,13 @@
 <h2>{{ scenario.title }} ({{ scenario.number_of_players }} {% trans "players" %})</h2>
 <p>{{ scenario.description }}</p>
 <dl>
-<dt>{% trans "Designer" %}</dt><dd>{{ scenario.designer }}</dd>
+<dt>{% trans "Designer" %}</dt>
+<dd>{% if scenario.designer %}
+{{ scenario.designer }}
+{% else %}
+<a href="{% url profile_detail scenario.editor.username %}">{{ scenario.editor.username }}</a>
+{% endif %}
+</dd>
 <dt>{% trans "Start year" %}</dt><dd>{{ scenario.start_year }}</dd>
 </dl>
 
