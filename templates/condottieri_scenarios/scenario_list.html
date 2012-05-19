@@ -1,14 +1,12 @@
 {% extends "condottieri_scenarios/base.html" %}
 
 {% load i18n %}
-{% load cache %}
 
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block head_title %}{% trans "Scenarios" %}{% endblock %}
 
 {% block body %}
-{% cache 3600 scenarios LANGUAGE_CODE %}
 <div class="section">
 <h1>{% trans "Scenarios" %}</h1>
 <table>
@@ -31,5 +29,4 @@
 </table>
 </div>
 
-{% endcache %}
 {% endblock %}

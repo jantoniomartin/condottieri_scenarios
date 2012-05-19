@@ -1,12 +1,10 @@
 {% extends 'condottieri_scenarios/base.html' %}
 
 {% load i18n %}
-{% load cache %}
 
 {% block head_title %}{{ scenario.title }}{% endblock %}
 
 {% block body %}
-{# cache 1800 "scenario" scenario.id LANGUAGE_CODE #}
 
 <div class="section">
 <h2>{{ scenario.title }} ({{ scenario.number_of_players }} {% trans "players" %})</h2>
@@ -132,5 +130,4 @@
 {% endif %}
 </div>
 
-{# endcache #}
 {% endblock %}
