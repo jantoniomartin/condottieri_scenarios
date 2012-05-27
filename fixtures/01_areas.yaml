@@ -495,7 +495,7 @@
   model: condottieri_scenarios.area
   pk: 32
 - fields:
-    borders: [58, 46, 50, 52, 54, 59, 56, 71, 53, 57]
+    borders: [58, 46, 50, 52, 54, 59, 56, 71, 53, 57, 73]
     code: LA
     has_city: false
     has_port: false
@@ -1087,7 +1087,7 @@
   model: condottieri_scenarios.area
   pk: 3
 - fields:
-    borders: [46, 35, 30, 33, 54, 26, 29, 32, 27, 40, 31]
+    borders: [46, 35, 30, 33, 54, 26, 29, 32, 27, 40, 31, 72]
     code: UA
     has_city: false
     has_port: false
