@@ -920,10 +920,10 @@
     is_sea: false
     control_income: 2
     garrison_income: 1
-    name_en: Savoy
-    name_es: Saboya
-    name_de: Savoyen
-    name_ca: Saboia
+    name_en: Savona
+    name_es: Savona
+    name_de: Savona
+    name_ca: Savona
   model: condottieri_scenarios.area
   pk: 8
 - fields:
