@@ -19,12 +19,12 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-from django.template.defaultfilters import slugify
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
 from transmeta import TransMeta
 
 import condottieri_scenarios.managers as managers
+import machiavelli.slugify as slugify
 
 class Error(Exception):
 	pass
@@ -68,7 +68,7 @@ class Scenario(models.Model):
 
 	def save(self, *args, **kwargs):
 		if not self.name:
-			self.name = slugify(self.title_en)
+			slugify.unique_slugify(self, self.title_en, slug_field_name='name')
 		super(Scenario, self).save(*args, **kwargs)
 
 	def _get_number_of_players(self):
