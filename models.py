@@ -192,7 +192,8 @@ class Country(models.Model):
 	__metaclass__ = TransMeta
 	name = models.CharField(_("name"), max_length=50)
 	color = models.CharField(_("color"), max_length=6, help_text=_("Hexadecimal RGB color (e.g: FF0000 for pure red)"))
-	coat_of_arms = models.ImageField(_("coat of arms"), upload_to=get_coat_upload_path)
+	coat_of_arms = models.ImageField(_("coat of arms"), upload_to=get_coat_upload_path,
+		help_text=_("Please, use only 40x40px PNG images with transparency"))
 	can_excommunicate = models.BooleanField(_("can excommunicate"), default=False)
 	static_name = models.SlugField(_("static name"), max_length=20, unique=True)
 	special_units = models.ManyToManyField(SpecialUnit, verbose_name="special units")

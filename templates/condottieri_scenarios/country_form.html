@@ -9,6 +9,8 @@
 <div class="section">
 <h2>{% trans "Edit country" %}</h2>
 
+<p>{% blocktrans %}You can use this form to edit the country data. The coat of arms is the symbol that will be pasted automagically on the country tokens. To get good looking tokens, you need to use only 40x40px PNG images with transparency. Every time you save this form, the tokens are regenerated.{% endblocktrans %}</p>
+
 <form action="." method="post" accept-charset="utf-8" class="uniForm" enctype="multipart/form-data">
 {% csrf_token %}
 {{ form|as_uni_form }}
