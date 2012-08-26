@@ -1,0 +1,29 @@
+{% extends "condottieri_scenarios/base.html" %}
+
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block head_title %}{% trans "Countries" %}{% endblock %}
+
+{% block body %}
+<div class="section">
+<h1>{% trans "Countries" %}</h1>
+
+<p><a href="{% url country_create %}">{% trans "New country" %}</a></p>
+
+<table>
+<thead><tr>
+<th>{% trans "Coat of arms" %}</td>
+<th>{% trans "Name" %}</th>
+</tr></thead>
+{% for c in object_list %}
+<tr {% if not c.enabled %}class="disabled"{% endif %}>
+<td class="data_c"><img src="{{ MEDIA_URL }}scenarios/badges/icon-{{ c.static_name }}.png" /></td>
+<td><a href="{% url country_detail c.static_name %}">{{ c.name }}</a></td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+{% endblock %}

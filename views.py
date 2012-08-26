@@ -62,6 +62,59 @@ class EditionAllowedMixin(CreationAllowedMixin):
 		context.update({'user_can_edit': True,})
 		return context
 
+class CountryCreateView(CreationAllowedMixin, CreateView):
+	model = models.Country
+	form_class = forms.CountryForm
+	
+	def get_context_data(self, **kwargs):
+		context = super(CountryCreateView, self).get_context_data(**kwargs)
+		user_is_editor = self.request.user.get_profile().is_editor
+		context.update({'user_can_create': user_is_editor,
+						'mode': 'create',})
+		return context
+	
+	def form_valid(self, form):
+		self.object = form.save(commit=False)
+		self.object.editor = self.request.user
+		self.object.save()
+		return super(CountryCreateView, self).form_valid(form)
+
+class CountryUpdateView(EditionAllowedMixin, UpdateView):
+	model = models.Country
+	slug_field = 'static_name'
+	context_object_name = 'country'
+	form_class = forms.CountryForm
+
+	def get_context_data(self, **kwargs):
+		context = super(CountryUpdateView, self).get_context_data(**kwargs)
+		if self.object.protected:
+			messages.error(self.request, _("This country is read only."))
+			return redirect(self.object)
+		return context
+	
+class CountryView(DetailView):
+	model = models.Country
+	slug_field = "static_name"
+	context_object_name = "country"
+
+	def get_context_data(self, **kwargs):
+		context = super(CountryView, self).get_context_data(**kwargs)
+		if self.request.user.is_authenticated():
+			user_can_edit = self.request.user.get_profile().is_editor
+			context.update({'user_can_edit': user_can_edit})
+		return context
+
+class CountryListView(ListView):
+	model = models.Country
+	
+	def get_queryset(self):
+		if not self.request.user.is_authenticated():
+			return models.Country.objects.filter(enabled=True)
+		if self.request.user.is_staff:
+			return models.Country.objects.all()
+		else:
+			return models.Country.objects.filter(Q(enabled=True)|Q(editor=self.request.user))
+	
 class ScenarioListView(ListView):
 	model = models.Scenario
 	

@@ -24,6 +24,7 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from transmeta import TransMeta
 
 import condottieri_scenarios.managers as managers
+import condottieri_scenarios.graphics as graphics
 import machiavelli.slugify as slugify
 
 class Error(Exception):
@@ -184,12 +185,20 @@ class SpecialUnit(models.Model):
 			'power': self.power,
 			'loyalty': self.loyalty}
 
+def get_coat_upload_path(instance, filename):
+	return "scenarios/coats/coat-%s.png" % instance.static_name
+
 class Country(models.Model):
 	__metaclass__ = TransMeta
-	name = models.CharField(_("name"), max_length=20, unique=True)
+	name = models.CharField(_("name"), max_length=50)
+	color = models.CharField(_("color"), max_length=6, help_text=_("Hexadecimal RGB color (e.g: FF0000 for pure red)"))
+	coat_of_arms = models.ImageField(_("coat of arms"), upload_to=get_coat_upload_path)
 	can_excommunicate = models.BooleanField(_("can excommunicate"), default=False)
-	static_name = models.CharField(_("static name"), max_length=20, default="")
+	static_name = models.SlugField(_("static name"), max_length=20, unique=True)
 	special_units = models.ManyToManyField(SpecialUnit, verbose_name="special units")
+	editor = models.ForeignKey(User, verbose_name=_("editor"))
+	enabled = models.BooleanField(_("enabled"), default=False)
+	protected = models.BooleanField(_("protected"), default=False)
 	
 	objects = managers.CountryManager()
 
@@ -199,8 +208,19 @@ class Country(models.Model):
 		ordering = ["static_name", ]
 		translate = ("name",)
 
+	def save(self, *args, **kwargs):
+		if not self.pk:
+			slugify.unique_slugify(self, self.name_en, slug_field_name='static_name')
+		super(Country, self).save(*args, **kwargs)
+
 	def __unicode__(self):
 		return self.name
+
+	def get_absolute_url(self):
+		return ('country_detail', None, {'slug': self.static_name})
+	get_absolute_url = models.permalink(get_absolute_url)
+
+models.signals.post_save.connect(graphics.make_country_tokens, sender=Country)
 
 class Contender(models.Model):
 	""" A Contender object defines a relationship between an Scenario and a

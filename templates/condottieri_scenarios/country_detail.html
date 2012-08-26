@@ -1,0 +1,25 @@
+{% extends 'condottieri_scenarios/base.html' %}
+
+{% load i18n %}
+
+{% block head_title %}{{ country.name }}{% endblock %}
+
+{% block body %}
+
+<div class="section">
+<h2 style="background: #{{ country.color }} url('{{ MEDIA_URL }}scenarios/badges/icon-{{ country.static_name }}.png') no-repeat right; color: black">{{ country.name }}</h2>
+
+<table>
+<tr><td>{% trans "Excommunication power" %}</td><td>{{ country.can_excommunicate|yesno }}</td></tr>
+<tr><td>{% trans "Available special units" %}</td><td>{{ country.special_units.all|join:" ," }}</td></tr>
+<tr><td>{% trans "Editor" %}</td><td><a href="{% url profile_detail country.editor %}">{{ country.editor }}</a></td></tr>
+</table>
+
+{% if user_can_edit %}
+<p><a href="{% url country_edit country.static_name %}">{% trans "Edit" %}</a></p>
+{% endif %}
+
+</div>
+
+
+{% endblock %}

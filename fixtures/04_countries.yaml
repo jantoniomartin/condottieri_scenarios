@@ -10,6 +10,9 @@
         name_ca: Nàpols
         special_units: [2]
         static_name: naples
+        color: 3D3DFF
+        editor: 1
+        enabled: True
     model: condottieri_scenarios.country
     pk: 1
 -   fields:
@@ -20,6 +23,9 @@
         name_ca: Turcs
         special_units: [3]
         static_name: turks
+        color: 00CCCC
+        editor: 1
+        enabled: True
     model: condottieri_scenarios.country
     pk: 2
 -   fields:
@@ -30,6 +36,9 @@
         name_ca: Venècia
         special_units: [1, 2, 3]
         static_name: venice
+        color: 996600 
+        editor: 1
+        enabled: True
     model: condottieri_scenarios.country
     pk: 3
 -   fields:
@@ -40,6 +49,9 @@
         name_ca: Papat
         special_units: [1, 2]
         static_name: papacy
+        color: 00991A
+        editor: 1
+        enabled: True
     model: condottieri_scenarios.country
     pk: 4
 -   fields:
@@ -50,6 +62,9 @@
         name_ca: Austria
         special_units: [2, 3]
         static_name: austria
+        color: B8B8B8 
+        editor: 1
+        enabled: True
     model: condottieri_scenarios.country
     pk: 5
 -   fields:
@@ -60,6 +75,9 @@
         name_ca: Florència
         special_units: [1, 2]
         static_name: florence
+        color: 66CCFF
+        editor: 1
+        enabled: True
     model: condottieri_scenarios.country
     pk: 6
 -   fields:
@@ -70,6 +88,9 @@
         name_ca: Milà
         special_units: [1, 2]
         static_name: milan
+        color: CC0000 
+        editor: 1
+        enabled: True
     model: condottieri_scenarios.country
     pk: 7
 -   fields:
@@ -80,6 +101,9 @@
         name_ca: França
         special_units: [2]
         static_name: france
+        color: A375D1
+        editor: 1
+        enabled: True
     model: condottieri_scenarios.country
     pk: 8
 -   fields:
@@ -90,6 +114,9 @@
         name_ca: Sacre Imperi Romà
         special_units: [2, 3]
         static_name: hre
+        color: FFDD11
+        editor: 1
+        enabled: True
     model: condottieri_scenarios.country
     pk: 12
 -   fields:
@@ -100,6 +127,9 @@
         name_ca: Saboia
         special_units: [2]
         static_name: savoy
+        color: BBFFDD 
+        editor: 1
+        enabled: True
     model: condottieri_scenarios.country
     pk: 11
 -   fields:
@@ -110,6 +140,9 @@
         name_ca: Imperi Espanyol
         special_units: [2, 3]
         static_name: spain
+        color: FCFCFC
+        editor: 1
+        enabled: True
     model: condottieri_scenarios.country
     pk: 13
 -   fields:
@@ -120,5 +153,8 @@
         name_ca: Gènova
         special_units: [2]
         static_name: genoa
+        color: 0080FF 
+        editor: 1
+        enabled: True
     model: condottieri_scenarios.country
     pk: 14

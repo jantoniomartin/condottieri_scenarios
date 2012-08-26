@@ -38,5 +38,13 @@ urlpatterns = patterns('condottieri_scenarios.views',
 		views.SetupDeleteView.as_view(), name='scenario_setup_delete'),
 	url(r'^contender/treasury/(?P<pk>\d+)/$',
 		views.ContenderTreasuryView.as_view(), name='scenario_contender_treasury'),
+	url(r'^country/$',
+		views.CountryListView.as_view(), name='country_list'),
+	url(r'^country/create/$',
+		views.CountryCreateView.as_view(), name='country_create'),
+	url(r'^country/detail/(?P<slug>[-\w]+)/$',
+		views.CountryView.as_view(), name='country_detail'),
+	url(r'^country/edit/(?P<slug>[-\w]+)/$',
+		views.CountryUpdateView.as_view(), name='country_edit'),
 )
 

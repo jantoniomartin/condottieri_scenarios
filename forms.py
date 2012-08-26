@@ -44,9 +44,13 @@ class ScenarioForm(forms.ModelForm):
 		model = scenarios.Scenario
 		fields = ( )
 
+class CountryForm(forms.ModelForm):
+	class Meta:
+		model = scenarios.Country
+		exclude = ('editor', 'static_name', 'protected',)
+
 class CreateContenderForm(forms.ModelForm):
-	country = forms.ModelChoiceField(queryset=scenarios.Country.objects.all(),
-		cache_choices=True,
+	country = forms.ModelChoiceField(queryset=scenarios.Country.objects.filter(enabled=True),
 		label=_("Country"))
 
 	class Meta:

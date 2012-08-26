@@ -18,17 +18,20 @@
 
 """ This module defines functions to generate the map. """
 
-import Image
+import Image, ImageDraw
 import os
 import os.path
 
 from django.conf import settings
 
-TOKENS_DIR=os.path.join(settings.PROJECT_ROOT, 'apps/machiavelli/media/machiavelli/tokens')
+TOKENS_DIR=os.path.join(settings.MEDIA_ROOT, 'scenarios', 'tokens')
+TEMPLATES_DIR=os.path.join(settings.PROJECT_ROOT, 'apps/condottieri_scenarios/media/condottieri_scenarios/token_templates')
+BADGES_DIR=os.path.join(settings.MEDIA_ROOT, 'scenarios', 'badges')
 
 BASEMAP='base-map.png'
 MAPSDIR=os.path.join(settings.MEDIA_ROOT, 'maps')
 SCENARIOSDIR=os.path.join(settings.MEDIA_ROOT, 'scenarios')
+COATSDIR=os.path.join(settings.MEDIA_ROOT, 'scenarios', 'coats')
 
 def ensure_dir(f):
 	d = os.path.dirname(f)
@@ -99,3 +102,90 @@ def make_scenario_thumb(scenario, w, h, dirname):
 	ensure_dir(outfile)
 	im.save(outfile, "JPEG")
 
+def round_corner(radius, fill):
+	""" Draw a round corner
+	Taken from http://nadiana.com/pil-tutorial-basic-advanced-drawing
+	"""
+	corner = Image.new("RGBA", (radius, radius), (0,0,0,0))
+	draw = ImageDraw.Draw(corner)
+	draw.pieslice((0, 0, radius * 2, radius * 2), 180, 270, fill=fill)
+	del draw
+	return corner
+
+def round_rectangle(size, radius, fill):
+	""" Draw a rounded rectangle
+	Taken from http://nadiana.com/pil-tutorial-basic-advanced-drawing
+	"""
+	width, height = size
+	rectangle = Image.new("RGBA", size, fill)
+	corner = round_corner(radius, fill)
+	rectangle.paste(corner, (0, 0))
+	rectangle.paste(corner.rotate(90), (0, height - radius))
+	rectangle.paste(corner.rotate(180), (width - radius, height - radius))
+	rectangle.paste(corner.rotate(270), (width - radius, 0))
+	return rectangle
+
+def make_flag(fill):
+	""" Draw a simple, colored flag """
+	flag = Image.new("RGBA", (48, 48))
+	draw = ImageDraw.Draw(flag)
+	coords = [(7,23), (20,18), (25,23), (45,18), (45,1), (25,6), (20,1), (7,6)]
+	draw.polygon(coords, fill=fill, outline="#000000")
+	draw.line([(7,5), (7,46)], fill="#000000", width=2)
+	del draw
+	return flag
+
+def make_country_tokens(instance, **kwargs):
+	""" Generate all the tokens for a country """
+	try:
+		coat = Image.open("%s/%s" % (settings.MEDIA_ROOT, instance.coat_of_arms))
+	except:
+		coat = None
+	## generate 48x48 Badge
+	badge_base = Image.open("%s/badge-base.png" % TEMPLATES_DIR)
+	if coat:
+		badge_base.paste(coat, (4,4), coat)
+	badge_base.save("%s/badge-%s.png" % (BADGES_DIR, instance.static_name))
+	## generate 24x24 icon
+	if coat:
+		icon = coat
+		icon.thumbnail((24,24), Image.ANTIALIAS)
+		icon.save("%s/icon-%s.png" % (BADGES_DIR, instance.static_name))
+	## generate Army token
+	army_base = Image.open("%s/army-base.png" % TEMPLATES_DIR)
+	draw = ImageDraw.Draw(army_base)
+	draw.ellipse((8, 8, 68, 68), fill="#%s" % instance.color)
+	del draw
+	if coat:
+		army_base.paste(coat, (18,18), coat)
+	army_base.save("%s/A-%s.png" % (TOKENS_DIR, instance.static_name))
+	## generate Garrison token
+	garrison_base = Image.open("%s/garrison-base.png" % TEMPLATES_DIR)
+	draw = ImageDraw.Draw(garrison_base)
+	draw.ellipse((4, 4, 44, 44), fill="#%s" % instance.color)
+	del draw
+	if coat:
+		g_coat = coat
+		g_coat.thumbnail((28, 28), Image.ANTIALIAS)
+		garrison_base.paste(g_coat, (12,12), g_coat)
+	garrison_base.save("%s/G-%s.png" % (TOKENS_DIR, instance.static_name))
+	## generate Fleet token
+	fleet_base = Image.open("%s/fleet-base.png" % TEMPLATES_DIR)
+	rectangle = round_rectangle((74,36), 10, "#%s" % instance.color)
+	fleet_base.paste(rectangle, (3, 3), rectangle)
+	ship = Image.open("%s/ship-icon.png" % TEMPLATES_DIR)
+	fleet_base.paste(ship, (0,0), ship)
+	if coat:
+		#g_coat = coat
+		#g_coat.thumbnail((28, 28), Image.ANTIALIAS)
+		fleet_base.paste(g_coat, (9, 7), g_coat)
+	fleet_base.save("%s/F-%s.png" % (TOKENS_DIR, instance.static_name))
+	## generate Control token
+	control = Image.new("RGBA", (36, 36))
+	draw = ImageDraw.Draw(control)
+	draw.ellipse((0, 0, 36, 36), fill="#%s" % instance.color, outline="#000000")
+	del draw
+	control.save("%s/control-%s.png" % (TOKENS_DIR, instance.static_name))
+	## generate Home flag
+	flag = make_flag("#%s" % instance.color)
+	flag.save("%s/flag-%s.png" % (TOKENS_DIR, instance.static_name))
