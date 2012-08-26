@@ -13,6 +13,7 @@
         color: 3D3DFF
         editor: 1
         enabled: True
+        protected: True
     model: condottieri_scenarios.country
     pk: 1
 -   fields:
@@ -26,6 +27,7 @@
         color: 00CCCC
         editor: 1
         enabled: True
+        protected: True
     model: condottieri_scenarios.country
     pk: 2
 -   fields:
@@ -39,6 +41,7 @@
         color: 996600 
         editor: 1
         enabled: True
+        protected: True
     model: condottieri_scenarios.country
     pk: 3
 -   fields:
@@ -52,6 +55,7 @@
         color: 00991A
         editor: 1
         enabled: True
+        protected: True
     model: condottieri_scenarios.country
     pk: 4
 -   fields:
@@ -65,6 +69,7 @@
         color: B8B8B8 
         editor: 1
         enabled: True
+        protected: True
     model: condottieri_scenarios.country
     pk: 5
 -   fields:
@@ -78,6 +83,7 @@
         color: 66CCFF
         editor: 1
         enabled: True
+        protected: True
     model: condottieri_scenarios.country
     pk: 6
 -   fields:
@@ -91,6 +97,7 @@
         color: CC0000 
         editor: 1
         enabled: True
+        protected: True
     model: condottieri_scenarios.country
     pk: 7
 -   fields:
@@ -104,6 +111,7 @@
         color: A375D1
         editor: 1
         enabled: True
+        protected: True
     model: condottieri_scenarios.country
     pk: 8
 -   fields:
@@ -117,6 +125,7 @@
         color: FFDD11
         editor: 1
         enabled: True
+        protected: True
     model: condottieri_scenarios.country
     pk: 12
 -   fields:
@@ -130,6 +139,7 @@
         color: BBFFDD 
         editor: 1
         enabled: True
+        protected: True
     model: condottieri_scenarios.country
     pk: 11
 -   fields:
@@ -143,6 +153,7 @@
         color: FCFCFC
         editor: 1
         enabled: True
+        protected: True
     model: condottieri_scenarios.country
     pk: 13
 -   fields:
@@ -156,5 +167,6 @@
         color: 0080FF 
         editor: 1
         enabled: True
+        protected: True
     model: condottieri_scenarios.country
     pk: 14
