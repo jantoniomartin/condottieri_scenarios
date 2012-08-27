@@ -115,6 +115,10 @@ class CountryListView(ListView):
 		else:
 			return models.Country.objects.filter(Q(enabled=True)|Q(editor=self.request.user))
 	
+class SettingView(DetailView):
+	model = models.Setting
+	context_object_name = 'setting'
+
 class ScenarioListView(ListView):
 	model = models.Scenario
 	

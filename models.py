@@ -45,11 +45,41 @@ class AreaIsOccupied(Error):
 class WrongUnitType(Error):
 	pass
 
+def get_board_upload_path(instance, filename):
+	return "scenarios/boards/board-%s.png" % instance.slug
+
+class Setting(models.Model):
+	""" A Setting represents a historic or fictional setting with a map.
+	For example, Machiavelli would be a Setting, and Diplomacy could be another Setting. """
+	__metaclass__ = TransMeta
+
+	slug = models.SlugField(_("slug"), max_length=50, unique=True)
+	title = models.CharField(max_length=128, verbose_name=_("title"), help_text=_("max. 128 characters"))
+	description = models.TextField(verbose_name=_("description"))
+	editor = models.ForeignKey(User, verbose_name=_("editor"))
+	enabled = models.BooleanField(_("enabled"), default=False)
+	board = models.ImageField(_("board"), upload_to=get_board_upload_path)
+
+	class Meta:
+		verbose_name = _("setting")
+		verbose_name_plural = _("settings")
+		ordering = ["slug",]
+		translate = ('title', 'description',)
+	
+	def save(self, *args, **kwargs):
+		if not self.pk:
+			slugify.unique_slugify(self, self.title_en, slug_field_name='slug')
+		super(Setting, self).save(*args, **kwargs)
+
+	def __unicode__(self):
+		return self.title
+
 class Scenario(models.Model):
 	""" This class defines a Condottieri scenario. """
 	
 	__metaclass__ = TransMeta
 	
+	setting = models.ForeignKey(Setting, verbose_name=_("setting"))
 	name = models.SlugField(_("slug"), max_length=128, unique=True)
 	title = models.CharField(max_length=128, verbose_name=_("title"), help_text=_("max. 128 characters"))
 	description = models.TextField(verbose_name=_("description"))
