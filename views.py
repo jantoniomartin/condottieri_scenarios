@@ -119,6 +119,9 @@ class SettingView(DetailView):
 	model = models.Setting
 	context_object_name = 'setting'
 
+class SettingListView(ListView):
+	model = models.Setting
+
 class ScenarioListView(ListView):
 	model = models.Scenario
 	

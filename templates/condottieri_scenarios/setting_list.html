@@ -1,0 +1,21 @@
+{% extends "condottieri_scenarios/base.html" %}
+
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block head_title %}{% trans "Settings" %}{% endblock %}
+
+{% block body %}
+<div class="section">
+<h1>{% trans "Settings" %}</h1>
+
+<ul>
+{% for setting in object_list %}
+<li><a href="{% url setting_detail setting.slug %}">{{ setting.title }}</a></li>
+{% endfor %}
+</ul>
+
+</div>
+
+{% endblock %}
