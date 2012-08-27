@@ -129,7 +129,7 @@ def make_flag(fill):
 	""" Draw a simple, colored flag """
 	flag = Image.new("RGBA", (48, 48))
 	draw = ImageDraw.Draw(flag)
-	coords = [(7,23), (20,18), (25,23), (45,18), (45,1), (25,6), (20,1), (7,6)]
+	coords = [(7,18), (20,13), (25,18), (45,13), (45,1), (25,6), (20,1), (7,6)]
 	draw.polygon(coords, fill=fill, outline="#000000")
 	draw.line([(7,5), (7,46)], fill="#000000", width=2)
 	del draw
