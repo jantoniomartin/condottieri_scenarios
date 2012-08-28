@@ -4,6 +4,10 @@ import condottieri_scenarios.views as views
 
 urlpatterns = patterns('condottieri_scenarios.views',
 	url(r'^$', views.ScenarioListView.as_view(), name='scenario_list'),
+	url(r'^setting/$',
+		views.SettingListView.as_view(), name='setting_list'),
+	url(r'^setting/detail/(?P<slug>[-\w]+)/$',
+		views.SettingView.as_view(), name='setting_detail'),
 	url(r'^create/$',
 		views.ScenarioCreateView.as_view(), name='scenario_create'),
 	url(r'^detail/(?P<slug>[-\w]+)/$',
@@ -46,5 +50,7 @@ urlpatterns = patterns('condottieri_scenarios.views',
 		views.CountryView.as_view(), name='country_detail'),
 	url(r'^country/edit/(?P<slug>[-\w]+)/$',
 		views.CountryUpdateView.as_view(), name='country_edit'),
+	url(r'^country/income/delete/(?P<pk>\d+)/$',
+		views.CountryRandomIncomeDeleteView.as_view(), name='country_income_delete'),
 )
 

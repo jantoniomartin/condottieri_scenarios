@@ -27,7 +27,9 @@ class CreateScenarioForm(forms.ModelForm):
 
 	class Meta:
 		model = scenarios.Scenario
-		fields = ('title_en',
+		fields = (
+			'setting',
+			'title_en',
 			'description_en',
 			'designer',
 			'start_year',)
@@ -57,27 +59,64 @@ class CreateContenderForm(forms.ModelForm):
 		model = scenarios.Contender
 		fields = ('country',)
 
+	def clean(self):
+		cleaned_data = self.cleaned_data
+		country = cleaned_data["country"]
+		scenario = cleaned_data["scenario"]
+		if country.get_income(scenario.setting):
+			return cleaned_data
+		else:
+			raise forms.ValidationError(_("You must define a variable income table for %s") % country)
+
 class ContenderEditForm(forms.ModelForm):
 	class Meta:
 		model = scenarios.Contender
 		fields = ( )
 
-class CityIncomeForm(forms.ModelForm):
-	city = forms.ModelChoiceField(queryset=scenarios.Area.objects.major())
+def homeformset_factory(setting):
+	class HomeForm(forms.ModelForm):
+		area = forms.ModelChoiceField(queryset=scenarios.Area.objects.filter(
+			setting=setting))
+	
+		class Meta:
+			model = scenarios.Home
+	
+	return inlineformset_factory(scenarios.Contender, scenarios.Home, form=HomeForm, extra=5)
 
-	class Meta:
-		model = scenarios.CityIncome
+def setupformset_factory(setting):
+	class SetupForm(forms.ModelForm):
+		area = forms.ModelChoiceField(queryset=scenarios.Area.objects.filter(
+			setting=setting))
+	
+		class Meta:
+			model = scenarios.Setup
+	
+	return inlineformset_factory(scenarios.Contender, scenarios.Setup, form=SetupForm, extra=5)
 
-HomeAreaFormSet = inlineformset_factory(scenarios.Contender, scenarios.Home, extra=5)
+def cityincomeformset_factory(setting):
+	class CityIncomeForm(forms.ModelForm):
+		city = forms.ModelChoiceField(queryset=scenarios.Area.objects.major().filter(setting=setting))
+	
+		class Meta:
+			model = scenarios.CityIncome
 
-SetupFormSet = inlineformset_factory(scenarios.Contender, scenarios.Setup, extra=5)
+	return inlineformset_factory(scenarios.Scenario, scenarios.CityIncome, form=CityIncomeForm, extra=3)
+
+def disabledareaformset_factory(setting):
+	class DisabledAreaForm(forms.ModelForm):
+		area = forms.ModelChoiceField(queryset=scenarios.Area.objects.filter(setting=setting))
+	
+		class Meta:
+			model = scenarios.DisabledArea
+
+	return inlineformset_factory(scenarios.Scenario, scenarios.DisabledArea, form=DisabledAreaForm, extra=5)
 
 TreasuryFormSet = inlineformset_factory(scenarios.Contender, scenarios.Treasury, extra=1)
 
-CityIncomeFormSet = inlineformset_factory(scenarios.Scenario, scenarios.CityIncome,
-	form=CityIncomeForm, extra=3)
-
-DisabledAreaFormSet = inlineformset_factory(scenarios.Scenario, scenarios.DisabledArea, extra=5)
-
 ContenderFormSet = inlineformset_factory(scenarios.Scenario, scenarios.Contender,
 	form=CreateContenderForm, extra=1)
+
+CountryRandomIncomeFormSet = inlineformset_factory(scenarios.Country,
+	scenarios.CountryRandomIncome,
+	extra=1)
+

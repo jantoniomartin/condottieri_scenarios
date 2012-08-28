@@ -90,8 +90,43 @@ class CountryUpdateView(EditionAllowedMixin, UpdateView):
 		if self.object.protected:
 			messages.error(self.request, _("This country is read only."))
 			return redirect(self.object)
+		formset = forms.CountryRandomIncomeFormSet
+		if self.request.POST:
+			context['formset'] = formset(instance=self.object, data=self.request.POST)
+		else:
+			context['formset'] = formset()
 		return context
 	
+	def form_valid(self, form):
+		context = self.get_context_data()
+		formset = context['formset']
+		if formset.is_valid():
+			try:
+				formset.save()
+			except Exception, v:
+				messages.error(self.request, v)
+			else:
+				return http.HttpResponseRedirect(self.get_success_url())
+		return self.render_to_response(self.get_context_data(form=form))
+
+class CountryRandomIncomeDeleteView(EditionAllowedMixin, DeleteView):
+	model = models.CountryRandomIncome
+	context_object_name = "income"
+	success_msg = _("The random income table has been deleted")
+
+	def get_success_url(self):
+		return reverse_lazy('country_detail', self.country_slug)
+
+	def delete(self, request, *args, **kwargs):
+		country = self.get_object().country
+		self.country_slug = country.static_name
+		if country.in_play:
+			messages.error(request, _("You cannot change the random income for a country that is currently being used in a game."))
+			return redirect(self.get_success_url())
+		else:
+			messages.success(request, self.success_msg)
+			return super(CountryRandomIncomeDeleteView, self).delete(request, *args, **kwargs)
+
 class CountryView(DetailView):
 	model = models.Country
 	slug_field = "static_name"
@@ -115,6 +150,13 @@ class CountryListView(ListView):
 		else:
 			return models.Country.objects.filter(Q(enabled=True)|Q(editor=self.request.user))
 	
+class SettingView(DetailView):
+	model = models.Setting
+	context_object_name = 'setting'
+
+class SettingListView(ListView):
+	model = models.Setting
+
 class ScenarioListView(ListView):
 	model = models.Scenario
 	
@@ -245,13 +287,15 @@ class DisabledAreasEditView(ScenarioUpdateView):
 	template_name = 'condottieri_scenarios/disabled_form.html'
 
 	def get_context_data(self, **kwargs):
-		return super(DisabledAreasEditView, self).get_context_data(formset=forms.DisabledAreaFormSet, **kwargs)
+		formset = forms.disabledareaformset_factory(self.object.setting)
+		return super(DisabledAreasEditView, self).get_context_data(formset=formset, **kwargs)
 
 class CityIncomeEditView(ScenarioUpdateView):
 	template_name = 'condottieri_scenarios/cityincome_form.html'
 
 	def get_context_data(self, formset=None, **kwargs):
-		return super(CityIncomeEditView, self).get_context_data(formset=forms.CityIncomeFormSet, **kwargs)
+		formset = forms.cityincomeformset_factory(self.object.setting)
+		return super(CityIncomeEditView, self).get_context_data(formset=formset, **kwargs)
 
 class ScenarioItemDeleteView(EditionAllowedMixin, DeleteView):
 	def delete(self, request, *args, **kwargs):
@@ -329,7 +373,8 @@ class ContenderHomeView(ContenderUpdateView):
 		return reverse_lazy('scenario_contender_homes', self.object.pk)
 	
 	def get_context_data(self, **kwargs):
-		return super(ContenderHomeView, self).get_context_data(formset=forms.HomeAreaFormSet, **kwargs)
+		formset = forms.homeformset_factory(self.object.scenario.setting)
+		return super(ContenderHomeView, self).get_context_data(formset=formset, **kwargs)
 
 class ContenderSetupView(ContenderUpdateView):
 	template_name = 'condottieri_scenarios/setup_form.html'
@@ -338,7 +383,8 @@ class ContenderSetupView(ContenderUpdateView):
 		return reverse_lazy('scenario_contender_setup', self.object.pk)
 	
 	def get_context_data(self, **kwargs):
-		return super(ContenderSetupView, self).get_context_data(formset=forms.SetupFormSet, **kwargs)
+		formset = forms.setupformset_factory(self.object.scenario.setting)
+		return super(ContenderSetupView, self).get_context_data(formset=formset, **kwargs)
 
 class ContenderTreasuryView(ContenderUpdateView):
 	template_name = 'condottieri_scenarios/treasury_form.html'

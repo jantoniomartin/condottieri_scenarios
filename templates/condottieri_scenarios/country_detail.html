@@ -16,7 +16,30 @@
 </table>
 
 {% if user_can_edit %}
-<p><a href="{% url country_edit country.static_name %}">{% trans "Edit" %}</a></p>
+<p><a href="{% url country_edit country.static_name %}">{% trans "Edit country" %}</a></p>
+{% endif %}
+
+<h3>{% trans "Variable incomes" %}</h3>
+<table>
+<thead><tr>
+<th>{% trans "Setting" %}</th>
+<th>{% trans "Income table" %}</th>
+{% if user_can_edit %}
+<th>{% trans "Delete" %}</th>
+{% endif %}
+</tr></thead>
+{% for income in country.countryrandomincome_set.all %}
+	<tr>
+	<td>{{ income.setting }}</td>
+	<td>{{ income.as_list|join:", " }}</td>
+	{% if user_can_edit %}
+	<td><a href="{% url country_income_delete income.pk %}">{% trans "Delete" %}</a></td>
+	{% endif %}
+	</tr>
+{% endfor %}
+</table>
+{% if user_can_edit %}
+<p><a href="{% url country_edit country.static_name %}">{% trans "Edit country to add incomes" %}</a></p>
 {% endif %}
 
 </div>

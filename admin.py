@@ -33,8 +33,11 @@ class DisabledAreaInline(admin.TabularInline):
 	extra = 1
 	ordering = ['area', ]
 
+class SettingAdmin(admin.ModelAdmin):
+	exclude = ('slug',)
+
 class ScenarioAdmin(admin.ModelAdmin):
-	list_display = ('name', 'start_year')
+	list_display = ('name', 'start_year', 'setting',)
 	inlines = [ContenderInline, CityIncomeInline, DisabledAreaInline, ]
 	actions = ['make_map',]
 	
@@ -61,13 +64,31 @@ class AFTokenInline(admin.TabularInline):
 	model = scenarios.AFToken
 	extra = 1
 
+class FamineInline(admin.TabularInline):
+	model = scenarios.FamineCell
+	extra = 1
+
+class PlagueInline(admin.TabularInline):
+	model = scenarios.PlagueCell
+	extra = 1
+
+class StormInline(admin.TabularInline):
+	model = scenarios.StormCell
+	extra = 1
+
 class AreaAdmin(admin.ModelAdmin):
 	list_display = ('name', 'code', 'is_sea', 'is_coast', 'has_city', 'is_fortified', 'has_port', 'control_income', 'garrison_income')
 	inlines = [ ControlTokenInline,
 		GTokenInline,
-		AFTokenInline ]
+		AFTokenInline,
+		FamineInline,
+		PlagueInline,
+		StormInline,]
 
+admin.site.register(scenarios.Setting, SettingAdmin) 
 admin.site.register(scenarios.Scenario, ScenarioAdmin) 
 admin.site.register(scenarios.Contender, ContenderAdmin) 
 admin.site.register(scenarios.Country, CountryAdmin)
 admin.site.register(scenarios.Area, AreaAdmin)
+admin.site.register(scenarios.CountryRandomIncome) 
+admin.site.register(scenarios.CityRandomIncome) 

@@ -28,7 +28,6 @@ TOKENS_DIR=os.path.join(settings.MEDIA_ROOT, 'scenarios', 'tokens')
 TEMPLATES_DIR=os.path.join(settings.PROJECT_ROOT, 'apps/condottieri_scenarios/media/condottieri_scenarios/token_templates')
 BADGES_DIR=os.path.join(settings.MEDIA_ROOT, 'scenarios', 'badges')
 
-BASEMAP='base-map.png'
 MAPSDIR=os.path.join(settings.MEDIA_ROOT, 'maps')
 SCENARIOSDIR=os.path.join(settings.MEDIA_ROOT, 'scenarios')
 COATSDIR=os.path.join(settings.MEDIA_ROOT, 'scenarios', 'coats')
@@ -41,7 +40,7 @@ def ensure_dir(f):
 def make_scenario_map(s):
 	""" Makes the initial map for an scenario.
 	"""
-	base_map = Image.open(os.path.join(TOKENS_DIR, BASEMAP))
+	base_map = Image.open(s.setting.board)
 	## if there are disabled areas, mark them
 	marker = Image.open("%s/disabled.png" % TOKENS_DIR)
 	for d in  s.disabledarea_set.all():

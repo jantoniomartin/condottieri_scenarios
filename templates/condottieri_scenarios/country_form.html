@@ -14,6 +14,41 @@
 <form action="." method="post" accept-charset="utf-8" class="uniForm" enctype="multipart/form-data">
 {% csrf_token %}
 {{ form|as_uni_form }}
+
+{% if country %}
+{{ formset.management_form }}
+<h3>{% trans "Variable income tables" %}</h3>
+<table>
+<thead><tr>
+<th>{% trans "Setting" %}</th>
+<th>{% trans "Income table" %}</th>
+</tr></thead>
+{% for income in country.countryrandomincome_set.all %}
+	<tr>
+	<td>{{ income.setting }}</td>
+	<td>{{ income.as_list|join:", " }}</td>
+	</tr>
+{% endfor %}
+
+{% for f in formset %}
+	<tr class="{{ formset.prefix }}">
+	{{ f.id }}
+	<td>
+		{% for e in f.errors.values %}
+			{{ e }}
+		{% endfor %}
+		{{ f.setting }}
+		{{ f.setting.errors }}
+	</td>
+	<td>
+		{{ f.income_list }}
+		{{ f.income_list.errors }}
+	</td>
+	</tr>
+{% endfor %}
+</table>
+{% endif %}
+
 <p><input type="submit" value="{% trans "Save" %}" /></p>
 </form>
 

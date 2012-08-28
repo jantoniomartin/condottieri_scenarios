@@ -20,8 +20,13 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
+from django.core.validators import RegexValidator
+from django.forms import ValidationError
 
 from transmeta import TransMeta
+
+import logging
+logger = logging.getLogger(__name__)
 
 import condottieri_scenarios.managers as managers
 import condottieri_scenarios.graphics as graphics
@@ -45,11 +50,41 @@ class AreaIsOccupied(Error):
 class WrongUnitType(Error):
 	pass
 
+def get_board_upload_path(instance, filename):
+	return "scenarios/boards/board-%s.png" % instance.slug
+
+class Setting(models.Model):
+	""" A Setting represents a historic or fictional setting with a map.
+	For example, Machiavelli would be a Setting, and Diplomacy could be another Setting. """
+	__metaclass__ = TransMeta
+
+	slug = models.SlugField(_("slug"), max_length=50, unique=True)
+	title = models.CharField(max_length=128, verbose_name=_("title"), help_text=_("max. 128 characters"))
+	description = models.TextField(verbose_name=_("description"))
+	editor = models.ForeignKey(User, verbose_name=_("editor"))
+	enabled = models.BooleanField(_("enabled"), default=False)
+	board = models.ImageField(_("board"), upload_to=get_board_upload_path)
+
+	class Meta:
+		verbose_name = _("setting")
+		verbose_name_plural = _("settings")
+		ordering = ["slug",]
+		translate = ('title', 'description',)
+	
+	def save(self, *args, **kwargs):
+		if not self.pk:
+			slugify.unique_slugify(self, self.title_en, slug_field_name='slug')
+		super(Setting, self).save(*args, **kwargs)
+
+	def __unicode__(self):
+		return self.title
+
 class Scenario(models.Model):
 	""" This class defines a Condottieri scenario. """
 	
 	__metaclass__ = TransMeta
 	
+	setting = models.ForeignKey(Setting, verbose_name=_("setting"))
 	name = models.SlugField(_("slug"), max_length=128, unique=True)
 	title = models.CharField(max_length=128, verbose_name=_("title"), help_text=_("max. 128 characters"))
 	description = models.TextField(verbose_name=_("description"))
@@ -220,6 +255,27 @@ class Country(models.Model):
 	def get_absolute_url(self):
 		return ('country_detail', None, {'slug': self.static_name})
 	get_absolute_url = models.permalink(get_absolute_url)
+	
+	def get_income(self, setting):
+		try:
+			income = self.countryrandomincome_set.get(setting=setting)
+		except ObjectDoesNotExist:
+			return False
+		else:
+			return income
+	
+	def get_random_income(self, setting, die, double):
+		income = self.get_income(setting)
+		if income:
+			return income.get_ducats(die, double=double)
+		else:
+			logger.error("Random income not found for country %s" % self)
+			return 0
+			
+	def _get_in_play(self):
+		return self.contender_set.exclude(scenario__game__finished__isnull=True).count() > 0
+
+	in_play = property(_get_in_play)
 
 models.signals.post_save.connect(graphics.make_country_tokens, sender=Country)
 
@@ -278,8 +334,9 @@ class Area(models.Model):
 	"""
 	__metaclass__ = TransMeta
 
-	name = models.CharField(max_length=25, unique=True, verbose_name=_("name"))
-	code = models.CharField(_("code"), max_length=5 ,unique=True)
+	setting = models.ForeignKey(Setting, verbose_name=_("setting"))
+	name = models.CharField(max_length=25, verbose_name=_("name"))
+	code = models.CharField(_("code"), max_length=5)
 	is_sea = models.BooleanField(_("is sea"), default=False)
 	is_coast = models.BooleanField(_("is coast"), default=False)
 	has_city = models.BooleanField(_("has city"), default=False)
@@ -301,7 +358,7 @@ class Area(models.Model):
 		""" Two areas can be adjacent through land, but not through a coast. 
 		
 		The list ``only_armies`` shows the areas that are adjacent but their
-		coasts are not, so a Fleet can move between them.
+		coasts are not, so a Fleet can't move between them.
 		"""
 		##TODO: Move this to a table in the database
 		only_armies = [
@@ -353,9 +410,19 @@ class Area(models.Model):
 	def __unicode__(self):
 		return "%(code)s - %(name)s" % {'name': self.name, 'code': self.code}
 	
+	def get_random_income(self, die):
+		try:
+			income = self.cityrandomincome
+		except ObjectDoesNotExist:
+			logger.error("Random income not found for city %s" % self)
+			return 0
+		else:
+			return income.get_ducats(die)
+			
 	class Meta:
 		verbose_name = _("area")
 		verbose_name_plural = _("areas")
+		unique_together = [('setting', 'code'),]
 		ordering = ('code',)
 		translate = ('name', )
 
@@ -432,6 +499,59 @@ class CityIncome(models.Model):
 		return self.scenario.editor
 
 	editor = property(_get_editor)
+
+income_list_validator = RegexValidator(regex="^([0-9]+,\s*){5}[0-9]+$",
+		message = _("List must have 6 comma separated numbers"))
+
+class RandomIncome(models.Model):
+	income_list = models.CharField(_("income list"), max_length=20,
+		validators=[income_list_validator,])
+	
+	class Meta:
+		abstract = True
+
+	def save(self):
+		self.income_list = "".join(self.income_list.split())
+		return super(RandomIncome, self).save()
+
+	def as_list(self):
+		return self.income_list.split(',')
+	
+	def get_ducats(self, die, double=False):
+		assert die in range(1, 7)
+		table = self.as_list()
+		d = int(table[die - 1])
+		if double:
+			return d * 2
+		else:
+			return d
+
+class CountryRandomIncome(RandomIncome):
+	""" This class details the number of ducats that a country gets
+	depending on a random integer (1-6).
+	"""
+	setting = models.ForeignKey(Setting, verbose_name=_("setting"))
+	country = models.ForeignKey(Country, verbose_name=_("country"))
+
+	class Meta(RandomIncome.Meta):
+		verbose_name = _("country random income")
+		verbose_name_plural = _("countries random incomes")
+
+	def __unicode__(self):
+		return unicode(self.country)
+
+class CityRandomIncome(RandomIncome):
+	""" This class details the number of ducats that a city gets
+	depending on a random integer (1-6).
+	"""
+	city = models.OneToOneField(Area, verbose_name=_("city"))
+
+	class Meta(RandomIncome.Meta):
+		verbose_name = _("city random income")
+		verbose_name_plural = _("cities random incomes")
+
+	def __unicode__(self):
+		return unicode(self.city)
 
 class Home(models.Model):
 	""" This class defines which Country controls each Area in a given Scenario,
@@ -566,4 +686,49 @@ class AFToken(models.Model):
 
 	def __unicode__(self):
 		return "%s, %s" % (self.x, self.y)
+
+##
+## Natural disasters
+##
+
+class DisasterCellManager(models.Manager):
+	def roll(self, setting, row=None, column=None):
+		cells = self.filter(area__setting=setting)
+		chosen_ids = []
+		if row:
+			chosen_ids += list(cells.filter(row=row).values_list('id', flat=True))
+		if column:
+			chosen_ids += list(cells.filter(column=column).values_list('id', flat=True))
+		return cells.filter(id__in=chosen_ids)
+
+class DisasterCell(models.Model):
+	area = models.OneToOneField(Area, verbose_name=_("area"))
+	row = models.PositiveIntegerField(_("row"))
+	column = models.PositiveIntegerField(_("column"))
+
+	objects = DisasterCellManager()
+	
+	class Meta:
+		abstract = True
+
+	def __unicode__(self):
+		return "%s (%s, %s)" % (self.area, self.row, self.column)
+
+class FamineCell(DisasterCell):
+	
+	class Meta(DisasterCell.Meta):
+		verbose_name = _("famine cell")
+		verbose_name_plural = _("famine cells")
+
+class PlagueCell(DisasterCell):
+	
+	class Meta(DisasterCell.Meta):
+		verbose_name = _("plague cell")
+		verbose_name_plural = _("plague cells")
+
+class StormCell(DisasterCell):
+	
+	class Meta(DisasterCell.Meta):
+		verbose_name = _("storm cell")
+		verbose_name_plural = _("storm cells")
 

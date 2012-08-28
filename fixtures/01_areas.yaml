@@ -12,6 +12,7 @@
     name_es: Albania
     name_de: Albanien
     name_ca: Albània
+    setting: 1
   model: condottieri_scenarios.area
   pk: 58
 - fields:
@@ -28,6 +29,7 @@
     name_es: Ancona
     name_de: Ancona
     name_ca: Ancona
+    setting: 1
   model: condottieri_scenarios.area
   pk: 46
 - fields:
@@ -44,6 +46,7 @@
     name_es: Áquila
     name_de: Aquila
     name_ca: Aquil·la
+    setting: 1
   model: condottieri_scenarios.area
   pk: 50
 - fields:
@@ -60,6 +63,7 @@
     name_es: Arezzo
     name_de: Arezzo
     name_ca: Aresso
+    setting: 1
   model: condottieri_scenarios.area
   pk: 39
 - fields:
@@ -76,6 +80,7 @@
     name_es: Austria
     name_de: Österreich
     name_ca: Austria
+    setting: 1
   model: condottieri_scenarios.area
   pk: 4
 - fields:
@@ -92,6 +97,7 @@
     name_es: Aviñón
     name_de: Avignon
     name_ca: Avinyó
+    setting: 1
   model: condottieri_scenarios.area
   pk: 1
 - fields:
@@ -108,6 +114,7 @@
     name_es: Bari
     name_de: Bari
     name_ca: Bari
+    setting: 1
   model: condottieri_scenarios.area
   pk: 52
 - fields:
@@ -124,6 +131,7 @@
     name_es: Bérgamo
     name_de: Bergamo
     name_ca: Bèrgam
+    setting: 1
   model: condottieri_scenarios.area
   pk: 22
 - fields:
@@ -140,6 +148,7 @@
     name_es: Boloña
     name_de: Bologna
     name_ca: Bolonya
+    setting: 1
   model: condottieri_scenarios.area
   pk: 35
 - fields:
@@ -156,6 +165,7 @@
     name_es: Bosnia
     name_de: Bosnien
     name_ca: Bòsnia
+    setting: 1
   model: condottieri_scenarios.area
   pk: 55
 - fields:
@@ -172,6 +182,7 @@
     name_es: Capua
     name_de: Capua
     name_ca: Càpua
+    setting: 1
   model: condottieri_scenarios.area
   pk: 48
 - fields:
@@ -188,6 +199,7 @@
     name_es: Carniola
     name_de: Krain
     name_ca: Carniola
+    setting: 1
   model: condottieri_scenarios.area
   pk: 30
 - fields:
@@ -204,6 +216,7 @@
     name_es: Carintia
     name_de: Kärnten
     name_ca: Caríntia
+    setting: 1
   model: condottieri_scenarios.area
   pk: 16
 - fields:
@@ -220,6 +233,7 @@
     name_es: Mediterráneo Central
     name_de: Zentrales Mittelmeer
     name_ca: Mediterrani Central
+    setting: 1
   model: condottieri_scenarios.area
   pk: 69
 - fields:
@@ -236,6 +250,7 @@
     name_es: Como
     name_de: Como
     name_ca: Como
+    setting: 1
   model: condottieri_scenarios.area
   pk: 11
 - fields:
@@ -252,6 +267,7 @@
     name_es: Córcega
     name_de: Korsika
     name_ca: Còrsega
+    setting: 1
   model: condottieri_scenarios.area
   pk: 60
 - fields:
@@ -268,6 +284,7 @@
     name_es: Crémona
     name_de: Cremona
     name_ca: Cremona
+    setting: 1
   model: condottieri_scenarios.area
   pk: 21
 - fields:
@@ -284,6 +301,7 @@
     name_es: Croacia
     name_de: Kroatien
     name_ca: Croàcia
+    setting: 1
   model: condottieri_scenarios.area
   pk: 33
 - fields:
@@ -300,6 +318,7 @@
     name_es: Dalmacia
     name_de: Dalmatien
     name_ca: Dalmàcia
+    setting: 1
   model: condottieri_scenarios.area
   pk: 54
 - fields:
@@ -316,6 +335,7 @@
     name_es: Durazzo
     name_de: Durazzo
     name_ca: Durazzo
+    setting: 1
   model: condottieri_scenarios.area
   pk: 59
 - fields:
@@ -332,6 +352,7 @@
     name_es: Ferrara
     name_de: Ferrara
     name_ca: Ferrara
+    setting: 1
   model: condottieri_scenarios.area
   pk: 26
 - fields:
@@ -348,6 +369,7 @@
     name_es: Florencia
     name_de: Florenz
     name_ca: Florència
+    setting: 1
   model: condottieri_scenarios.area
   pk: 38
 - fields:
@@ -364,6 +386,7 @@
     name_es: Fornovo
     name_de: Fornovo
     name_ca: Fornovo
+    setting: 1
   model: condottieri_scenarios.area
   pk: 19
 - fields:
@@ -380,6 +403,7 @@
     name_es: Friuli
     name_de: Friaul
     name_ca: Friuli
+    setting: 1
   model: condottieri_scenarios.area
   pk: 29
 - fields:
@@ -396,6 +420,7 @@
     name_es: Génova
     name_de: Genua
     name_ca: Gènova
+    setting: 1
   model: condottieri_scenarios.area
   pk: 18
 - fields:
@@ -412,6 +437,7 @@
     name_es: Golfo de Lion
     name_de: Golf von Lion
     name_ca: Golf de Lleó
+    setting: 1
   model: condottieri_scenarios.area
   pk: 65
 - fields:
@@ -428,6 +454,7 @@
     name_es: Golfo de Nápoles
     name_de: Golf von Neapel
     name_ca: Golf de Nàpols
+    setting: 1
   model: condottieri_scenarios.area
   pk: 70
 - fields:
@@ -444,6 +471,7 @@
     name_es: Herzegovina
     name_de: Herzegowina
     name_ca: Hercegovina
+    setting: 1
   model: condottieri_scenarios.area
   pk: 56
 - fields:
@@ -460,6 +488,7 @@
     name_es: Hungría
     name_de: Ungarn
     name_ca: Hongria
+    setting: 1
   model: condottieri_scenarios.area
   pk: 5
 - fields:
@@ -476,6 +505,7 @@
     name_es: Mar Jónico
     name_de: Ionisches Meer
     name_ca: Mar Jònic
+    setting: 1
   model: condottieri_scenarios.area
   pk: 71
 - fields:
@@ -492,6 +522,7 @@
     name_es: Istria
     name_de: Istrien
     name_ca: Ístria
+    setting: 1
   model: condottieri_scenarios.area
   pk: 32
 - fields:
@@ -508,6 +539,7 @@
     name_es: Adriático Inferior
     name_de: Südliches Adriatisch
     name_ca: Adriàtic Inferior
+    setting: 1
   model: condottieri_scenarios.area
   pk: 72
 - fields:
@@ -524,6 +556,7 @@
     name_es: Mar de Liguria
     name_de: Ligurisches Meer
     name_ca: Mar de Ligúria
+    setting: 1
   model: condottieri_scenarios.area
   pk: 66
 - fields:
@@ -540,6 +573,7 @@
     name_es: Lucca
     name_de: Lucca
     name_ca: Lucca
+    setting: 1
   model: condottieri_scenarios.area
   pk: 34
 - fields:
@@ -556,6 +590,7 @@
     name_es: Mantua
     name_de: Mantua
     name_ca: Màntua
+    setting: 1
   model: condottieri_scenarios.area
   pk: 25
 - fields:
@@ -572,6 +607,7 @@
     name_es: Marsella
     name_de: Marseille
     name_ca: Marsella
+    setting: 1
   model: condottieri_scenarios.area
   pk: 6
 - fields:
@@ -588,6 +624,7 @@
     name_es: Messina
     name_de: Messina
     name_ca: Messina
+    setting: 1
   model: condottieri_scenarios.area
   pk: 63
 - fields:
@@ -604,6 +641,7 @@
     name_es: Milán
     name_de: Mailand
     name_ca: Milà
+    setting: 1
   model: condottieri_scenarios.area
   pk: 14
 - fields:
@@ -620,6 +658,7 @@
     name_es: Módena
     name_de: Modena
     name_ca: Mòdena
+    setting: 1
   model: condottieri_scenarios.area
   pk: 24
 - fields:
@@ -636,6 +675,7 @@
     name_es: Montferrat
     name_de: Montferrat
     name_ca: Montferrat
+    setting: 1
   model: condottieri_scenarios.area
   pk: 12
 - fields:
@@ -652,6 +692,7 @@
     name_es: Nápoles
     name_de: Neapel
     name_ca: Nàpols
+    setting: 1
   model: condottieri_scenarios.area
   pk: 49
 - fields:
@@ -668,6 +709,7 @@
     name_es: Otranto
     name_de: Otranto
     name_ca: Otranto
+    setting: 1
   model: condottieri_scenarios.area
   pk: 53
 - fields:
@@ -684,6 +726,7 @@
     name_es: Padua
     name_de: Padua
     name_ca: Pàdua
+    setting: 1
   model: condottieri_scenarios.area
   pk: 27
 - fields:
@@ -700,6 +743,7 @@
     name_es: Palermo
     name_de: Palermo
     name_ca: Palerm
+    setting: 1
   model: condottieri_scenarios.area
   pk: 62
 - fields:
@@ -716,6 +760,7 @@
     name_es: Parma
     name_de: Parma
     name_ca: Parma
+    setting: 1
   model: condottieri_scenarios.area
   pk: 20
 - fields:
@@ -732,6 +777,7 @@
     name_es: Patrimonio
     name_de: Patrimonium
     name_ca: Patrimoni
+    setting: 1
   model: condottieri_scenarios.area
   pk: 43
 - fields:
@@ -748,6 +794,7 @@
     name_es: Pavía
     name_de: Pavia
     name_ca: Pavia
+    setting: 1
   model: condottieri_scenarios.area
   pk: 13
 - fields:
@@ -764,6 +811,7 @@
     name_es: Perusa
     name_de: Perugia
     name_ca: Perusa
+    setting: 1
   model: condottieri_scenarios.area
   pk: 44
 - fields:
@@ -780,6 +828,7 @@
     name_es: Piombino
     name_de: Piombino
     name_ca: Piombino
+    setting: 1
   model: condottieri_scenarios.area
   pk: 41
 - fields:
@@ -796,6 +845,7 @@
     name_es: Pistoia
     name_de: Pistoia
     name_ca: Pistoia
+    setting: 1
   model: condottieri_scenarios.area
   pk: 37
 - fields:
@@ -812,6 +862,7 @@
     name_es: Pisa
     name_de: Pisa
     name_ca: Pisa
+    setting: 1
   model: condottieri_scenarios.area
   pk: 36
 - fields:
@@ -828,6 +879,7 @@
     name_es: Provenza
     name_de: Provence
     name_ca: Provença
+    setting: 1
   model: condottieri_scenarios.area
   pk: 7
 - fields:
@@ -844,6 +896,7 @@
     name_es: Ragusa
     name_de: Ragusa
     name_ca: Ragussa
+    setting: 1
   model: condottieri_scenarios.area
   pk: 57
 - fields:
@@ -860,6 +913,7 @@
     name_es: Roma
     name_de: Rom
     name_ca: Roma
+    setting: 1
   model: condottieri_scenarios.area
   pk: 47
 - fields:
@@ -876,6 +930,7 @@
     name_es: Salerno
     name_de: Salerno
     name_ca: Salern
+    setting: 1
   model: condottieri_scenarios.area
   pk: 51
 - fields:
@@ -892,6 +947,7 @@
     name_es: Saluzzo
     name_de: Saluzzo
     name_ca: Salusso
+    setting: 1
   model: condottieri_scenarios.area
   pk: 9
 - fields:
@@ -908,6 +964,7 @@
     name_es: Cerdeña
     name_de: Sardinien
     name_ca: Sardenya
+    setting: 1
   model: condottieri_scenarios.area
   pk: 61
 - fields:
@@ -924,6 +981,7 @@
     name_es: Savona
     name_de: Savona
     name_ca: Savona
+    setting: 1
   model: condottieri_scenarios.area
   pk: 8
 - fields:
@@ -940,6 +998,7 @@
     name_es: Siena
     name_de: Siena
     name_ca: Sièna
+    setting: 1
   model: condottieri_scenarios.area
   pk: 42
 - fields:
@@ -956,6 +1015,7 @@
     name_es: Eslavonia
     name_de: Slawonien
     name_ca: Eslavònia
+    setting: 1
   model: condottieri_scenarios.area
   pk: 17
 - fields:
@@ -972,6 +1032,7 @@
     name_es: Espoleto
     name_de: Spoleto
     name_ca: Spoleto
+    setting: 1
   model: condottieri_scenarios.area
   pk: 45
 - fields:
@@ -988,6 +1049,7 @@
     name_es: Suiza
     name_de: Die Schweiz
     name_ca: Suïssa
+    setting: 1
   model: condottieri_scenarios.area
   pk: 2
 - fields:
@@ -1004,6 +1066,7 @@
     name_es: Treviso
     name_de: Treviso
     name_ca: Treviso
+    setting: 1
   model: condottieri_scenarios.area
   pk: 28
 - fields:
@@ -1020,6 +1083,7 @@
     name_es: Trento
     name_de: Trent
     name_ca: Trento
+    setting: 1
   model: condottieri_scenarios.area
   pk: 15
 - fields:
@@ -1036,6 +1100,7 @@
     name_es: Mar Tirreno
     name_de: Thyrrenisches Meer
     name_ca: Mar Tirrè
+    setting: 1
   model: condottieri_scenarios.area
   pk: 68
 - fields:
@@ -1052,6 +1117,7 @@
     name_es: Túnez
     name_de: Tunis
     name_ca: Tunísia
+    setting: 1
   model: condottieri_scenarios.area
   pk: 64
 - fields:
@@ -1068,6 +1134,7 @@
     name_es: Turín
     name_de: Turin
     name_ca: Torí
+    setting: 1
   model: condottieri_scenarios.area
   pk: 10
 - fields:
@@ -1084,6 +1151,7 @@
     name_es: Tirol
     name_de: Tirol
     name_ca: Tirol
+    setting: 1
   model: condottieri_scenarios.area
   pk: 3
 - fields:
@@ -1100,6 +1168,7 @@
     name_es: Adriático Superior
     name_de: Nordliches Adriatisch
     name_ca: Adriàtic Superior
+    setting: 1
   model: condottieri_scenarios.area
   pk: 73
 - fields:
@@ -1116,6 +1185,7 @@
     name_es: Urbino
     name_de: Urbino
     name_ca: Urbino
+    setting: 1
   model: condottieri_scenarios.area
   pk: 40
 - fields:
@@ -1132,6 +1202,7 @@
     name_es: Venecia
     name_de: Venedig
     name_ca: Venècia
+    setting: 1
   model: condottieri_scenarios.area
   pk: 31
 - fields:
@@ -1148,6 +1219,7 @@
     name_es: Verona
     name_de: Verona
     name_ca: Verona
+    setting: 1
   model: condottieri_scenarios.area
   pk: 23
 - fields:
@@ -1164,5 +1236,6 @@
     name_es: Mediterráneo Occidental
     name_de: Westliches Mittelmeer
     name_ca: Mediterrani Occidental
+    setting: 1
   model: condottieri_scenarios.area
   pk: 67
