@@ -33,6 +33,9 @@ class DisabledAreaInline(admin.TabularInline):
 	extra = 1
 	ordering = ['area', ]
 
+class SettingAdmin(admin.ModelAdmin):
+	exclude = ('slug',)
+
 class ScenarioAdmin(admin.ModelAdmin):
 	list_display = ('name', 'start_year', 'setting',)
 	inlines = [ContenderInline, CityIncomeInline, DisabledAreaInline, ]
@@ -67,7 +70,7 @@ class AreaAdmin(admin.ModelAdmin):
 		GTokenInline,
 		AFTokenInline ]
 
-admin.site.register(scenarios.Setting) 
+admin.site.register(scenarios.Setting, SettingAdmin) 
 admin.site.register(scenarios.Scenario, ScenarioAdmin) 
 admin.site.register(scenarios.Contender, ContenderAdmin) 
 admin.site.register(scenarios.Country, CountryAdmin)

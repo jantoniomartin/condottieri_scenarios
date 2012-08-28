@@ -252,13 +252,15 @@ class DisabledAreasEditView(ScenarioUpdateView):
 	template_name = 'condottieri_scenarios/disabled_form.html'
 
 	def get_context_data(self, **kwargs):
-		return super(DisabledAreasEditView, self).get_context_data(formset=forms.DisabledAreaFormSet, **kwargs)
+		formset = forms.disabledareaformset_factory(self.object.setting)
+		return super(DisabledAreasEditView, self).get_context_data(formset=formset, **kwargs)
 
 class CityIncomeEditView(ScenarioUpdateView):
 	template_name = 'condottieri_scenarios/cityincome_form.html'
 
 	def get_context_data(self, formset=None, **kwargs):
-		return super(CityIncomeEditView, self).get_context_data(formset=forms.CityIncomeFormSet, **kwargs)
+		formset = forms.cityincomeformset_factory(self.object.setting)
+		return super(CityIncomeEditView, self).get_context_data(formset=formset, **kwargs)
 
 class ScenarioItemDeleteView(EditionAllowedMixin, DeleteView):
 	def delete(self, request, *args, **kwargs):
@@ -336,7 +338,8 @@ class ContenderHomeView(ContenderUpdateView):
 		return reverse_lazy('scenario_contender_homes', self.object.pk)
 	
 	def get_context_data(self, **kwargs):
-		return super(ContenderHomeView, self).get_context_data(formset=forms.HomeAreaFormSet, **kwargs)
+		formset = forms.homeformset_factory(self.object.scenario.setting)
+		return super(ContenderHomeView, self).get_context_data(formset=formset, **kwargs)
 
 class ContenderSetupView(ContenderUpdateView):
 	template_name = 'condottieri_scenarios/setup_form.html'
@@ -345,7 +348,8 @@ class ContenderSetupView(ContenderUpdateView):
 		return reverse_lazy('scenario_contender_setup', self.object.pk)
 	
 	def get_context_data(self, **kwargs):
-		return super(ContenderSetupView, self).get_context_data(formset=forms.SetupFormSet, **kwargs)
+		formset = forms.setupformset_factory(self.object.scenario.setting)
+		return super(ContenderSetupView, self).get_context_data(formset=formset, **kwargs)
 
 class ContenderTreasuryView(ContenderUpdateView):
 	template_name = 'condottieri_scenarios/treasury_form.html'

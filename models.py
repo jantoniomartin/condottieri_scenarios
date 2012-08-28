@@ -321,8 +321,8 @@ class Area(models.Model):
 	__metaclass__ = TransMeta
 
 	setting = models.ForeignKey(Setting, verbose_name=_("setting"))
-	name = models.CharField(max_length=25, unique=True, verbose_name=_("name"))
-	code = models.CharField(_("code"), max_length=5 ,unique=True)
+	name = models.CharField(max_length=25, verbose_name=_("name"))
+	code = models.CharField(_("code"), max_length=5)
 	is_sea = models.BooleanField(_("is sea"), default=False)
 	is_coast = models.BooleanField(_("is coast"), default=False)
 	has_city = models.BooleanField(_("has city"), default=False)
@@ -344,7 +344,7 @@ class Area(models.Model):
 		""" Two areas can be adjacent through land, but not through a coast. 
 		
 		The list ``only_armies`` shows the areas that are adjacent but their
-		coasts are not, so a Fleet can move between them.
+		coasts are not, so a Fleet can't move between them.
 		"""
 		##TODO: Move this to a table in the database
 		only_armies = [
@@ -408,6 +408,7 @@ class Area(models.Model):
 	class Meta:
 		verbose_name = _("area")
 		verbose_name_plural = _("areas")
+		unique_together = [('setting', 'code'),]
 		ordering = ('code',)
 		translate = ('name', )
 
