@@ -1,0 +1,22 @@
+{% extends 'condottieri_scenarios/base.html' %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Delete variable income table" %}{% endblock %}
+
+{% block body %}
+
+<div class="section">
+<h2>{% trans "Confirm deletion" %}</h2>
+<p>{% blocktrans %}Please, confirm that you wish to delete the variable income table{% endblocktrans %}</p>
+
+<form action="." method="post" accept-charset="utf-8">
+{% csrf_token %}
+<p><input type="submit" value="{% trans "Delete" %}">
+<a href="{% url scenario_list %}">{% trans "Cancel" %}</a>
+</p>
+</form>
+
+</div>
+
+{% endblock %}

@@ -263,6 +263,11 @@ class Country(models.Model):
 		else:
 			return income.get_ducats(die, double=double)
 			
+	def _get_in_play(self):
+		return self.contender_set.exclude(scenario__game__finished__isnull=True).count() > 0
+
+	in_play = property(_get_in_play)
+
 models.signals.post_save.connect(graphics.make_country_tokens, sender=Country)
 
 class Contender(models.Model):

@@ -90,8 +90,43 @@ class CountryUpdateView(EditionAllowedMixin, UpdateView):
 		if self.object.protected:
 			messages.error(self.request, _("This country is read only."))
 			return redirect(self.object)
+		formset = forms.CountryRandomIncomeFormSet
+		if self.request.POST:
+			context['formset'] = formset(instance=self.object, data=self.request.POST)
+		else:
+			context['formset'] = formset()
 		return context
 	
+	def form_valid(self, form):
+		context = self.get_context_data()
+		formset = context['formset']
+		if formset.is_valid():
+			try:
+				formset.save()
+			except Exception, v:
+				messages.error(self.request, v)
+			else:
+				return http.HttpResponseRedirect(self.get_success_url())
+		return self.render_to_response(self.get_context_data(form=form))
+
+class CountryRandomIncomeDeleteView(EditionAllowedMixin, DeleteView):
+	model = models.CountryRandomIncome
+	context_object_name = "income"
+	success_msg = _("The random income table has been deleted")
+
+	def get_success_url(self):
+		return reverse_lazy('country_detail', self.country_slug)
+
+	def delete(self, request, *args, **kwargs):
+		country = self.get_object().country
+		self.country_slug = country.static_name
+		if country.in_play:
+			messages.error(request, _("You cannot change the random income for a country that is currently being used in a game."))
+			return redirect(self.get_success_url())
+		else:
+			messages.success(request, self.success_msg)
+			return super(CountryRandomIncomeDeleteView, self).delete(request, *args, **kwargs)
+
 class CountryView(DetailView):
 	model = models.Country
 	slug_field = "static_name"

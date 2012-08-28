@@ -106,3 +106,8 @@ TreasuryFormSet = inlineformset_factory(scenarios.Contender, scenarios.Treasury,
 
 ContenderFormSet = inlineformset_factory(scenarios.Scenario, scenarios.Contender,
 	form=CreateContenderForm, extra=1)
+
+CountryRandomIncomeFormSet = inlineformset_factory(scenarios.Country,
+	scenarios.CountryRandomIncome,
+	extra=1)
+

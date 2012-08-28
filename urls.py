@@ -50,5 +50,7 @@ urlpatterns = patterns('condottieri_scenarios.views',
 		views.CountryView.as_view(), name='country_detail'),
 	url(r'^country/edit/(?P<slug>[-\w]+)/$',
 		views.CountryUpdateView.as_view(), name='country_edit'),
+	url(r'^country/income/delete/(?P<pk>\d+)/$',
+		views.CountryRandomIncomeDeleteView.as_view(), name='country_income_delete'),
 )
 
