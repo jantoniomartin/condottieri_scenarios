@@ -20,6 +20,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
+from django.core.validators import RegexValidator
+from django.forms import ValidationError
 
 from transmeta import TransMeta
 
@@ -498,8 +500,12 @@ class CityIncome(models.Model):
 
 	editor = property(_get_editor)
 
+income_list_validator = RegexValidator(regex="^([0-9]+,\s*){5}[0-9]+$",
+		message = _("List must have 6 comma separated numbers"))
+
 class RandomIncome(models.Model):
-	income_list = models.CharField(_("income list"), max_length=20)
+	income_list = models.CharField(_("income list"), max_length=20,
+		validators=[income_list_validator,])
 	
 	class Meta:
 		abstract = True
