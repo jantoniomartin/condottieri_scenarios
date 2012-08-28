@@ -687,3 +687,48 @@ class AFToken(models.Model):
 	def __unicode__(self):
 		return "%s, %s" % (self.x, self.y)
 
+##
+## Natural disasters
+##
+
+class DisasterCellManager(models.Manager):
+	def roll(self, setting, row=None, column=None):
+		cells = self.filter(area__setting=setting)
+		chosen_ids = []
+		if row:
+			chosen_ids += list(cells.filter(row=row).values_list('id', flat=True))
+		if column:
+			chosen_ids += list(cells.filter(column=column).values_list('id', flat=True))
+		return cells.filter(id__in=chosen_ids)
+
+class DisasterCell(models.Model):
+	area = models.OneToOneField(Area, verbose_name=_("area"))
+	row = models.PositiveIntegerField(_("row"))
+	column = models.PositiveIntegerField(_("column"))
+
+	objects = DisasterCellManager()
+	
+	class Meta:
+		abstract = True
+
+	def __unicode__(self):
+		return "%s (%s, %s)" % (self.area, self.row, self.column)
+
+class FamineCell(DisasterCell):
+	
+	class Meta(DisasterCell.Meta):
+		verbose_name = _("famine cell")
+		verbose_name_plural = _("famine cells")
+
+class PlagueCell(DisasterCell):
+	
+	class Meta(DisasterCell.Meta):
+		verbose_name = _("plague cell")
+		verbose_name_plural = _("plague cells")
+
+class StormCell(DisasterCell):
+	
+	class Meta(DisasterCell.Meta):
+		verbose_name = _("storm cell")
+		verbose_name_plural = _("storm cells")
+
