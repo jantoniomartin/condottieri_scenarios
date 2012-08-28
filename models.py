@@ -23,6 +23,9 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
 from transmeta import TransMeta
 
+import logging
+logger = logging.getLogger(__name__)
+
 import condottieri_scenarios.managers as managers
 import condottieri_scenarios.graphics as graphics
 import machiavelli.slugify as slugify
@@ -251,6 +254,15 @@ class Country(models.Model):
 		return ('country_detail', None, {'slug': self.static_name})
 	get_absolute_url = models.permalink(get_absolute_url)
 
+	def get_random_income(self, setting, die, double):
+		try:
+			income = self.countryrandomincome_set.get(setting=setting)
+		except ObjectDoesNotExist:
+			logger.error("Random income not found for country %s" % self)
+			return 0
+		else:
+			return income.get_ducats(die, double=double)
+			
 models.signals.post_save.connect(graphics.make_country_tokens, sender=Country)
 
 class Contender(models.Model):
@@ -383,6 +395,15 @@ class Area(models.Model):
 	def __unicode__(self):
 		return "%(code)s - %(name)s" % {'name': self.name, 'code': self.code}
 	
+	def get_random_income(self, die):
+		try:
+			income = self.cityrandomincome
+		except ObjectDoesNotExist:
+			logger.error("Random income not found for city %s" % self)
+			return 0
+		else:
+			return income.get_ducats(die)
+			
 	class Meta:
 		verbose_name = _("area")
 		verbose_name_plural = _("areas")
@@ -462,6 +483,55 @@ class CityIncome(models.Model):
 		return self.scenario.editor
 
 	editor = property(_get_editor)
+
+class RandomIncome(models.Model):
+	income_list = models.CharField(_("income list"), max_length=20)
+	
+	class Meta:
+		abstract = True
+
+	def save(self):
+		self.income_list = "".join(self.income_list.split())
+		return super(RandomIncome, self).save()
+
+	def as_list(self):
+		return self.income_list.split(',')
+	
+	def get_ducats(self, die, double=False):
+		assert die in range(1, 7)
+		table = self.as_list()
+		d = int(table[die - 1])
+		if double:
+			return d * 2
+		else:
+			return d
+
+class CountryRandomIncome(RandomIncome):
+	""" This class details the number of ducats that a country gets
+	depending on a random integer (1-6).
+	"""
+	setting = models.ForeignKey(Setting, verbose_name=_("setting"))
+	country = models.ForeignKey(Country, verbose_name=_("country"))
+
+	class Meta(RandomIncome.Meta):
+		verbose_name = _("country random income")
+		verbose_name_plural = _("countries random incomes")
+
+	def __unicode__(self):
+		return unicode(self.country)
+
+class CityRandomIncome(RandomIncome):
+	""" This class details the number of ducats that a city gets
+	depending on a random integer (1-6).
+	"""
+	city = models.OneToOneField(Area, verbose_name=_("city"))
+
+	class Meta(RandomIncome.Meta):
+		verbose_name = _("city random income")
+		verbose_name_plural = _("cities random incomes")
+
+	def __unicode__(self):
+		return unicode(self.city)
 
 class Home(models.Model):
 	""" This class defines which Country controls each Area in a given Scenario,
