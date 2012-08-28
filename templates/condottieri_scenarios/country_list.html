@@ -19,7 +19,7 @@
 </tr></thead>
 {% for c in object_list %}
 <tr {% if not c.enabled %}class="disabled"{% endif %}>
-<td class="data_c"><img src="{{ MEDIA_URL }}scenarios/badges/icon-{{ c.static_name }}.png" /></td>
+<td class="data_c" style="background: #{{ c.color }}"><img src="{{ MEDIA_URL }}scenarios/badges/icon-{{ c.static_name }}.png" /></td>
 <td><a href="{% url country_detail c.static_name %}">{{ c.name }}</a></td>
 </tr>
 {% endfor %}
