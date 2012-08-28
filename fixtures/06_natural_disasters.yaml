@@ -1,0 +1,411 @@
+- fields: {area: 58, column: 11, row: 8}
+  model: condottieri_scenarios.faminecell
+  pk: 1
+- fields: {area: 46, column: 9, row: 2}
+  model: condottieri_scenarios.faminecell
+  pk: 2
+- fields: {area: 50, column: 6, row: 12}
+  model: condottieri_scenarios.faminecell
+  pk: 3
+- fields: {area: 39, column: 8, row: 8}
+  model: condottieri_scenarios.faminecell
+  pk: 4
+- fields: {area: 4, column: 7, row: 5}
+  model: condottieri_scenarios.faminecell
+  pk: 5
+- fields: {area: 1, column: 7, row: 12}
+  model: condottieri_scenarios.faminecell
+  pk: 6
+- fields: {area: 52, column: 3, row: 7}
+  model: condottieri_scenarios.faminecell
+  pk: 7
+- fields: {area: 22, column: 6, row: 6}
+  model: condottieri_scenarios.faminecell
+  pk: 8
+- fields: {area: 35, column: 4, row: 5}
+  model: condottieri_scenarios.faminecell
+  pk: 9
+- fields: {area: 55, column: 7, row: 10}
+  model: condottieri_scenarios.faminecell
+  pk: 10
+- fields: {area: 48, column: 9, row: 9}
+  model: condottieri_scenarios.faminecell
+  pk: 11
+- fields: {area: 30, column: 9, row: 11}
+  model: condottieri_scenarios.faminecell
+  pk: 12
+- fields: {area: 16, column: 5, row: 6}
+  model: condottieri_scenarios.faminecell
+  pk: 13
+- fields: {area: 11, column: 9, row: 7}
+  model: condottieri_scenarios.faminecell
+  pk: 14
+- fields: {area: 60, column: 8, row: 2}
+  model: condottieri_scenarios.faminecell
+  pk: 15
+- fields: {area: 21, column: 7, row: 4}
+  model: condottieri_scenarios.faminecell
+  pk: 16
+- fields: {area: 33, column: 4, row: 9}
+  model: condottieri_scenarios.faminecell
+  pk: 17
+- fields: {area: 54, column: 12, row: 10}
+  model: condottieri_scenarios.faminecell
+  pk: 18
+- fields: {area: 59, column: 12, row: 5}
+  model: condottieri_scenarios.faminecell
+  pk: 19
+- fields: {area: 26, column: 2, row: 8}
+  model: condottieri_scenarios.faminecell
+  pk: 20
+- fields: {area: 38, column: 6, row: 9}
+  model: condottieri_scenarios.faminecell
+  pk: 21
+- fields: {area: 19, column: 7, row: 7}
+  model: condottieri_scenarios.faminecell
+  pk: 22
+- fields: {area: 29, column: 2, row: 5}
+  model: condottieri_scenarios.faminecell
+  pk: 23
+- fields: {area: 18, column: 12, row: 8}
+  model: condottieri_scenarios.faminecell
+  pk: 24
+- fields: {area: 56, column: 10, row: 4}
+  model: condottieri_scenarios.faminecell
+  pk: 25
+- fields: {area: 5, column: 11, row: 6}
+  model: condottieri_scenarios.faminecell
+  pk: 26
+- fields: {area: 32, column: 10, row: 12}
+  model: condottieri_scenarios.faminecell
+  pk: 27
+- fields: {area: 34, column: 8, row: 12}
+  model: condottieri_scenarios.faminecell
+  pk: 28
+- fields: {area: 25, column: 8, row: 9}
+  model: condottieri_scenarios.faminecell
+  pk: 29
+- fields: {area: 6, column: 2, row: 6}
+  model: condottieri_scenarios.faminecell
+  pk: 30
+- fields: {area: 63, column: 11, row: 11}
+  model: condottieri_scenarios.faminecell
+  pk: 31
+- fields: {area: 14, column: 8, row: 5}
+  model: condottieri_scenarios.faminecell
+  pk: 32
+- fields: {area: 24, column: 6, row: 2}
+  model: condottieri_scenarios.faminecell
+  pk: 33
+- fields: {area: 12, column: 5, row: 7}
+  model: condottieri_scenarios.faminecell
+  pk: 34
+- fields: {area: 49, column: 10, row: 10}
+  model: condottieri_scenarios.faminecell
+  pk: 35
+- fields: {area: 53, column: 4, row: 4}
+  model: condottieri_scenarios.faminecell
+  pk: 36
+- fields: {area: 27, column: 5, row: 4}
+  model: condottieri_scenarios.faminecell
+  pk: 37
+- fields: {area: 62, column: 12, row: 3}
+  model: condottieri_scenarios.faminecell
+  pk: 38
+- fields: {area: 20, column: 6, row: 10}
+  model: condottieri_scenarios.faminecell
+  pk: 39
+- fields: {area: 43, column: 5, row: 2}
+  model: condottieri_scenarios.faminecell
+  pk: 40
+- fields: {area: 13, column: 5, row: 8}
+  model: condottieri_scenarios.faminecell
+  pk: 41
+- fields: {area: 44, column: 2, row: 4}
+  model: condottieri_scenarios.faminecell
+  pk: 42
+- fields: {area: 41, column: 3, row: 3}
+  model: condottieri_scenarios.faminecell
+  pk: 43
+- fields: {area: 37, column: 7, row: 6}
+  model: condottieri_scenarios.faminecell
+  pk: 44
+- fields: {area: 36, column: 5, row: 12}
+  model: condottieri_scenarios.faminecell
+  pk: 45
+- fields: {area: 7, column: 4, row: 2}
+  model: condottieri_scenarios.faminecell
+  pk: 46
+- fields: {area: 57, column: 3, row: 6}
+  model: condottieri_scenarios.faminecell
+  pk: 47
+- fields: {area: 47, column: 4, row: 8}
+  model: condottieri_scenarios.faminecell
+  pk: 48
+- fields: {area: 51, column: 5, row: 5}
+  model: condottieri_scenarios.faminecell
+  pk: 49
+- fields: {area: 9, column: 10, row: 8}
+  model: condottieri_scenarios.faminecell
+  pk: 50
+- fields: {area: 61, column: 4, row: 10}
+  model: condottieri_scenarios.faminecell
+  pk: 51
+- fields: {area: 8, column: 2, row: 10}
+  model: condottieri_scenarios.faminecell
+  pk: 52
+- fields: {area: 42, column: 9, row: 5}
+  model: condottieri_scenarios.faminecell
+  pk: 53
+- fields: {area: 17, column: 4, row: 7}
+  model: condottieri_scenarios.faminecell
+  pk: 54
+- fields: {area: 45, column: 8, row: 6}
+  model: condottieri_scenarios.faminecell
+  pk: 55
+- fields: {area: 2, column: 6, row: 4}
+  model: condottieri_scenarios.faminecell
+  pk: 56
+- fields: {area: 28, column: 10, row: 9}
+  model: condottieri_scenarios.faminecell
+  pk: 57
+- fields: {area: 15, column: 10, row: 7}
+  model: condottieri_scenarios.faminecell
+  pk: 58
+- fields: {area: 64, column: 9, row: 3}
+  model: condottieri_scenarios.faminecell
+  pk: 59
+- fields: {area: 10, column: 7, row: 9}
+  model: condottieri_scenarios.faminecell
+  pk: 60
+- fields: {area: 3, column: 8, row: 10}
+  model: condottieri_scenarios.faminecell
+  pk: 61
+- fields: {area: 40, column: 6, row: 7}
+  model: condottieri_scenarios.faminecell
+  pk: 62
+- fields: {area: 31, column: 4, row: 11}
+  model: condottieri_scenarios.faminecell
+  pk: 63
+- fields: {area: 23, column: 6, row: 5}
+  model: condottieri_scenarios.faminecell
+  pk: 64
+- fields: {area: 58, column: 5, row: 7}
+  model: condottieri_scenarios.plaguecell
+  pk: 1
+- fields: {area: 46, column: 4, row: 9}
+  model: condottieri_scenarios.plaguecell
+  pk: 2
+- fields: {area: 50, column: 11, row: 11}
+  model: condottieri_scenarios.plaguecell
+  pk: 3
+- fields: {area: 39, column: 2, row: 11}
+  model: condottieri_scenarios.plaguecell
+  pk: 4
+- fields: {area: 4, column: 8, row: 6}
+  model: condottieri_scenarios.plaguecell
+  pk: 5
+- fields: {area: 1, column: 8, row: 7}
+  model: condottieri_scenarios.plaguecell
+  pk: 6
+- fields: {area: 52, column: 11, row: 3}
+  model: condottieri_scenarios.plaguecell
+  pk: 7
+- fields: {area: 22, column: 3, row: 9}
+  model: condottieri_scenarios.plaguecell
+  pk: 8
+- fields: {area: 35, column: 8, row: 5}
+  model: condottieri_scenarios.plaguecell
+  pk: 9
+- fields: {area: 55, column: 3, row: 3}
+  model: condottieri_scenarios.plaguecell
+  pk: 10
+- fields: {area: 48, column: 12, row: 2}
+  model: condottieri_scenarios.plaguecell
+  pk: 11
+- fields: {area: 30, column: 6, row: 2}
+  model: condottieri_scenarios.plaguecell
+  pk: 12
+- fields: {area: 16, column: 9, row: 5}
+  model: condottieri_scenarios.plaguecell
+  pk: 13
+- fields: {area: 11, column: 12, row: 10}
+  model: condottieri_scenarios.plaguecell
+  pk: 14
+- fields: {area: 60, column: 9, row: 12}
+  model: condottieri_scenarios.plaguecell
+  pk: 15
+- fields: {area: 21, column: 7, row: 8}
+  model: condottieri_scenarios.plaguecell
+  pk: 16
+- fields: {area: 33, column: 8, row: 3}
+  model: condottieri_scenarios.plaguecell
+  pk: 17
+- fields: {area: 54, column: 6, row: 5}
+  model: condottieri_scenarios.plaguecell
+  pk: 18
+- fields: {area: 59, column: 2, row: 8}
+  model: condottieri_scenarios.plaguecell
+  pk: 19
+- fields: {area: 26, column: 9, row: 6}
+  model: condottieri_scenarios.plaguecell
+  pk: 20
+- fields: {area: 38, column: 9, row: 8}
+  model: condottieri_scenarios.plaguecell
+  pk: 21
+- fields: {area: 19, column: 3, row: 11}
+  model: condottieri_scenarios.plaguecell
+  pk: 22
+- fields: {area: 29, column: 5, row: 4}
+  model: condottieri_scenarios.plaguecell
+  pk: 23
+- fields: {area: 18, column: 4, row: 7}
+  model: condottieri_scenarios.plaguecell
+  pk: 24
+- fields: {area: 56, column: 3, row: 12}
+  model: condottieri_scenarios.plaguecell
+  pk: 25
+- fields: {area: 5, column: 3, row: 10}
+  model: condottieri_scenarios.plaguecell
+  pk: 26
+- fields: {area: 32, column: 11, row: 9}
+  model: condottieri_scenarios.plaguecell
+  pk: 27
+- fields: {area: 34, column: 7, row: 5}
+  model: condottieri_scenarios.plaguecell
+  pk: 28
+- fields: {area: 25, column: 10, row: 9}
+  model: condottieri_scenarios.plaguecell
+  pk: 29
+- fields: {area: 6, column: 9, row: 4}
+  model: condottieri_scenarios.plaguecell
+  pk: 30
+- fields: {area: 63, column: 6, row: 6}
+  model: condottieri_scenarios.plaguecell
+  pk: 31
+- fields: {area: 14, column: 9, row: 7}
+  model: condottieri_scenarios.plaguecell
+  pk: 32
+- fields: {area: 24, column: 5, row: 8}
+  model: condottieri_scenarios.plaguecell
+  pk: 33
+- fields: {area: 12, column: 11, row: 2}
+  model: condottieri_scenarios.plaguecell
+  pk: 34
+- fields: {area: 49, column: 4, row: 8}
+  model: condottieri_scenarios.plaguecell
+  pk: 35
+- fields: {area: 53, column: 9, row: 11}
+  model: condottieri_scenarios.plaguecell
+  pk: 36
+- fields: {area: 27, column: 7, row: 6}
+  model: condottieri_scenarios.plaguecell
+  pk: 37
+- fields: {area: 62, column: 2, row: 7}
+  model: condottieri_scenarios.plaguecell
+  pk: 38
+- fields: {area: 20, column: 5, row: 9}
+  model: condottieri_scenarios.plaguecell
+  pk: 39
+- fields: {area: 43, column: 11, row: 12}
+  model: condottieri_scenarios.plaguecell
+  pk: 40
+- fields: {area: 13, column: 10, row: 4}
+  model: condottieri_scenarios.plaguecell
+  pk: 41
+- fields: {area: 44, column: 6, row: 8}
+  model: condottieri_scenarios.plaguecell
+  pk: 42
+- fields: {area: 41, column: 2, row: 10}
+  model: condottieri_scenarios.plaguecell
+  pk: 43
+- fields: {area: 37, column: 5, row: 12}
+  model: condottieri_scenarios.plaguecell
+  pk: 44
+- fields: {area: 36, column: 6, row: 7}
+  model: condottieri_scenarios.plaguecell
+  pk: 45
+- fields: {area: 7, column: 10, row: 5}
+  model: condottieri_scenarios.plaguecell
+  pk: 46
+- fields: {area: 57, column: 2, row: 3}
+  model: condottieri_scenarios.plaguecell
+  pk: 47
+- fields: {area: 47, column: 7, row: 4}
+  model: condottieri_scenarios.plaguecell
+  pk: 48
+- fields: {area: 51, column: 3, row: 5}
+  model: condottieri_scenarios.plaguecell
+  pk: 49
+- fields: {area: 9, column: 12, row: 12}
+  model: condottieri_scenarios.plaguecell
+  pk: 50
+- fields: {area: 61, column: 12, row: 7}
+  model: condottieri_scenarios.plaguecell
+  pk: 51
+- fields: {area: 8, column: 2, row: 4}
+  model: condottieri_scenarios.plaguecell
+  pk: 52
+- fields: {area: 42, column: 5, row: 6}
+  model: condottieri_scenarios.plaguecell
+  pk: 53
+- fields: {area: 17, column: 4, row: 3}
+  model: condottieri_scenarios.plaguecell
+  pk: 54
+- fields: {area: 45, column: 12, row: 11}
+  model: condottieri_scenarios.plaguecell
+  pk: 55
+- fields: {area: 2, column: 3, row: 2}
+  model: condottieri_scenarios.plaguecell
+  pk: 56
+- fields: {area: 28, column: 10, row: 10}
+  model: condottieri_scenarios.plaguecell
+  pk: 57
+- fields: {area: 15, column: 2, row: 12}
+  model: condottieri_scenarios.plaguecell
+  pk: 58
+- fields: {area: 64, column: 7, row: 7}
+  model: condottieri_scenarios.plaguecell
+  pk: 59
+- fields: {area: 10, column: 4, row: 6}
+  model: condottieri_scenarios.plaguecell
+  pk: 60
+- fields: {area: 3, column: 12, row: 3}
+  model: condottieri_scenarios.plaguecell
+  pk: 61
+- fields: {area: 40, column: 5, row: 10}
+  model: condottieri_scenarios.plaguecell
+  pk: 62
+- fields: {area: 31, column: 8, row: 8}
+  model: condottieri_scenarios.plaguecell
+  pk: 63
+- fields: {area: 23, column: 4, row: 5}
+  model: condottieri_scenarios.plaguecell
+  pk: 64
+- fields: {area: 69, column: 3, row: 11}
+  model: condottieri_scenarios.stormcell
+  pk: 1
+- fields: {area: 65, column: 4, row: 4}
+  model: condottieri_scenarios.stormcell
+  pk: 2
+- fields: {area: 70, column: 10, row: 11}
+  model: condottieri_scenarios.stormcell
+  pk: 3
+- fields: {area: 71, column: 5, row: 2}
+  model: condottieri_scenarios.stormcell
+  pk: 4
+- fields: {area: 72, column: 9, row: 12}
+  model: condottieri_scenarios.stormcell
+  pk: 5
+- fields: {area: 66, column: 11, row: 10}
+  model: condottieri_scenarios.stormcell
+  pk: 6
+- fields: {area: 68, column: 7, row: 7}
+  model: condottieri_scenarios.stormcell
+  pk: 7
+- fields: {area: 73, column: 2, row: 3}
+  model: condottieri_scenarios.stormcell
+  pk: 8
+- fields: {area: 67, column: 11, row: 3}
+  model: condottieri_scenarios.stormcell
+  pk: 9
