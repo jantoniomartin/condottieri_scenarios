@@ -59,6 +59,15 @@ class CreateContenderForm(forms.ModelForm):
 		model = scenarios.Contender
 		fields = ('country',)
 
+	def clean(self):
+		cleaned_data = self.cleaned_data
+		country = cleaned_data["country"]
+		scenario = cleaned_data["scenario"]
+		if country.get_income(scenario.setting):
+			return cleaned_data
+		else:
+			raise forms.ValidationError(_("You must define a variable income table for %s") % country)
+
 class ContenderEditForm(forms.ModelForm):
 	class Meta:
 		model = scenarios.Contender

@@ -253,15 +253,22 @@ class Country(models.Model):
 	def get_absolute_url(self):
 		return ('country_detail', None, {'slug': self.static_name})
 	get_absolute_url = models.permalink(get_absolute_url)
-
-	def get_random_income(self, setting, die, double):
+	
+	def get_income(self, setting):
 		try:
 			income = self.countryrandomincome_set.get(setting=setting)
 		except ObjectDoesNotExist:
+			return False
+		else:
+			return income
+	
+	def get_random_income(self, setting, die, double):
+		income = self.get_income(setting)
+		if income:
+			return income.get_ducats(die, double=double)
+		else:
 			logger.error("Random income not found for country %s" % self)
 			return 0
-		else:
-			return income.get_ducats(die, double=double)
 			
 	def _get_in_play(self):
 		return self.contender_set.exclude(scenario__game__finished__isnull=True).count() > 0
