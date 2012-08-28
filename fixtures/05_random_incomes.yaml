@@ -1,0 +1,113 @@
+##
+## Random incomes
+##
+
+-   fields:
+        setting: 1
+        country: 1
+        income_list: 1,2,2,3,3,4
+    model: condottieri_scenarios.countryrandomincome
+    pk: 1
+-   fields:
+        setting: 1
+        country: 2
+        income_list: 1,2,3,4,5,6 
+    model: condottieri_scenarios.countryrandomincome
+    pk: 2 
+-   fields:
+        setting: 1
+        country: 3
+        income_list: 2,3,3,4,4,5 
+    model: condottieri_scenarios.countryrandomincome
+    pk: 3
+-   fields:
+        setting: 1
+        country: 4
+        income_list: 1,2,2,3,4,5 
+    model: condottieri_scenarios.countryrandomincome
+    pk: 4
+-   fields:
+        setting: 1
+        country: 5
+        income_list: 1,2,3,3,4,4 
+    model: condottieri_scenarios.countryrandomincome
+    pk: 5
+-   fields:
+        setting: 1
+        country: 6
+        income_list: 1,2,3,3,4,5 
+    model: condottieri_scenarios.countryrandomincome
+    pk: 6
+-   fields:
+        setting: 1
+        country: 7
+        income_list: 2,3,3,4,4,5 
+    model: condottieri_scenarios.countryrandomincome
+    pk: 7
+-   fields:
+        setting: 1
+        country: 8
+        income_list: 1,2,3,4,5,6 
+    model: condottieri_scenarios.countryrandomincome
+    pk: 8
+-   fields:
+        setting: 1
+        country: 11 
+        income_list: 1,2,3,4,5,6
+    model: condottieri_scenarios.countryrandomincome
+    pk: 9
+-   fields:
+        setting: 1
+        country: 12
+        income_list: 1,2,3,3,4,4 
+    model: condottieri_scenarios.countryrandomincome
+    pk: 10
+-   fields:
+        setting: 1
+        country: 13
+        income_list: 1,2,3,3,4,4
+    model: condottieri_scenarios.countryrandomincome
+    pk: 11
+-   fields:
+        setting: 1
+        country: 14
+        income_list: 2,2,3,3,4,5
+    model: condottieri_scenarios.countryrandomincome
+    pk: 12
+
+
+-   fields:
+        city: 38
+        income_list: 1,2,3,3,4,5
+    model: condottieri_scenarios.cityrandomincome
+    pk: 1
+-   fields:
+        city: 18 
+        income_list: 1,2,2,3,3,4
+    model: condottieri_scenarios.cityrandomincome
+    pk: 2
+-   fields:
+        city: 14
+        income_list: 2,3,3,4,4,5
+    model: condottieri_scenarios.cityrandomincome
+    pk: 3
+-   fields:
+        city: 49
+        income_list: 1,2,2,3,3,4
+    model: condottieri_scenarios.cityrandomincome
+    pk: 4
+-   fields:
+        city: 47
+        income_list: 2,3,3,4,5,6
+    model: condottieri_scenarios.cityrandomincome
+    pk: 5
+-   fields:
+        city: 64
+        income_list: 1,2,3,4,5,6
+    model: condottieri_scenarios.cityrandomincome
+    pk: 6
+-   fields:
+        city: 31
+        income_list: 2,3,3,4,4,5
+    model: condottieri_scenarios.cityrandomincome
+    pk: 7

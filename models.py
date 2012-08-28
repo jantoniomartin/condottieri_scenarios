@@ -320,6 +320,7 @@ class Area(models.Model):
 	"""
 	__metaclass__ = TransMeta
 
+	setting = models.ForeignKey(Setting, verbose_name=_("setting"))
 	name = models.CharField(max_length=25, unique=True, verbose_name=_("name"))
 	code = models.CharField(_("code"), max_length=5 ,unique=True)
 	is_sea = models.BooleanField(_("is sea"), default=False)
