@@ -106,6 +106,7 @@ class CountryUpdateView(EditionAllowedMixin, UpdateView):
 			except Exception, v:
 				messages.error(self.request, v)
 			else:
+				form.save()
 				return http.HttpResponseRedirect(self.get_success_url())
 		return self.render_to_response(self.get_context_data(form=form))
 
