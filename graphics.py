@@ -147,7 +147,7 @@ def make_country_tokens(instance, **kwargs):
 	badge_base.save("%s/badge-%s.png" % (BADGES_DIR, instance.static_name))
 	## generate 24x24 icon
 	if coat:
-		icon = coat
+		icon = coat.copy()
 		icon.thumbnail((24,24), Image.ANTIALIAS)
 		icon.save("%s/icon-%s.png" % (BADGES_DIR, instance.static_name))
 	## generate Army token
@@ -164,7 +164,7 @@ def make_country_tokens(instance, **kwargs):
 	draw.ellipse((4, 4, 44, 44), fill="#%s" % instance.color)
 	del draw
 	if coat:
-		g_coat = coat
+		g_coat = coat.copy()
 		g_coat.thumbnail((28, 28), Image.ANTIALIAS)
 		garrison_base.paste(g_coat, (12,12), g_coat)
 	garrison_base.save("%s/G-%s.png" % (TOKENS_DIR, instance.static_name))
@@ -175,8 +175,6 @@ def make_country_tokens(instance, **kwargs):
 	ship = Image.open("%s/ship-icon.png" % TEMPLATES_DIR)
 	fleet_base.paste(ship, (0,0), ship)
 	if coat:
-		#g_coat = coat
-		#g_coat.thumbnail((28, 28), Image.ANTIALIAS)
 		fleet_base.paste(g_coat, (9, 7), g_coat)
 	fleet_base.save("%s/F-%s.png" % (TOKENS_DIR, instance.static_name))
 	## generate Control token
