@@ -1,0 +1,1212 @@
+- fields: {from_area: 58, only_land: false, to_area: 59}
+  model: condottieri_scenarios.border
+  pk: 1
+- fields: {from_area: 58, only_land: true, to_area: 56}
+  model: condottieri_scenarios.border
+  pk: 2
+- fields: {from_area: 58, only_land: false, to_area: 72}
+  model: condottieri_scenarios.border
+  pk: 3
+- fields: {from_area: 58, only_land: false, to_area: 57}
+  model: condottieri_scenarios.border
+  pk: 4
+- fields: {from_area: 46, only_land: false, to_area: 50}
+  model: condottieri_scenarios.border
+  pk: 5
+- fields: {from_area: 46, only_land: false, to_area: 72}
+  model: condottieri_scenarios.border
+  pk: 6
+- fields: {from_area: 46, only_land: false, to_area: 45}
+  model: condottieri_scenarios.border
+  pk: 7
+- fields: {from_area: 46, only_land: false, to_area: 73}
+  model: condottieri_scenarios.border
+  pk: 8
+- fields: {from_area: 46, only_land: false, to_area: 40}
+  model: condottieri_scenarios.border
+  pk: 9
+- fields: {from_area: 50, only_land: false, to_area: 46}
+  model: condottieri_scenarios.border
+  pk: 10
+- fields: {from_area: 50, only_land: false, to_area: 52}
+  model: condottieri_scenarios.border
+  pk: 11
+- fields: {from_area: 50, only_land: true, to_area: 48}
+  model: condottieri_scenarios.border
+  pk: 12
+- fields: {from_area: 50, only_land: false, to_area: 72}
+  model: condottieri_scenarios.border
+  pk: 13
+- fields: {from_area: 50, only_land: true, to_area: 49}
+  model: condottieri_scenarios.border
+  pk: 14
+- fields: {from_area: 50, only_land: true, to_area: 51}
+  model: condottieri_scenarios.border
+  pk: 15
+- fields: {from_area: 50, only_land: false, to_area: 45}
+  model: condottieri_scenarios.border
+  pk: 16
+- fields: {from_area: 39, only_land: false, to_area: 38}
+  model: condottieri_scenarios.border
+  pk: 17
+- fields: {from_area: 39, only_land: false, to_area: 44}
+  model: condottieri_scenarios.border
+  pk: 18
+- fields: {from_area: 39, only_land: false, to_area: 42}
+  model: condottieri_scenarios.border
+  pk: 19
+- fields: {from_area: 39, only_land: false, to_area: 40}
+  model: condottieri_scenarios.border
+  pk: 20
+- fields: {from_area: 4, only_land: false, to_area: 16}
+  model: condottieri_scenarios.border
+  pk: 21
+- fields: {from_area: 4, only_land: false, to_area: 5}
+  model: condottieri_scenarios.border
+  pk: 22
+- fields: {from_area: 4, only_land: false, to_area: 17}
+  model: condottieri_scenarios.border
+  pk: 23
+- fields: {from_area: 4, only_land: false, to_area: 3}
+  model: condottieri_scenarios.border
+  pk: 24
+- fields: {from_area: 1, only_land: false, to_area: 65}
+  model: condottieri_scenarios.border
+  pk: 25
+- fields: {from_area: 1, only_land: false, to_area: 6}
+  model: condottieri_scenarios.border
+  pk: 26
+- fields: {from_area: 1, only_land: true, to_area: 7}
+  model: condottieri_scenarios.border
+  pk: 27
+- fields: {from_area: 1, only_land: false, to_area: 2}
+  model: condottieri_scenarios.border
+  pk: 28
+- fields: {from_area: 1, only_land: false, to_area: 10}
+  model: condottieri_scenarios.border
+  pk: 29
+- fields: {from_area: 52, only_land: false, to_area: 50}
+  model: condottieri_scenarios.border
+  pk: 30
+- fields: {from_area: 52, only_land: false, to_area: 72}
+  model: condottieri_scenarios.border
+  pk: 31
+- fields: {from_area: 52, only_land: false, to_area: 53}
+  model: condottieri_scenarios.border
+  pk: 32
+- fields: {from_area: 52, only_land: true, to_area: 51}
+  model: condottieri_scenarios.border
+  pk: 33
+- fields: {from_area: 22, only_land: false, to_area: 21}
+  model: condottieri_scenarios.border
+  pk: 34
+- fields: {from_area: 22, only_land: false, to_area: 25}
+  model: condottieri_scenarios.border
+  pk: 35
+- fields: {from_area: 22, only_land: false, to_area: 14}
+  model: condottieri_scenarios.border
+  pk: 36
+- fields: {from_area: 22, only_land: false, to_area: 15}
+  model: condottieri_scenarios.border
+  pk: 37
+- fields: {from_area: 22, only_land: false, to_area: 23}
+  model: condottieri_scenarios.border
+  pk: 38
+- fields: {from_area: 35, only_land: false, to_area: 26}
+  model: condottieri_scenarios.border
+  pk: 39
+- fields: {from_area: 35, only_land: false, to_area: 38}
+  model: condottieri_scenarios.border
+  pk: 40
+- fields: {from_area: 35, only_land: true, to_area: 34}
+  model: condottieri_scenarios.border
+  pk: 41
+- fields: {from_area: 35, only_land: false, to_area: 25}
+  model: condottieri_scenarios.border
+  pk: 42
+- fields: {from_area: 35, only_land: true, to_area: 24}
+  model: condottieri_scenarios.border
+  pk: 43
+- fields: {from_area: 35, only_land: false, to_area: 37}
+  model: condottieri_scenarios.border
+  pk: 44
+- fields: {from_area: 35, only_land: false, to_area: 73}
+  model: condottieri_scenarios.border
+  pk: 45
+- fields: {from_area: 35, only_land: false, to_area: 40}
+  model: condottieri_scenarios.border
+  pk: 46
+- fields: {from_area: 55, only_land: false, to_area: 33}
+  model: condottieri_scenarios.border
+  pk: 47
+- fields: {from_area: 55, only_land: false, to_area: 54}
+  model: condottieri_scenarios.border
+  pk: 48
+- fields: {from_area: 55, only_land: false, to_area: 56}
+  model: condottieri_scenarios.border
+  pk: 49
+- fields: {from_area: 48, only_land: true, to_area: 50}
+  model: condottieri_scenarios.border
+  pk: 50
+- fields: {from_area: 48, only_land: false, to_area: 49}
+  model: condottieri_scenarios.border
+  pk: 51
+- fields: {from_area: 48, only_land: false, to_area: 47}
+  model: condottieri_scenarios.border
+  pk: 52
+- fields: {from_area: 48, only_land: false, to_area: 45}
+  model: condottieri_scenarios.border
+  pk: 53
+- fields: {from_area: 48, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 54
+- fields: {from_area: 30, only_land: false, to_area: 16}
+  model: condottieri_scenarios.border
+  pk: 55
+- fields: {from_area: 30, only_land: true, to_area: 33}
+  model: condottieri_scenarios.border
+  pk: 56
+- fields: {from_area: 30, only_land: false, to_area: 29}
+  model: condottieri_scenarios.border
+  pk: 57
+- fields: {from_area: 30, only_land: false, to_area: 32}
+  model: condottieri_scenarios.border
+  pk: 58
+- fields: {from_area: 30, only_land: false, to_area: 17}
+  model: condottieri_scenarios.border
+  pk: 59
+- fields: {from_area: 30, only_land: false, to_area: 73}
+  model: condottieri_scenarios.border
+  pk: 60
+- fields: {from_area: 16, only_land: false, to_area: 4}
+  model: condottieri_scenarios.border
+  pk: 61
+- fields: {from_area: 16, only_land: false, to_area: 30}
+  model: condottieri_scenarios.border
+  pk: 62
+- fields: {from_area: 16, only_land: false, to_area: 29}
+  model: condottieri_scenarios.border
+  pk: 63
+- fields: {from_area: 16, only_land: false, to_area: 14}
+  model: condottieri_scenarios.border
+  pk: 64
+- fields: {from_area: 16, only_land: false, to_area: 17}
+  model: condottieri_scenarios.border
+  pk: 65
+- fields: {from_area: 16, only_land: false, to_area: 15}
+  model: condottieri_scenarios.border
+  pk: 66
+- fields: {from_area: 16, only_land: false, to_area: 3}
+  model: condottieri_scenarios.border
+  pk: 67
+- fields: {from_area: 16, only_land: false, to_area: 23}
+  model: condottieri_scenarios.border
+  pk: 68
+- fields: {from_area: 69, only_land: false, to_area: 71}
+  model: condottieri_scenarios.border
+  pk: 69
+- fields: {from_area: 69, only_land: false, to_area: 62}
+  model: condottieri_scenarios.border
+  pk: 70
+- fields: {from_area: 69, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 71
+- fields: {from_area: 69, only_land: false, to_area: 64}
+  model: condottieri_scenarios.border
+  pk: 72
+- fields: {from_area: 69, only_land: false, to_area: 67}
+  model: condottieri_scenarios.border
+  pk: 73
+- fields: {from_area: 11, only_land: false, to_area: 14}
+  model: condottieri_scenarios.border
+  pk: 74
+- fields: {from_area: 11, only_land: false, to_area: 13}
+  model: condottieri_scenarios.border
+  pk: 75
+- fields: {from_area: 11, only_land: false, to_area: 10}
+  model: condottieri_scenarios.border
+  pk: 76
+- fields: {from_area: 11, only_land: false, to_area: 3}
+  model: condottieri_scenarios.border
+  pk: 77
+- fields: {from_area: 60, only_land: false, to_area: 65}
+  model: condottieri_scenarios.border
+  pk: 78
+- fields: {from_area: 60, only_land: false, to_area: 66}
+  model: condottieri_scenarios.border
+  pk: 79
+- fields: {from_area: 60, only_land: false, to_area: 61}
+  model: condottieri_scenarios.border
+  pk: 80
+- fields: {from_area: 60, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 81
+- fields: {from_area: 21, only_land: false, to_area: 22}
+  model: condottieri_scenarios.border
+  pk: 82
+- fields: {from_area: 21, only_land: false, to_area: 25}
+  model: condottieri_scenarios.border
+  pk: 83
+- fields: {from_area: 21, only_land: false, to_area: 14}
+  model: condottieri_scenarios.border
+  pk: 84
+- fields: {from_area: 21, only_land: false, to_area: 20}
+  model: condottieri_scenarios.border
+  pk: 85
+- fields: {from_area: 33, only_land: false, to_area: 55}
+  model: condottieri_scenarios.border
+  pk: 86
+- fields: {from_area: 33, only_land: true, to_area: 30}
+  model: condottieri_scenarios.border
+  pk: 87
+- fields: {from_area: 33, only_land: false, to_area: 54}
+  model: condottieri_scenarios.border
+  pk: 88
+- fields: {from_area: 33, only_land: false, to_area: 32}
+  model: condottieri_scenarios.border
+  pk: 89
+- fields: {from_area: 33, only_land: false, to_area: 17}
+  model: condottieri_scenarios.border
+  pk: 90
+- fields: {from_area: 33, only_land: false, to_area: 73}
+  model: condottieri_scenarios.border
+  pk: 91
+- fields: {from_area: 54, only_land: false, to_area: 55}
+  model: condottieri_scenarios.border
+  pk: 92
+- fields: {from_area: 54, only_land: false, to_area: 33}
+  model: condottieri_scenarios.border
+  pk: 93
+- fields: {from_area: 54, only_land: false, to_area: 56}
+  model: condottieri_scenarios.border
+  pk: 94
+- fields: {from_area: 54, only_land: false, to_area: 72}
+  model: condottieri_scenarios.border
+  pk: 95
+- fields: {from_area: 54, only_land: false, to_area: 73}
+  model: condottieri_scenarios.border
+  pk: 96
+- fields: {from_area: 59, only_land: false, to_area: 58}
+  model: condottieri_scenarios.border
+  pk: 97
+- fields: {from_area: 59, only_land: false, to_area: 71}
+  model: condottieri_scenarios.border
+  pk: 98
+- fields: {from_area: 59, only_land: false, to_area: 72}
+  model: condottieri_scenarios.border
+  pk: 99
+- fields: {from_area: 26, only_land: false, to_area: 35}
+  model: condottieri_scenarios.border
+  pk: 100
+- fields: {from_area: 26, only_land: false, to_area: 25}
+  model: condottieri_scenarios.border
+  pk: 101
+- fields: {from_area: 26, only_land: false, to_area: 27}
+  model: condottieri_scenarios.border
+  pk: 102
+- fields: {from_area: 26, only_land: false, to_area: 73}
+  model: condottieri_scenarios.border
+  pk: 103
+- fields: {from_area: 26, only_land: false, to_area: 23}
+  model: condottieri_scenarios.border
+  pk: 104
+- fields: {from_area: 38, only_land: false, to_area: 39}
+  model: condottieri_scenarios.border
+  pk: 105
+- fields: {from_area: 38, only_land: false, to_area: 35}
+  model: condottieri_scenarios.border
+  pk: 106
+- fields: {from_area: 38, only_land: false, to_area: 37}
+  model: condottieri_scenarios.border
+  pk: 107
+- fields: {from_area: 38, only_land: false, to_area: 36}
+  model: condottieri_scenarios.border
+  pk: 108
+- fields: {from_area: 38, only_land: false, to_area: 42}
+  model: condottieri_scenarios.border
+  pk: 109
+- fields: {from_area: 38, only_land: false, to_area: 40}
+  model: condottieri_scenarios.border
+  pk: 110
+- fields: {from_area: 19, only_land: false, to_area: 18}
+  model: condottieri_scenarios.border
+  pk: 111
+- fields: {from_area: 19, only_land: false, to_area: 24}
+  model: condottieri_scenarios.border
+  pk: 112
+- fields: {from_area: 19, only_land: false, to_area: 12}
+  model: condottieri_scenarios.border
+  pk: 113
+- fields: {from_area: 19, only_land: false, to_area: 20}
+  model: condottieri_scenarios.border
+  pk: 114
+- fields: {from_area: 19, only_land: false, to_area: 13}
+  model: condottieri_scenarios.border
+  pk: 115
+- fields: {from_area: 29, only_land: false, to_area: 30}
+  model: condottieri_scenarios.border
+  pk: 116
+- fields: {from_area: 29, only_land: false, to_area: 16}
+  model: condottieri_scenarios.border
+  pk: 117
+- fields: {from_area: 29, only_land: false, to_area: 28}
+  model: condottieri_scenarios.border
+  pk: 118
+- fields: {from_area: 29, only_land: false, to_area: 73}
+  model: condottieri_scenarios.border
+  pk: 119
+- fields: {from_area: 29, only_land: false, to_area: 31}
+  model: condottieri_scenarios.border
+  pk: 120
+- fields: {from_area: 29, only_land: false, to_area: 23}
+  model: condottieri_scenarios.border
+  pk: 121
+- fields: {from_area: 18, only_land: false, to_area: 19}
+  model: condottieri_scenarios.border
+  pk: 122
+- fields: {from_area: 18, only_land: false, to_area: 66}
+  model: condottieri_scenarios.border
+  pk: 123
+- fields: {from_area: 18, only_land: false, to_area: 24}
+  model: condottieri_scenarios.border
+  pk: 124
+- fields: {from_area: 18, only_land: false, to_area: 12}
+  model: condottieri_scenarios.border
+  pk: 125
+- fields: {from_area: 18, only_land: false, to_area: 8}
+  model: condottieri_scenarios.border
+  pk: 126
+- fields: {from_area: 65, only_land: false, to_area: 1}
+  model: condottieri_scenarios.border
+  pk: 127
+- fields: {from_area: 65, only_land: false, to_area: 60}
+  model: condottieri_scenarios.border
+  pk: 128
+- fields: {from_area: 65, only_land: false, to_area: 66}
+  model: condottieri_scenarios.border
+  pk: 129
+- fields: {from_area: 65, only_land: false, to_area: 6}
+  model: condottieri_scenarios.border
+  pk: 130
+- fields: {from_area: 65, only_land: false, to_area: 7}
+  model: condottieri_scenarios.border
+  pk: 131
+- fields: {from_area: 65, only_land: false, to_area: 61}
+  model: condottieri_scenarios.border
+  pk: 132
+- fields: {from_area: 65, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 133
+- fields: {from_area: 65, only_land: false, to_area: 67}
+  model: condottieri_scenarios.border
+  pk: 134
+- fields: {from_area: 70, only_land: false, to_area: 71}
+  model: condottieri_scenarios.border
+  pk: 135
+- fields: {from_area: 70, only_land: false, to_area: 63}
+  model: condottieri_scenarios.border
+  pk: 136
+- fields: {from_area: 70, only_land: false, to_area: 49}
+  model: condottieri_scenarios.border
+  pk: 137
+- fields: {from_area: 70, only_land: false, to_area: 53}
+  model: condottieri_scenarios.border
+  pk: 138
+- fields: {from_area: 70, only_land: false, to_area: 62}
+  model: condottieri_scenarios.border
+  pk: 139
+- fields: {from_area: 70, only_land: false, to_area: 51}
+  model: condottieri_scenarios.border
+  pk: 140
+- fields: {from_area: 70, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 141
+- fields: {from_area: 56, only_land: true, to_area: 58}
+  model: condottieri_scenarios.border
+  pk: 142
+- fields: {from_area: 56, only_land: false, to_area: 55}
+  model: condottieri_scenarios.border
+  pk: 143
+- fields: {from_area: 56, only_land: false, to_area: 54}
+  model: condottieri_scenarios.border
+  pk: 144
+- fields: {from_area: 56, only_land: false, to_area: 72}
+  model: condottieri_scenarios.border
+  pk: 145
+- fields: {from_area: 56, only_land: false, to_area: 57}
+  model: condottieri_scenarios.border
+  pk: 146
+- fields: {from_area: 5, only_land: false, to_area: 4}
+  model: condottieri_scenarios.border
+  pk: 147
+- fields: {from_area: 5, only_land: false, to_area: 17}
+  model: condottieri_scenarios.border
+  pk: 148
+- fields: {from_area: 71, only_land: false, to_area: 69}
+  model: condottieri_scenarios.border
+  pk: 149
+- fields: {from_area: 71, only_land: false, to_area: 59}
+  model: condottieri_scenarios.border
+  pk: 150
+- fields: {from_area: 71, only_land: false, to_area: 70}
+  model: condottieri_scenarios.border
+  pk: 151
+- fields: {from_area: 71, only_land: false, to_area: 72}
+  model: condottieri_scenarios.border
+  pk: 152
+- fields: {from_area: 71, only_land: false, to_area: 63}
+  model: condottieri_scenarios.border
+  pk: 153
+- fields: {from_area: 71, only_land: false, to_area: 53}
+  model: condottieri_scenarios.border
+  pk: 154
+- fields: {from_area: 71, only_land: false, to_area: 62}
+  model: condottieri_scenarios.border
+  pk: 155
+- fields: {from_area: 32, only_land: false, to_area: 30}
+  model: condottieri_scenarios.border
+  pk: 156
+- fields: {from_area: 32, only_land: false, to_area: 33}
+  model: condottieri_scenarios.border
+  pk: 157
+- fields: {from_area: 32, only_land: false, to_area: 73}
+  model: condottieri_scenarios.border
+  pk: 158
+- fields: {from_area: 72, only_land: false, to_area: 58}
+  model: condottieri_scenarios.border
+  pk: 159
+- fields: {from_area: 72, only_land: false, to_area: 46}
+  model: condottieri_scenarios.border
+  pk: 160
+- fields: {from_area: 72, only_land: false, to_area: 50}
+  model: condottieri_scenarios.border
+  pk: 161
+- fields: {from_area: 72, only_land: false, to_area: 52}
+  model: condottieri_scenarios.border
+  pk: 162
+- fields: {from_area: 72, only_land: false, to_area: 54}
+  model: condottieri_scenarios.border
+  pk: 163
+- fields: {from_area: 72, only_land: false, to_area: 59}
+  model: condottieri_scenarios.border
+  pk: 164
+- fields: {from_area: 72, only_land: false, to_area: 56}
+  model: condottieri_scenarios.border
+  pk: 165
+- fields: {from_area: 72, only_land: false, to_area: 71}
+  model: condottieri_scenarios.border
+  pk: 166
+- fields: {from_area: 72, only_land: false, to_area: 53}
+  model: condottieri_scenarios.border
+  pk: 167
+- fields: {from_area: 72, only_land: false, to_area: 57}
+  model: condottieri_scenarios.border
+  pk: 168
+- fields: {from_area: 72, only_land: false, to_area: 73}
+  model: condottieri_scenarios.border
+  pk: 169
+- fields: {from_area: 66, only_land: false, to_area: 60}
+  model: condottieri_scenarios.border
+  pk: 170
+- fields: {from_area: 66, only_land: false, to_area: 18}
+  model: condottieri_scenarios.border
+  pk: 171
+- fields: {from_area: 66, only_land: false, to_area: 65}
+  model: condottieri_scenarios.border
+  pk: 172
+- fields: {from_area: 66, only_land: false, to_area: 34}
+  model: condottieri_scenarios.border
+  pk: 173
+- fields: {from_area: 66, only_land: false, to_area: 24}
+  model: condottieri_scenarios.border
+  pk: 174
+- fields: {from_area: 66, only_land: false, to_area: 41}
+  model: condottieri_scenarios.border
+  pk: 175
+- fields: {from_area: 66, only_land: false, to_area: 36}
+  model: condottieri_scenarios.border
+  pk: 176
+- fields: {from_area: 66, only_land: false, to_area: 7}
+  model: condottieri_scenarios.border
+  pk: 177
+- fields: {from_area: 66, only_land: false, to_area: 8}
+  model: condottieri_scenarios.border
+  pk: 178
+- fields: {from_area: 66, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 179
+- fields: {from_area: 34, only_land: true, to_area: 35}
+  model: condottieri_scenarios.border
+  pk: 180
+- fields: {from_area: 34, only_land: false, to_area: 66}
+  model: condottieri_scenarios.border
+  pk: 181
+- fields: {from_area: 34, only_land: false, to_area: 24}
+  model: condottieri_scenarios.border
+  pk: 182
+- fields: {from_area: 34, only_land: false, to_area: 37}
+  model: condottieri_scenarios.border
+  pk: 183
+- fields: {from_area: 34, only_land: false, to_area: 36}
+  model: condottieri_scenarios.border
+  pk: 184
+- fields: {from_area: 25, only_land: false, to_area: 22}
+  model: condottieri_scenarios.border
+  pk: 185
+- fields: {from_area: 25, only_land: false, to_area: 35}
+  model: condottieri_scenarios.border
+  pk: 186
+- fields: {from_area: 25, only_land: false, to_area: 21}
+  model: condottieri_scenarios.border
+  pk: 187
+- fields: {from_area: 25, only_land: false, to_area: 26}
+  model: condottieri_scenarios.border
+  pk: 188
+- fields: {from_area: 25, only_land: false, to_area: 24}
+  model: condottieri_scenarios.border
+  pk: 189
+- fields: {from_area: 25, only_land: false, to_area: 20}
+  model: condottieri_scenarios.border
+  pk: 190
+- fields: {from_area: 25, only_land: false, to_area: 23}
+  model: condottieri_scenarios.border
+  pk: 191
+- fields: {from_area: 6, only_land: false, to_area: 1}
+  model: condottieri_scenarios.border
+  pk: 192
+- fields: {from_area: 6, only_land: false, to_area: 65}
+  model: condottieri_scenarios.border
+  pk: 193
+- fields: {from_area: 6, only_land: false, to_area: 7}
+  model: condottieri_scenarios.border
+  pk: 194
+- fields: {from_area: 63, only_land: false, to_area: 70}
+  model: condottieri_scenarios.border
+  pk: 195
+- fields: {from_area: 63, only_land: false, to_area: 71}
+  model: condottieri_scenarios.border
+  pk: 196
+- fields: {from_area: 63, only_land: false, to_area: 53}
+  model: condottieri_scenarios.border
+  pk: 197
+- fields: {from_area: 63, only_land: false, to_area: 62}
+  model: condottieri_scenarios.border
+  pk: 198
+- fields: {from_area: 14, only_land: false, to_area: 22}
+  model: condottieri_scenarios.border
+  pk: 199
+- fields: {from_area: 14, only_land: false, to_area: 16}
+  model: condottieri_scenarios.border
+  pk: 200
+- fields: {from_area: 14, only_land: false, to_area: 11}
+  model: condottieri_scenarios.border
+  pk: 201
+- fields: {from_area: 14, only_land: false, to_area: 21}
+  model: condottieri_scenarios.border
+  pk: 202
+- fields: {from_area: 14, only_land: false, to_area: 20}
+  model: condottieri_scenarios.border
+  pk: 203
+- fields: {from_area: 14, only_land: false, to_area: 13}
+  model: condottieri_scenarios.border
+  pk: 204
+- fields: {from_area: 14, only_land: false, to_area: 15}
+  model: condottieri_scenarios.border
+  pk: 205
+- fields: {from_area: 14, only_land: false, to_area: 3}
+  model: condottieri_scenarios.border
+  pk: 206
+- fields: {from_area: 24, only_land: true, to_area: 35}
+  model: condottieri_scenarios.border
+  pk: 207
+- fields: {from_area: 24, only_land: false, to_area: 19}
+  model: condottieri_scenarios.border
+  pk: 208
+- fields: {from_area: 24, only_land: false, to_area: 18}
+  model: condottieri_scenarios.border
+  pk: 209
+- fields: {from_area: 24, only_land: false, to_area: 66}
+  model: condottieri_scenarios.border
+  pk: 210
+- fields: {from_area: 24, only_land: false, to_area: 34}
+  model: condottieri_scenarios.border
+  pk: 211
+- fields: {from_area: 24, only_land: false, to_area: 25}
+  model: condottieri_scenarios.border
+  pk: 212
+- fields: {from_area: 24, only_land: false, to_area: 20}
+  model: condottieri_scenarios.border
+  pk: 213
+- fields: {from_area: 12, only_land: false, to_area: 19}
+  model: condottieri_scenarios.border
+  pk: 214
+- fields: {from_area: 12, only_land: false, to_area: 18}
+  model: condottieri_scenarios.border
+  pk: 215
+- fields: {from_area: 12, only_land: false, to_area: 13}
+  model: condottieri_scenarios.border
+  pk: 216
+- fields: {from_area: 12, only_land: false, to_area: 8}
+  model: condottieri_scenarios.border
+  pk: 217
+- fields: {from_area: 12, only_land: false, to_area: 10}
+  model: condottieri_scenarios.border
+  pk: 218
+- fields: {from_area: 49, only_land: true, to_area: 50}
+  model: condottieri_scenarios.border
+  pk: 219
+- fields: {from_area: 49, only_land: false, to_area: 48}
+  model: condottieri_scenarios.border
+  pk: 220
+- fields: {from_area: 49, only_land: false, to_area: 70}
+  model: condottieri_scenarios.border
+  pk: 221
+- fields: {from_area: 49, only_land: false, to_area: 51}
+  model: condottieri_scenarios.border
+  pk: 222
+- fields: {from_area: 49, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 223
+- fields: {from_area: 53, only_land: false, to_area: 52}
+  model: condottieri_scenarios.border
+  pk: 224
+- fields: {from_area: 53, only_land: false, to_area: 70}
+  model: condottieri_scenarios.border
+  pk: 225
+- fields: {from_area: 53, only_land: false, to_area: 71}
+  model: condottieri_scenarios.border
+  pk: 226
+- fields: {from_area: 53, only_land: false, to_area: 72}
+  model: condottieri_scenarios.border
+  pk: 227
+- fields: {from_area: 53, only_land: false, to_area: 63}
+  model: condottieri_scenarios.border
+  pk: 228
+- fields: {from_area: 53, only_land: false, to_area: 51}
+  model: condottieri_scenarios.border
+  pk: 229
+- fields: {from_area: 27, only_land: false, to_area: 26}
+  model: condottieri_scenarios.border
+  pk: 230
+- fields: {from_area: 27, only_land: false, to_area: 28}
+  model: condottieri_scenarios.border
+  pk: 231
+- fields: {from_area: 27, only_land: false, to_area: 73}
+  model: condottieri_scenarios.border
+  pk: 232
+- fields: {from_area: 27, only_land: false, to_area: 31}
+  model: condottieri_scenarios.border
+  pk: 233
+- fields: {from_area: 27, only_land: false, to_area: 23}
+  model: condottieri_scenarios.border
+  pk: 234
+- fields: {from_area: 62, only_land: false, to_area: 69}
+  model: condottieri_scenarios.border
+  pk: 235
+- fields: {from_area: 62, only_land: false, to_area: 70}
+  model: condottieri_scenarios.border
+  pk: 236
+- fields: {from_area: 62, only_land: false, to_area: 71}
+  model: condottieri_scenarios.border
+  pk: 237
+- fields: {from_area: 62, only_land: false, to_area: 63}
+  model: condottieri_scenarios.border
+  pk: 238
+- fields: {from_area: 62, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 239
+- fields: {from_area: 20, only_land: false, to_area: 21}
+  model: condottieri_scenarios.border
+  pk: 240
+- fields: {from_area: 20, only_land: false, to_area: 19}
+  model: condottieri_scenarios.border
+  pk: 241
+- fields: {from_area: 20, only_land: false, to_area: 25}
+  model: condottieri_scenarios.border
+  pk: 242
+- fields: {from_area: 20, only_land: false, to_area: 14}
+  model: condottieri_scenarios.border
+  pk: 243
+- fields: {from_area: 20, only_land: false, to_area: 24}
+  model: condottieri_scenarios.border
+  pk: 244
+- fields: {from_area: 20, only_land: false, to_area: 13}
+  model: condottieri_scenarios.border
+  pk: 245
+- fields: {from_area: 43, only_land: false, to_area: 44}
+  model: condottieri_scenarios.border
+  pk: 246
+- fields: {from_area: 43, only_land: false, to_area: 47}
+  model: condottieri_scenarios.border
+  pk: 247
+- fields: {from_area: 43, only_land: false, to_area: 42}
+  model: condottieri_scenarios.border
+  pk: 248
+- fields: {from_area: 43, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 249
+- fields: {from_area: 13, only_land: false, to_area: 11}
+  model: condottieri_scenarios.border
+  pk: 250
+- fields: {from_area: 13, only_land: false, to_area: 19}
+  model: condottieri_scenarios.border
+  pk: 251
+- fields: {from_area: 13, only_land: false, to_area: 14}
+  model: condottieri_scenarios.border
+  pk: 252
+- fields: {from_area: 13, only_land: false, to_area: 12}
+  model: condottieri_scenarios.border
+  pk: 253
+- fields: {from_area: 13, only_land: false, to_area: 20}
+  model: condottieri_scenarios.border
+  pk: 254
+- fields: {from_area: 13, only_land: false, to_area: 10}
+  model: condottieri_scenarios.border
+  pk: 255
+- fields: {from_area: 44, only_land: false, to_area: 39}
+  model: condottieri_scenarios.border
+  pk: 256
+- fields: {from_area: 44, only_land: false, to_area: 43}
+  model: condottieri_scenarios.border
+  pk: 257
+- fields: {from_area: 44, only_land: false, to_area: 47}
+  model: condottieri_scenarios.border
+  pk: 258
+- fields: {from_area: 44, only_land: false, to_area: 42}
+  model: condottieri_scenarios.border
+  pk: 259
+- fields: {from_area: 44, only_land: false, to_area: 45}
+  model: condottieri_scenarios.border
+  pk: 260
+- fields: {from_area: 44, only_land: false, to_area: 40}
+  model: condottieri_scenarios.border
+  pk: 261
+- fields: {from_area: 41, only_land: false, to_area: 66}
+  model: condottieri_scenarios.border
+  pk: 262
+- fields: {from_area: 41, only_land: false, to_area: 36}
+  model: condottieri_scenarios.border
+  pk: 263
+- fields: {from_area: 41, only_land: false, to_area: 42}
+  model: condottieri_scenarios.border
+  pk: 264
+- fields: {from_area: 41, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 265
+- fields: {from_area: 37, only_land: false, to_area: 35}
+  model: condottieri_scenarios.border
+  pk: 266
+- fields: {from_area: 37, only_land: false, to_area: 38}
+  model: condottieri_scenarios.border
+  pk: 267
+- fields: {from_area: 37, only_land: false, to_area: 34}
+  model: condottieri_scenarios.border
+  pk: 268
+- fields: {from_area: 37, only_land: false, to_area: 36}
+  model: condottieri_scenarios.border
+  pk: 269
+- fields: {from_area: 36, only_land: false, to_area: 38}
+  model: condottieri_scenarios.border
+  pk: 270
+- fields: {from_area: 36, only_land: false, to_area: 66}
+  model: condottieri_scenarios.border
+  pk: 271
+- fields: {from_area: 36, only_land: false, to_area: 34}
+  model: condottieri_scenarios.border
+  pk: 272
+- fields: {from_area: 36, only_land: false, to_area: 41}
+  model: condottieri_scenarios.border
+  pk: 273
+- fields: {from_area: 36, only_land: false, to_area: 37}
+  model: condottieri_scenarios.border
+  pk: 274
+- fields: {from_area: 36, only_land: true, to_area: 42}
+  model: condottieri_scenarios.border
+  pk: 275
+- fields: {from_area: 7, only_land: true, to_area: 1}
+  model: condottieri_scenarios.border
+  pk: 276
+- fields: {from_area: 7, only_land: false, to_area: 65}
+  model: condottieri_scenarios.border
+  pk: 277
+- fields: {from_area: 7, only_land: false, to_area: 66}
+  model: condottieri_scenarios.border
+  pk: 278
+- fields: {from_area: 7, only_land: false, to_area: 6}
+  model: condottieri_scenarios.border
+  pk: 279
+- fields: {from_area: 7, only_land: false, to_area: 9}
+  model: condottieri_scenarios.border
+  pk: 280
+- fields: {from_area: 7, only_land: false, to_area: 8}
+  model: condottieri_scenarios.border
+  pk: 281
+- fields: {from_area: 7, only_land: false, to_area: 10}
+  model: condottieri_scenarios.border
+  pk: 282
+- fields: {from_area: 57, only_land: false, to_area: 58}
+  model: condottieri_scenarios.border
+  pk: 283
+- fields: {from_area: 57, only_land: false, to_area: 56}
+  model: condottieri_scenarios.border
+  pk: 284
+- fields: {from_area: 57, only_land: false, to_area: 72}
+  model: condottieri_scenarios.border
+  pk: 285
+- fields: {from_area: 47, only_land: false, to_area: 48}
+  model: condottieri_scenarios.border
+  pk: 286
+- fields: {from_area: 47, only_land: false, to_area: 43}
+  model: condottieri_scenarios.border
+  pk: 287
+- fields: {from_area: 47, only_land: false, to_area: 44}
+  model: condottieri_scenarios.border
+  pk: 288
+- fields: {from_area: 47, only_land: false, to_area: 45}
+  model: condottieri_scenarios.border
+  pk: 289
+- fields: {from_area: 47, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 290
+- fields: {from_area: 51, only_land: true, to_area: 50}
+  model: condottieri_scenarios.border
+  pk: 291
+- fields: {from_area: 51, only_land: true, to_area: 52}
+  model: condottieri_scenarios.border
+  pk: 292
+- fields: {from_area: 51, only_land: false, to_area: 70}
+  model: condottieri_scenarios.border
+  pk: 293
+- fields: {from_area: 51, only_land: false, to_area: 49}
+  model: condottieri_scenarios.border
+  pk: 294
+- fields: {from_area: 51, only_land: false, to_area: 53}
+  model: condottieri_scenarios.border
+  pk: 295
+- fields: {from_area: 9, only_land: false, to_area: 7}
+  model: condottieri_scenarios.border
+  pk: 296
+- fields: {from_area: 9, only_land: false, to_area: 8}
+  model: condottieri_scenarios.border
+  pk: 297
+- fields: {from_area: 9, only_land: false, to_area: 10}
+  model: condottieri_scenarios.border
+  pk: 298
+- fields: {from_area: 61, only_land: false, to_area: 60}
+  model: condottieri_scenarios.border
+  pk: 299
+- fields: {from_area: 61, only_land: false, to_area: 65}
+  model: condottieri_scenarios.border
+  pk: 300
+- fields: {from_area: 61, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 301
+- fields: {from_area: 61, only_land: false, to_area: 67}
+  model: condottieri_scenarios.border
+  pk: 302
+- fields: {from_area: 8, only_land: false, to_area: 18}
+  model: condottieri_scenarios.border
+  pk: 303
+- fields: {from_area: 8, only_land: false, to_area: 66}
+  model: condottieri_scenarios.border
+  pk: 304
+- fields: {from_area: 8, only_land: false, to_area: 12}
+  model: condottieri_scenarios.border
+  pk: 305
+- fields: {from_area: 8, only_land: false, to_area: 7}
+  model: condottieri_scenarios.border
+  pk: 306
+- fields: {from_area: 8, only_land: false, to_area: 9}
+  model: condottieri_scenarios.border
+  pk: 307
+- fields: {from_area: 8, only_land: false, to_area: 10}
+  model: condottieri_scenarios.border
+  pk: 308
+- fields: {from_area: 42, only_land: false, to_area: 39}
+  model: condottieri_scenarios.border
+  pk: 309
+- fields: {from_area: 42, only_land: false, to_area: 38}
+  model: condottieri_scenarios.border
+  pk: 310
+- fields: {from_area: 42, only_land: false, to_area: 43}
+  model: condottieri_scenarios.border
+  pk: 311
+- fields: {from_area: 42, only_land: false, to_area: 44}
+  model: condottieri_scenarios.border
+  pk: 312
+- fields: {from_area: 42, only_land: false, to_area: 41}
+  model: condottieri_scenarios.border
+  pk: 313
+- fields: {from_area: 42, only_land: true, to_area: 36}
+  model: condottieri_scenarios.border
+  pk: 314
+- fields: {from_area: 42, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 315
+- fields: {from_area: 17, only_land: false, to_area: 4}
+  model: condottieri_scenarios.border
+  pk: 316
+- fields: {from_area: 17, only_land: false, to_area: 30}
+  model: condottieri_scenarios.border
+  pk: 317
+- fields: {from_area: 17, only_land: false, to_area: 16}
+  model: condottieri_scenarios.border
+  pk: 318
+- fields: {from_area: 17, only_land: false, to_area: 33}
+  model: condottieri_scenarios.border
+  pk: 319
+- fields: {from_area: 17, only_land: false, to_area: 5}
+  model: condottieri_scenarios.border
+  pk: 320
+- fields: {from_area: 45, only_land: false, to_area: 46}
+  model: condottieri_scenarios.border
+  pk: 321
+- fields: {from_area: 45, only_land: false, to_area: 50}
+  model: condottieri_scenarios.border
+  pk: 322
+- fields: {from_area: 45, only_land: false, to_area: 48}
+  model: condottieri_scenarios.border
+  pk: 323
+- fields: {from_area: 45, only_land: false, to_area: 44}
+  model: condottieri_scenarios.border
+  pk: 324
+- fields: {from_area: 45, only_land: false, to_area: 47}
+  model: condottieri_scenarios.border
+  pk: 325
+- fields: {from_area: 45, only_land: false, to_area: 40}
+  model: condottieri_scenarios.border
+  pk: 326
+- fields: {from_area: 2, only_land: false, to_area: 1}
+  model: condottieri_scenarios.border
+  pk: 327
+- fields: {from_area: 2, only_land: false, to_area: 10}
+  model: condottieri_scenarios.border
+  pk: 328
+- fields: {from_area: 2, only_land: false, to_area: 3}
+  model: condottieri_scenarios.border
+  pk: 329
+- fields: {from_area: 28, only_land: false, to_area: 29}
+  model: condottieri_scenarios.border
+  pk: 330
+- fields: {from_area: 28, only_land: false, to_area: 27}
+  model: condottieri_scenarios.border
+  pk: 331
+- fields: {from_area: 28, only_land: false, to_area: 31}
+  model: condottieri_scenarios.border
+  pk: 332
+- fields: {from_area: 28, only_land: false, to_area: 23}
+  model: condottieri_scenarios.border
+  pk: 333
+- fields: {from_area: 15, only_land: false, to_area: 22}
+  model: condottieri_scenarios.border
+  pk: 334
+- fields: {from_area: 15, only_land: false, to_area: 16}
+  model: condottieri_scenarios.border
+  pk: 335
+- fields: {from_area: 15, only_land: false, to_area: 14}
+  model: condottieri_scenarios.border
+  pk: 336
+- fields: {from_area: 15, only_land: false, to_area: 23}
+  model: condottieri_scenarios.border
+  pk: 337
+- fields: {from_area: 68, only_land: false, to_area: 48}
+  model: condottieri_scenarios.border
+  pk: 338
+- fields: {from_area: 68, only_land: false, to_area: 69}
+  model: condottieri_scenarios.border
+  pk: 339
+- fields: {from_area: 68, only_land: false, to_area: 60}
+  model: condottieri_scenarios.border
+  pk: 340
+- fields: {from_area: 68, only_land: false, to_area: 65}
+  model: condottieri_scenarios.border
+  pk: 341
+- fields: {from_area: 68, only_land: false, to_area: 70}
+  model: condottieri_scenarios.border
+  pk: 342
+- fields: {from_area: 68, only_land: false, to_area: 66}
+  model: condottieri_scenarios.border
+  pk: 343
+- fields: {from_area: 68, only_land: false, to_area: 49}
+  model: condottieri_scenarios.border
+  pk: 344
+- fields: {from_area: 68, only_land: false, to_area: 62}
+  model: condottieri_scenarios.border
+  pk: 345
+- fields: {from_area: 68, only_land: false, to_area: 43}
+  model: condottieri_scenarios.border
+  pk: 346
+- fields: {from_area: 68, only_land: false, to_area: 41}
+  model: condottieri_scenarios.border
+  pk: 347
+- fields: {from_area: 68, only_land: false, to_area: 47}
+  model: condottieri_scenarios.border
+  pk: 348
+- fields: {from_area: 68, only_land: false, to_area: 61}
+  model: condottieri_scenarios.border
+  pk: 349
+- fields: {from_area: 68, only_land: false, to_area: 42}
+  model: condottieri_scenarios.border
+  pk: 350
+- fields: {from_area: 68, only_land: false, to_area: 67}
+  model: condottieri_scenarios.border
+  pk: 351
+- fields: {from_area: 64, only_land: false, to_area: 69}
+  model: condottieri_scenarios.border
+  pk: 352
+- fields: {from_area: 64, only_land: false, to_area: 67}
+  model: condottieri_scenarios.border
+  pk: 353
+- fields: {from_area: 10, only_land: false, to_area: 1}
+  model: condottieri_scenarios.border
+  pk: 354
+- fields: {from_area: 10, only_land: false, to_area: 11}
+  model: condottieri_scenarios.border
+  pk: 355
+- fields: {from_area: 10, only_land: false, to_area: 12}
+  model: condottieri_scenarios.border
+  pk: 356
+- fields: {from_area: 10, only_land: false, to_area: 13}
+  model: condottieri_scenarios.border
+  pk: 357
+- fields: {from_area: 10, only_land: false, to_area: 7}
+  model: condottieri_scenarios.border
+  pk: 358
+- fields: {from_area: 10, only_land: false, to_area: 9}
+  model: condottieri_scenarios.border
+  pk: 359
+- fields: {from_area: 10, only_land: false, to_area: 8}
+  model: condottieri_scenarios.border
+  pk: 360
+- fields: {from_area: 10, only_land: false, to_area: 2}
+  model: condottieri_scenarios.border
+  pk: 361
+- fields: {from_area: 10, only_land: false, to_area: 3}
+  model: condottieri_scenarios.border
+  pk: 362
+- fields: {from_area: 3, only_land: false, to_area: 4}
+  model: condottieri_scenarios.border
+  pk: 363
+- fields: {from_area: 3, only_land: false, to_area: 16}
+  model: condottieri_scenarios.border
+  pk: 364
+- fields: {from_area: 3, only_land: false, to_area: 11}
+  model: condottieri_scenarios.border
+  pk: 365
+- fields: {from_area: 3, only_land: false, to_area: 14}
+  model: condottieri_scenarios.border
+  pk: 366
+- fields: {from_area: 3, only_land: false, to_area: 2}
+  model: condottieri_scenarios.border
+  pk: 367
+- fields: {from_area: 3, only_land: false, to_area: 10}
+  model: condottieri_scenarios.border
+  pk: 368
+- fields: {from_area: 73, only_land: false, to_area: 46}
+  model: condottieri_scenarios.border
+  pk: 369
+- fields: {from_area: 73, only_land: false, to_area: 35}
+  model: condottieri_scenarios.border
+  pk: 370
+- fields: {from_area: 73, only_land: false, to_area: 30}
+  model: condottieri_scenarios.border
+  pk: 371
+- fields: {from_area: 73, only_land: false, to_area: 33}
+  model: condottieri_scenarios.border
+  pk: 372
+- fields: {from_area: 73, only_land: false, to_area: 54}
+  model: condottieri_scenarios.border
+  pk: 373
+- fields: {from_area: 73, only_land: false, to_area: 26}
+  model: condottieri_scenarios.border
+  pk: 374
+- fields: {from_area: 73, only_land: false, to_area: 29}
+  model: condottieri_scenarios.border
+  pk: 375
+- fields: {from_area: 73, only_land: false, to_area: 32}
+  model: condottieri_scenarios.border
+  pk: 376
+- fields: {from_area: 73, only_land: false, to_area: 72}
+  model: condottieri_scenarios.border
+  pk: 377
+- fields: {from_area: 73, only_land: false, to_area: 27}
+  model: condottieri_scenarios.border
+  pk: 378
+- fields: {from_area: 73, only_land: false, to_area: 40}
+  model: condottieri_scenarios.border
+  pk: 379
+- fields: {from_area: 73, only_land: false, to_area: 31}
+  model: condottieri_scenarios.border
+  pk: 380
+- fields: {from_area: 40, only_land: false, to_area: 46}
+  model: condottieri_scenarios.border
+  pk: 381
+- fields: {from_area: 40, only_land: false, to_area: 39}
+  model: condottieri_scenarios.border
+  pk: 382
+- fields: {from_area: 40, only_land: false, to_area: 35}
+  model: condottieri_scenarios.border
+  pk: 383
+- fields: {from_area: 40, only_land: false, to_area: 38}
+  model: condottieri_scenarios.border
+  pk: 384
+- fields: {from_area: 40, only_land: false, to_area: 44}
+  model: condottieri_scenarios.border
+  pk: 385
+- fields: {from_area: 40, only_land: false, to_area: 45}
+  model: condottieri_scenarios.border
+  pk: 386
+- fields: {from_area: 40, only_land: false, to_area: 73}
+  model: condottieri_scenarios.border
+  pk: 387
+- fields: {from_area: 31, only_land: false, to_area: 29}
+  model: condottieri_scenarios.border
+  pk: 388
+- fields: {from_area: 31, only_land: false, to_area: 27}
+  model: condottieri_scenarios.border
+  pk: 389
+- fields: {from_area: 31, only_land: false, to_area: 28}
+  model: condottieri_scenarios.border
+  pk: 390
+- fields: {from_area: 31, only_land: false, to_area: 73}
+  model: condottieri_scenarios.border
+  pk: 391
+- fields: {from_area: 23, only_land: false, to_area: 22}
+  model: condottieri_scenarios.border
+  pk: 392
+- fields: {from_area: 23, only_land: false, to_area: 16}
+  model: condottieri_scenarios.border
+  pk: 393
+- fields: {from_area: 23, only_land: false, to_area: 26}
+  model: condottieri_scenarios.border
+  pk: 394
+- fields: {from_area: 23, only_land: false, to_area: 29}
+  model: condottieri_scenarios.border
+  pk: 395
+- fields: {from_area: 23, only_land: false, to_area: 25}
+  model: condottieri_scenarios.border
+  pk: 396
+- fields: {from_area: 23, only_land: false, to_area: 27}
+  model: condottieri_scenarios.border
+  pk: 397
+- fields: {from_area: 23, only_land: false, to_area: 28}
+  model: condottieri_scenarios.border
+  pk: 398
+- fields: {from_area: 23, only_land: false, to_area: 15}
+  model: condottieri_scenarios.border
+  pk: 399
+- fields: {from_area: 67, only_land: false, to_area: 69}
+  model: condottieri_scenarios.border
+  pk: 400
+- fields: {from_area: 67, only_land: false, to_area: 65}
+  model: condottieri_scenarios.border
+  pk: 401
+- fields: {from_area: 67, only_land: false, to_area: 61}
+  model: condottieri_scenarios.border
+  pk: 402
+- fields: {from_area: 67, only_land: false, to_area: 68}
+  model: condottieri_scenarios.border
+  pk: 403
+- fields: {from_area: 67, only_land: false, to_area: 64}
+  model: condottieri_scenarios.border
+  pk: 404
