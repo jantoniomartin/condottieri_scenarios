@@ -351,6 +351,8 @@ class Area(models.Model):
 	## garrison in the area's city, if any (no fortified city, 0)
 	garrison_income = models.PositiveIntegerField(_("garrison income"),
 		null=False, default=0)
+	## mixed is true if the area is like Venice
+	mixed = models.BooleanField(default=False)
 
 	objects = managers.AreaManager()
 
@@ -383,7 +385,7 @@ class Area(models.Model):
 
 		assert type in ('A', 'F', 'G'), 'Wrong unit type'
 		if type=='A':
-			if self.is_sea or self.code=='VEN':
+			if self.is_sea or self.mixed=True:
 				return False
 		elif type=='F':
 			if not self.has_port:
@@ -397,7 +399,7 @@ class Area(models.Model):
 		""" Returns True if the given type of unit can stay in the Area. """
 		assert type in ('A','F','G'), 'Wrong unit type'
 		if type=='A':
-			if self.is_sea or self.code=='VEN':
+			if self.is_sea or self.mixed=True:
 				return False
 		elif type=='F':
 			if not self.is_sea and not self.is_coast:
