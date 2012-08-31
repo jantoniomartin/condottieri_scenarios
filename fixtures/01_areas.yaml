@@ -1196,6 +1196,7 @@
     is_coast: true
     is_fortified: true
     is_sea: false
+    mixed: true
     control_income: 4
     garrison_income: 3
     name_en: Venice
