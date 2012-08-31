@@ -17,6 +17,7 @@
 ## AUTHOR: Jose Antonio Martin <jantonio.martin AT gmail DOT com>
 
 from django.db import models
+from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
@@ -342,7 +343,6 @@ class Area(models.Model):
 	has_city = models.BooleanField(_("has city"), default=False)
 	is_fortified = models.BooleanField(_("is fortified"), default=False)
 	has_port = models.BooleanField(_("has port"), default=False)
-	#borders = models.ManyToManyField("self", editable=False, verbose_name=_("borders"))
 	borders = models.ManyToManyField("self", symmetrical=False, through='Border', verbose_name=_("borders"))
 	## control_income is the number of ducats that the area gives to the player
 	## that controls it, including the city (seas give 0)
@@ -358,27 +358,14 @@ class Area(models.Model):
 	objects = managers.AreaManager()
 
 	def is_adjacent(self, area, fleet=False):
-		""" Two areas can be adjacent through land, but not through a coast. 
+		""" Two areas can be adjacent through land, but not through a coast."""
 		
-		The list ``only_armies`` shows the areas that are adjacent but their
-		coasts are not, so a Fleet can't move between them.
-		"""
-		##TODO: Move this to a table in the database
-		only_armies = [
-			('AVI', 'PRO'),
-			('PISA', 'SIE'),
-			('CAP', 'AQU'),
-			('NAP', 'AQU'),
-			('SAL', 'AQU'),
-			('SAL', 'BARI'),
-			('HER', 'ALB'),
-			('BOL', 'MOD'),
-			('BOL', 'LUC'),
-			('CAR', 'CRO'),
-		]
 		if fleet:
-			if (self.code, area.code) in only_armies or (area.code, self.code) in only_armies:
-				return False
+			borders = Border.objects.filter(Q(from_area=self, to_area=area)|
+										Q(from_area=area, to_area=self))
+			for b in borders:
+				if b.only_land:
+					return False
 		return area in self.borders.all()
 
 	def build_possible(self, type):
