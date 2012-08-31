@@ -385,7 +385,7 @@ class Area(models.Model):
 
 		assert type in ('A', 'F', 'G'), 'Wrong unit type'
 		if type=='A':
-			if self.is_sea or self.mixed=True:
+			if self.is_sea or self.mixed == True:
 				return False
 		elif type=='F':
 			if not self.has_port:
@@ -399,7 +399,7 @@ class Area(models.Model):
 		""" Returns True if the given type of unit can stay in the Area. """
 		assert type in ('A','F','G'), 'Wrong unit type'
 		if type=='A':
-			if self.is_sea or self.mixed=True:
+			if self.is_sea or self.mixed == True:
 				return False
 		elif type=='F':
 			if not self.is_sea and not self.is_coast:
