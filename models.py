@@ -342,7 +342,8 @@ class Area(models.Model):
 	has_city = models.BooleanField(_("has city"), default=False)
 	is_fortified = models.BooleanField(_("is fortified"), default=False)
 	has_port = models.BooleanField(_("has port"), default=False)
-	borders = models.ManyToManyField("self", editable=False, verbose_name=_("borders"))
+	#borders = models.ManyToManyField("self", editable=False, verbose_name=_("borders"))
+	borders = models.ManyToManyField("self", symmetrical=False, through='Border', verbose_name=_("borders"))
 	## control_income is the number of ducats that the area gives to the player
 	## that controls it, including the city (seas give 0)
 	control_income = models.PositiveIntegerField(_("control income"),
@@ -427,6 +428,19 @@ class Area(models.Model):
 		unique_together = [('setting', 'code'),]
 		ordering = ('code',)
 		translate = ('name', )
+
+class Border(models.Model):
+	from_area = models.ForeignKey(Area, related_name="from_borders")
+	to_area = models.ForeignKey(Area, related_name="to_borders")
+	only_land = models.BooleanField(default=False)
+
+	class Meta:
+		verbose_name = _("border")
+		verbose_name_plural = _("borders")
+		unique_together = [('from_area', 'to_area'),]
+	
+	def __unicode__(self):
+		return "%s - %s" % (self.from_area, self.to_area)
 
 class DisabledArea(models.Model):
 	""" A DisabledArea is an Area that is not used in a given Scenario. """
