@@ -80,6 +80,25 @@ class Setting(models.Model):
 	def __unicode__(self):
 		return self.title
 
+class Configuration(models.Model):
+	""" Defines the configuration options for each setting. This options are defined when
+	the setting is created and are not meant to be changed.
+	"""
+
+	setting = models.OneToOneField(Setting, verbose_name=_('setting'), editable=False)
+	religious_war = models.BooleanField(_('religious war'), default=False)
+	trade_routes = models.BooleanField(_('trade routes'), default=False)
+
+	def __unicode__(self):
+		return unicode(self.setting)
+
+def create_configuration(sender, instance, created, **kwargs):
+    if isinstance(instance, Setting) and created:
+		config = Configuration(setting=instance)
+		config.save()
+
+models.signals.post_save.connect(create_configuration, sender=Setting)
+
 class Scenario(models.Model):
 	""" This class defines a Condottieri scenario. """
 	
@@ -221,6 +240,19 @@ class SpecialUnit(models.Model):
 			'power': self.power,
 			'loyalty': self.loyalty}
 
+class Religion(models.Model):
+	__metaclass__ = TransMeta
+	slug = models.SlugField(_("slug"), max_length=20, unique=True)
+	name = models.CharField(_("name"), max_length=50)
+
+	class Meta:
+		verbose_name = _("religion")
+		verbose_name_plural = _("religions")
+		translate = ("name",)
+
+	def __unicode__(self):
+		return self.name
+
 def get_coat_upload_path(instance, filename):
 	return "scenarios/coats/coat-%s.png" % instance.static_name
 
@@ -232,7 +264,8 @@ class Country(models.Model):
 		help_text=_("Please, use only 40x40px PNG images with transparency"))
 	can_excommunicate = models.BooleanField(_("can excommunicate"), default=False)
 	static_name = models.SlugField(_("static name"), max_length=20, unique=True)
-	special_units = models.ManyToManyField(SpecialUnit, verbose_name="special units")
+	special_units = models.ManyToManyField(SpecialUnit, verbose_name=_("special units"))
+	religion = models.ForeignKey(Religion, blank=True, null=True, verbose_name=_("religion"))
 	editor = models.ForeignKey(User, verbose_name=_("editor"))
 	enabled = models.BooleanField(_("enabled"), default=False)
 	protected = models.BooleanField(_("protected"), default=False)
@@ -352,6 +385,7 @@ class Area(models.Model):
 	## garrison in the area's city, if any (no fortified city, 0)
 	garrison_income = models.PositiveIntegerField(_("garrison income"),
 		null=False, default=0)
+	religion = models.ForeignKey(Religion, blank=True, null=True, verbose_name=_("religion"))
 	## mixed is true if the area is like Venice
 	mixed = models.BooleanField(default=False)
 

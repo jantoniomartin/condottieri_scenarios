@@ -33,8 +33,13 @@ class DisabledAreaInline(admin.TabularInline):
 	extra = 1
 	ordering = ['area', ]
 
+class ConfigurationInline(admin.TabularInline):
+	model = scenarios.Configuration
+	extra = 1
+
 class SettingAdmin(admin.ModelAdmin):
 	exclude = ('slug',)
+	inlines = [ ConfigurationInline, ]
 
 class ScenarioAdmin(admin.ModelAdmin):
 	list_display = ('name', 'start_year', 'setting',)
@@ -99,3 +104,4 @@ admin.site.register(scenarios.Area, AreaAdmin)
 admin.site.register(scenarios.CountryRandomIncome) 
 admin.site.register(scenarios.CityRandomIncome) 
 admin.site.register(scenarios.Border) 
+admin.site.register(scenarios.Religion) 
