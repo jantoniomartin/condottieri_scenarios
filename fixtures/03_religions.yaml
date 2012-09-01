@@ -1,0 +1,12 @@
+- fields: {name_ca: 'Catòlica', name_de: 'Katholisch', name_en: Catholic, name_es: "Católica", slug: catholic}
+  model: condottieri_scenarios.religion
+  pk: 1
+- fields: {name_ca: 'Luterana', name_de: 'Lutherisch', name_en: Lutheran, name_es: Luterana, slug: lutheran}
+  model: condottieri_scenarios.religion
+  pk: 2
+- fields: {name_ca: 'Calvinista', name_de: 'Kalvinist', name_en: Calvinist, name_es: Calvinista, slug: calvinist}
+  model: condottieri_scenarios.religion
+  pk: 3
+- fields: {name_ca: 'Islàmica', name_de: 'Islamisch', name_en: Islamic, name_es: "Islámica", slug: islamic}
+  model: condottieri_scenarios.religion
+  pk: 4

@@ -10,6 +10,7 @@
         name_ca: Nàpols
         special_units: [2]
         static_name: naples
+        religion: 1
         color: 3D3DFF
         editor: 1
         enabled: True
@@ -24,6 +25,7 @@
         name_ca: Turcs
         special_units: [3]
         static_name: turks
+        religion: 4
         color: 00CCCC
         editor: 1
         enabled: True
@@ -38,6 +40,7 @@
         name_ca: Venècia
         special_units: [1, 2, 3]
         static_name: venice
+        religion: 1
         color: 996600 
         editor: 1
         enabled: True
@@ -52,6 +55,7 @@
         name_ca: Papat
         special_units: [1, 2]
         static_name: papacy
+        religion: 1
         color: 00991A
         editor: 1
         enabled: True
@@ -66,6 +70,7 @@
         name_ca: Austria
         special_units: [2, 3]
         static_name: austria
+        religion: 1
         color: B8B8B8 
         editor: 1
         enabled: True
@@ -80,6 +85,7 @@
         name_ca: Florència
         special_units: [1, 2]
         static_name: florence
+        religion: 1
         color: 66CCFF
         editor: 1
         enabled: True
@@ -94,6 +100,7 @@
         name_ca: Milà
         special_units: [1, 2]
         static_name: milan
+        religion: 1
         color: CC0000 
         editor: 1
         enabled: True
@@ -108,6 +115,7 @@
         name_ca: França
         special_units: [2]
         static_name: france
+        religion: 1
         color: A375D1
         editor: 1
         enabled: True
@@ -122,6 +130,7 @@
         name_ca: Sacre Imperi Romà
         special_units: [2, 3]
         static_name: hre
+        religion: 1
         color: FFDD11
         editor: 1
         enabled: True
@@ -136,6 +145,7 @@
         name_ca: Saboia
         special_units: [2]
         static_name: savoy
+        religion: 1
         color: BBFFDD 
         editor: 1
         enabled: True
@@ -150,6 +160,7 @@
         name_ca: Imperi Espanyol
         special_units: [2, 3]
         static_name: spain
+        religion: 1
         color: FCFCFC
         editor: 1
         enabled: True
@@ -164,6 +175,7 @@
         name_ca: Gènova
         special_units: [2]
         static_name: genoa
+        religion: 1
         color: 0080FF 
         editor: 1
         enabled: True
