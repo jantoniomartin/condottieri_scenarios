@@ -136,6 +136,8 @@ def make_flag(fill):
 
 def make_country_tokens(instance, **kwargs):
 	""" Generate all the tokens for a country """
+	if instance.protected:
+		return
 	try:
 		coat = Image.open("%s/%s" % (settings.MEDIA_ROOT, instance.coat_of_arms))
 	except:
