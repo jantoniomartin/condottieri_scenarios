@@ -23,6 +23,8 @@ from django.utils.translation import ugettext_lazy as _
 import condottieri_scenarios.models as scenarios
 
 class CreateScenarioForm(forms.ModelForm):
+	setting = forms.ModelChoiceField(queryset=scenarios.Setting.objects.filter(enabled=True),
+		label=_("Setting"))
 	designer = forms.CharField(max_length=30, required=False, help_text=_("leave it blank if you are the designer"))
 
 	class Meta:

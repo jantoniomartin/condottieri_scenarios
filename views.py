@@ -158,6 +158,14 @@ class SettingView(DetailView):
 class SettingListView(ListView):
 	model = models.Setting
 
+	def get_queryset(self):
+		if not self.request.user.is_authenticated():
+			return models.Setting.objects.filter(enabled=True)
+		if self.request.user.is_staff:
+			return models.Setting.objects.all()
+		else:
+			return models.Setting.objects.filter(Q(enabled=True)|Q(editor=self.request.user))
+	
 class ScenarioListView(ListView):
 	model = models.Scenario
 	
