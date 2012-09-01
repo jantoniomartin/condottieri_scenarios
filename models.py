@@ -398,7 +398,7 @@ class Area(models.Model):
 		return True
 
 	def __unicode__(self):
-		return "%(code)s - %(name)s" % {'name': self.name, 'code': self.code}
+		return u"%(code)s - %(name)s" % {'name': self.name, 'code': self.code}
 	
 	def get_random_income(self, die):
 		try:
@@ -413,7 +413,7 @@ class Area(models.Model):
 		verbose_name = _("area")
 		verbose_name_plural = _("areas")
 		unique_together = [('setting', 'code'),]
-		ordering = ('code',)
+		ordering = ('setting', 'code',)
 		translate = ('name', )
 
 class Border(models.Model):
@@ -427,7 +427,7 @@ class Border(models.Model):
 		unique_together = [('from_area', 'to_area'),]
 	
 	def __unicode__(self):
-		return "%s - %s" % (self.from_area, self.to_area)
+		return u"%s - %s" % (self.from_area, self.to_area)
 
 class DisabledArea(models.Model):
 	""" A DisabledArea is an Area that is not used in a given Scenario. """
