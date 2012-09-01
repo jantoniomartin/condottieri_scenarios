@@ -749,7 +749,7 @@ class DisasterCell(models.Model):
 		abstract = True
 
 	def __unicode__(self):
-		return "%s (%s, %s)" % (self.area, self.row, self.column)
+		return u"%s (%s, %s)" % (self.area, self.row, self.column)
 
 class FamineCell(DisasterCell):
 	
@@ -769,3 +769,30 @@ class StormCell(DisasterCell):
 		verbose_name = _("storm cell")
 		verbose_name_plural = _("storm cells")
 
+##
+## Trade routes
+##
+
+class TradeRoute(models.Model):
+	#left = models.ForeignKey(Area, related_name="left_routes")
+	#right = models.ForeignKey(Area, related_name="right_routes")
+
+	class Meta:
+		verbose_name = _("trade route")
+		verbose_name_plural = _("trade routes")
+
+	def __unicode__(self):
+		return u"%s" % self.id
+
+class RouteStep(models.Model):
+	route = models.ForeignKey(TradeRoute)
+	area = models.ForeignKey(Area)
+	is_end = models.BooleanField(default=False)
+
+	class Meta:
+		unique_together = (('route', 'area'),)
+		verbose_name = _("route step")
+		verbose_name_plural = _("route steps")
+
+	def __unicode__(self):
+		return unicode(self.area)

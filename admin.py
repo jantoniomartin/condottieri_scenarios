@@ -96,6 +96,13 @@ class AreaAdmin(admin.ModelAdmin):
 		PlagueInline,
 		StormInline,]
 
+class RouteStepInline(admin.TabularInline):
+	model = scenarios.RouteStep
+	extra = 3
+
+class TradeRouteAdmin(admin.ModelAdmin):
+	inlines = [ RouteStepInline, ]
+
 admin.site.register(scenarios.Setting, SettingAdmin) 
 admin.site.register(scenarios.Scenario, ScenarioAdmin) 
 admin.site.register(scenarios.Contender, ContenderAdmin) 
@@ -105,3 +112,4 @@ admin.site.register(scenarios.CountryRandomIncome)
 admin.site.register(scenarios.CityRandomIncome) 
 admin.site.register(scenarios.Border) 
 admin.site.register(scenarios.Religion) 
+admin.site.register(scenarios.TradeRoute, TradeRouteAdmin)
