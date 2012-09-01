@@ -1,0 +1,183 @@
+- fields: {city: 101, income_list: '1,2,2,3,3,4'}
+  model: condottieri_scenarios.cityrandomincome
+  pk: 8
+- fields: {city: 100, income_list: '1,2,2,3,3,4'}
+  model: condottieri_scenarios.cityrandomincome
+  pk: 9
+- fields: {city: 82, income_list: '1,2,2,3,3,4'}
+  model: condottieri_scenarios.cityrandomincome
+  pk: 10
+- fields: {city: 83, income_list: '1,1,2,3,3,4'}
+  model: condottieri_scenarios.cityrandomincome
+  pk: 11
+- fields: {city: 89, income_list: '2,3,3,4,4,5'}
+  model: condottieri_scenarios.cityrandomincome
+  pk: 12
+- fields: {city: 108, income_list: '1,2,2,3,3,4'}
+  model: condottieri_scenarios.cityrandomincome
+  pk: 13
+
+- fields:
+    can_excommunicate: false
+    coat_of_arms: scenarios/coats/coat-saxony.png
+    color: F9DA16
+    editor: 1
+    enabled: false
+    name_ca: ''
+    name_de: ''
+    name_en: Saxony
+    name_es: Sajonia
+    protected: false
+    religion: 2
+    special_units: [1, 3]
+    static_name: saxony
+  model: condottieri_scenarios.country
+  pk: 17
+- fields:
+    can_excommunicate: false
+    coat_of_arms: scenarios/coats/coat-palatinate.png
+    color: 2B96F6
+    editor: 1
+    enabled: false
+    name_ca: ''
+    name_de: ''
+    name_en: Palatinate
+    name_es: Palatinado
+    protected: false
+    religion: 3
+    special_units: [1, 3]
+    static_name: palatinate
+  model: condottieri_scenarios.country
+  pk: 18
+- fields:
+    can_excommunicate: false
+    coat_of_arms: scenarios/coats/coat-brandenburg.png
+    color: A81C30
+    editor: 1
+    enabled: false
+    name_ca: ''
+    name_de: ''
+    name_en: Brandenburg
+    name_es: Brandenburgo
+    protected: false
+    religion: 2
+    special_units: [1]
+    static_name: brandenburg
+  model: condottieri_scenarios.country
+  pk: 19
+- fields:
+    can_excommunicate: false
+    coat_of_arms: scenarios/coats/coat-united-provinces.png
+    color: CE0F25
+    editor: 1
+    enabled: false
+    name_ca: ''
+    name_de: ''
+    name_en: United Provinces
+    name_es: Provincias Unidas
+    protected: false
+    religion: 3
+    special_units: [2]
+    static_name: united-provinces
+  model: condottieri_scenarios.country
+  pk: 20
+- fields:
+    can_excommunicate: false
+    coat_of_arms: scenarios/coats/coat-denmark.png
+    color: ADFF2F
+    editor: 1
+    enabled: false
+    name_ca: ''
+    name_de: ''
+    name_en: Denmark
+    name_es: Dinamarca
+    protected: false
+    religion: 2
+    special_units: [2]
+    static_name: denmark
+  model: condottieri_scenarios.country
+  pk: 21
+- fields:
+    can_excommunicate: false
+    coat_of_arms: scenarios/coats/coat-sweden.png
+    color: C0E7FF
+    editor: 1
+    enabled: false
+    name_ca: ''
+    name_de: ''
+    name_en: Sweden
+    name_es: Suecia
+    protected: false
+    religion: 2
+    special_units: [2]
+    static_name: sweden
+  model: condottieri_scenarios.country
+  pk: 22
+- fields:
+    can_excommunicate: false
+    coat_of_arms: scenarios/coats/coat-bohemia.png
+    color: '999999'
+    editor: 1
+    enabled: false
+    name_ca: ''
+    name_de: ''
+    name_en: Bohemia
+    name_es: Bohemia
+    protected: false
+    religion: null
+    special_units: [2]
+    static_name: bohemia
+  model: condottieri_scenarios.country
+  pk: 23
+- fields:
+    can_excommunicate: false
+    coat_of_arms: scenarios/coats/coat-bavaria.png
+    color: '00A347'
+    editor: 1
+    enabled: false
+    name_ca: ''
+    name_de: Bayern
+    name_en: Bavaria
+    name_es: Baviera
+    protected: false
+    religion: null
+    special_units: [1, 2]
+    static_name: bavaria
+  model: condottieri_scenarios.country
+  pk: 25
+
+
+
+- fields: {country: 8, income_list: '1,2,3,4,5,6', setting: 2}
+  model: condottieri_scenarios.countryrandomincome
+  pk: 17
+- fields: {country: 12, income_list: '1,2,3,3,4,4', setting: 2}
+  model: condottieri_scenarios.countryrandomincome
+  pk: 16
+- fields: {country: 13, income_list: '1,2,3,3,4,4', setting: 2}
+  model: condottieri_scenarios.countryrandomincome
+  pk: 18
+- fields: {country: 23, income_list: '1,2,3,3,4,4', setting: 2}
+  model: condottieri_scenarios.countryrandomincome
+  pk: 19
+- fields: {country: 19, income_list: '1,2,3,4,5,6', setting: 2}
+  model: condottieri_scenarios.countryrandomincome
+  pk: 20
+- fields: {country: 21, income_list: '1,2,3,3,4,5', setting: 2}
+  model: condottieri_scenarios.countryrandomincome
+  pk: 21
+- fields: {country: 18, income_list: '2,3,3,4,4,5', setting: 2}
+  model: condottieri_scenarios.countryrandomincome
+  pk: 22
+- fields: {country: 17, income_list: '1,2,3,4,5,6', setting: 2}
+  model: condottieri_scenarios.countryrandomincome
+  pk: 23
+- fields: {country: 22, income_list: '1,2,3,3,4,5', setting: 2}
+  model: condottieri_scenarios.countryrandomincome
+  pk: 24
+- fields: {country: 20, income_list: '2,3,3,4,5,6', setting: 2}
+  model: condottieri_scenarios.countryrandomincome
+  pk: 25
+- fields: {country: 25, income_list: '1,2,3,3,4,5', setting: 2}
+  model: condottieri_scenarios.countryrandomincome
+  pk: 26
