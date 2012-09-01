@@ -52,6 +52,11 @@ class ContenderAdmin(admin.ModelAdmin):
 class CountryAdmin(admin.ModelAdmin):
 	list_display = ('name', 'static_name')
 
+class BorderInline(admin.TabularInline):
+	model = scenarios.Border
+	fk_name = 'to_area'
+	extra = 4
+
 class ControlTokenInline(admin.TabularInline):
 	model = scenarios.ControlToken
 	extra = 1
@@ -78,7 +83,8 @@ class StormInline(admin.TabularInline):
 
 class AreaAdmin(admin.ModelAdmin):
 	list_display = ('name', 'code', 'is_sea', 'is_coast', 'has_city', 'is_fortified', 'has_port', 'control_income', 'garrison_income')
-	inlines = [ ControlTokenInline,
+	inlines = [ BorderInline,
+		ControlTokenInline,
 		GTokenInline,
 		AFTokenInline,
 		FamineInline,
