@@ -10,7 +10,7 @@
         description_de: ""
         editor: 1
         enabled: False
-        board: "scenarios/boards/thirty-years-war.png"
+        board: "scenarios/boards/board-thirty-years-war.png"
     model: condottieri_scenarios.setting
     pk: 2
 
