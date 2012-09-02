@@ -1629,6 +1629,14 @@
 - fields: {from_area: 88, only_land: false, to_area: 102}
   model: condottieri_scenarios.border
   pk: 811
+- fields: {from_area: 137, only_land: false, to_area: 129}
+  model: condottieri_scenarios.border
+  pk: 814
+- fields: {from_area: 129, only_land: false, to_area: 137}
+  model: condottieri_scenarios.border
+  pk: 815
+
+
 
 
 - fields: {area: 76, x: 591, y: 1929}
