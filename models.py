@@ -16,6 +16,8 @@
 ##
 ## AUTHOR: Jose Antonio Martin <jantonio.martin AT gmail DOT com>
 
+import os.path
+
 from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
@@ -23,6 +25,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.core.validators import RegexValidator
 from django.forms import ValidationError
+from django.conf import settings
 
 from transmeta import TransMeta
 
@@ -52,7 +55,7 @@ class WrongUnitType(Error):
 	pass
 
 def get_board_upload_path(instance, filename):
-	return "scenarios/boards/board-%s.png" % instance.slug
+	return os.path.join(settings.SCENARIOS_ROOT, "boards", instance.map_name)
 
 class Setting(models.Model):
 	""" A Setting represents a historic or fictional setting with a map.
@@ -79,6 +82,11 @@ class Setting(models.Model):
 
 	def __unicode__(self):
 		return self.title
+
+	def _get_map_name(self):
+		return "board-%s.png" % self.slug
+
+	map_name = property(_get_map_name)
 
 class Configuration(models.Model):
 	""" Defines the configuration options for each setting. This options are defined when
@@ -151,6 +159,30 @@ class Scenario(models.Model):
 		return "scenario-%s.jpg" % self.name
 
 	map_name = property(_get_map_name)
+	
+	def _get_map_path(self):
+		return os.path.join(settings.MEDIA_ROOT, settings.SCENARIOS_ROOT,
+			self.map_name)
+
+	map_path = property(_get_map_path)
+
+	def _get_map_url(self):
+		return os.path.join(settings.MEDIA_URL, settings.SCENARIOS_ROOT,
+			self.map_name)
+
+	map_url = property(_get_map_url)
+
+	def _get_thumbnail_path(self):
+		return os.path.join(settings.MEDIA_ROOT, settings.SCENARIOS_ROOT,
+			"thumbnails", self.map_name)
+
+	thumbnail_path = property(_get_thumbnail_path)
+
+	def _get_thumbnail_url(self):
+		return os.path.join(settings.MEDIA_URL, settings.SCENARIOS_ROOT,
+			"thumbnails", self.map_name)
+	
+	thumbnail_url = property(_get_thumbnail_url)
 	
 	def _get_in_use(self):
 		return self.game_set.count() > 0

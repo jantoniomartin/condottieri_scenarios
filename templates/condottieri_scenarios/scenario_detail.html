@@ -4,6 +4,19 @@
 
 {% block head_title %}{{ scenario.title }}{% endblock %}
 
+{% block extra_head %}
+<style type="text/css">
+#map {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 740px;
+}
+</style>
+{% endblock %}
+
+
 {% block body %}
 
 <div itemscope itemtype="http://schema.org/CreativeWork">
@@ -123,9 +136,12 @@
 
 <div class="section">
 <h2>{% trans "Initial map" %}</h2>
-<div id="scenario_map">
-<img src="{{ MEDIA_URL }}scenarios/625x890/{{ scenario.map_name }}" itemprop="image"/>
+
+<div id="map" class="viewer"></div>
+<div style="display: none">
+<img src="{{ scenario.map_url }}" itemprop="image"/>
 </div>
+
 {% if user_can_edit %}
 	<p><a href="{% url scenario_make_map scenario.name %}">{% trans "Redraw map" %}</a></p>
 	<p><a href="{% url scenario_toggle scenario.name %}">
@@ -137,5 +153,33 @@
 {% endif %}
 </div>
 </div>
+
+{% endblock %}
+
+
+{% block extra_body %}
+<script src="{{ STATIC_URL }}js/jquery.mousewheel.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}js/jquery.iviewer.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function() {
+		makeLayout();
+	});
+
+	function makeLayout() {
+		var viewer_opts = {
+			src: "{{ scenario.map_url }}",
+			ui_disabled: true,
+			zoom: "fit",
+			zoom_max: 100,
+			zoom_min: 10,
+			zoom_delta: 1.4,
+			//zoom_base:
+			update_on_resize: true
+		};
+
+		$("#map").iviewer(viewer_opts);
+	}
+</script>
+
 
 {% endblock %}
