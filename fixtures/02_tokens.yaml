@@ -1,520 +1,524 @@
-- fields: {area: 1, x: 198, y: 159}
+- fields: {area: 1, x: 132, y: 106}
   model: condottieri_scenarios.controltoken
   pk: 1
-- fields: {area: 58, x: 1776, y: 2108}
+- fields: {area: 58, x: 1184, y: 1405}
   model: condottieri_scenarios.controltoken
   pk: 2
-- fields: {area: 46, x: 1186, y: 1242}
+- fields: {area: 46, x: 791, y: 828}
   model: condottieri_scenarios.controltoken
   pk: 3
-- fields: {area: 50, x: 1255, y: 1602}
+- fields: {area: 50, x: 837, y: 1068}
   model: condottieri_scenarios.controltoken
   pk: 4
-- fields: {area: 39, x: 1020, y: 1048}
+- fields: {area: 39, x: 680, y: 699}
   model: condottieri_scenarios.controltoken
   pk: 5
-- fields: {area: 4, x: 1420, y: 67}
+- fields: {area: 4, x: 947, y: 45}
   model: condottieri_scenarios.controltoken
   pk: 6
-- fields: {area: 52, x: 1320, y: 1822}
+- fields: {area: 52, x: 880, y: 1215}
   model: condottieri_scenarios.controltoken
   pk: 7
-- fields: {area: 22, x: 1152, y: 514}
+- fields: {area: 22, x: 768, y: 343}
   model: condottieri_scenarios.controltoken
   pk: 8
-- fields: {area: 35, x: 1104, y: 903}
+- fields: {area: 35, x: 736, y: 602}
   model: condottieri_scenarios.controltoken
   pk: 9
-- fields: {area: 55, x: 1775, y: 1330}
+- fields: {area: 55, x: 1183, y: 887}
   model: condottieri_scenarios.controltoken
   pk: 10
-- fields: {area: 48, x: 1052, y: 1485}
+- fields: {area: 48, x: 701, y: 990}
   model: condottieri_scenarios.controltoken
   pk: 11
-- fields: {area: 30, x: 1568, y: 647}
+- fields: {area: 30, x: 1045, y: 431}
   model: condottieri_scenarios.controltoken
   pk: 12
-- fields: {area: 16, x: 1445, y: 346}
+- fields: {area: 16, x: 963, y: 231}
   model: condottieri_scenarios.controltoken
   pk: 13
-- fields: {area: 11, x: 1002, y: 247}
+- fields: {area: 11, x: 668, y: 165}
   model: condottieri_scenarios.controltoken
   pk: 14
-- fields: {area: 60, x: 508, y: 973}
+- fields: {area: 60, x: 339, y: 649}
   model: condottieri_scenarios.controltoken
   pk: 15
-- fields: {area: 21, x: 1080, y: 536}
+- fields: {area: 21, x: 720, y: 357}
   model: condottieri_scenarios.controltoken
   pk: 16
-- fields: {area: 33, x: 1669, y: 962}
+- fields: {area: 33, x: 1113, y: 641}
   model: condottieri_scenarios.controltoken
   pk: 17
-- fields: {area: 54, x: 1632, y: 1300}
+- fields: {area: 54, x: 1088, y: 867}
   model: condottieri_scenarios.controltoken
   pk: 18
-- fields: {area: 59, x: 1748, y: 2400}
+- fields: {area: 59, x: 1165, y: 1600}
   model: condottieri_scenarios.controltoken
   pk: 19
-- fields: {area: 26, x: 1180, y: 796}
+- fields: {area: 26, x: 787, y: 531}
   model: condottieri_scenarios.controltoken
   pk: 20
-- fields: {area: 38, x: 998, y: 1011}
+- fields: {area: 38, x: 665, y: 674}
   model: condottieri_scenarios.controltoken
   pk: 21
-- fields: {area: 19, x: 862, y: 576}
+- fields: {area: 19, x: 575, y: 384}
   model: condottieri_scenarios.controltoken
   pk: 22
-- fields: {area: 29, x: 1456, y: 652}
+- fields: {area: 29, x: 971, y: 435}
   model: condottieri_scenarios.controltoken
   pk: 23
-- fields: {area: 18, x: 788, y: 639}
+- fields: {area: 18, x: 525, y: 426}
   model: condottieri_scenarios.controltoken
   pk: 24
-- fields: {area: 56, x: 1782, y: 1758}
+- fields: {area: 56, x: 1188, y: 1172}
   model: condottieri_scenarios.controltoken
   pk: 25
-- fields: {area: 5, x: 1724, y: 51}
+- fields: {area: 5, x: 1149, y: 34}
   model: condottieri_scenarios.controltoken
   pk: 26
-- fields: {area: 32, x: 1504, y: 910}
+- fields: {area: 32, x: 1003, y: 607}
   model: condottieri_scenarios.controltoken
   pk: 27
-- fields: {area: 34, x: 902, y: 832}
+- fields: {area: 34, x: 601, y: 555}
   model: condottieri_scenarios.controltoken
   pk: 28
-- fields: {area: 25, x: 1086, y: 648}
+- fields: {area: 25, x: 724, y: 432}
   model: condottieri_scenarios.controltoken
   pk: 29
-- fields: {area: 6, x: 174, y: 424}
+- fields: {area: 6, x: 116, y: 283}
   model: condottieri_scenarios.controltoken
   pk: 30
-- fields: {area: 63, x: 787, y: 2296}
+- fields: {area: 63, x: 525, y: 1531}
   model: condottieri_scenarios.controltoken
   pk: 31
-- fields: {area: 14, x: 1074, y: 359}
+- fields: {area: 14, x: 716, y: 239}
   model: condottieri_scenarios.controltoken
   pk: 32
-- fields: {area: 24, x: 1040, y: 719}
+- fields: {area: 24, x: 693, y: 479}
   model: condottieri_scenarios.controltoken
   pk: 33
-- fields: {area: 12, x: 712, y: 520}
+- fields: {area: 12, x: 475, y: 347}
   model: condottieri_scenarios.controltoken
   pk: 34
-- fields: {area: 49, x: 1138, y: 1658}
+- fields: {area: 49, x: 759, y: 1105}
   model: condottieri_scenarios.controltoken
   pk: 35
-- fields: {area: 53, x: 1224, y: 2066}
+- fields: {area: 53, x: 816, y: 1377}
   model: condottieri_scenarios.controltoken
   pk: 36
-- fields: {area: 27, x: 1236, y: 778}
+- fields: {area: 27, x: 824, y: 519}
   model: condottieri_scenarios.controltoken
   pk: 37
-- fields: {area: 62, x: 486, y: 2137}
+- fields: {area: 62, x: 324, y: 1425}
   model: condottieri_scenarios.controltoken
   pk: 38
-- fields: {area: 20, x: 990, y: 598}
+- fields: {area: 20, x: 660, y: 399}
   model: condottieri_scenarios.controltoken
   pk: 39
-- fields: {area: 43, x: 914, y: 1230}
+- fields: {area: 43, x: 609, y: 820}
   model: condottieri_scenarios.controltoken
   pk: 40
-- fields: {area: 13, x: 851, y: 419}
+- fields: {area: 13, x: 567, y: 279}
   model: condottieri_scenarios.controltoken
   pk: 41
-- fields: {area: 44, x: 956, y: 1206}
+- fields: {area: 44, x: 637, y: 804}
   model: condottieri_scenarios.controltoken
   pk: 42
-- fields: {area: 41, x: 883, y: 1043}
+- fields: {area: 41, x: 589, y: 695}
   model: condottieri_scenarios.controltoken
   pk: 43
-- fields: {area: 37, x: 983, y: 892}
+- fields: {area: 37, x: 655, y: 595}
   model: condottieri_scenarios.controltoken
   pk: 44
-- fields: {area: 36, x: 897, y: 946}
+- fields: {area: 36, x: 598, y: 631}
   model: condottieri_scenarios.controltoken
   pk: 45
-- fields: {area: 7, x: 388, y: 410}
+- fields: {area: 7, x: 259, y: 273}
   model: condottieri_scenarios.controltoken
   pk: 46
-- fields: {area: 57, x: 1688, y: 1852}
+- fields: {area: 57, x: 1125, y: 1235}
   model: condottieri_scenarios.controltoken
   pk: 47
-- fields: {area: 47, x: 984, y: 1388}
+- fields: {area: 47, x: 656, y: 925}
   model: condottieri_scenarios.controltoken
   pk: 48
-- fields: {area: 51, x: 1157, y: 1847}
+- fields: {area: 51, x: 771, y: 1231}
   model: condottieri_scenarios.controltoken
   pk: 49
-- fields: {area: 9, x: 532, y: 429}
+- fields: {area: 9, x: 355, y: 286}
   model: condottieri_scenarios.controltoken
   pk: 50
-- fields: {area: 61, x: 306, y: 1349}
+- fields: {area: 61, x: 204, y: 899}
   model: condottieri_scenarios.controltoken
   pk: 51
-- fields: {area: 8, x: 528, y: 545}
+- fields: {area: 8, x: 352, y: 363}
   model: condottieri_scenarios.controltoken
   pk: 52
-- fields: {area: 42, x: 935, y: 1070}
+- fields: {area: 42, x: 623, y: 713}
   model: condottieri_scenarios.controltoken
   pk: 53
-- fields: {area: 17, x: 1750, y: 511}
+- fields: {area: 17, x: 1167, y: 341}
   model: condottieri_scenarios.controltoken
   pk: 54
-- fields: {area: 45, x: 1060, y: 1294}
+- fields: {area: 45, x: 707, y: 863}
   model: condottieri_scenarios.controltoken
   pk: 55
-- fields: {area: 2, x: 634, y: 52}
+- fields: {area: 2, x: 423, y: 35}
   model: condottieri_scenarios.controltoken
   pk: 56
-- fields: {area: 28, x: 1375, y: 604}
+- fields: {area: 28, x: 917, y: 403}
   model: condottieri_scenarios.controltoken
   pk: 57
-- fields: {area: 15, x: 1294, y: 424}
+- fields: {area: 15, x: 863, y: 283}
   model: condottieri_scenarios.controltoken
   pk: 58
-- fields: {area: 64, x: 72, y: 2050}
+- fields: {area: 64, x: 48, y: 1367}
   model: condottieri_scenarios.controltoken
   pk: 59
-- fields: {area: 10, x: 766, y: 237}
+- fields: {area: 10, x: 511, y: 158}
   model: condottieri_scenarios.controltoken
   pk: 60
-- fields: {area: 3, x: 1109, y: 68}
+- fields: {area: 3, x: 739, y: 45}
   model: condottieri_scenarios.controltoken
   pk: 61
-- fields: {area: 40, x: 1173, y: 1023}
+- fields: {area: 40, x: 782, y: 682}
   model: condottieri_scenarios.controltoken
   pk: 62
-- fields: {area: 31, x: 1334, y: 844}
+- fields: {area: 31, x: 889, y: 563}
   model: condottieri_scenarios.controltoken
   pk: 63
-- fields: {area: 23, x: 1276, y: 600}
+- fields: {area: 23, x: 851, y: 400}
   model: condottieri_scenarios.controltoken
   pk: 64
-- fields: {area: 1, x: 188, y: 214}
+
+
+- fields: {area: 1, x: 125, y: 143}
   model: condottieri_scenarios.gtoken
   pk: 1
-- fields: {area: 46, x: 1230, y: 1230}
+- fields: {area: 46, x: 820, y: 820}
   model: condottieri_scenarios.gtoken
   pk: 2
-- fields: {area: 39, x: 1022, y: 1096}
+- fields: {area: 39, x: 681, y: 731}
   model: condottieri_scenarios.gtoken
   pk: 3
-- fields: {area: 4, x: 1424, y: 146}
+- fields: {area: 4, x: 949, y: 97}
   model: condottieri_scenarios.gtoken
   pk: 4
-- fields: {area: 52, x: 1386, y: 1877}
+- fields: {area: 52, x: 924, y: 1251}
   model: condottieri_scenarios.gtoken
   pk: 5
-- fields: {area: 35, x: 1148, y: 914}
+- fields: {area: 35, x: 765, y: 609}
   model: condottieri_scenarios.gtoken
   pk: 6
-- fields: {area: 21, x: 1057, y: 570}
+- fields: {area: 21, x: 705, y: 380}
   model: condottieri_scenarios.gtoken
   pk: 7
-- fields: {area: 59, x: 1729, y: 2502}
+- fields: {area: 59, x: 1153, y: 1668}
   model: condottieri_scenarios.gtoken
   pk: 8
-- fields: {area: 26, x: 1190, y: 853}
+- fields: {area: 26, x: 793, y: 569}
   model: condottieri_scenarios.gtoken
   pk: 9
-- fields: {area: 38, x: 1062, y: 1007}
+- fields: {area: 38, x: 708, y: 671}
   model: condottieri_scenarios.gtoken
   pk: 10
-- fields: {area: 18, x: 728, y: 627}
+- fields: {area: 18, x: 485, y: 418}
   model: condottieri_scenarios.gtoken
   pk: 11
-- fields: {area: 34, x: 856, y: 858}
+- fields: {area: 34, x: 571, y: 572}
   model: condottieri_scenarios.gtoken
   pk: 12
-- fields: {area: 25, x: 1116, y: 700}
+- fields: {area: 25, x: 744, y: 467}
   model: condottieri_scenarios.gtoken
   pk: 13
-- fields: {area: 6, x: 150, y: 505}
+- fields: {area: 6, x: 100, y: 337}
   model: condottieri_scenarios.gtoken
   pk: 14
-- fields: {area: 63, x: 848, y: 2324}
+- fields: {area: 63, x: 565, y: 1549}
   model: condottieri_scenarios.gtoken
   pk: 15
-- fields: {area: 14, x: 1163, y: 369}
+- fields: {area: 14, x: 775, y: 246}
   model: condottieri_scenarios.gtoken
   pk: 16
-- fields: {area: 24, x: 1020, y: 770}
+- fields: {area: 24, x: 680, y: 513}
   model: condottieri_scenarios.gtoken
   pk: 17
-- fields: {area: 12, x: 753, y: 510}
+- fields: {area: 12, x: 502, y: 340}
   model: condottieri_scenarios.gtoken
   pk: 18
-- fields: {area: 49, x: 1044, y: 1700}
+- fields: {area: 49, x: 696, y: 1133}
   model: condottieri_scenarios.gtoken
   pk: 19
-- fields: {area: 27, x: 1276, y: 789}
+- fields: {area: 27, x: 851, y: 526}
   model: condottieri_scenarios.gtoken
   pk: 20
-- fields: {area: 62, x: 466, y: 2072}
+- fields: {area: 62, x: 311, y: 1381}
   model: condottieri_scenarios.gtoken
   pk: 21
-- fields: {area: 13, x: 873, y: 476}
+- fields: {area: 13, x: 582, y: 317}
   model: condottieri_scenarios.gtoken
   pk: 22
-- fields: {area: 44, x: 1025, y: 1174}
+- fields: {area: 44, x: 683, y: 783}
   model: condottieri_scenarios.gtoken
   pk: 23
-- fields: {area: 41, x: 836, y: 1033}
+- fields: {area: 41, x: 557, y: 689}
   model: condottieri_scenarios.gtoken
   pk: 24
-- fields: {area: 36, x: 842, y: 927}
+- fields: {area: 36, x: 561, y: 618}
   model: condottieri_scenarios.gtoken
   pk: 25
-- fields: {area: 57, x: 1698, y: 1920}
+- fields: {area: 57, x: 1132, y: 1280}
   model: condottieri_scenarios.gtoken
   pk: 26
-- fields: {area: 47, x: 981, y: 1332}
+- fields: {area: 47, x: 654, y: 888}
   model: condottieri_scenarios.gtoken
   pk: 27
-- fields: {area: 9, x: 568, y: 429}
+- fields: {area: 9, x: 379, y: 286}
   model: condottieri_scenarios.gtoken
   pk: 28
-- fields: {area: 8, x: 469, y: 618}
+- fields: {area: 8, x: 313, y: 412}
   model: condottieri_scenarios.gtoken
   pk: 29
-- fields: {area: 42, x: 892, y: 1141}
+- fields: {area: 42, x: 595, y: 761}
   model: condottieri_scenarios.gtoken
   pk: 30
-- fields: {area: 28, x: 1362, y: 720}
+- fields: {area: 28, x: 908, y: 480}
   model: condottieri_scenarios.gtoken
   pk: 31
-- fields: {area: 15, x: 1289, y: 480}
+- fields: {area: 15, x: 859, y: 320}
   model: condottieri_scenarios.gtoken
   pk: 32
-- fields: {area: 64, x: 168, y: 2072}
+- fields: {area: 64, x: 112, y: 1381}
   model: condottieri_scenarios.gtoken
   pk: 33
-- fields: {area: 10, x: 754, y: 323}
+- fields: {area: 10, x: 503, y: 215}
   model: condottieri_scenarios.gtoken
   pk: 34
-- fields: {area: 3, x: 1206, y: 154}
+- fields: {area: 3, x: 804, y: 103}
   model: condottieri_scenarios.gtoken
   pk: 35
-- fields: {area: 31, x: 1372, y: 851}
+- fields: {area: 31, x: 915, y: 567}
   model: condottieri_scenarios.gtoken
   pk: 36
-- fields: {area: 1, x: 275, y: 181}
+
+
+
+- fields: {area: 1, x: 183, y: 121}
   model: condottieri_scenarios.aftoken
   pk: 1
-- fields: {area: 58, x: 1756, y: 2190}
+- fields: {area: 58, x: 1171, y: 1460}
   model: condottieri_scenarios.aftoken
   pk: 2
-- fields: {area: 46, x: 1206, y: 1148}
+- fields: {area: 46, x: 804, y: 765}
   model: condottieri_scenarios.aftoken
   pk: 3
-- fields: {area: 50, x: 1317, y: 1656}
+- fields: {area: 50, x: 878, y: 1104}
   model: condottieri_scenarios.aftoken
   pk: 4
-- fields: {area: 39, x: 952, y: 1122}
+- fields: {area: 39, x: 635, y: 748}
   model: condottieri_scenarios.aftoken
   pk: 5
-- fields: {area: 4, x: 1500, y: 140}
+- fields: {area: 4, x: 1000, y: 93}
   model: condottieri_scenarios.aftoken
   pk: 6
-- fields: {area: 52, x: 1299, y: 1880}
+- fields: {area: 52, x: 866, y: 1253}
   model: condottieri_scenarios.aftoken
   pk: 7
-- fields: {area: 22, x: 1128, y: 572}
+- fields: {area: 22, x: 752, y: 381}
   model: condottieri_scenarios.aftoken
   pk: 8
-- fields: {area: 35, x: 1094, y: 812}
+- fields: {area: 35, x: 729, y: 541}
   model: condottieri_scenarios.aftoken
   pk: 9
-- fields: {area: 55, x: 1770, y: 1411}
+- fields: {area: 55, x: 1180, y: 941}
   model: condottieri_scenarios.aftoken
   pk: 10
-- fields: {area: 48, x: 978, y: 1548}
+- fields: {area: 48, x: 652, y: 1032}
   model: condottieri_scenarios.aftoken
   pk: 11
-- fields: {area: 30, x: 1543, y: 713}
+- fields: {area: 30, x: 1029, y: 475}
   model: condottieri_scenarios.aftoken
   pk: 12
-- fields: {area: 16, x: 1462, y: 415}
+- fields: {area: 16, x: 975, y: 277}
   model: condottieri_scenarios.aftoken
   pk: 13
-- fields: {area: 69, x: 246, y: 2425}
+- fields: {area: 69, x: 164, y: 1617}
   model: condottieri_scenarios.aftoken
   pk: 14
-- fields: {area: 11, x: 1052, y: 224}
+- fields: {area: 11, x: 701, y: 149}
   model: condottieri_scenarios.aftoken
   pk: 15
-- fields: {area: 60, x: 508, y: 1032}
+- fields: {area: 60, x: 339, y: 688}
   model: condottieri_scenarios.aftoken
   pk: 16
-- fields: {area: 21, x: 1020, y: 462}
+- fields: {area: 21, x: 680, y: 308}
   model: condottieri_scenarios.aftoken
   pk: 17
-- fields: {area: 33, x: 1668, y: 1054}
+- fields: {area: 33, x: 1112, y: 703}
   model: condottieri_scenarios.aftoken
   pk: 18
-- fields: {area: 54, x: 1632, y: 1386}
+- fields: {area: 54, x: 1088, y: 924}
   model: condottieri_scenarios.aftoken
   pk: 19
-- fields: {area: 59, x: 1776, y: 2465}
+- fields: {area: 59, x: 1184, y: 1643}
   model: condottieri_scenarios.aftoken
   pk: 20
-- fields: {area: 26, x: 1226, y: 888}
+- fields: {area: 26, x: 817, y: 592}
   model: condottieri_scenarios.aftoken
   pk: 21
-- fields: {area: 38, x: 1034, y: 924}
+- fields: {area: 38, x: 689, y: 616}
   model: condottieri_scenarios.aftoken
   pk: 22
-- fields: {area: 19, x: 876, y: 626}
+- fields: {area: 19, x: 584, y: 417}
   model: condottieri_scenarios.aftoken
   pk: 23
-- fields: {area: 29, x: 1430, y: 723}
+- fields: {area: 29, x: 953, y: 482}
   model: condottieri_scenarios.aftoken
   pk: 24
-- fields: {area: 18, x: 641, y: 616}
+- fields: {area: 18, x: 427, y: 411}
   model: condottieri_scenarios.aftoken
   pk: 25
-- fields: {area: 65, x: 96, y: 817}
+- fields: {area: 65, x: 64, y: 545}
   model: condottieri_scenarios.aftoken
   pk: 26
-- fields: {area: 70, x: 912, y: 2110}
+- fields: {area: 70, x: 608, y: 1407}
   model: condottieri_scenarios.aftoken
   pk: 27
-- fields: {area: 56, x: 1770, y: 1823}
+- fields: {area: 56, x: 1180, y: 1215}
   model: condottieri_scenarios.aftoken
   pk: 28
-- fields: {area: 5, x: 1772, y: 218}
+- fields: {area: 5, x: 1181, y: 145}
   model: condottieri_scenarios.aftoken
   pk: 29
-- fields: {area: 71, x: 1316, y: 2416}
+- fields: {area: 71, x: 877, y: 1611}
   model: condottieri_scenarios.aftoken
   pk: 30
-- fields: {area: 32, x: 1470, y: 969}
+- fields: {area: 32, x: 980, y: 646}
   model: condottieri_scenarios.aftoken
   pk: 31
-- fields: {area: 72, x: 1531, y: 1636}
+- fields: {area: 72, x: 1021, y: 1091}
   model: condottieri_scenarios.aftoken
   pk: 32
-- fields: {area: 66, x: 560, y: 722}
+- fields: {area: 66, x: 373, y: 481}
   model: condottieri_scenarios.aftoken
   pk: 33
-- fields: {area: 34, x: 946, y: 811}
+- fields: {area: 34, x: 631, y: 541}
   model: condottieri_scenarios.aftoken
   pk: 34
-- fields: {area: 25, x: 1098, y: 740}
+- fields: {area: 25, x: 732, y: 493}
   model: condottieri_scenarios.aftoken
   pk: 35
-- fields: {area: 6, x: 226, y: 440}
+- fields: {area: 6, x: 151, y: 293}
   model: condottieri_scenarios.aftoken
   pk: 36
-- fields: {area: 63, x: 748, y: 2367}
+- fields: {area: 63, x: 499, y: 1578}
   model: condottieri_scenarios.aftoken
   pk: 37
-- fields: {area: 14, x: 1216, y: 346}
+- fields: {area: 14, x: 811, y: 231}
   model: condottieri_scenarios.aftoken
   pk: 38
-- fields: {area: 24, x: 904, y: 754}
+- fields: {area: 24, x: 603, y: 503}
   model: condottieri_scenarios.aftoken
   pk: 39
-- fields: {area: 12, x: 748, y: 422}
+- fields: {area: 12, x: 499, y: 281}
   model: condottieri_scenarios.aftoken
   pk: 40
-- fields: {area: 49, x: 1046, y: 1630}
+- fields: {area: 49, x: 697, y: 1087}
   model: condottieri_scenarios.aftoken
   pk: 41
-- fields: {area: 53, x: 1168, y: 2158}
+- fields: {area: 53, x: 779, y: 1439}
   model: condottieri_scenarios.aftoken
   pk: 42
-- fields: {area: 27, x: 1268, y: 709}
+- fields: {area: 27, x: 845, y: 473}
   model: condottieri_scenarios.aftoken
   pk: 43
-- fields: {area: 62, x: 558, y: 2234}
+- fields: {area: 62, x: 372, y: 1489}
   model: condottieri_scenarios.aftoken
   pk: 44
-- fields: {area: 20, x: 964, y: 658}
+- fields: {area: 20, x: 643, y: 439}
   model: condottieri_scenarios.aftoken
   pk: 45
-- fields: {area: 43, x: 842, y: 1285}
+- fields: {area: 43, x: 561, y: 857}
   model: condottieri_scenarios.aftoken
   pk: 46
-- fields: {area: 13, x: 902, y: 392}
+- fields: {area: 13, x: 601, y: 261}
   model: condottieri_scenarios.aftoken
   pk: 47
-- fields: {area: 44, x: 1059, y: 1146}
+- fields: {area: 44, x: 706, y: 764}
   model: condottieri_scenarios.aftoken
   pk: 48
-- fields: {area: 41, x: 822, y: 1094}
+- fields: {area: 41, x: 548, y: 729}
   model: condottieri_scenarios.aftoken
   pk: 49
-- fields: {area: 37, x: 957, y: 940}
+- fields: {area: 37, x: 638, y: 627}
   model: condottieri_scenarios.aftoken
   pk: 50
-- fields: {area: 36, x: 804, y: 969}
+- fields: {area: 36, x: 536, y: 646}
   model: condottieri_scenarios.aftoken
   pk: 51
-- fields: {area: 7, x: 276, y: 562}
+- fields: {area: 7, x: 184, y: 375}
   model: condottieri_scenarios.aftoken
   pk: 52
-- fields: {area: 57, x: 1664, y: 1964}
+- fields: {area: 57, x: 1109, y: 1309}
   model: condottieri_scenarios.aftoken
   pk: 53
-- fields: {area: 47, x: 899, y: 1433}
+- fields: {area: 47, x: 599, y: 955}
   model: condottieri_scenarios.aftoken
   pk: 54
-- fields: {area: 51, x: 1141, y: 1916}
+- fields: {area: 51, x: 761, y: 1277}
   model: condottieri_scenarios.aftoken
   pk: 55
-- fields: {area: 9, x: 597, y: 346}
+- fields: {area: 9, x: 398, y: 231}
   model: condottieri_scenarios.aftoken
   pk: 56
-- fields: {area: 61, x: 376, y: 1284}
+- fields: {area: 61, x: 251, y: 856}
   model: condottieri_scenarios.aftoken
   pk: 57
-- fields: {area: 8, x: 592, y: 518}
+- fields: {area: 8, x: 395, y: 345}
   model: condottieri_scenarios.aftoken
   pk: 58
-- fields: {area: 42, x: 796, y: 1165}
+- fields: {area: 42, x: 531, y: 777}
   model: condottieri_scenarios.aftoken
   pk: 59
-- fields: {area: 17, x: 1724, y: 590}
+- fields: {area: 17, x: 1149, y: 393}
   model: condottieri_scenarios.aftoken
   pk: 60
-- fields: {area: 45, x: 1091, y: 1208}
+- fields: {area: 45, x: 727, y: 805}
   model: condottieri_scenarios.aftoken
   pk: 61
-- fields: {area: 2, x: 634, y: 129}
+- fields: {area: 2, x: 423, y: 86}
   model: condottieri_scenarios.aftoken
   pk: 62
-- fields: {area: 28, x: 1350, y: 769}
+- fields: {area: 28, x: 900, y: 513}
   model: condottieri_scenarios.aftoken
   pk: 63
-- fields: {area: 15, x: 1336, y: 436}
+- fields: {area: 15, x: 891, y: 291}
   model: condottieri_scenarios.aftoken
   pk: 64
-- fields: {area: 68, x: 635, y: 1501}
+- fields: {area: 68, x: 423, y: 1001}
   model: condottieri_scenarios.aftoken
   pk: 65
-- fields: {area: 64, x: 34, y: 2142}
+- fields: {area: 64, x: 23, y: 1428}
   model: condottieri_scenarios.aftoken
   pk: 66
-- fields: {area: 10, x: 820, y: 244}
+- fields: {area: 10, x: 547, y: 163}
   model: condottieri_scenarios.aftoken
   pk: 67
-- fields: {area: 3, x: 980, y: 96}
+- fields: {area: 3, x: 653, y: 64}
   model: condottieri_scenarios.aftoken
   pk: 68
-- fields: {area: 73, x: 1332, y: 967}
+- fields: {area: 73, x: 888, y: 645}
   model: condottieri_scenarios.aftoken
   pk: 69
-- fields: {area: 40, x: 1138, y: 1099}
+- fields: {area: 40, x: 759, y: 733}
   model: condottieri_scenarios.aftoken
   pk: 70
-- fields: {area: 31, x: 1418, y: 832}
+- fields: {area: 31, x: 945, y: 555}
   model: condottieri_scenarios.aftoken
   pk: 71
-- fields: {area: 23, x: 1205, y: 650}
+- fields: {area: 23, x: 803, y: 433}
   model: condottieri_scenarios.aftoken
   pk: 72
-- fields: {area: 67, x: 68, y: 1750}
+- fields: {area: 67, x: 45, y: 1167}
   model: condottieri_scenarios.aftoken
   pk: 73
-
