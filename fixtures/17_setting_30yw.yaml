@@ -383,8 +383,8 @@
     name_de: '', name_en: Vogtland, name_es: '', religion: 2, setting: 2}
   model: condottieri_scenarios.area
   pk: 147
-- fields: {code: VOR, control_income: 2, garrison_income: 0, has_city: false, has_port: false,
-    is_coast: false, is_fortified: false, is_sea: false, mixed: false, name_ca: '',
+- fields: {code: VOR, control_income: 2, garrison_income: 0, has_city: true, has_port: false,
+    is_coast: true, is_fortified: false, is_sea: false, mixed: false, name_ca: '',
     name_de: '', name_en: Vorpommern, name_es: '', religion: 2, setting: 2}
   model: condottieri_scenarios.area
   pk: 148
