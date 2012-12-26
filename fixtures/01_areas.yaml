@@ -1031,9 +1031,9 @@
     is_sea: true
     control_income: 0
     garrison_income: 0
-    name_en: Thyrrenian Sea
+    name_en: Tyrrhenian Sea
     name_es: Mar Tirreno
-    name_de: Thyrrenisches Meer
+    name_de: Tyrrhenisches Meer
     name_ca: Mar Tirrè
     setting: 1
   model: condottieri_scenarios.area
