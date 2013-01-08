@@ -158,7 +158,7 @@
   model: condottieri_scenarios.area
   pk: 222
 - fields: {code: DEN, control_income: 2, garrison_income: 1, has_city: true, has_port: true,
-    is_coast: true, is_fortified: false, is_sea: false, mixed: false, name_ca: '',
+    is_coast: true, is_fortified: true, is_sea: false, mixed: false, name_ca: '',
     name_de: '', name_en: Denia, name_es: Denia, religion: null, setting: 3}
   model: condottieri_scenarios.area
   pk: 182
