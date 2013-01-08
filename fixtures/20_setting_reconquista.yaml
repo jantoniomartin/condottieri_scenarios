@@ -2508,3 +2508,20 @@
   pk: 27
 
 
+- fields: {city: 200, income_list: '1,2,2,3,3,4'}
+  model: condottieri_scenarios.cityrandomincome
+  pk: 14
+- fields: {city: 199, income_list: '2,2,3,3,4,5'}
+  model: condottieri_scenarios.cityrandomincome
+  pk: 15
+- fields: {city: 185, income_list: '1,2,3,3,4,4'}
+  model: condottieri_scenarios.cityrandomincome
+  pk: 16
+- fields: {city: 217, income_list: '1,2,2,3,3,4'}
+  model: condottieri_scenarios.cityrandomincome
+  pk: 17
+- fields: {city: 201, income_list: '1,1,2,2,3,4'}
+  model: condottieri_scenarios.cityrandomincome
+  pk: 18
+
+
