@@ -2098,6 +2098,10 @@
 - fields: {area: 175, x: 1100, y: 326}
   model: condottieri_scenarios.gtoken
   pk: 113
+- fields: {area: 182, x: 1300, y: 940}
+  model: condottieri_scenarios.gtoken
+  pk: 114
+
 
 
 - fields: {area: 160, column: 3, row: 3}
