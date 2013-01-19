@@ -95,6 +95,7 @@ class AreaAdmin(admin.ModelAdmin):
 		FamineInline,
 		PlagueInline,
 		StormInline,]
+	ordering = ['code',]
 
 class RouteStepInline(admin.TabularInline):
 	model = scenarios.RouteStep
