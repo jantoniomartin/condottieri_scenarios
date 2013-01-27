@@ -60,7 +60,7 @@
     name_de: '', name_en: Aragon, name_es: "Aragón", religion: null, setting: 3}
   model: condottieri_scenarios.area
   pk: 176
-- fields: {code: ARC, control_income: 2, garrison_income: 1, has_city: true, has_port: false,
+- fields: {code: ARC, control_income: 1, garrison_income: 0, has_city: false, has_port: false,
     is_coast: true, is_fortified: false, is_sea: false, mixed: false, name_ca: '',
     name_de: '', name_en: Arcos, name_es: Arcos, religion: null, setting: 3}
   model: condottieri_scenarios.area
@@ -377,7 +377,7 @@
     setting: 3}
   model: condottieri_scenarios.area
   pk: 214
-- fields: {code: ZAM, control_income: 1, garrison_income: 1, has_city: false, has_port: false,
+- fields: {code: ZAM, control_income: 2, garrison_income: 0, has_city: true, has_port: false,
     is_coast: false, is_fortified: false, is_sea: false, mixed: false, name_ca: '',
     name_de: '', name_en: Zamora, name_es: Zamora, religion: null, setting: 3}
   model: condottieri_scenarios.area
