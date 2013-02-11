@@ -321,7 +321,7 @@
     name_de: '', name_en: Seville, name_es: Sevilla, religion: null, setting: 3}
   model: condottieri_scenarios.area
   pk: 200
-- fields: {code: SOR, control_income: 1, garrison_income: 1, has_city: false, has_port: false,
+- fields: {code: SOR, control_income: 2, garrison_income: 0, has_city: true, has_port: false,
     is_coast: false, is_fortified: false, is_sea: false, mixed: false, name_ca: '',
     name_de: '', name_en: Soria, name_es: Soria, religion: null, setting: 3}
   model: condottieri_scenarios.area
