@@ -81,7 +81,7 @@ class Setting(models.Model):
 		super(Setting, self).save(*args, **kwargs)
 
 	def __unicode__(self):
-		return self.title
+		return unicode(self.title)
 
 	def _get_map_name(self):
 		return "board-%s.png" % self.slug
@@ -149,7 +149,7 @@ class Scenario(models.Model):
 		return max_players - neutrals
 
 	def __unicode__(self):
-		return self.title
+		return unicode(self.title)
 	
 	@models.permalink
 	def get_absolute_url(self):
@@ -283,7 +283,7 @@ class Religion(models.Model):
 		translate = ("name",)
 
 	def __unicode__(self):
-		return self.name
+		return unicode(self.name)
 
 def get_coat_upload_path(instance, filename):
 	return "scenarios/coats/coat-%s.png" % instance.static_name
@@ -316,7 +316,7 @@ class Country(models.Model):
 		super(Country, self).save(*args, **kwargs)
 
 	def __unicode__(self):
-		return self.name
+		return unicode(self.name)
 
 	def get_absolute_url(self):
 		return ('country_detail', None, {'slug': self.static_name})
