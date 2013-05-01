@@ -272,6 +272,9 @@ class ScenarioCreateView(CreationAllowedMixin, CreateView):
 	
 	def form_valid(self, form):
 		self.object = form.save(commit=False)
+		if not self.object.setting.user_allowed(self.request.user):
+			messages.error(self.request, _("You are not allowed to create new scenarios in this setting"))
+			return redirect("scenario_list")
 		self.object.editor = self.request.user
 		self.object.save()
 		return super(ScenarioCreateView, self).form_valid(form)
