@@ -26,6 +26,7 @@ from django.shortcuts import redirect
 from django import http
 from django.utils.functional import lazy
 from django.core.urlresolvers import reverse
+from django.core.exceptions import ObjectDoesNotExist
 from django.forms import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
@@ -154,6 +155,29 @@ class CountryListView(ListView):
 class SettingView(DetailView):
 	model = models.Setting
 	context_object_name = 'setting'
+
+	def get_context_data(self, **kwargs):
+		context = super(SettingView, self).get_context_data(**kwargs)
+		if self.object.user_allowed(self.request.user):
+			context['editable'] = True
+		return context
+
+class DisasterTableView(SettingView):
+	template_name = 'condottieri_scenarios/disaster_table.html'
+
+	def get_context_data(self, **kwargs):
+		context = super(DisasterTableView, self).get_context_data(**kwargs)
+		context.update({
+			'famine': models.FamineCell.objects.filter(area__setting=self.object).order_by('row', 'column'),
+			'plague': models.PlagueCell.objects.filter(area__setting=self.object).order_by('row', 'column'),
+			'storm': models.StormCell.objects.filter(area__setting=self.object).order_by('row', 'column'),
+		})
+		return context
+
+class SettingAreasView(DetailView):
+	model = models.Setting
+	context_object_name = 'setting'
+	template_name = 'condottieri_scenarios/area_list.html'
 
 class SettingListView(ListView):
 	model = models.Setting
@@ -435,4 +459,121 @@ class SetupDeleteView(ContenderItemDeleteView):
 
 	def get_success_url(self):
 		return reverse_lazy('scenario_contender_setup', self.contender_pk)
+
+class AreaEditMixin(CreationAllowedMixin):
+	model = models.Area
+	form_class = forms.AreaForm
+
+	def get_context_data(self, formset, **kwargs):
+		context = super(AreaEditMixin, self).get_context_data(**kwargs)
+		if self.object:
+			setting = self.object.setting
+		else:
+			setting = self.setting
+		if setting.user_allowed(self.request.user):
+			if setting.in_play:					
+				context['protected'] = True
+				return context
+		else:
+			raise http.Http404
+		if self.request.POST:
+			context['border_formset'] = formset(instance=self.object, data=self.request.POST)
+			context['ct_formset'] = forms.ControlTokenFormSet(instance=self.object, data=self.request.POST)
+			context['gt_formset'] = forms.GTokenFormSet(instance=self.object, data=self.request.POST)
+			context['aft_formset'] = forms.AFTokenFormSet(instance=self.object, data=self.request.POST)
+			context['famine_formset'] = forms.FamineCellFormSet(instance=self.object, data=self.request.POST)
+			context['plague_formset'] = forms.PlagueCellFormSet(instance=self.object, data=self.request.POST)
+			context['storm_formset'] = forms.StormCellFormSet(instance=self.object, data=self.request.POST)
+		else:
+			if self.object:
+				context['border_formset'] = formset(instance=self.object)
+				context['ct_formset'] = forms.ControlTokenFormSet(instance=self.object)
+				context['gt_formset'] = forms.GTokenFormSet(instance=self.object)
+				context['aft_formset'] = forms.AFTokenFormSet(instance=self.object)
+				context['famine_formset'] = forms.FamineCellFormSet(instance=self.object)
+				context['plague_formset'] = forms.PlagueCellFormSet(instance=self.object)
+				context['storm_formset'] = forms.StormCellFormSet(instance=self.object)
+			else:
+				context['border_formset'] = formset()
+				context['ct_formset'] = forms.ControlTokenFormSet()
+				context['gt_formset'] = forms.GTokenFormSet()
+				context['aft_formset'] = forms.AFTokenFormSet()
+				context['famine_formset'] = forms.FamineCellFormSet()
+				context['plague_formset'] = forms.PlagueCellFormSet()
+				context['storm_formset'] = forms.StormCellFormSet()
+		return context
+
+	def form_valid(self, form):
+		if not self.object:
+			self.object = form.save(commit=False)
+			self.object.setting = self.setting
+			self.object.save()
+			messages.success(self.request, _("The area was successfully created"))
+		context = self.get_context_data()
+		border_formset = context['border_formset']
+		ct_formset = context['ct_formset']
+		gt_formset = context['gt_formset']
+		aft_formset = context['aft_formset']
+		famine_formset = context['famine_formset']
+		plague_formset = context['plague_formset']
+		storm_formset = context['storm_formset']
+		if border_formset.is_valid():
+			border_formset.save()
+		else:
+			messages.error(self.request, _("Borders could not be saved")) 
+		if ct_formset.is_valid():
+			ct_formset.save()
+		else:
+			messages.error(self.request, _("Control token position could not be saved")) 
+		if gt_formset.is_valid():
+			gt_formset.save()
+		else:
+			messages.error(self.request, _("Garrison token position could not be saved")) 
+		if aft_formset.is_valid():
+			aft_formset.save()
+		else:
+			messages.error(self.request, _("Army/Fleet token position could not be saved")) 
+		if famine_formset.is_valid() and not self.object.is_sea:
+			famine_formset.save()
+		else:
+			messages.error(self.request, _("Famine table cell could not be saved")) 
+		if plague_formset.is_valid() and not self.object.is_sea:
+			plague_formset.save()
+		else:
+			messages.error(self.request, _("Plague table cell could not be saved")) 
+		if storm_formset.is_valid() and self.object.is_sea:
+			storm_formset.save()
+		else:
+			messages.error(self.request, _("Storm table cell could not be saved")) 
+		return super(AreaEditMixin, self).form_valid(form)
+
+class AreaCreateView(AreaEditMixin, CreateView):
+	def dispatch(self, request, *args, **kwargs):
+		slug = kwargs['slug']
+		try:
+			self.setting = models.Setting.objects.get(slug=slug)
+		except ObjectDoesNotExist:
+			raise http.Http404
+		return super(AreaCreateView, self).dispatch(request, *args, **kwargs)
+
+	def get_context_data(self, **kwargs):
+		formset = forms.areaborderformset_factory(self.setting)
+		context = super(AreaCreateView, self).get_context_data(formset, **kwargs)
+		context['setting'] = self.setting
+		return context
+
+	def get_success_url(self, **kwargs):
+		return reverse_lazy('setting_areas', self.setting.slug)
+
+class AreaUpdateView(AreaEditMixin, UpdateView):
+	context_object_name = 'area'
+	
+	def get_context_data(self, **kwargs):
+		formset = forms.areaborderformset_factory(self.object.setting)
+		context = super(AreaUpdateView, self).get_context_data(formset, **kwargs)
+		context['setting'] = self.object.setting
+		return context
+
+	def get_success_url(self, **kwargs):
+		return reverse_lazy('setting_areas', self.object.setting.slug)
 

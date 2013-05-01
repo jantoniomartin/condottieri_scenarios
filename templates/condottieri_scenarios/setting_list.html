@@ -10,11 +10,18 @@
 <div class="section">
 <h1>{% trans "Settings" %}</h1>
 
-<ul>
-{% for setting in object_list %}
-<li><a href="{% url setting_detail setting.slug %}">{{ setting.title }}</a></li>
-{% endfor %}
-</ul>
+<table>
+<thead><tr>
+	<td>{% trans "Title" %}</td>
+	<td>{% trans "Description" %}</td>
+</tr></thead>
+	{% for setting in object_list %}
+		<tr>
+			<td><a href="{% url setting_detail setting.slug %}">{{ setting.title }}</a></td>
+			<td>{{ setting.description }}</td>
+		</tr>
+	{% endfor %}
+</table>
 
 </div>
 

@@ -1,0 +1,163 @@
+{% extends 'condottieri_scenarios/base.html' %}
+
+{% load cache %}
+{% load i18n %}
+
+{% block head_title %}{{ setting.title }}{% endblock %}
+
+{% block extra_head %}
+
+<style type="text/css">
+
+table {
+	width: 90%;
+	margin-left: 5%;
+	border: solid 1px #111;
+	table-layout: fixed;
+}
+
+table th,
+table td {
+	text-align: center;
+	border: solid 1px #111;
+}
+
+table th {
+	font-weight: bold;
+	background: #9ccf7f;
+}
+
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+{% cache 900 "disaster_tables" setting.slug LANGUAGE_CODE %}
+
+<div class="section">
+<h2>{% blocktrans with setting.title as title %}Disaster tables for "{{title}}"{% endblocktrans %}</h2>
+
+<h3>{% trans "Famine table" %}</h3>
+
+<table>
+	<tr>
+	<th>&nbsp;</th>
+	<th>2</th>
+	<th>3</th>
+	<th>4</th>
+	<th>5</th>
+	<th>6</th>
+	<th>7</th>
+	<th>8</th>
+	<th>9</th>
+	<th>10</th>
+	<th>11</th>
+	<th>12</th>
+	</tr>
+	{% for i in "xxxxxxxxxxxx" %}
+		{% if not forloop.first %}
+		<tr>
+			<th>
+				{{ forloop.counter }}
+			</th>
+			{% for j in "xxxxxxxxxxxx" %}
+				{% if not forloop.first %}
+				<td>
+					{% for cell in famine %}
+						{% if cell.column == forloop.parentloop.counter and cell.row == forloop.parentloop.parentloop.counter %}
+							<span title="{{ cell.area.name }}">{{ cell.area.code }}</span>
+						{% endif %}
+					{% endfor %}
+				</td>
+				{% endif %}
+			{% endfor %}
+		</tr>
+		{% endif %}
+	{% endfor %}
+</table>
+
+
+<h3>{% trans "Plague table" %}</h3>
+
+<table>
+	<tr>
+	<th>&nbsp;</th>
+	<th>2</th>
+	<th>3</th>
+	<th>4</th>
+	<th>5</th>
+	<th>6</th>
+	<th>7</th>
+	<th>8</th>
+	<th>9</th>
+	<th>10</th>
+	<th>11</th>
+	<th>12</th>
+	</tr>
+	{% for i in "xxxxxxxxxxxx" %}
+		{% if not forloop.first %}
+		<tr>
+			<th>
+				{{ forloop.counter }}
+			</th>
+			{% for j in "xxxxxxxxxxxx" %}
+				{% if not forloop.first %}
+				<td>
+					{% for cell in plague %}
+						{% if cell.column == forloop.parentloop.counter and cell.row == forloop.parentloop.parentloop.counter %}
+							<span title="{{ cell.area.name }}">{{ cell.area.code }}</span>
+						{% endif %}
+					{% endfor %}
+				</td>
+				{% endif %}
+			{% endfor %}
+		</tr>
+		{% endif %}
+	{% endfor %}
+</table>
+
+
+<h3>{% trans "Storm table" %}</h3>
+
+<table>
+	<tr>
+	<th>&nbsp;</th>
+	<th>2</th>
+	<th>3</th>
+	<th>4</th>
+	<th>5</th>
+	<th>6</th>
+	<th>7</th>
+	<th>8</th>
+	<th>9</th>
+	<th>10</th>
+	<th>11</th>
+	<th>12</th>
+	</tr>
+	{% for i in "xxxxxxxxxxxx" %}
+		{% if not forloop.first %}
+		<tr>
+			<th>
+				{{ forloop.counter }}
+			</th>
+			{% for j in "xxxxxxxxxxxx" %}
+				{% if not forloop.first %}
+				<td>
+					{% for cell in storm %}
+						{% if cell.column == forloop.parentloop.counter and cell.row == forloop.parentloop.parentloop.counter %}
+							<span title="{{ cell.area.name }}">{{ cell.area.code }}</span>
+						{% endif %}
+					{% endfor %}
+				</td>
+				{% endif %}
+			{% endfor %}
+		</tr>
+		{% endif %}
+	{% endfor %}
+</table>
+{% endcache %}
+
+{% endblock %}
+
+

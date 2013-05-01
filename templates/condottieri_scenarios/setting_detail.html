@@ -8,7 +8,7 @@
 <style type="text/css">
 #map {
 	position: relative;
-	top: 0px;
+	top: 10px;
 	left: 0px;
 	width: 100%;
 	height: 740px;
@@ -19,12 +19,42 @@
 {% block body %}
 
 <div class="section">
-<h2>{{ setting.title }}</h2>
+<h1>{{ setting.title }}</h1>
 <p>{{ setting.description }}</p>
 
-</div>
-<div id="map" class="viewer"></div>
+<p><a href="{% url setting_disasters setting.slug %}">{% trans "Disasters tables" %}</a></p>
 
+{% if editable %}
+<p><a href="{% url setting_areas setting.slug %}">{% trans "Edit areas" %}</a></p>
+{% endif %}
+
+<h2>{% trans "Scenarios" %}</h2>
+
+<table>
+<thead><tr>
+<th>{% trans "Title" %}</th>
+<th>{% trans "Start year" %}</th>
+<th>{% trans "Players" %}</th>
+<th>{% trans "Scores" %}</th>
+<th>{% trans "Stats" %}</th>
+</tr></thead>
+{% for s in setting.scenario_set.all %}
+<tr {% if not s.enabled %}class="disabled"{% endif %}>
+<td><a href="{% url scenario_detail s.name %}">{{ s.title }}</a></td>
+<td class="data_c">{{ s.start_year }}</td>
+<td class="data_c">{{ s.number_of_players }}</td>
+<td><a href="{% url ranking "scenario" s.name %}">{% trans "See scores" %}</a></td>
+<td><a href="{% url scenario_stats s.name %}">{% trans "See stats" %}</a></td>
+</tr>
+{% endfor %}
+</table>
+
+</div>
+
+<div class="section">
+<h2>{% trans "Map" %}</h2>
+<div id="map" class="viewer"></div>
+</div>
 
 {% endblock %}
 

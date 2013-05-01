@@ -1,0 +1,44 @@
+{% extends 'condottieri_scenarios/base.html' %}
+
+{% load i18n %}
+{% load tags %}
+
+{% block head_title %}{{ setting.title }}{% endblock %}
+
+{% block body %}
+<div class="section">
+	<h1>{{ setting.title }}</h1>
+	<p>{{ setting.description }}</p>
+	<p><a href="{% url setting_disasters setting.slug %}">{% trans "Disasters tables" %}</a></p>
+	
+	<h2>{% trans "Areas list" %}</h2>
+	<table>
+	<thead><tr>
+		<td>{% trans "Name" %}</td>
+		<td>{% trans "Code" %}</td>
+		<td>{% trans "Sea" %}</td>
+		<td>{% trans "Coast" %}</td>
+		<td>{% trans "City" %}</td>
+		<td>{% trans "Fortified" %}</td>
+		<td>{% trans "Port" %}</td>
+		<td>{% trans "Control income" %}</td>
+		<td>{% trans "Garrison income" %}</td>
+	</tr></thead>
+	{% for area in setting.area_set.all %}
+		<tr>
+			<td><a href="{% url area_edit area.pk %}">{{ area }}</a></td>
+			<td class="data_c">{{ area.code }}</td>
+			<td class="data_c">{{ area.is_sea|yesnoicons }}</td>
+			<td class="data_c">{{ area.is_coast|yesnoicons }}</td>
+			<td class="data_c">{{ area.has_city|yesnoicons }}</td>
+			<td class="data_c">{{ area.is_fortified|yesnoicons }}</td>
+			<td class="data_c">{{ area.has_port|yesnoicons }}</td>
+			<td class="data_c">{{ area.control_income }}</td>
+			<td class="data_c">{{ area.garrison_income }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+	<p><a href="{% url area_create setting.slug %}">{% trans "New area" %}</a></p>
+</div>
+
+{% endblock %}

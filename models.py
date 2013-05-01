@@ -68,6 +68,7 @@ class Setting(models.Model):
 	editor = models.ForeignKey(User, verbose_name=_("editor"))
 	enabled = models.BooleanField(_("enabled"), default=False)
 	board = models.ImageField(_("board"), upload_to=get_board_upload_path)
+	permissions = models.ManyToManyField(User, null=True, blank=True, related_name="allowed_users", verbose_name=_("permissions"))
 
 	class Meta:
 		verbose_name = _("setting")
@@ -83,10 +84,23 @@ class Setting(models.Model):
 	def __unicode__(self):
 		return unicode(self.title)
 
+	def user_allowed(self, user):
+		if user.is_staff:
+			return True
+		return user in self.permissions.all()
+
 	def _get_map_name(self):
 		return "board-%s.png" % self.slug
 
 	map_name = property(_get_map_name)
+
+	def _get_in_play(self):
+		for s in self.scenario_set.all():
+			if s.in_play:
+				return True
+		return False
+	
+	in_play = property(_get_in_play)
 
 class Configuration(models.Model):
 	""" Defines the configuration options for each setting. This options are defined when
@@ -402,24 +416,32 @@ class Area(models.Model):
 
 	setting = models.ForeignKey(Setting, verbose_name=_("setting"))
 	name = models.CharField(max_length=25, verbose_name=_("name"))
-	code = models.CharField(_("code"), max_length=5)
-	is_sea = models.BooleanField(_("is sea"), default=False)
+	code = models.CharField(_("code"), max_length=5,
+		help_text=_("1-5 uppercase characters to identify the area"))
+	is_sea = models.BooleanField(_("is sea"), default=False,
+		help_text=_("if checked, the area is a sea, and cannot be controlled"))
 	is_coast = models.BooleanField(_("is coast"), default=False)
 	has_city = models.BooleanField(_("has city"), default=False)
-	is_fortified = models.BooleanField(_("is fortified"), default=False)
-	has_port = models.BooleanField(_("has port"), default=False)
+	is_fortified = models.BooleanField(_("is fortified"), default=False,
+		help_text=_("check only if the area has a city and is fortified"))
+	has_port = models.BooleanField(_("has port"), default=False,
+		help_text=_("check only if the area has a city and a port"))
 	borders = models.ManyToManyField("self", symmetrical=False, through='Border', verbose_name=_("borders"))
 	## control_income is the number of ducats that the area gives to the player
 	## that controls it, including the city (seas give 0)
 	control_income = models.PositiveIntegerField(_("control income"),
-		null=False, default=0)
+		null=False, default=0,
+		help_text=_("the money that a country gets for controlling both the province and the city"))	
 	## garrison_income is the number of ducats given by an unbesieged
 	## garrison in the area's city, if any (no fortified city, 0)
 	garrison_income = models.PositiveIntegerField(_("garrison income"),
-		null=False, default=0)
-	religion = models.ForeignKey(Religion, blank=True, null=True, verbose_name=_("religion"))
+		null=False, default=0,
+		help_text=_("the money that a country gets if it has a garrison, but does not control the province"))
+	religion = models.ForeignKey(Religion, blank=True, null=True, verbose_name=_("religion"),
+		help_text=_("used only in settings with the rule of religious wars"))
 	## mixed is true if the area is like Venice
-	mixed = models.BooleanField(default=False)
+	mixed = models.BooleanField(default=False,
+		help_text=_("the province is a sea that can be controlled, and cannot hold an army"))
 
 	objects = managers.AreaManager()
 
@@ -494,6 +516,14 @@ class Border(models.Model):
 	
 	def __unicode__(self):
 		return u"%s - %s" % (self.from_area, self.to_area)
+
+def symmetric_border(sender, instance, created, **kwargs):
+    if isinstance(instance, Border) and created:
+		obj, created = Border.objects.get_or_create(from_area=instance.to_area,
+			to_area=instance.from_area,
+			only_land=instance.only_land)
+
+models.signals.post_save.connect(symmetric_border, sender=Border)
 
 class DisabledArea(models.Model):
 	""" A DisabledArea is an Area that is not used in a given Scenario. """

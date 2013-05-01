@@ -1,0 +1,347 @@
+{% extends 'condottieri_scenarios/base.html' %}
+
+{% load i18n %}
+{% load uni_form_tags %}
+
+{% block head_title %}{% trans "Edit area" %}{% endblock %}
+
+{% block extra_head %}
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+<style type="text/css">
+#wrapper {
+	overflow: show;
+}
+
+#content {
+	overflow: show;
+}
+
+#area_map {
+	position: relative;
+	top: 0;
+	left: 0;
+	margin: 1em;
+	/*border: solid 1px #111;*/
+	overflow: auto;
+}
+
+.token {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#locations input[type=text] {
+	background: #addefb;
+	color: #111;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div id="area_map">
+	<img src="{{MEDIA_URL}}/{{ setting.board }}" />
+	<img id="af_token" class="token" src="{{STATIC_URL}}condottieri_scenarios/img/AF.png" />
+	<img id="g_token" class="token" src="{{STATIC_URL}}condottieri_scenarios/img/G.png" />
+	<img id="control_token" class="token" src="{{STATIC_URL}}condottieri_scenarios/img/control.png" />
+</div>
+
+<div>
+	<p>{% blocktrans %}Drag these tokens to the proper position on the map. Coordinates will be updated in the form automatically.{% endblocktrans %}</p>
+</div>
+
+<div class="section">
+<h2>{% trans "Edit area" %}</h2>
+
+{% if protected %}
+
+<p>{% blocktrans %}You cannot edit areas while this setting is being used in games.{% endblocktrans %}</p>
+
+{% else %}
+
+<p>{% blocktrans with setting.title as title %}You can use this form to edit or create a new area for the setting "{{ title }}".{% endblocktrans %}</p>
+
+<form action="." method="post" accept-charset="utf-8" class="uniForm">
+{% csrf_token %}
+{{ form|as_uni_form }}
+
+<h3>{% trans "Area borders" %}</h3>
+<p>{% blocktrans %}You must list all the areas that share a border with this one. Notice that in these areas, you must also include this one in their borders.{% endblocktrans %}</p>
+{{ border_formset.management_form }}
+<table id="border_formset" class="form">
+{% for f in border_formset.forms %}
+	{{ f.id }}
+	{% if forloop.first %}
+	<thead><tr>
+		{% for field in f.visible_fields %}
+		<th>{{ field.label|capfirst }}</th>
+		{% endfor %}
+	</tr></thead>
+	{% endif %}
+	<tr>
+	{% for field in f.visible_fields %}
+	<td>
+	{% if forloop.first %}
+		{% for hidden in form.hidden_fields %}
+		{{ hidden }}
+		{% endfor %}
+	{% endif %}
+		{{ field.errors.as_ul }}
+		{{ field }}
+	</td>
+	{% endfor %}
+	</tr>
+{% endfor %}
+</table>
+
+<div id="locations">
+
+<h3>{% trans "Control token location" %}</h3>
+{{ ct_formset.management_form }}
+<table id="border_formset" class="form">
+{% for f in ct_formset.forms %}
+	{{ f.id }}
+	{% if forloop.first %}
+	<thead><tr>
+		{% for field in f.visible_fields %}
+		<th>{{ field.label|capfirst }}</th>
+		{% endfor %}
+	</tr></thead>
+	{% endif %}
+	<tr>
+	{% for field in f.visible_fields %}
+	<td>
+	{% if forloop.first %}
+		{% for hidden in form.hidden_fields %}
+		{{ hidden }}
+		{% endfor %}
+	{% endif %}
+		{{ field.errors.as_ul }}
+		{{ field }}
+	</td>
+	{% endfor %}
+	</tr>
+{% endfor %}
+</table>
+
+
+<h3>{% trans "Garrison token location" %}</h3>
+{{ gt_formset.management_form }}
+<table id="border_formset" class="form">
+{% for f in gt_formset.forms %}
+	{{ f.id }}
+	{% if forloop.first %}
+	<thead><tr>
+		{% for field in f.visible_fields %}
+		<th>{{ field.label|capfirst }}</th>
+		{% endfor %}
+	</tr></thead>
+	{% endif %}
+	<tr>
+	{% for field in f.visible_fields %}
+	<td>
+	{% if forloop.first %}
+		{% for hidden in form.hidden_fields %}
+		{{ hidden }}
+		{% endfor %}
+	{% endif %}
+		{{ field.errors.as_ul }}
+		{{ field }}
+	</td>
+	{% endfor %}
+	</tr>
+{% endfor %}
+</table>
+
+
+<h3>{% trans "Army/Fleet token location" %}</h3>
+{{ aft_formset.management_form }}
+<table id="border_formset" class="form">
+{% for f in aft_formset.forms %}
+	{{ f.id }}
+	{% if forloop.first %}
+	<thead><tr>
+		{% for field in f.visible_fields %}
+		<th>{{ field.label|capfirst }}</th>
+		{% endfor %}
+	</tr></thead>
+	{% endif %}
+	<tr>
+	{% for field in f.visible_fields %}
+	<td>
+	{% if forloop.first %}
+		{% for hidden in form.hidden_fields %}
+		{{ hidden }}
+		{% endfor %}
+	{% endif %}
+		{{ field.errors.as_ul }}
+		{{ field }}
+	</td>
+	{% endfor %}
+	</tr>
+{% endfor %}
+</table>
+
+</div><!-- locations -->
+
+
+<h3>{% trans "Famine table" %}</h3>
+{{ famine_formset.management_form }}
+<table id="famine_formset" class="form">
+{% for f in famine_formset.forms %}
+	{{ f.id }}
+	{% if forloop.first %}
+	<thead><tr>
+		{% for field in f.visible_fields %}
+		<th>{{ field.label|capfirst }}</th>
+		{% endfor %}
+	</tr></thead>
+	{% endif %}
+	<tr>
+	{% for field in f.visible_fields %}
+	<td>
+	{% if forloop.first %}
+		{% for hidden in form.hidden_fields %}
+		{{ hidden }}
+		{% endfor %}
+	{% endif %}
+		{{ field.errors.as_ul }}
+		{{ field }}
+	</td>
+	{% endfor %}
+	</tr>
+{% endfor %}
+</table>
+
+<h3>{% trans "Plague table" %}</h3>
+{{ plague_formset.management_form }}
+<table id="plague_formset" class="form">
+{% for f in plague_formset.forms %}
+	{{ f.id }}
+	{% if forloop.first %}
+	<thead><tr>
+		{% for field in f.visible_fields %}
+		<th>{{ field.label|capfirst }}</th>
+		{% endfor %}
+	</tr></thead>
+	{% endif %}
+	<tr>
+	{% for field in f.visible_fields %}
+	<td>
+	{% if forloop.first %}
+		{% for hidden in form.hidden_fields %}
+		{{ hidden }}
+		{% endfor %}
+	{% endif %}
+		{{ field.errors.as_ul }}
+		{{ field }}
+	</td>
+	{% endfor %}
+	</tr>
+{% endfor %}
+</table>
+
+<h3>{% trans "Storm table" %}</h3>
+{{ storm_formset.management_form }}
+<table id="storm_formset" class="form">
+{% for f in storm_formset.forms %}
+	{{ f.id }}
+	{% if forloop.first %}
+	<thead><tr>
+		{% for field in f.visible_fields %}
+		<th>{{ field.label|capfirst }}</th>
+		{% endfor %}
+	</tr></thead>
+	{% endif %}
+	<tr>
+	{% for field in f.visible_fields %}
+	<td>
+	{% if forloop.first %}
+		{% for hidden in form.hidden_fields %}
+		{{ hidden }}
+		{% endfor %}
+	{% endif %}
+		{{ field.errors.as_ul }}
+		{{ field }}
+	</td>
+	{% endfor %}
+	</tr>
+{% endfor %}
+</table>
+
+
+<p><input type="submit" value="{% trans "Save" %}" /></p>
+</form>
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+{% block extra_body %}
+
+<script type="text/javascript">
+	$(document).ready( function() {
+			$("#locations input[type=text]").attr("readonly", "readonly");
+			
+			var base_x = $("#area_map").offset().left;
+			var base_y = $("#area_map").offset().top;
+
+			var af_x = parseInt($("#id_aftoken-0-x").val());
+			var af_y = parseInt($("#id_aftoken-0-y").val());
+			var g_x = parseInt($("#id_gtoken-0-x").val());
+			var g_y = parseInt($("#id_gtoken-0-y").val());
+			var control_x = parseInt($("#id_controltoken-0-x").val());
+			var control_y = parseInt($("#id_controltoken-0-y").val());
+
+			$("#af_token").css("left", af_x).css("top", af_y);
+			$("#g_token").css("left", g_x).css("top", g_y);
+			$("#control_token").css("left", control_x).css("top", control_y);
+
+			$("#af_token").draggable({
+				containment: "#area_map",
+				scroll: false,
+				
+				stop: function(event, ui) {
+					var scroll = $("#area_map").scrollLeft();
+					var x = $(this).position().left;
+					var y = $(this).position().top;
+					$("#id_aftoken-0-x").attr("value", Math.floor(x) + scroll);
+					$("#id_aftoken-0-y").attr("value", Math.floor(y));
+				},
+				
+			});
+			
+			$("#g_token").draggable({
+				containment: "#area_map",
+				scroll: false,
+				
+				stop: function(event, ui) {
+					var scroll = $("#area_map").scrollLeft();
+					var x = $(this).position().left;
+					var y = $(this).position().top;
+					$("#id_gtoken-0-x").attr("value", Math.floor(x) + scroll);
+					$("#id_gtoken-0-y").attr("value", Math.floor(y));
+				},
+				
+			});
+			
+			$("#control_token").draggable({
+				containment: "#area_map",
+				scroll: false,
+				
+				stop: function(event, ui) {
+					var scroll = $("#area_map").scrollLeft();
+					var x = $(this).position().left;
+					var y = $(this).position().top;
+					$("#id_controltoken-0-x").attr("value", Math.floor(x) + scroll);
+					$("#id_controltoken-0-y").attr("value", Math.floor(y));
+				},
+				
+			});
+	});
+
+
+</script>
+{% endblock %}
