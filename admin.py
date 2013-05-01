@@ -97,6 +97,12 @@ class AreaAdmin(admin.ModelAdmin):
 		StormInline,]
 	ordering = ['code',]
 
+class CountryRandomIncomeAdmin(admin.ModelAdmin):
+	list_display = ('country', 'income_list',)
+
+class CityRandomIncomeAdmin(admin.ModelAdmin):
+	list_display = ('city', 'income_list',)
+
 class RouteStepInline(admin.TabularInline):
 	model = scenarios.RouteStep
 	extra = 3
@@ -109,8 +115,8 @@ admin.site.register(scenarios.Scenario, ScenarioAdmin)
 admin.site.register(scenarios.Contender, ContenderAdmin) 
 admin.site.register(scenarios.Country, CountryAdmin)
 admin.site.register(scenarios.Area, AreaAdmin)
-admin.site.register(scenarios.CountryRandomIncome) 
-admin.site.register(scenarios.CityRandomIncome) 
+admin.site.register(scenarios.CountryRandomIncome, CountryRandomIncomeAdmin) 
+admin.site.register(scenarios.CityRandomIncome, CityRandomIncomeAdmin) 
 admin.site.register(scenarios.Border) 
 admin.site.register(scenarios.Religion) 
 admin.site.register(scenarios.TradeRoute, TradeRouteAdmin)
