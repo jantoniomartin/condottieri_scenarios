@@ -20,6 +20,7 @@
 <th>{% trans "Players" %}</th>
 <th>{% trans "Scores" %}</th>
 <th>{% trans "Stats" %}</th>
+<th>{% trans "Editor" %}</th>
 </tr></thead>
 {% for s in object_list %}
 <tr {% if not s.enabled %}class="disabled"{% endif %}>
@@ -29,6 +30,7 @@
 <td class="data_c">{{ s.number_of_players }}</td>
 <td><a href="{% url ranking "scenario" s.name %}">{% trans "See scores" %}</a></td>
 <td><a href="{% url scenario_stats s.name %}">{% trans "See stats" %}</a></td>
+<td><a href="{% url profile_detail s.editor.username %}">{{ s.editor }}</a></td>
 </tr>
 {% endfor %}
 </table>
