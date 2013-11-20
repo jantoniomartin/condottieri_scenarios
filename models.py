@@ -141,7 +141,7 @@ class Scenario(models.Model):
 	class Meta:
 		verbose_name = _("scenario")
 		verbose_name_plural = _("scenarios")
-		ordering = ["start_year",]
+		ordering = ["setting", "start_year",]
 		translate = ('title', 'description',)
 
 	def save(self, *args, **kwargs):
