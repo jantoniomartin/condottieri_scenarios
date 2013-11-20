@@ -39,6 +39,7 @@ class ConfigurationInline(admin.TabularInline):
 
 class SettingAdmin(admin.ModelAdmin):
 	exclude = ('slug',)
+	filter_horizontal = ('permissions',)
 	inlines = [ ConfigurationInline, ]
 
 class ScenarioAdmin(admin.ModelAdmin):
