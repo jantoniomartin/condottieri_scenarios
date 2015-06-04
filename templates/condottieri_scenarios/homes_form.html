@@ -25,7 +25,7 @@
 	<tr>
 	<td>{{ h }}</td>
 	<td>{{ h.is_home|yesno }}</td>
-	<td><a href="{% url scenario_home_delete h.pk %}">{% trans "Delete" %}</a></td>
+	<td><a href="{% url "scenario_home_delete" h.pk %}">{% trans "Delete" %}</a></td>
 	</tr>
 	{% endfor %}
 	{% for form in formset %}
@@ -50,7 +50,7 @@
 <p><input type="submit" value="{% trans "Save" %}" /></p>
 </form>
 
-<p><a href="{% url scenario_detail contender.scenario.name %}">{% trans "Return to scenario" %}</a></p>
+<p><a href="{% url "scenario_detail" contender.scenario.name %}">{% trans "Return to scenario" %}</a></p>
 
 </div>
 {% endblock %}

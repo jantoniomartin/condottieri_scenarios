@@ -22,10 +22,10 @@
 <h1>{{ setting.title }}</h1>
 <p>{{ setting.description }}</p>
 
-<p><a href="{% url setting_disasters setting.slug %}">{% trans "Disasters tables" %}</a></p>
+<p><a href="{% url "setting_disasters" setting.slug %}">{% trans "Disasters tables" %}</a></p>
 
 {% if editable %}
-<p><a href="{% url setting_areas setting.slug %}">{% trans "Edit areas" %}</a></p>
+<p><a href="{% url "setting_areas" setting.slug %}">{% trans "Edit areas" %}</a></p>
 {% endif %}
 
 <h2>{% trans "Scenarios" %}</h2>
@@ -40,11 +40,11 @@
 </tr></thead>
 {% for s in setting.scenario_set.all %}
 <tr {% if not s.enabled %}class="disabled"{% endif %}>
-<td><a href="{% url scenario_detail s.name %}">{{ s.title }}</a></td>
+<td><a href="{% url "scenario_detail" s.name %}">{{ s.title }}</a></td>
 <td class="data_c">{{ s.start_year }}</td>
 <td class="data_c">{{ s.number_of_players }}</td>
-<td><a href="{% url ranking "scenario" s.name %}">{% trans "See scores" %}</a></td>
-<td><a href="{% url scenario_stats s.name %}">{% trans "See stats" %}</a></td>
+<td><a href="{% url "ranking" "scenario" s.name %}">{% trans "See scores" %}</a></td>
+<td><a href="{% url "scenario_stats" s.name %}">{% trans "See stats" %}</a></td>
 </tr>
 {% endfor %}
 </table>

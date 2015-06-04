@@ -14,7 +14,7 @@
 <form action="." method="post" accept-charset="utf-8">
 {% csrf_token %}
 <p><input type="submit" value="{% trans "Delete" %}">
-<a href="{% url scenario_detail cityincome.scenario.name %}">{% trans "Cancel" %}</a>
+<a href="{% url "scenario_detail" cityincome.scenario.name %}">{% trans "Cancel" %}</a>
 </p>
 </form>
 

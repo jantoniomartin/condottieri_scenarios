@@ -12,11 +12,11 @@
 <table>
 <tr><td>{% trans "Excommunication power" %}</td><td>{{ country.can_excommunicate|yesno }}</td></tr>
 <tr><td>{% trans "Available special units" %}</td><td>{{ country.special_units.all|join:" ," }}</td></tr>
-<tr><td>{% trans "Editor" %}</td><td><a href="{% url profile_detail country.editor %}">{{ country.editor }}</a></td></tr>
+<tr><td>{% trans "Editor" %}</td><td><a href="{% url "profile_detail" country.editor %}">{{ country.editor }}</a></td></tr>
 </table>
 
 {% if user_can_edit %}
-<p><a href="{% url country_edit country.static_name %}">{% trans "Edit country" %}</a></p>
+<p><a href="{% url "country_edit" country.static_name %}">{% trans "Edit country" %}</a></p>
 {% endif %}
 
 <h3>{% trans "Variable incomes" %}</h3>
@@ -33,13 +33,13 @@
 	<td>{{ income.setting }}</td>
 	<td>{{ income.as_list|join:", " }}</td>
 	{% if user_can_edit %}
-	<td><a href="{% url country_income_delete income.pk %}">{% trans "Delete" %}</a></td>
+	<td><a href="{% url "country_income_delete" income.pk %}">{% trans "Delete" %}</a></td>
 	{% endif %}
 	</tr>
 {% endfor %}
 </table>
 {% if user_can_edit %}
-<p><a href="{% url country_edit country.static_name %}">{% trans "Edit country to add incomes" %}</a></p>
+<p><a href="{% url "country_edit" country.static_name %}">{% trans "Edit country to add incomes" %}</a></p>
 {% endif %}
 
 </div>

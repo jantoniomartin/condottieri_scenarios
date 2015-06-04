@@ -9,7 +9,7 @@
 <div class="section">
 	<h1>{{ setting.title }}</h1>
 	<p>{{ setting.description }}</p>
-	<p><a href="{% url setting_disasters setting.slug %}">{% trans "Disasters tables" %}</a></p>
+	<p><a href="{% url "setting_disasters" setting.slug %}">{% trans "Disasters tables" %}</a></p>
 	
 	<h2>{% trans "Areas list" %}</h2>
 	<table>
@@ -26,7 +26,7 @@
 	</tr></thead>
 	{% for area in setting.area_set.all %}
 		<tr>
-			<td><a href="{% url area_edit area.pk %}">{{ area }}</a></td>
+			<td><a href="{% url "area_edit" area.pk %}">{{ area }}</a></td>
 			<td class="data_c">{{ area.code }}</td>
 			<td class="data_c">{{ area.is_sea|yesnoicons }}</td>
 			<td class="data_c">{{ area.is_coast|yesnoicons }}</td>
@@ -38,7 +38,7 @@
 		</tr>
 	{% endfor %}
 	</table>
-	<p><a href="{% url area_create setting.slug %}">{% trans "New area" %}</a></p>
+	<p><a href="{% url "area_create" setting.slug %}">{% trans "New area" %}</a></p>
 </div>
 
 {% endblock %}

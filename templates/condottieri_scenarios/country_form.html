@@ -53,9 +53,9 @@
 </form>
 
 {% if country %}
-<p><a href="{% url country_detail country.static_name %}">{% trans "Return" %}</a></p>
+<p><a href="{% url "country_detail" country.static_name %}">{% trans "Return" %}</a></p>
 {% else %}
-<p><a href="{% url country_list %}">{% trans "Cancel" %}</a></p>
+<p><a href="{% url "country_list" %}">{% trans "Cancel" %}</a></p>
 {% endif %}
 
 </div>

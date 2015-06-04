@@ -28,14 +28,14 @@
 <dd itemprop="author">{% if scenario.designer %}
 {{ scenario.designer }}
 {% else %}
-<a href="{% url profile_detail scenario.editor.username %}">{{ scenario.editor.username }}</a>
+<a href="{% url "profile_detail" scenario.editor.username %}">{{ scenario.editor.username }}</a>
 {% endif %}
 </dd>
 <dt>{% trans "Start year" %}</dt><dd>{{ scenario.start_year }}</dd>
 </dl>
 
 {% if user_can_edit %}
-<p><a href="{% url scenario_descriptions_edit scenario.name %}">{% trans "Edit or translate descriptions" %}</a></p>
+<p><a href="{% url "scenario_descriptions_edit" scenario.name %}">{% trans "Edit or translate descriptions" %}</a></p>
 {% endif %}
 
 </div>
@@ -44,7 +44,7 @@
 <h2>{% trans "Setup" %}</h2>
 
 {% if user_can_edit %}
-<p><a href="{% url scenario_contender_edit scenario.name %}">{% trans "Edit countries" %}</a></p>
+<p><a href="{% url "scenario_contender_edit" scenario.name %}">{% trans "Edit countries" %}</a></p>
 {% endif %}
 
 <table>
@@ -77,14 +77,14 @@
 	{{ c.home_set.all|join:", " }}
 	{% if user_can_edit %}
 	<br />
-	<a href="{% url scenario_contender_homes c.pk %}">{% trans "Edit" %}</a>
+	<a href="{% url "scenario_contender_homes" c.pk %}">{% trans "Edit" %}</a>
 	{% endif %}
 {% endif %}
 </td>
 <td>{{ c.setup_set.all|join:", " }}
 	{% if user_can_edit %}
 	<br />
-	<a href="{% url scenario_contender_setup c.pk %}">{% trans "Edit" %}</a>
+	<a href="{% url "scenario_contender_setup" c.pk %}">{% trans "Edit" %}</a>
 	{% endif %}
 </td>
 <td class="data_c">
@@ -92,7 +92,7 @@
 {{ c.treasury.ducats }}
 	{% if user_can_edit %}
 	<br />
-	<a href="{% url scenario_contender_treasury c.pk %}">{% trans "Edit" %}</a>
+	<a href="{% url "scenario_contender_treasury" c.pk %}">{% trans "Edit" %}</a>
 	{% endif %}
 {% endif %}
 </td>
@@ -112,7 +112,7 @@
 {{ scenario.major_cities|join:", " }}
 	{% if user_can_edit %}
 	<br />
-	<a href="{% url scenario_cityincome_edit scenario.name %}">{% trans "Edit" %}</a>
+	<a href="{% url "scenario_cityincome_edit" scenario.name %}">{% trans "Edit" %}</a>
 	{% endif %}
 </td>
 </tr>
@@ -128,7 +128,7 @@
 <tr><td>{{ area.pretty_name }}</td></tr>
 {% endfor %}
 	{% if user_can_edit %}
-	<tr><td><a href="{% url scenario_disabled_edit scenario.name %}">{% trans "Edit" %}</a></td></tr>
+	<tr><td><a href="{% url "scenario_disabled_edit" scenario.name %}">{% trans "Edit" %}</a></td></tr>
 	{% endif %}
 </table>
 
@@ -143,8 +143,8 @@
 </div>
 
 {% if user_can_edit %}
-	<p><a href="{% url scenario_make_map scenario.name %}">{% trans "Redraw map" %}</a></p>
-	<p><a href="{% url scenario_toggle scenario.name %}">
+	<p><a href="{% url "scenario_make_map" scenario.name %}">{% trans "Redraw map" %}</a></p>
+	<p><a href="{% url "scenario_toggle" scenario.name %}">
 	{% if scenario.enabled %}
 		{% trans "Disable scenario" %}
 	{% else %}
