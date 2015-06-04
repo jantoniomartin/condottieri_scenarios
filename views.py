@@ -41,7 +41,7 @@ class CreationAllowedMixin(object):
 	""" A mixin requiring a user to be authenticated and being editor or admin """
 	def dispatch(self, request, *args, **kwargs):
 		if not request.user.is_authenticated() or \
-		not request.user.get_profile().is_editor:
+		not request.user.profile.is_editor:
 			raise http.Http404
 		return super(CreationAllowedMixin, self).dispatch(request, *args, **kwargs)
 
@@ -69,7 +69,7 @@ class CountryCreateView(CreationAllowedMixin, CreateView):
 	
 	def get_context_data(self, **kwargs):
 		context = super(CountryCreateView, self).get_context_data(**kwargs)
-		user_is_editor = self.request.user.get_profile().is_editor
+		user_is_editor = self.request.user.profile.is_editor
 		context.update({'user_can_create': user_is_editor,
 						'mode': 'create',})
 		return context
@@ -136,7 +136,7 @@ class CountryView(DetailView):
 	def get_context_data(self, **kwargs):
 		context = super(CountryView, self).get_context_data(**kwargs)
 		if self.request.user.is_authenticated():
-			user_can_edit = self.request.user.get_profile().is_editor
+			user_can_edit = self.request.user.profile.is_editor
 			context.update({'user_can_edit': user_can_edit})
 		return context
 
@@ -208,7 +208,7 @@ class ScenarioView(DetailView):
 	def get_context_data(self, **kwargs):
 		context = super(ScenarioView, self).get_context_data(**kwargs)
 		if self.request.user.is_authenticated():
-			user_can_edit = self.request.user.get_profile().is_editor
+			user_can_edit = self.request.user.profile.is_editor
 			context.update({'user_can_edit': user_can_edit})
 		return context
 
@@ -265,7 +265,7 @@ class ScenarioCreateView(CreationAllowedMixin, CreateView):
 	
 	def get_context_data(self, **kwargs):
 		context = super(ScenarioCreateView, self).get_context_data(**kwargs)
-		user_is_editor = self.request.user.get_profile().is_editor
+		user_is_editor = self.request.user.profile.is_editor
 		context.update({'user_can_create': user_is_editor,
 						'mode': 'create',})
 		return context
