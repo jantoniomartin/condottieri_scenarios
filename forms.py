@@ -84,7 +84,7 @@ def homeformset_factory(setting):
             model = scenarios.Home
             fields = "__all__"
     
-    return inlineformset_factory(scenarios.Contender, scenarios.Home, form=HomeForm, extra=5)
+    return inlineformset_factory(scenarios.Contender, scenarios.Home, form=HomeForm, extra=5, fields="__all__")
 
 def setupformset_factory(setting):
     class SetupForm(forms.ModelForm):
@@ -95,7 +95,7 @@ def setupformset_factory(setting):
             model = scenarios.Setup
             fields = "__all__"
     
-    return inlineformset_factory(scenarios.Contender, scenarios.Setup, form=SetupForm, extra=5)
+    return inlineformset_factory(scenarios.Contender, scenarios.Setup, form=SetupForm, extra=5, fields="__all__")
 
 def cityincomeformset_factory(setting):
     class CityIncomeForm(forms.ModelForm):
@@ -105,7 +105,7 @@ def cityincomeformset_factory(setting):
             model = scenarios.CityIncome
             fields = "__all__"
 
-    return inlineformset_factory(scenarios.Scenario, scenarios.CityIncome, form=CityIncomeForm, extra=3)
+    return inlineformset_factory(scenarios.Scenario, scenarios.CityIncome, form=CityIncomeForm, extra=3, fields="__all__")
 
 def disabledareaformset_factory(setting):
     class DisabledAreaForm(forms.ModelForm):
@@ -115,16 +115,17 @@ def disabledareaformset_factory(setting):
             model = scenarios.DisabledArea
             fields = "__all__"
 
-    return inlineformset_factory(scenarios.Scenario, scenarios.DisabledArea, form=DisabledAreaForm, extra=5)
+    return inlineformset_factory(scenarios.Scenario, scenarios.DisabledArea, form=DisabledAreaForm, extra=5, fields="__all__")
 
-TreasuryFormSet = inlineformset_factory(scenarios.Contender, scenarios.Treasury, extra=1)
+TreasuryFormSet = inlineformset_factory(scenarios.Contender, scenarios.Treasury, extra=1, fields="__all__")
 
 ContenderFormSet = inlineformset_factory(scenarios.Scenario, scenarios.Contender,
-    form=CreateContenderForm, extra=1)
+    form=CreateContenderForm, extra=1, fields="__all__")
 
 CountryRandomIncomeFormSet = inlineformset_factory(scenarios.Country,
     scenarios.CountryRandomIncome,
-    extra=1)
+    extra=1,
+    fields="__all__")
 
 class AreaForm(forms.ModelForm):
     class Meta:
@@ -179,12 +180,12 @@ class AreaForm(forms.ModelForm):
             
         return cleaned_data
 
-ControlTokenFormSet = inlineformset_factory(scenarios.Area, scenarios.ControlToken, extra=1)
-GTokenFormSet = inlineformset_factory(scenarios.Area, scenarios.GToken, extra=1)
-AFTokenFormSet = inlineformset_factory(scenarios.Area, scenarios.AFToken, extra=1)
-FamineCellFormSet = inlineformset_factory(scenarios.Area, scenarios.FamineCell, extra=1)
-PlagueCellFormSet = inlineformset_factory(scenarios.Area, scenarios.PlagueCell, extra=1)
-StormCellFormSet = inlineformset_factory(scenarios.Area, scenarios.StormCell, extra=1)
+ControlTokenFormSet = inlineformset_factory(scenarios.Area, scenarios.ControlToken, extra=1, fields="__all__")
+GTokenFormSet = inlineformset_factory(scenarios.Area, scenarios.GToken, extra=1, fields="__all__")
+AFTokenFormSet = inlineformset_factory(scenarios.Area, scenarios.AFToken, extra=1, fields="__all__")
+FamineCellFormSet = inlineformset_factory(scenarios.Area, scenarios.FamineCell, extra=1, fields="__all__")
+PlagueCellFormSet = inlineformset_factory(scenarios.Area, scenarios.PlagueCell, extra=1, fields="__all__")
+StormCellFormSet = inlineformset_factory(scenarios.Area, scenarios.StormCell, extra=1, fields="__all__")
 
 def areaborderformset_factory(setting):
     class AreaBorderForm(forms.ModelForm):
@@ -194,5 +195,5 @@ def areaborderformset_factory(setting):
             model = scenarios.Border
             fields = "__all__"
 
-    return inlineformset_factory(scenarios.Area, scenarios.Border, fk_name="to_area", form=AreaBorderForm, extra=5)
+    return inlineformset_factory(scenarios.Area, scenarios.Border, fk_name="to_area", form=AreaBorderForm, extra=5, fields="__all__")
 
