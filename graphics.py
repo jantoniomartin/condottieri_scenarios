@@ -25,7 +25,7 @@ import os.path
 from django.conf import settings
 
 TOKENS_DIR=os.path.join(settings.MEDIA_ROOT, 'scenarios', 'tokens')
-TEMPLATES_DIR=os.path.join(settings.PROJECT_ROOT, 'apps/condottieri_scenarios/media/condottieri_scenarios/token_templates')
+TEMPLATES_DIR=os.path.join(settings.MEDIA_ROOT, 'scenarios', 'token_templates')
 BADGES_DIR=os.path.join(settings.MEDIA_ROOT, 'scenarios', 'badges')
 
 def ensure_dir(f):
