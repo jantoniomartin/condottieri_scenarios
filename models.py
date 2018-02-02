@@ -68,7 +68,7 @@ class Setting(models.Model):
 	editor = models.ForeignKey(User, verbose_name=_("editor"))
 	enabled = models.BooleanField(_("enabled"), default=False)
 	board = models.ImageField(_("board"), upload_to=get_board_upload_path)
-	permissions = models.ManyToManyField(User, null=True, blank=True, related_name="allowed_users", verbose_name=_("permissions"))
+	permissions = models.ManyToManyField(User, blank=True, related_name="allowed_users", verbose_name=_("permissions"))
 
 	class Meta:
 		verbose_name = _("setting")
@@ -114,8 +114,8 @@ class Configuration(models.Model):
 	def __unicode__(self):
 		return unicode(self.setting)
 
-def create_configuration(sender, instance, created, **kwargs):
-    if isinstance(instance, Setting) and created:
+def create_configuration(sender, instance, created, raw, **kwargs):
+    if isinstance(instance, Setting) and created and not raw:
 		config = Configuration(setting=instance)
 		config.save()
 
@@ -254,8 +254,8 @@ class Scenario(models.Model):
 	
 	country_stats = property(_get_country_stats)
 
-def create_autonomous(sender, instance, created, **kwargs):
-    if isinstance(instance, Scenario) and created:
+def create_autonomous(sender, instance, created, raw, **kwargs):
+    if isinstance(instance, Scenario) and created and not raw:
 		autonomous = Contender(scenario=instance)
 		autonomous.save()
 
@@ -517,8 +517,8 @@ class Border(models.Model):
 	def __unicode__(self):
 		return u"%s - %s" % (self.from_area, self.to_area)
 
-def symmetric_border(sender, instance, created, **kwargs):
-    if isinstance(instance, Border) and created:
+def symmetric_border(sender, instance, created, raw, **kwargs):
+    if isinstance(instance, Border) and created and not raw:
 		obj, created = Border.objects.get_or_create(from_area=instance.to_area,
 			to_area=instance.from_area,
 			only_land=instance.only_land)
