@@ -1,7 +1,7 @@
 {% extends 'condottieri_scenarios/base.html' %}
 
 {% load i18n %}
-{% load uni_form_tags %}
+{% load crispy_forms_tags %}
 
 {% block head_title %}{% trans "Edit area" %}{% endblock %}
 
@@ -64,7 +64,7 @@
 
 <form action="." method="post" accept-charset="utf-8" class="uniForm">
 {% csrf_token %}
-{{ form|as_uni_form }}
+{{ form|crispy }}
 
 <h3>{% trans "Area borders" %}</h3>
 <p>{% blocktrans %}You must list all the areas that share a border with this one. Notice that in these areas, you must also include this one in their borders.{% endblocktrans %}</p>
