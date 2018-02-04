@@ -77,7 +77,7 @@ def make_scenario_map(s):
                         coords = (g.area.gtoken.x, g.area.gtoken.y)
                         base_map.paste(garrison, coords, garrison)
         ## save the map
-        result = base_map
+        result = base_map.convert("RGB")
         filename = s.map_path
         ensure_dir(filename)
         result.save(filename)
