@@ -40,7 +40,7 @@ reverse_lazy = lambda name=None, *args : lazy(reverse, str)(name, args=args)
 class CreationAllowedMixin(object):
 	""" A mixin requiring a user to be authenticated and being editor or admin """
 	def dispatch(self, request, *args, **kwargs):
-		if not request.user.is_authenticated() or \
+		if not request.user.is_authenticated or \
 		not request.user.profile.is_editor:
 			raise http.Http404
 		return super(CreationAllowedMixin, self).dispatch(request, *args, **kwargs)
@@ -135,7 +135,7 @@ class CountryView(DetailView):
 
 	def get_context_data(self, **kwargs):
 		context = super(CountryView, self).get_context_data(**kwargs)
-		if self.request.user.is_authenticated():
+		if self.request.user.is_authenticated:
 			user_can_edit = self.request.user.profile.is_editor
 			context.update({'user_can_edit': user_can_edit})
 		return context
@@ -144,7 +144,7 @@ class CountryListView(ListView):
 	model = models.Country
 	
 	def get_queryset(self):
-		if not self.request.user.is_authenticated():
+		if not self.request.user.is_authenticated:
 			return models.Country.objects.filter(enabled=True)
 		if self.request.user.is_staff:
 			return models.Country.objects.all()
@@ -182,7 +182,7 @@ class SettingListView(ListView):
 	model = models.Setting
 
 	def get_queryset(self):
-		if not self.request.user.is_authenticated():
+		if not self.request.user.is_authenticated:
 			return models.Setting.objects.filter(enabled=True)
 		if self.request.user.is_staff:
 			return models.Setting.objects.all()
@@ -193,7 +193,7 @@ class ScenarioListView(ListView):
 	model = models.Scenario
 	
 	def get_queryset(self):
-		if not self.request.user.is_authenticated():
+		if not self.request.user.is_authenticated:
 			return models.Scenario.objects.filter(enabled=True)
 		if self.request.user.is_staff:
 			return models.Scenario.objects.all()
@@ -207,7 +207,7 @@ class ScenarioView(DetailView):
 
 	def get_context_data(self, **kwargs):
 		context = super(ScenarioView, self).get_context_data(**kwargs)
-		if self.request.user.is_authenticated():
+		if self.request.user.is_authenticated:
 			user_can_edit = self.request.user.profile.is_editor
 			context.update({'user_can_edit': user_can_edit})
 		return context
