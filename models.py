@@ -80,7 +80,7 @@ class Setting(models.Model, metaclass=TransMeta):
             slugify.unique_slugify(self, self.title_en, slug_field_name='slug')
         super(Setting, self).save(*args, **kwargs)
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.title)
 
     def user_allowed(self, user):
@@ -110,7 +110,7 @@ class Configuration(models.Model):
     religious_war = models.BooleanField(_('religious war'), default=False)
     trade_routes = models.BooleanField(_('trade routes'), default=False)
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.setting)
 
 def create_configuration(sender, instance, created, raw, **kwargs):
@@ -159,7 +159,7 @@ class Scenario(models.Model, metaclass=TransMeta):
         neutrals = self.neutral_set.count()
         return max_players - neutrals
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.title)
     
     @models.permalink
@@ -272,7 +272,7 @@ class SpecialUnit(models.Model, metaclass=TransMeta):
         verbose_name_plural = _("special units")
         translate = ("title",)
 
-    def __unicode__(self):
+    def __str__(self):
         return _("%(title)s (%(cost)sd)") % {'title': self.title,
                                             'cost': self.cost}
 
@@ -291,7 +291,7 @@ class Religion(models.Model, metaclass=TransMeta):
         verbose_name_plural = _("religions")
         translate = ("name",)
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.name)
 
 def get_coat_upload_path(instance, filename):
@@ -323,7 +323,7 @@ class Country(models.Model, metaclass=TransMeta):
             slugify.unique_slugify(self, self.name_en, slug_field_name='static_name')
         super(Country, self).save(*args, **kwargs)
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.name)
 
     def get_absolute_url(self):
@@ -367,7 +367,7 @@ class Contender(models.Model):
         unique_together = (("country", "scenario"),)
         ordering = ["scenario__id", "country"]
 
-    def __unicode__(self):
+    def __str__(self):
         if self.country:
             return self.country.name
         else:
@@ -389,7 +389,7 @@ class Treasury(models.Model):
     ducats = models.PositiveIntegerField(_("ducats"), default=0)
     double = models.BooleanField(_("double income"), default=False)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s starts with %s ducats" % (self.contender, self.ducats)
 
     class Meta:
@@ -478,7 +478,7 @@ class Area(models.Model, metaclass=TransMeta):
                 return False
         return True
 
-    def __unicode__(self):
+    def __str__(self):
         return "%(code)s - %(name)s" % {'name': self.name, 'code': self.code}
     
     def get_random_income(self, die):
@@ -507,7 +507,7 @@ class Border(models.Model):
         verbose_name_plural = _("borders")
         unique_together = [('from_area', 'to_area'),]
     
-    def __unicode__(self):
+    def __str__(self):
         return "%s - %s" % (self.from_area, self.to_area)
 
 def symmetric_border(sender, instance, created, raw, **kwargs):
@@ -523,7 +523,7 @@ class DisabledArea(models.Model):
     scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
     area = models.ForeignKey(Area, verbose_name=_("area"))
 
-    def __unicode__(self):
+    def __str__(self):
         return "%(area)s disabled in %(scenario)s" % {'area': self.area,
                                                     'scenario': self.scenario}
     
@@ -570,7 +570,7 @@ class CityIncome(models.Model):
     city = models.ForeignKey(Area, verbose_name=_("city"))
     scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.city.name
 
     class Meta:
@@ -629,7 +629,7 @@ class CountryRandomIncome(RandomIncome):
         verbose_name = _("country random income")
         verbose_name_plural = _("countries random incomes")
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.country)
 
 class CityRandomIncome(RandomIncome):
@@ -642,7 +642,7 @@ class CityRandomIncome(RandomIncome):
         verbose_name = _("city random income")
         verbose_name_plural = _("cities random incomes")
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.city)
 
 class Home(models.Model):
@@ -660,7 +660,7 @@ class Home(models.Model):
     area = models.ForeignKey(Area, verbose_name=_("area"))
     is_home = models.BooleanField(_("is home"), default=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.area.name
 
     class Meta:
@@ -717,7 +717,7 @@ class Setup(models.Model):
     unit_type = models.CharField(_("unit type"), max_length=1,
         choices=UNIT_TYPES)
     
-    def __unicode__(self):
+    def __str__(self):
         return _("%(unit)s in %(area)s") % {
             'unit': self.get_unit_type_display(),
             'area': self.area.name }
@@ -754,7 +754,7 @@ class ControlToken(models.Model):
     x = models.PositiveIntegerField()
     y = models.PositiveIntegerField()
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s, %s" % (self.x, self.y)
 
 
@@ -765,7 +765,7 @@ class GToken(models.Model):
     x = models.PositiveIntegerField()
     y = models.PositiveIntegerField()
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s, %s" % (self.x, self.y)
 
 
@@ -776,7 +776,7 @@ class AFToken(models.Model):
     x = models.PositiveIntegerField()
     y = models.PositiveIntegerField()
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s, %s" % (self.x, self.y)
 
 ##
@@ -803,7 +803,7 @@ class DisasterCell(models.Model):
     class Meta:
         abstract = True
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s (%s, %s)" % (self.area, self.row, self.column)
 
 class FamineCell(DisasterCell):
@@ -836,7 +836,7 @@ class TradeRoute(models.Model):
         verbose_name = _("trade route")
         verbose_name_plural = _("trade routes")
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.id
 
 class RouteStep(models.Model):
@@ -849,5 +849,5 @@ class RouteStep(models.Model):
         verbose_name = _("route step")
         verbose_name_plural = _("route steps")
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.area)
