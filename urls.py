@@ -1,8 +1,8 @@
-from django.conf.urls import *
+from django.conf.urls import url
 
 import condottieri_scenarios.views as views
 
-urlpatterns = patterns('condottieri_scenarios.views',
+urlpatterns = [
 	url(r'^$', views.ScenarioListView.as_view(), name='scenario_list'),
 	url(r'^setting/$',
 		views.SettingListView.as_view(), name='setting_list'),
@@ -60,5 +60,4 @@ urlpatterns = patterns('condottieri_scenarios.views',
 		views.AreaCreateView.as_view(), name='area_create'),
 	url(r'^area/update/(?P<pk>\d+)/$',
 		views.AreaUpdateView.as_view(), name='area_edit'),
-)
-
+]
