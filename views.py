@@ -52,7 +52,7 @@ class EditionAllowedMixin(CreationAllowedMixin):
 		try:
 			editor = obj.editor
 		except AttributeError:
-			print "No editor"
+			print("No editor")
 			editor = None
 		if not editor == self.request.user and not self.request.user.is_staff:
 			raise http.Http404
@@ -103,7 +103,7 @@ class CountryUpdateView(EditionAllowedMixin, UpdateView):
 		if formset.is_valid():
 			try:
 				formset.save()
-			except Exception, v:
+			except Exception as v:
 				messages.error(self.request, v)
 			else:
 				form.save()
@@ -296,7 +296,7 @@ class ScenarioUpdateView(EditionAllowedMixin, UpdateView):
 		if formset.is_valid():
 			try:
 				formset.save()
-			except Exception, v:
+			except Exception as v:
 				messages.error(self.request, v)
 			else:
 				return http.HttpResponseRedirect(self.get_success_url())
@@ -385,7 +385,7 @@ class ContenderUpdateView(EditionAllowedMixin, UpdateView):
 		if formset.is_valid():
 			try:
 				formset.save()
-			except Exception, v:
+			except Exception as v:
 				messages.error(self.request, v)
 			else:
 				return http.HttpResponseRedirect(self.get_success_url())

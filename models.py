@@ -57,10 +57,9 @@ class WrongUnitType(Error):
 def get_board_upload_path(instance, filename):
 	return os.path.join(settings.SCENARIOS_ROOT, "boards", instance.map_name)
 
-class Setting(models.Model):
+class Setting(models.Model, metaclass=TransMeta):
 	""" A Setting represents a historic or fictional setting with a map.
 	For example, Machiavelli would be a Setting, and Diplomacy could be another Setting. """
-	__metaclass__ = TransMeta
 
 	slug = models.SlugField(_("slug"), max_length=50, unique=True)
 	title = models.CharField(max_length=128, verbose_name=_("title"), help_text=_("max. 128 characters"))
@@ -82,7 +81,7 @@ class Setting(models.Model):
 		super(Setting, self).save(*args, **kwargs)
 
 	def __unicode__(self):
-		return unicode(self.title)
+		return str(self.title)
 
 	def user_allowed(self, user):
 		if user.is_staff:
@@ -112,7 +111,7 @@ class Configuration(models.Model):
 	trade_routes = models.BooleanField(_('trade routes'), default=False)
 
 	def __unicode__(self):
-		return unicode(self.setting)
+		return str(self.setting)
 
 def create_configuration(sender, instance, created, raw, **kwargs):
     if isinstance(instance, Setting) and created and not raw:
@@ -121,10 +120,8 @@ def create_configuration(sender, instance, created, raw, **kwargs):
 
 models.signals.post_save.connect(create_configuration, sender=Setting)
 
-class Scenario(models.Model):
+class Scenario(models.Model, metaclass=TransMeta):
 	""" This class defines a Condottieri scenario. """
-	
-	__metaclass__ = TransMeta
 	
 	setting = models.ForeignKey(Setting, verbose_name=_("setting"))
 	name = models.SlugField(_("slug"), max_length=128, unique=True)
@@ -163,7 +160,7 @@ class Scenario(models.Model):
 		return max_players - neutrals
 
 	def __unicode__(self):
-		return unicode(self.title)
+		return str(self.title)
 	
 	@models.permalink
 	def get_absolute_url(self):
@@ -261,10 +258,9 @@ def create_autonomous(sender, instance, created, raw, **kwargs):
 
 models.signals.post_save.connect(create_autonomous, sender=Scenario)
 
-class SpecialUnit(models.Model):
+class SpecialUnit(models.Model, metaclass=TransMeta):
 	""" A SpecialUnit describes the attributes of a unit that costs more ducats
 	than usual and can be more powerful or more loyal """
-	__metaclass__ = TransMeta
 	static_title = models.CharField(_("static title"), max_length=50)
 	title = models.CharField(_("title"), max_length=50)
 	cost = models.PositiveIntegerField(_("cost"))
@@ -286,8 +282,7 @@ class SpecialUnit(models.Model):
 			'power': self.power,
 			'loyalty': self.loyalty}
 
-class Religion(models.Model):
-	__metaclass__ = TransMeta
+class Religion(models.Model, metaclass=TransMeta):
 	slug = models.SlugField(_("slug"), max_length=20, unique=True)
 	name = models.CharField(_("name"), max_length=50)
 
@@ -297,13 +292,12 @@ class Religion(models.Model):
 		translate = ("name",)
 
 	def __unicode__(self):
-		return unicode(self.name)
+		return str(self.name)
 
 def get_coat_upload_path(instance, filename):
 	return "scenarios/coats/coat-%s.png" % instance.static_name
 
-class Country(models.Model):
-	__metaclass__ = TransMeta
+class Country(models.Model, metaclass=TransMeta):
 	name = models.CharField(_("name"), max_length=50)
 	color = models.CharField(_("color"), max_length=6, help_text=_("Hexadecimal RGB color (e.g: FF0000 for pure red)"))
 	coat_of_arms = models.ImageField(_("coat of arms"), upload_to=get_coat_upload_path,
@@ -330,7 +324,7 @@ class Country(models.Model):
 		super(Country, self).save(*args, **kwargs)
 
 	def __unicode__(self):
-		return unicode(self.name)
+		return str(self.name)
 
 	def get_absolute_url(self):
 		return ('country_detail', None, {'slug': self.static_name})
@@ -377,7 +371,7 @@ class Contender(models.Model):
 		if self.country:
 			return self.country.name
 		else:
-			return unicode(_("Autonomous"))
+			return str(_("Autonomous"))
 
 	def _get_editor(self):
 		return self.scenario.editor
@@ -408,11 +402,10 @@ class Treasury(models.Model):
 
 	editor = property(_get_editor)
 
-class Area(models.Model):
+class Area(models.Model, metaclass=TransMeta):
 	""" This class describes **only** the area features in the board. The game is
 	actually played in GameArea objects.
 	"""
-	__metaclass__ = TransMeta
 
 	setting = models.ForeignKey(Setting, verbose_name=_("setting"))
 	name = models.CharField(max_length=25, verbose_name=_("name"))
@@ -486,7 +479,7 @@ class Area(models.Model):
 		return True
 
 	def __unicode__(self):
-		return u"%(code)s - %(name)s" % {'name': self.name, 'code': self.code}
+		return "%(code)s - %(name)s" % {'name': self.name, 'code': self.code}
 	
 	def get_random_income(self, die):
 		try:
@@ -515,7 +508,7 @@ class Border(models.Model):
 		unique_together = [('from_area', 'to_area'),]
 	
 	def __unicode__(self):
-		return u"%s - %s" % (self.from_area, self.to_area)
+		return "%s - %s" % (self.from_area, self.to_area)
 
 def symmetric_border(sender, instance, created, raw, **kwargs):
     if isinstance(instance, Border) and created and not raw:
@@ -553,7 +546,7 @@ class DisabledArea(models.Model):
 			raise AreaNotAllowed(_("Selected area is controlled by a country"))
 		try:
 			Setup.objects.get(contender__scenario=self.scenario, area=self.area)
-		except ObjectDoesNotExist, MultipleObjectsReturned:
+		except ObjectDoesNotExist as MultipleObjectsReturned:
 			pass
 		else:
 			raise AreaNotAllowed(_("Selected area is occupied by one or more units"))
@@ -637,7 +630,7 @@ class CountryRandomIncome(RandomIncome):
 		verbose_name_plural = _("countries random incomes")
 
 	def __unicode__(self):
-		return unicode(self.country)
+		return str(self.country)
 
 class CityRandomIncome(RandomIncome):
 	""" This class details the number of ducats that a city gets
@@ -650,7 +643,7 @@ class CityRandomIncome(RandomIncome):
 		verbose_name_plural = _("cities random incomes")
 
 	def __unicode__(self):
-		return unicode(self.city)
+		return str(self.city)
 
 class Home(models.Model):
 	""" This class defines which Country controls each Area in a given Scenario,
@@ -811,7 +804,7 @@ class DisasterCell(models.Model):
 		abstract = True
 
 	def __unicode__(self):
-		return u"%s (%s, %s)" % (self.area, self.row, self.column)
+		return "%s (%s, %s)" % (self.area, self.row, self.column)
 
 class FamineCell(DisasterCell):
 	
@@ -844,7 +837,7 @@ class TradeRoute(models.Model):
 		verbose_name_plural = _("trade routes")
 
 	def __unicode__(self):
-		return u"%s" % self.id
+		return "%s" % self.id
 
 class RouteStep(models.Model):
 	route = models.ForeignKey(TradeRoute)
@@ -857,4 +850,4 @@ class RouteStep(models.Model):
 		verbose_name_plural = _("route steps")
 
 	def __unicode__(self):
-		return unicode(self.area)
+		return str(self.area)
