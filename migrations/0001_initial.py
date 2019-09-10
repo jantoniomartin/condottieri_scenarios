@@ -51,8 +51,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('only_land', models.BooleanField(default=False)),
-                ('from_area', models.ForeignKey(related_name='from_borders', to='condottieri_scenarios.Area')),
-                ('to_area', models.ForeignKey(related_name='to_borders', to='condottieri_scenarios.Area')),
+                ('from_area', models.ForeignKey(related_name='from_borders', to='condottieri_scenarios.Area', on_delete=models.CASCADE)),
+                ('to_area', models.ForeignKey(related_name='to_borders', to='condottieri_scenarios.Area', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'border',
@@ -63,7 +63,7 @@ class Migration(migrations.Migration):
             name='CityIncome',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('city', models.ForeignKey(verbose_name='city', to='condottieri_scenarios.Area')),
+                ('city', models.ForeignKey(verbose_name='city', to='condottieri_scenarios.Area', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'city income',
@@ -75,7 +75,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('income_list', models.CharField(max_length=20, verbose_name='income list', validators=[django.core.validators.RegexValidator(regex=b'^([0-9]+,\\s*){5}[0-9]+$', message='List must have 6 comma separated numbers')])),
-                ('city', models.OneToOneField(verbose_name='city', to='condottieri_scenarios.Area')),
+                ('city', models.OneToOneField(verbose_name='city', to='condottieri_scenarios.Area', on_delete=models.CASCADE)),
             ],
             options={
                 'abstract': False,
@@ -109,7 +109,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('x', models.PositiveIntegerField()),
                 ('y', models.PositiveIntegerField()),
-                ('area', models.OneToOneField(to='condottieri_scenarios.Area')),
+                ('area', models.OneToOneField(to='condottieri_scenarios.Area', on_delete=models.CASCADE)),
             ],
         ),
         migrations.CreateModel(
@@ -126,7 +126,7 @@ class Migration(migrations.Migration):
                 ('static_name', models.SlugField(unique=True, max_length=20, verbose_name='static name')),
                 ('enabled', models.BooleanField(default=False, verbose_name='enabled')),
                 ('protected', models.BooleanField(default=False, verbose_name='protected')),
-                ('editor', models.ForeignKey(verbose_name='editor', to=settings.AUTH_USER_MODEL)),
+                ('editor', models.ForeignKey(verbose_name='editor', to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ['static_name'],
@@ -139,7 +139,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('income_list', models.CharField(max_length=20, verbose_name='income list', validators=[django.core.validators.RegexValidator(regex=b'^([0-9]+,\\s*){5}[0-9]+$', message='List must have 6 comma separated numbers')])),
-                ('country', models.ForeignKey(verbose_name='country', to='condottieri_scenarios.Country')),
+                ('country', models.ForeignKey(verbose_name='country', to='condottieri_scenarios.Country', on_delete=models.CASCADE)),
             ],
             options={
                 'abstract': False,
@@ -151,7 +151,7 @@ class Migration(migrations.Migration):
             name='DisabledArea',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('area', models.ForeignKey(verbose_name='area', to='condottieri_scenarios.Area')),
+                ('area', models.ForeignKey(verbose_name='area', to='condottieri_scenarios.Area', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'disabled area',
@@ -164,7 +164,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('row', models.PositiveIntegerField(verbose_name='row')),
                 ('column', models.PositiveIntegerField(verbose_name='column')),
-                ('area', models.OneToOneField(verbose_name='area', to='condottieri_scenarios.Area')),
+                ('area', models.OneToOneField(verbose_name='area', to='condottieri_scenarios.Area', on_delete=models.CASCADE)),
             ],
             options={
                 'abstract': False,
@@ -178,7 +178,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('x', models.PositiveIntegerField()),
                 ('y', models.PositiveIntegerField()),
-                ('area', models.OneToOneField(to='condottieri_scenarios.Area')),
+                ('area', models.OneToOneField(to='condottieri_scenarios.Area', on_delete=models.CASCADE)),
             ],
         ),
         migrations.CreateModel(
@@ -186,8 +186,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('is_home', models.BooleanField(default=True, verbose_name='is home')),
-                ('area', models.ForeignKey(verbose_name='area', to='condottieri_scenarios.Area')),
-                ('contender', models.ForeignKey(verbose_name='contender', to='condottieri_scenarios.Contender')),
+                ('area', models.ForeignKey(verbose_name='area', to='condottieri_scenarios.Area', on_delete=models.CASCADE)),
+                ('contender', models.ForeignKey(verbose_name='contender', to='condottieri_scenarios.Contender', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'home area',
@@ -200,7 +200,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('row', models.PositiveIntegerField(verbose_name='row')),
                 ('column', models.PositiveIntegerField(verbose_name='column')),
-                ('area', models.OneToOneField(verbose_name='area', to='condottieri_scenarios.Area')),
+                ('area', models.OneToOneField(verbose_name='area', to='condottieri_scenarios.Area', on_delete=models.CASCADE)),
             ],
             options={
                 'abstract': False,
@@ -228,7 +228,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('is_end', models.BooleanField(default=False)),
-                ('area', models.ForeignKey(to='condottieri_scenarios.Area')),
+                ('area', models.ForeignKey(to='condottieri_scenarios.Area', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'route step',
@@ -253,7 +253,7 @@ class Migration(migrations.Migration):
                 ('enabled', models.BooleanField(default=False, verbose_name='enabled')),
                 ('published', models.DateField(null=True, verbose_name=b'publication date', blank=True)),
                 ('countries', models.ManyToManyField(to='condottieri_scenarios.Country', through='condottieri_scenarios.Contender')),
-                ('editor', models.ForeignKey(verbose_name='editor', to=settings.AUTH_USER_MODEL)),
+                ('editor', models.ForeignKey(verbose_name='editor', to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ['setting', 'start_year'],
@@ -276,7 +276,7 @@ class Migration(migrations.Migration):
                 ('description_de', models.TextField(null=True, verbose_name='description', blank=True)),
                 ('enabled', models.BooleanField(default=False, verbose_name='enabled')),
                 ('board', models.ImageField(upload_to=condottieri_scenarios.models.get_board_upload_path, verbose_name='board')),
-                ('editor', models.ForeignKey(verbose_name='editor', to=settings.AUTH_USER_MODEL)),
+                ('editor', models.ForeignKey(verbose_name='editor', to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
                 ('permissions', models.ManyToManyField(related_name='allowed_users', verbose_name='permissions', to=settings.AUTH_USER_MODEL, blank=True)),
             ],
             options={
@@ -290,8 +290,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('unit_type', models.CharField(max_length=1, verbose_name='unit type', choices=[(b'A', 'Army'), (b'F', 'Fleet'), (b'G', 'Garrison')])),
-                ('area', models.ForeignKey(verbose_name='area', to='condottieri_scenarios.Area')),
-                ('contender', models.ForeignKey(verbose_name='contender', to='condottieri_scenarios.Contender')),
+                ('area', models.ForeignKey(verbose_name='area', to='condottieri_scenarios.Area', on_delete=models.CASCADE)),
+                ('contender', models.ForeignKey(verbose_name='contender', to='condottieri_scenarios.Contender', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'initial setup',
@@ -322,7 +322,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('row', models.PositiveIntegerField(verbose_name='row')),
                 ('column', models.PositiveIntegerField(verbose_name='column')),
-                ('area', models.OneToOneField(verbose_name='area', to='condottieri_scenarios.Area')),
+                ('area', models.OneToOneField(verbose_name='area', to='condottieri_scenarios.Area', on_delete=models.CASCADE)),
             ],
             options={
                 'abstract': False,
@@ -346,7 +346,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('ducats', models.PositiveIntegerField(default=0, verbose_name='ducats')),
                 ('double', models.BooleanField(default=False, verbose_name='double income')),
-                ('contender', models.OneToOneField(verbose_name='contender', to='condottieri_scenarios.Contender')),
+                ('contender', models.OneToOneField(verbose_name='contender', to='condottieri_scenarios.Contender', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'treasury',
@@ -356,27 +356,27 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='scenario',
             name='setting',
-            field=models.ForeignKey(verbose_name='setting', to='condottieri_scenarios.Setting'),
+            field=models.ForeignKey(verbose_name='setting', to='condottieri_scenarios.Setting', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='routestep',
             name='route',
-            field=models.ForeignKey(to='condottieri_scenarios.TradeRoute'),
+            field=models.ForeignKey(to='condottieri_scenarios.TradeRoute', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='disabledarea',
             name='scenario',
-            field=models.ForeignKey(verbose_name='scenario', to='condottieri_scenarios.Scenario'),
+            field=models.ForeignKey(verbose_name='scenario', to='condottieri_scenarios.Scenario', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='countryrandomincome',
             name='setting',
-            field=models.ForeignKey(verbose_name='setting', to='condottieri_scenarios.Setting'),
+            field=models.ForeignKey(verbose_name='setting', to='condottieri_scenarios.Setting', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='country',
             name='religion',
-            field=models.ForeignKey(verbose_name='religion', blank=True, to='condottieri_scenarios.Religion', null=True),
+            field=models.ForeignKey(verbose_name='religion', blank=True, to='condottieri_scenarios.Religion', null=True, on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='country',
@@ -386,22 +386,22 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='contender',
             name='country',
-            field=models.ForeignKey(verbose_name='country', blank=True, to='condottieri_scenarios.Country', null=True),
+            field=models.ForeignKey(verbose_name='country', blank=True, to='condottieri_scenarios.Country', null=True, on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='contender',
             name='scenario',
-            field=models.ForeignKey(verbose_name='scenario', to='condottieri_scenarios.Scenario'),
+            field=models.ForeignKey(verbose_name='scenario', to='condottieri_scenarios.Scenario', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='configuration',
             name='setting',
-            field=models.OneToOneField(editable=False, to='condottieri_scenarios.Setting', verbose_name='setting'),
+            field=models.OneToOneField(editable=False, to='condottieri_scenarios.Setting', verbose_name='setting', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='cityincome',
             name='scenario',
-            field=models.ForeignKey(verbose_name='scenario', to='condottieri_scenarios.Scenario'),
+            field=models.ForeignKey(verbose_name='scenario', to='condottieri_scenarios.Scenario', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='area',
@@ -411,17 +411,17 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='area',
             name='religion',
-            field=models.ForeignKey(blank=True, to='condottieri_scenarios.Religion', help_text='used only in settings with the rule of religious wars', null=True, verbose_name='religion'),
+            field=models.ForeignKey(blank=True, to='condottieri_scenarios.Religion', help_text='used only in settings with the rule of religious wars', null=True, verbose_name='religion', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='area',
             name='setting',
-            field=models.ForeignKey(verbose_name='setting', to='condottieri_scenarios.Setting'),
+            field=models.ForeignKey(verbose_name='setting', to='condottieri_scenarios.Setting', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='aftoken',
             name='area',
-            field=models.OneToOneField(to='condottieri_scenarios.Area'),
+            field=models.OneToOneField(to='condottieri_scenarios.Area', on_delete=models.CASCADE),
         ),
         migrations.AlterUniqueTogether(
             name='routestep',

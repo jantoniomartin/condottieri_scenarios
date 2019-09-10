@@ -64,7 +64,7 @@ class Setting(models.Model, metaclass=TransMeta):
     slug = models.SlugField(_("slug"), max_length=50, unique=True)
     title = models.CharField(max_length=128, verbose_name=_("title"), help_text=_("max. 128 characters"))
     description = models.TextField(verbose_name=_("description"))
-    editor = models.ForeignKey(User, verbose_name=_("editor"))
+    editor = models.ForeignKey(User, verbose_name=_("editor"), on_delete=models.CASCADE)
     enabled = models.BooleanField(_("enabled"), default=False)
     board = models.ImageField(_("board"), upload_to=get_board_upload_path)
     permissions = models.ManyToManyField(User, blank=True, related_name="allowed_users", verbose_name=_("permissions"))
@@ -106,7 +106,7 @@ class Configuration(models.Model):
     the setting is created and are not meant to be changed.
     """
 
-    setting = models.OneToOneField(Setting, verbose_name=_('setting'), editable=False)
+    setting = models.OneToOneField(Setting, verbose_name=_('setting'), editable=False, on_delete=models.CASCADE)
     religious_war = models.BooleanField(_('religious war'), default=False)
     trade_routes = models.BooleanField(_('trade routes'), default=False)
 
@@ -123,14 +123,14 @@ models.signals.post_save.connect(create_configuration, sender=Setting)
 class Scenario(models.Model, metaclass=TransMeta):
     """ This class defines a Condottieri scenario. """
     
-    setting = models.ForeignKey(Setting, verbose_name=_("setting"))
+    setting = models.ForeignKey(Setting, verbose_name=_("setting"), on_delete=models.CASCADE)
     name = models.SlugField(_("slug"), max_length=128, unique=True)
     title = models.CharField(max_length=128, verbose_name=_("title"), help_text=_("max. 128 characters"))
     description = models.TextField(verbose_name=_("description"))
     designer = models.CharField(_("designer"), max_length=30, blank=True, null=True, help_text=_("leave it blank if you are the designer"))
     start_year = models.PositiveIntegerField(_("start year"))
     #number_of_players = models.PositiveIntegerField(_("number of players"), default=0)
-    editor = models.ForeignKey(User, verbose_name=_("editor"))
+    editor = models.ForeignKey(User, verbose_name=_("editor"), on_delete=models.CASCADE)
     enabled = models.BooleanField(_("enabled"), default=False)
     countries = models.ManyToManyField('Country', through='Contender')
     published = models.DateField("publication date", null=True, blank=True)
@@ -305,8 +305,8 @@ class Country(models.Model, metaclass=TransMeta):
     can_excommunicate = models.BooleanField(_("can excommunicate"), default=False)
     static_name = models.SlugField(_("static name"), max_length=20, unique=True)
     special_units = models.ManyToManyField(SpecialUnit, verbose_name=_("special units"))
-    religion = models.ForeignKey(Religion, blank=True, null=True, verbose_name=_("religion"))
-    editor = models.ForeignKey(User, verbose_name=_("editor"))
+    religion = models.ForeignKey(Religion, blank=True, null=True, verbose_name=_("religion"), on_delete=models.CASCADE)
+    editor = models.ForeignKey(User, verbose_name=_("editor"), on_delete=models.CASCADE)
     enabled = models.BooleanField(_("enabled"), default=False)
     protected = models.BooleanField(_("protected"), default=False)
     
@@ -357,8 +357,8 @@ class Contender(models.Model):
     """ A Contender object defines a relationship between an Scenario and a
     Country. """
 
-    country = models.ForeignKey(Country, blank=True, null=True, verbose_name=_("country"))
-    scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
+    country = models.ForeignKey(Country, blank=True, null=True, verbose_name=_("country"), on_delete=models.CASCADE)
+    scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"), on_delete=models.CASCADE)
     priority = models.PositiveIntegerField(_("priority"), default=0)
 
     class Meta:
@@ -385,7 +385,7 @@ class Treasury(models.Model):
     """
     #scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
     #country = models.ForeignKey(Country, verbose_name=_("country"))
-    contender = models.OneToOneField(Contender, verbose_name=_("contender"))
+    contender = models.OneToOneField(Contender, verbose_name=_("contender"), on_delete=models.CASCADE)
     ducats = models.PositiveIntegerField(_("ducats"), default=0)
     double = models.BooleanField(_("double income"), default=False)
 
@@ -407,7 +407,7 @@ class Area(models.Model, metaclass=TransMeta):
     actually played in GameArea objects.
     """
 
-    setting = models.ForeignKey(Setting, verbose_name=_("setting"))
+    setting = models.ForeignKey(Setting, verbose_name=_("setting"), on_delete=models.CASCADE)
     name = models.CharField(max_length=25, verbose_name=_("name"))
     code = models.CharField(_("code"), max_length=5,
         help_text=_("1-5 uppercase characters to identify the area"))
@@ -431,6 +431,7 @@ class Area(models.Model, metaclass=TransMeta):
         null=False, default=0,
         help_text=_("the money that a country gets if it has a garrison, but does not control the province"))
     religion = models.ForeignKey(Religion, blank=True, null=True, verbose_name=_("religion"),
+        on_delete=models.CASCADE,
         help_text=_("used only in settings with the rule of religious wars"))
     ## mixed is true if the area is like Venice
     mixed = models.BooleanField(default=False,
@@ -498,8 +499,8 @@ class Area(models.Model, metaclass=TransMeta):
         translate = ('name', )
 
 class Border(models.Model):
-    from_area = models.ForeignKey(Area, related_name="from_borders")
-    to_area = models.ForeignKey(Area, related_name="to_borders")
+    from_area = models.ForeignKey(Area, related_name="from_borders", on_delete=models.CASCADE)
+    to_area = models.ForeignKey(Area, related_name="to_borders", on_delete=models.CASCADE)
     only_land = models.BooleanField(default=False)
 
     class Meta:
@@ -520,8 +521,8 @@ models.signals.post_save.connect(symmetric_border, sender=Border)
 
 class DisabledArea(models.Model):
     """ A DisabledArea is an Area that is not used in a given Scenario. """
-    scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
-    area = models.ForeignKey(Area, verbose_name=_("area"))
+    scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"), on_delete=models.CASCADE)
+    area = models.ForeignKey(Area, verbose_name=_("area"), on_delete=models.CASCADE)
 
     def __str__(self):
         return "%(area)s disabled in %(scenario)s" % {'area': self.area,
@@ -567,8 +568,8 @@ class CityIncome(models.Model):
     """
     This class represents a City that generates an income in a given Scenario
     """ 
-    city = models.ForeignKey(Area, verbose_name=_("city"))
-    scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
+    city = models.ForeignKey(Area, verbose_name=_("city"), on_delete=models.CASCADE)
+    scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"), on_delete=models.CASCADE)
 
     def __str__(self):
         return "%s" % self.city.name
@@ -622,8 +623,8 @@ class CountryRandomIncome(RandomIncome):
     """ This class details the number of ducats that a country gets
     depending on a random integer (1-6).
     """
-    setting = models.ForeignKey(Setting, verbose_name=_("setting"))
-    country = models.ForeignKey(Country, verbose_name=_("country"))
+    setting = models.ForeignKey(Setting, verbose_name=_("setting"), on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, verbose_name=_("country"), on_delete=models.CASCADE)
 
     class Meta(RandomIncome.Meta):
         verbose_name = _("country random income")
@@ -636,7 +637,7 @@ class CityRandomIncome(RandomIncome):
     """ This class details the number of ducats that a city gets
     depending on a random integer (1-6).
     """
-    city = models.OneToOneField(Area, verbose_name=_("city"))
+    city = models.OneToOneField(Area, verbose_name=_("city"), on_delete=models.CASCADE)
 
     class Meta(RandomIncome.Meta):
         verbose_name = _("city random income")
@@ -656,8 +657,8 @@ class Home(models.Model):
 
     #scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
     #country = models.ForeignKey(Country, verbose_name=_("country"))
-    contender = models.ForeignKey(Contender, verbose_name=_("contender"))
-    area = models.ForeignKey(Area, verbose_name=_("area"))
+    contender = models.ForeignKey(Contender, verbose_name=_("contender"), on_delete=models.CASCADE)
+    area = models.ForeignKey(Area, verbose_name=_("area"), on_delete=models.CASCADE)
     is_home = models.BooleanField(_("is home"), default=True)
 
     def __str__(self):
@@ -712,8 +713,8 @@ class Setup(models.Model):
     #scenario = models.ForeignKey(Scenario, verbose_name=_("scenario"))
     #country = models.ForeignKey(Country, blank=True, null=True,
     #   verbose_name=_("country"))
-    contender = models.ForeignKey(Contender, verbose_name=_("contender"))
-    area = models.ForeignKey(Area, verbose_name=_("area"))
+    contender = models.ForeignKey(Contender, verbose_name=_("contender"), on_delete=models.CASCADE)
+    area = models.ForeignKey(Area, verbose_name=_("area"), on_delete=models.CASCADE)
     unit_type = models.CharField(_("unit type"), max_length=1,
         choices=UNIT_TYPES)
     
@@ -750,7 +751,7 @@ class Setup(models.Model):
 class ControlToken(models.Model):
     """ Defines the coordinates of the control token for a board area. """
 
-    area = models.OneToOneField(Area)
+    area = models.OneToOneField(Area, on_delete=models.CASCADE)
     x = models.PositiveIntegerField()
     y = models.PositiveIntegerField()
 
@@ -761,7 +762,7 @@ class ControlToken(models.Model):
 class GToken(models.Model):
     """ Defines the coordinates of the Garrison token in a board area. """
 
-    area = models.OneToOneField(Area)
+    area = models.OneToOneField(Area, on_delete=models.CASCADE)
     x = models.PositiveIntegerField()
     y = models.PositiveIntegerField()
 
@@ -772,7 +773,7 @@ class GToken(models.Model):
 class AFToken(models.Model):
     """ Defines the coordinates of the Army and Fleet tokens in a board area."""
 
-    area = models.OneToOneField(Area)
+    area = models.OneToOneField(Area, on_delete=models.CASCADE)
     x = models.PositiveIntegerField()
     y = models.PositiveIntegerField()
 
@@ -794,7 +795,7 @@ class DisasterCellManager(models.Manager):
         return cells.filter(id__in=chosen_ids)
 
 class DisasterCell(models.Model):
-    area = models.OneToOneField(Area, verbose_name=_("area"))
+    area = models.OneToOneField(Area, verbose_name=_("area"), on_delete=models.CASCADE)
     row = models.PositiveIntegerField(_("row"))
     column = models.PositiveIntegerField(_("column"))
 
@@ -840,8 +841,8 @@ class TradeRoute(models.Model):
         return "%s" % self.id
 
 class RouteStep(models.Model):
-    route = models.ForeignKey(TradeRoute)
-    area = models.ForeignKey(Area)
+    route = models.ForeignKey(TradeRoute, on_delete=models.CASCADE)
+    area = models.ForeignKey(Area, on_delete=models.CASCADE)
     is_end = models.BooleanField(default=False)
 
     class Meta:
