@@ -25,7 +25,7 @@ from django.db.models import Q
 from django.shortcuts import redirect
 from django import http
 from django.utils.functional import lazy
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.forms import ValidationError
 from django.utils.translation import ugettext_lazy as _
