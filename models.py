@@ -26,6 +26,7 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.core.validators import RegexValidator
 from django.forms import ValidationError
 from django.conf import settings
+from django.urls import reverse
 
 from transmeta import TransMeta
 
@@ -162,9 +163,8 @@ class Scenario(models.Model, metaclass=TransMeta):
     def __str__(self):
         return str(self.title)
     
-    @models.permalink
     def get_absolute_url(self):
-        return ('scenario_detail', [self.name,])
+        return reverse('scenario_detail', [self.name,])
 
     def _get_map_name(self):
         return "scenario-%s.jpg" % self.name
@@ -327,8 +327,7 @@ class Country(models.Model, metaclass=TransMeta):
         return str(self.name)
 
     def get_absolute_url(self):
-        return ('country_detail', None, {'slug': self.static_name})
-    get_absolute_url = models.permalink(get_absolute_url)
+        return reverse('country_detail', None, {'slug': self.static_name})
     
     def get_income(self, setting):
         try:
