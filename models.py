@@ -164,7 +164,7 @@ class Scenario(models.Model, metaclass=TransMeta):
         return str(self.title)
     
     def get_absolute_url(self):
-        return reverse('scenario_detail', [self.name,])
+        return reverse('scenario_detail', args=[self.name,])
 
     def _get_map_name(self):
         return "scenario-%s.jpg" % self.name
@@ -327,7 +327,7 @@ class Country(models.Model, metaclass=TransMeta):
         return str(self.name)
 
     def get_absolute_url(self):
-        return reverse('country_detail', None, {'slug': self.static_name})
+        return reverse('country_detail', kwargs={'slug': self.static_name})
     
     def get_income(self, setting):
         try:
