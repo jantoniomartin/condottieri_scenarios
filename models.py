@@ -155,11 +155,6 @@ class Scenario(models.Model, metaclass=TransMeta):
     def get_max_players(self):
         return self.number_of_players
 
-    def get_min_players(self):
-        max_players = self.get_max_players()
-        neutrals = self.neutral_set.count()
-        return max_players - neutrals
-
     def __str__(self):
         return str(self.title)
     
@@ -350,7 +345,7 @@ class Country(models.Model, metaclass=TransMeta):
 
     in_play = property(_get_in_play)
 
-models.signals.post_save.connect(graphics.make_country_tokens, sender=Country)
+models.signals.post_save.connect(graphics.signal_handler_make_country_tokens, sender=Country)
 
 class Contender(models.Model):
     """ A Contender object defines a relationship between an Scenario and a

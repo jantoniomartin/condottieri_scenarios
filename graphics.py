@@ -127,6 +127,9 @@ def make_flag(fill):
         del draw
         return flag
 
+def signal_handler_make_country_tokens(sender, instance, created, raw, **kwargs):
+    make_country_tokens(sender, instance, created, raw, **kwargs)
+
 def make_country_tokens(sender, instance, created, raw, **kwargs):
         """ Generate all the tokens for a country """
         if raw:

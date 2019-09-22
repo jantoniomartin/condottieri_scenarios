@@ -1,0 +1,19 @@
+-   fields:
+        slug: renaissance-italy
+        title_en: Renaissance Italy
+        title_es: Italia Renacentista
+        title_ca: Itàlia Renaixentista
+        title_de: Italien der Renaissance
+        description_en: "This setting represents Renaissance Italy, and each player controls one of the powers that struggle to dominate the region."
+        description_es: "Esta ambientación representa la Italia del Renacimiento, y cada jugador controla una de las potencias que luchan por dominar la región."
+        description_ca: ""
+        description_de: ""
+        editor: 1
+        enabled: True
+        board: "scenarios/boards/board-renaissance-italy.png"
+    model: condottieri_scenarios.setting
+    pk: 1
+
+- fields: {religious_war: false, setting: 1, trade_routes: false}
+  model: condottieri_scenarios.configuration
+  pk: 1

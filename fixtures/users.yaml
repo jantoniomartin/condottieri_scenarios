@@ -1,0 +1,13 @@
+- model: auth.user
+  pk: 1
+  fields:
+    last_login: 2019-09-14 12:02:16
+    is_superuser: true
+    username: strider
+    first_name: ''
+    last_name: ''
+    email: ja@example.com
+    is_staff: true
+    is_active: true
+    date_joined: 2010-03-05 07:25:40
+    groups: []
